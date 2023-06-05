@@ -74,6 +74,9 @@ class Vin
     #[ORM\Column(length: 255)]
     private ?string $matiere = null;
 
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Atelier $atelier = null;
+
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
@@ -421,6 +424,18 @@ class Vin
     public function setMatiere(string $matiere): self
     {
         $this->matiere = $matiere;
+        return $this;
+    }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): self
+    {
+        $this->atelier = $atelier;
+
         return $this;
     }
 }

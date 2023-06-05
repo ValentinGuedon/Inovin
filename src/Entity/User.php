@@ -72,6 +72,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Atelier $atelier = null;
+
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
@@ -405,6 +408,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $caracteristique->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): self
+    {
+        $this->atelier = $atelier;
 
         return $this;
     }
