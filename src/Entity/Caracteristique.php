@@ -41,10 +41,10 @@ class Caracteristique
     private ?int $couleur = null;
 
     #[ORM\ManyToOne(inversedBy: 'caracteristiques')]
-    private ?vin $vin = null;
+    private ?Vin $vin = null;
 
     #[ORM\ManyToOne(inversedBy: 'caracteristiques')]
-    private ?user $user = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -159,24 +159,24 @@ class Caracteristique
         return $this;
     }
 
-    public function getVin(): ?vin
+    public function getVin(): ?Vin
     {
         return $this->vin;
     }
 
-    public function setVin(?vin $vin): self
+    public function setVin(?Vin $vin): self
     {
         $this->vin = $vin;
 
         return $this;
     }
 
-    public function getUser(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(?user $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 

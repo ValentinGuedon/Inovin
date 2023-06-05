@@ -1,0 +1,32 @@
+<nav>
+    <ul>
+        <li><a href="">Accueil</a></li>
+        <li><a href="">Ateliers</a></li>
+        <li><a href="">Boutique</a></li>
+        <li><a href="">Contact</a></li>
+        <li><a href="">Panier</a></li>
+        
+        {% if app.user == false %}
+        <li>
+            <a href="/connection">Connexion</a>
+        </li>
+        {% endif %}
+        <li>
+            <div class="navbar">
+                <div class="dropdown">
+                    {% if app.user == true %} 
+                        <button class="dropbtn">
+                            {{ app.user.login }}
+                        </button>
+                    <div class="dropdown-content">
+                        <a href="#">Profil</a>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="/logout">Déconnexion</a>
+                    </div>
+                {% endif %}
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>

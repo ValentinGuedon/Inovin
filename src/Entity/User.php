@@ -5,28 +5,57 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[ORM\Table(name: '`user`')]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
+
+    #[ORM\Column]
+    private array $roles = [];
+
+    /**
+     * @var string The hashed password
+     */
+    #[ORM\Column]
+    private ?string $password = null;
+
     #[ORM\Column(length: 255)]
     private ?string $login = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $password = null;
+    private ?string $name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $firstname = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prenom = null;
+    private ?string $street = null;
+
+    #[ORM\Column]
+    private ?int $streetnumber = null;
+
+    #[ORM\Column]
+    private ?int $postalcode = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $city = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $birthdate = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $phone = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: FicheDegustation::class)]
     private Collection $ficheDegustations;
@@ -57,6 +86,71 @@ class User
         return $this->id;
     }
 
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
     public function getLogin(): ?string
     {
         return $this->login;
@@ -69,38 +163,98 @@ class User
         return $this;
     }
 
-    public function getPassword(): ?string
+    public function getName(): ?string
     {
-        return $this->password;
+        return $this->name;
     }
 
-    public function setPassword(string $password): self
+    public function setName(string $name): self
     {
-        $this->password = $password;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getNom(): ?string
+    public function getFirstname(): ?string
     {
-        return $this->nom;
+        return $this->firstname;
     }
 
-    public function setNom(string $nom): self
+    public function setFirstname(string $firstname): self
     {
-        $this->nom = $nom;
+        $this->firstname = $firstname;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getStreet(): ?string
     {
-        return $this->prenom;
+        return $this->street;
     }
 
-    public function setPrenom(string $prenom): self
+    public function setStreet(string $street): self
     {
-        $this->prenom = $prenom;
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getStreetnumber(): ?int
+    {
+        return $this->streetnumber;
+    }
+
+    public function setStreetnumber(int $streetnumber): self
+    {
+        $this->streetnumber = $streetnumber;
+
+        return $this;
+    }
+
+    public function getPostalcode(): ?int
+    {
+        return $this->postalcode;
+    }
+
+    public function setPostalcode(int $postalcode): self
+    {
+        $this->postalcode = $postalcode;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

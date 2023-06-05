@@ -42,11 +42,11 @@ class FicheDegustation
     #[ORM\Column]
     private ?int $note = null;
 
-    #[ORM\ManyToOne(inversedBy: 'ficheDegustations')]
-    private ?user $user = null;
-
-    #[ORM\OneToMany(mappedBy: 'ficheDegustation', targetEntity: vin::class)]
+    #[ORM\OneToMany(mappedBy: 'ficheDegustation', targetEntity: Vin::class)]
     private Collection $vin;
+
+    #[ORM\ManyToOne(inversedBy: 'ficheDegustations')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -166,27 +166,15 @@ class FicheDegustation
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
-
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
     /**
-     * @return Collection<int, vin>
+     * @return Collection<int, Vin>
      */
     public function getVin(): Collection
     {
         return $this->vin;
     }
 
-    public function addVin(vin $vin): self
+    public function addVin(Vin $vin): self
     {
         if (!$this->vin->contains($vin)) {
             $this->vin->add($vin);
@@ -196,7 +184,7 @@ class FicheDegustation
         return $this;
     }
 
-    public function removeVin(vin $vin): self
+    public function removeVin(Vin $vin): self
     {
         if ($this->vin->removeElement($vin)) {
             // set the owning side to null (unless already changed)
@@ -204,6 +192,18 @@ class FicheDegustation
                 $vin->setFicheDegustation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

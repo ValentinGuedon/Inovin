@@ -20,10 +20,10 @@ class Recette
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
-    private ?user $user = null;
+    private ?Vin $vin = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
-    private ?vin $vin = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -54,26 +54,26 @@ class Recette
         return $this;
     }
 
-    public function getUser(): ?user
-    {
-        return $this->user;
-    }
-
-    public function setUser(?user $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getVin(): ?vin
+    public function getVin(): ?Vin
     {
         return $this->vin;
     }
 
-    public function setVin(?vin $vin): self
+    public function setVin(?Vin $vin): self
     {
         $this->vin = $vin;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

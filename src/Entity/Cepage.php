@@ -21,10 +21,10 @@ class Cepage
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'cepages')]
-    private ?vin $vin = null;
+    private ?Vin $vin = null;
 
     #[ORM\ManyToOne]
-    private ?caracteristique $caracteristiques = null;
+    private ?Caracteristique $caracteristiques = null;
 
     public function getId(): ?int
     {
@@ -55,24 +55,24 @@ class Cepage
         return $this;
     }
 
-    public function getVin(): ?vin
+    public function getVin(): ?Vin
     {
         return $this->vin;
     }
 
-    public function setVin(?vin $vin): self
+    public function setVin(?Vin $vin): self
     {
         $this->vin = $vin;
 
         return $this;
     }
 
-    public function getCaracteristiques(): ?caracteristique
+    public function getCaracteristiques(): ?Caracteristique
     {
         return $this->caracteristiques;
     }
 
-    public function setCaracteristiques(?caracteristique $caracteristiques): self
+    public function setCaracteristiques(?Caracteristique $caracteristiques): self
     {
         $this->caracteristiques = $caracteristiques;
 
