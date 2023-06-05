@@ -51,6 +51,28 @@ class Vin
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $couleur = null;
+    #[ORM\Column(length: 255)]
+    private ?string $limpidite = null;
+    #[ORM\Column(length: 255)]
+    private ?string $fluidite = null;
+    #[ORM\Column(length: 255)]
+    private ?string $brillance = null;
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $arome = [];
+    #[ORM\Column]
+    private ?int $intensite = null;
+    #[ORM\Column]
+    private ?int $douceur = null;
+    #[ORM\Column]
+    private ?int $alcool = null;
+    #[ORM\Column(length: 255)]
+    private ?string $persistance = null;
+    #[ORM\Column(length: 255)]
+    private ?string $structure = null;
+    #[ORM\Column(length: 255)]
+    private ?string $matiere = null;
 
     public function __construct()
     {
@@ -278,6 +300,127 @@ class Vin
             }
         }
 
+        return $this;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
+        return $this;
+    }
+
+    public function getLimpidite(): ?string
+    {
+        return $this->limpidite;
+    }
+
+    public function setLimpidite(string $limpidite): self
+    {
+        $this->limpidite = $limpidite;
+        return $this;
+    }
+
+    public function getFluidite(): ?string
+    {
+        return $this->fluidite;
+    }
+
+    public function setFluidite(string $fluidite): self
+    {
+        $this->fluidite = $fluidite;
+        return $this;
+    }
+
+    public function getBrillance(): ?string
+    {
+        return $this->brillance;
+    }
+
+    public function setBrillance(string $brillance): self
+    {
+        $this->brillance = $brillance;
+        return $this;
+    }
+
+    public function getArome(): array
+    {
+        return $this->arome;
+    }
+
+    public function setArome(?array $arome): self
+    {
+        $this->arome = $arome;
+        return $this;
+    }
+
+    public function getIntensite(): ?int
+    {
+        return $this->intensite;
+    }
+
+    public function setIntensite(int $intensite): self
+    {
+        $this->intensite = $intensite;
+        return $this;
+    }
+
+    public function getDouceur(): ?int
+    {
+        return $this->douceur;
+    }
+
+    public function setDouceur(int $douceur): self
+    {
+        $this->douceur = $douceur;
+        return $this;
+    }
+
+    public function getAlcool(): ?int
+    {
+        return $this->alcool;
+    }
+
+    public function setAlcool(int $alcool): self
+    {
+        $this->alcool = $alcool;
+        return $this;
+    }
+
+    public function getPersistance(): ?string
+    {
+        return $this->persistance;
+    }
+
+    public function setPersistance(string $persistance): self
+    {
+        $this->persistance = $persistance;
+        return $this;
+    }
+
+    public function getStructure(): ?string
+    {
+        return $this->structure;
+    }
+
+    public function setStructure(string $structure): self
+    {
+        $this->structure = $structure;
+        return $this;
+    }
+
+    public function getMatiere(): ?string
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(string $matiere): self
+    {
+        $this->matiere = $matiere;
         return $this;
     }
 }
