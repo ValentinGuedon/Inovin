@@ -19,4 +19,9 @@ class HomeController extends AbstractController
     {
         return $this->render('mentions/mentions.html.twig');
     }
+    #[Route('/histoire', name: 'histoire')]
+    public function showHistoire(): Response
+    {
+        return $this->render('histoire/histoire.html.twig');
+    }
 }
