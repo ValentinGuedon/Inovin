@@ -432,7 +432,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $panier->setUser($this);
         }
 
-        return $this->panier = $panier;
+        $this->panier = $panier;
+        return $this;
     }
 
     public function getAtelier(): ?Atelier
