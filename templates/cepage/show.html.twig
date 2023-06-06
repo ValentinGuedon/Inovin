@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cepage{% endblock %}
+
+{% block body %}
+    <h1>Cepage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cepage.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ cepage.type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cepage.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cepage_index') }}">back to list</a>
+
+    <a href="{{ path('app_cepage_edit', {'id': cepage.id}) }}">edit</a>
+
+    {{ include('cepage/_delete_form.html.twig') }}
+{% endblock %}

@@ -19,28 +19,28 @@ class Vin
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $nom;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    private ?string $description;
 
     #[ORM\Column(length: 255)]
-    private ?string $region = null;
+    private ?string $region;
 
     #[ORM\Column]
-    private ?int $millesime = null;
+    private ?int $millesime;
 
     #[ORM\Column]
-    private ?float $degreAlcool = null;
+    private ?float $degreAlcool;
 
     #[ORM\Column]
-    private ?float $prix = null;
+    private ?float $prix;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    private ?string $image;
 
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
     #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
@@ -63,6 +63,32 @@ class Vin
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $couleur;
+    #[ORM\Column(length: 255)]
+    private ?string $limpidite;
+    #[ORM\Column(length: 255)]
+    private ?string $fluidite;
+    #[ORM\Column]
+    private int $brillance = 0;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $arome = [];
+    #[ORM\Column]
+    private ?int $intensite = 0;
+    #[ORM\Column]
+    private ?int $douceur = 0;
+    #[ORM\Column]
+    private ?int $alcool = 0;
+    #[ORM\Column(length: 255)]
+    private ?string $persistance;
+    #[ORM\Column(length: 255)]
+    private ?string $structure;
+    #[ORM\Column(length: 255)]
+    private ?string $matiere;
+
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Atelier $atelier;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
@@ -317,7 +343,138 @@ class Vin
 
     public function setPanier(?Panier $panier): self
     {
-        $this->panier = $panier;
+        return $this->panier = $panier;
+    }
+
+    public function getCouleur(): ?string
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?string $couleur): self
+    {
+        $this->couleur = $couleur;
+        return $this;
+    }
+
+    public function getLimpidite(): ?string
+    {
+        return $this->limpidite;
+    }
+
+    public function setLimpidite(string $limpidite): self
+    {
+        $this->limpidite = $limpidite;
+        return $this;
+    }
+
+    public function getFluidite(): ?string
+    {
+        return $this->fluidite;
+    }
+
+    public function setFluidite(string $fluidite): self
+    {
+        $this->fluidite = $fluidite;
+        return $this;
+    }
+
+    public function getBrillance(): ?int
+    {
+        return $this->brillance;
+    }
+
+    public function setBrillance(int $brillance): self
+    {
+        $this->brillance = $brillance;
+        return $this;
+    }
+
+    public function getarome(): array
+    {
+        return $this->arome;
+    }
+
+    public function setarome(?array $arome): self
+    {
+        $this->arome = $arome;
+        return $this;
+    }
+
+    public function getIntensite(): ?int
+    {
+        return $this->intensite;
+    }
+
+    public function setIntensite(int $intensite): self
+    {
+        $this->intensite = $intensite;
+        return $this;
+    }
+
+    public function getDouceur(): ?int
+    {
+        return $this->douceur;
+    }
+
+    public function setDouceur(int $douceur): self
+    {
+        $this->douceur = $douceur;
+        return $this;
+    }
+
+    public function getAlcool(): ?int
+    {
+        return $this->alcool;
+    }
+
+    public function setAlcool(int $alcool): self
+    {
+        $this->alcool = $alcool;
+        return $this;
+    }
+
+    public function getPersistance(): ?string
+    {
+        return $this->persistance;
+    }
+
+    public function setPersistance(string $persistance): self
+    {
+        $this->persistance = $persistance;
+        return $this;
+    }
+
+    public function getStructure(): ?string
+    {
+        return $this->structure;
+    }
+
+    public function setStructure(string $structure): self
+    {
+        $this->structure = $structure;
+        return $this;
+    }
+
+    public function getMatiere(): ?string
+    {
+        return $this->matiere;
+    }
+
+    public function setMatiere(string $matiere): self
+    {
+        $this->matiere = $matiere;
+        return $this;
+    }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): self
+    {
+        $this->atelier = $atelier;
 
         return $this;
     }

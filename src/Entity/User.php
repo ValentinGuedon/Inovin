@@ -75,6 +75,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'User', cascade: ['persist', 'remove'])]
     private ?Panier $panier = null;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Atelier $atelier = null;
+
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
@@ -429,7 +432,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $panier->setUser($this);
         }
 
-        $this->panier = $panier;
+        return $this->panier = $panier;
+    }
+
+    public function getAtelier(): ?Atelier
+    {
+        return $this->atelier;
+    }
+
+    public function setAtelier(?Atelier $atelier): self
+    {
+        $this->atelier = $atelier;
 
         return $this;
     }

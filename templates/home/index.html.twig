@@ -4,12 +4,8 @@
 
 {% block body %}
 
-{# {% if app.user == true %}
-    <p>Connecté en tant que: {{ app.user.login }}</p>
-{% else %}
-    <a href="/register">S'inscrire</a>
+{% if app.user %}
+<h2>Bonjour</h2>
 {% endif %}
-<a href="{{ app.user ? 'logout' : 'login'}}"> {{ app.user ? 'Se Déconnecter' : 'Se Connecter' }}</a> #}
 
-    
 {% endblock %}
