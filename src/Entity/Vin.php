@@ -390,12 +390,12 @@ class Vin
         return $this;
     }
 
-    public function getarome(): array
+    public function getArome(): array
     {
         return $this->arome;
     }
 
-    public function setarome(?array $arome): self
+    public function setArome(?array $arome): self
     {
         $this->arome = $arome;
         return $this;

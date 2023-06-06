@@ -14,9 +14,7 @@ class ShopController extends AbstractController
     #[Route('/', name: 'index')]
     public function index(VinRepository $vinRepository): Response
     {
-        return $this->render('shop/index.html.twig', [
-            'vins' => $vinRepository->findAll(),
-        ]);
+        return $this->render('shop/index.html.twig', ['vins' => $vinRepository->findAll()]);
     }
 
     #[Route('/add/{id}', name: 'add')]
