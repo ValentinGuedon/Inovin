@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Cepage{% endblock %}
+
+{% block body %}
+    <h1>Edit Cepage</h1>
+
+    {{ include('cepage/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_cepage_index') }}">back to list</a>
+
+    {{ include('cepage/_delete_form.html.twig') }}
+{% endblock %}
