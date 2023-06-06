@@ -343,7 +343,8 @@ class Vin
 
     public function setPanier(?Panier $panier): self
     {
-        return $this->panier = $panier;
+        $this->panier = $panier;
+        return $this;
     }
 
     public function getCouleur(): ?string
