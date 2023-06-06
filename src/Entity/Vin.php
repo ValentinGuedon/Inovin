@@ -14,28 +14,28 @@ class Vin
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    private ?string $nom;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    private ?string $description;
 
     #[ORM\Column(length: 255)]
-    private ?string $region = null;
+    private ?string $region;
 
     #[ORM\Column]
-    private ?int $millesime = null;
+    private ?int $millesime;
 
     #[ORM\Column]
-    private ?float $degreAlcool = null;
+    private ?float $degreAlcool;
 
     #[ORM\Column]
-    private ?float $prix = null;
+    private ?float $prix;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    private ?string $image;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?FicheDegustation $ficheDegustation = null;
@@ -52,30 +52,31 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $couleur = null;
+    private ?string $couleur;
     #[ORM\Column(length: 255)]
-    private ?string $limpidite = null;
+    private ?string $limpidite;
     #[ORM\Column(length: 255)]
-    private ?string $fluidite = null;
-    #[ORM\Column(length: 255)]
-    private ?string $brillance = null;
+    private ?string $fluidite;
+    #[ORM\Column]
+    private int $brillance = 0;
+
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $arome = [];
     #[ORM\Column]
-    private ?int $intensite = null;
+    private ?int $intensite = 0;
     #[ORM\Column]
-    private ?int $douceur = null;
+    private ?int $douceur = 0;
     #[ORM\Column]
-    private ?int $alcool = null;
+    private ?int $alcool = 0;
     #[ORM\Column(length: 255)]
-    private ?string $persistance = null;
+    private ?string $persistance;
     #[ORM\Column(length: 255)]
-    private ?string $structure = null;
+    private ?string $structure;
     #[ORM\Column(length: 255)]
-    private ?string $matiere = null;
+    private ?string $matiere;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
-    private ?Atelier $atelier = null;
+    private ?Atelier $atelier;
 
     public function __construct()
     {
@@ -339,23 +340,23 @@ class Vin
         return $this;
     }
 
-    public function getBrillance(): ?string
+    public function getBrillance(): ?int
     {
         return $this->brillance;
     }
 
-    public function setBrillance(string $brillance): self
+    public function setBrillance(int $brillance): self
     {
         $this->brillance = $brillance;
         return $this;
     }
 
-    public function getArome(): array
+    public function getarome(): array
     {
         return $this->arome;
     }
 
-    public function setArome(?array $arome): self
+    public function setarome(?array $arome): self
     {
         $this->arome = $arome;
         return $this;
