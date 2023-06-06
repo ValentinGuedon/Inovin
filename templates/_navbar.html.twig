@@ -1,10 +1,10 @@
 <nav>
     <ul>
-        <li><a href="">Accueil</a></li>
-        <li><a href="">Ateliers</a></li>
-        <li><a href="">Boutique</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Panier</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="#">Ateliers</a></li>
+        <li><a href="{{ path("shop_index")}}">Boutique</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="{{ path("panier_index")}}">Panier</a></li>
         
         {% if app.user == false %}
         <li>

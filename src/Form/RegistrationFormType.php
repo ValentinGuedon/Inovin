@@ -86,6 +86,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('birthdate', DateType::class, [
+                'widget' => 'single_text',
                 'attr' => [
                     'placeholder' => 'birthdate',
                 ],
