@@ -439,9 +439,4 @@ class Vin
 
         return $this;
     }
-
-    public function test()
-    {
-        return 'test';
-    }
 }
