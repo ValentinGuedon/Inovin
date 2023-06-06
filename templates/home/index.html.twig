@@ -4,11 +4,6 @@
 
 {% block body %}
 
-{% if app.user %}
-<h2>Bonjour</h2>
-{% endif %}
-<a href="{{ app.user ? 'logout' : 'login'}}"> {{ app.user ? 'Se Déconnecter' : 'Se Connecter' }}</a> #}
-
 <div class="image">
     <div class="content">
       <h1 class="titre-accueil">De la dégustation à la création de votre vin <span class="color-modif">personnalisé</span></h1>
@@ -20,5 +15,3 @@
   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 {% endblock %}
-
-

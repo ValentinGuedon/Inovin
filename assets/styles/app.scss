@@ -20,6 +20,11 @@ header{
     height: 50vh;
 }
 
+.img-logo{
+    position:absolute;
+    left:0;
+}
+
 nav ul li{
     list-style: none;
     padding: 3%;
@@ -44,7 +49,7 @@ ul{
     letter-spacing: 0.15em;
     
     display: inline-block;
-    padding: 15px 20px;
+    padding: 5px 10px;
     position: relative;
 }
 
@@ -54,7 +59,7 @@ ul{
     content: "";
     display: block;
     height: 2px;
-    left: 50%;
+    
     position: absolute;
     background: #e0115f;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
@@ -80,7 +85,7 @@ ul{
     font-size: 16px;
     border: none;
     outline: none;
-    color: white;
+    color: var(--couleur-claire);
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
@@ -92,14 +97,14 @@ ul{
 /* ajoute le fond rouge quand tu hover */
 .navbar,
 .dropdown:hover .dropbtn {
-    background-color: red;
+    background-color: var(--couleur-tierce);
 }
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: var(--couleur-fonce);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -108,16 +113,11 @@ ul{
 /* Links inside the dropdown */
 .dropdown-content{
     float: none;
-    color: black;
+    color: var(--couleur-claire);
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
-}
-
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
 }
 
 /* Show the dropdown menu on hover */
@@ -169,7 +169,7 @@ ul{
 }
   
 .img-wine {
-  position: fixed;
+  position: absolute;
   bottom: 0;
   right: 0;
   left:-30;
