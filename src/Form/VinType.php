@@ -53,7 +53,8 @@ class VinType extends AbstractType
                 'attr' => [
                     'min' => 0,
                     'max' => 10,
-                ],
+
+                ],'label' => 'Choisissez une brillance /10',
             ])
             ->add('arome', ChoiceType::class, [
                 'choices' => [
@@ -73,14 +74,21 @@ class VinType extends AbstractType
                 'attr' => [
                     'min' => 0,
                     'max' => 10,
-                ],
+
+                ],'label' => 'Choisissez une intensité /10',
             ])
-            ->add('douceur')
+            ->add('douceur', NumberType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+
+                ],'label' => 'Choisissez une douceur /10',
+            ])
             ->add('alcool', NumberType::class, [
                 'attr' => [
                     'min' => 0,
                     'max' => 10,
-                ],
+                ],'label' => "Choisissez un ressenti d'alcool/10"
             ])
             ->add('persistance', ChoiceType::class, [
                 'choices' => [
