@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDegustation{% endblock %}
+
+{% block body %}
+    <h1>FicheDegustation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fiche_degustation.id }}</td>
+            </tr>
+            <tr>
+                <th>Limpidite</th>
+                <td>{{ fiche_degustation.limpidite }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ fiche_degustation.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Arome</th>
+                <td>{{ fiche_degustation.arome }}</td>
+            </tr>
+            <tr>
+                <th>Tanins</th>
+                <td>{{ fiche_degustation.tanins }}</td>
+            </tr>
+            <tr>
+                <th>Alcool</th>
+                <td>{{ fiche_degustation.alcool }}</td>
+            </tr>
+            <tr>
+                <th>Equilibre</th>
+                <td>{{ fiche_degustation.equilibre }}</td>
+            </tr>
+            <tr>
+                <th>Corps</th>
+                <td>{{ fiche_degustation.corps }}</td>
+            </tr>
+            <tr>
+                <th>FinDebouche</th>
+                <td>{{ fiche_degustation.finDebouche }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ fiche_degustation.note }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_degustation_index') }}">back to list</a>
+
+    <a href="{{ path('app_fiche_degustation_edit', {'id': fiche_degustation.id}) }}">edit</a>
+
+    {{ include('fiche_degustation/_delete_form.html.twig') }}
+{% endblock %}
