@@ -66,7 +66,7 @@
             <property name="maximum" value="30"/>
         </properties>
     </rule>
-    <rule ref="rulesets/design.xml/ExcessiveMethodLength">
+    <rule ref="rulesets/codesize.xml/ExcessiveMethodLength">
         <properties>
             <property name="maximum" value="200"/>
         </properties>
