@@ -1,3 +1,5 @@
+@import 'footer';
+
 *{
     margin: 0;
 }
@@ -41,6 +43,26 @@ ul{
     flex-direction: row;
     justify-content: space-around;
 }
+.listederoulante {
+    display: none;
+  }
+  
+  nav ul li:hover .listederoulante {
+    display: block;
+  }
+
+a{
+    color:var(--couleur-claire);
+    text-decoration: none;
+  }
+  
+  .listederoulante {
+    position: absolute;
+    background-color: var(--couleur-claire);
+    text-decoration: none;
+    min-width: 10%;
+    z-index: 1;
+  }
 
 .liennav{
     color: var(--couleur-tierce);
@@ -74,50 +96,51 @@ ul{
 .liennav:hover{
     color:#e0115f;
 }
-  
-/* Navbar container */
-.navbar{
-    background-color: #333;
-}
 
 /* Gère la couleur du bouton */
-.dropdown .dropbtn{
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: var(--couleur-claire);
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit;
+.dropdown .dropbtn {
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--couleur-fonce);
+    background-color: var(--couleur-claire);
+    color: var(--couleur-fonce);
+    padding: 10% 167%;
     /* Important for vertical align on mobile phones */
     margin: 0;
     /* Important for vertical align on mobile phones */
 }
 
 /* ajoute le fond rouge quand tu hover */
-.navbar,
+.navbar a:hover,
 .dropdown:hover .dropbtn {
-    background-color: var(--couleur-tierce);
+    background-color: var(--couleur-fonce);
+    color: var(--couleur-claire);
 }
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: var(--couleur-fonce);
+    background-color: var(--couleur-claire);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
 
 /* Links inside the dropdown */
-.dropdown-content{
+.dropdown-content a {
     float: none;
-    color: var(--couleur-claire);
-    padding: 12px 16px;
+    color: var(--couleur-tierce);
+    padding: 10% 20%;
     text-decoration: none;
     display: block;
     text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: var(--couleur-fonce);
+    color: var(--couleur-claire);
 }
 
 /* Show the dropdown menu on hover */
@@ -174,4 +197,17 @@ ul{
   right: 0;
   left:-30;
   margin-right: 0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-icon {
+    width: 60%;
+}
+
+.user-login {
+    margin-left: 5px;
 }
