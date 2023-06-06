@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vin index{% endblock %}
+
+{% block body %}
+    <h1>Vin index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Region</th>
+                <th>Millesime</th>
+                <th>DegreAlcool</th>
+                <th>Prix</th>
+                <th>Image</th>
+                <th>Couleur</th>
+                <th>Limpidite</th>
+                <th>Fluidite</th>
+                <th>Brillance</th>
+                <th>Arome</th>
+                <th>Intensite</th>
+                <th>Douceur</th>
+                <th>Alcool</th>
+                <th>Persistance</th>
+                <th>Structure</th>
+                <th>Matiere</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vin in vins %}
+            <tr>
+                <td>{{ vin.id }}</td>
+                <td>{{ vin.nom }}</td>
+                <td>{{ vin.description }}</td>
+                <td>{{ vin.region }}</td>
+                <td>{{ vin.millesime }}</td>
+                <td>{{ vin.degreAlcool }}</td>
+                <td>{{ vin.prix }}</td>
+                <td>{{ vin.image }}</td>
+                <td>{{ vin.couleur }}</td>
+                <td>{{ vin.limpidite }}</td>
+                <td>{{ vin.fluidite }}</td>
+                <td>{{ vin.brillance }}</td>
+                <td>{{ vin.arome ? vin.arome|join(', ') : '' }}</td>
+                <td>{{ vin.intensite }}</td>
+                <td>{{ vin.douceur }}</td>
+                <td>{{ vin.alcool }}</td>
+                <td>{{ vin.persistance }}</td>
+                <td>{{ vin.structure }}</td>
+                <td>{{ vin.matiere }}</td>
+                <td>
+                    <a href="{{ path('app_vin_show', {'id': vin.id}) }}">show</a>
+                    <a href="{{ path('app_vin_edit', {'id': vin.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_vin_new') }}">Create new</a>
+{% endblock %}
