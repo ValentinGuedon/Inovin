@@ -1,32 +1,48 @@
+{% block content %}
 <nav>
+    <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;">
     <ul>
-        <li><a href="">Accueil</a></li>
-        <li><a href="">Ateliers</a></li>
-        <li><a href="">Boutique</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Panier</a></li>
+
+        <li><a href="" class="liennav">ACCUEIL</a></li>
+        <li><a href="" class="liennav">ATELIERS</a></li>
+        <li><a href="#" class="liennav">VIN/VIN</a>
+            <ul class="listederoulante">
+                <li><a href="#" class="liennav">Quizz du Vin</a></li>
+                <li><a href="#" class="liennav">Blog</a></li>
+                <li><a href="#" class="liennav">La carte des vins</a></li>
+            </ul>
+        </li>
+        <li><a href="" class="liennav">BOUTIQUE</a></li>
+        <li><a href="" class="liennav">CONTACT</a>
+            <ul class="listederoulante">
+            <li><a href="#" class="liennav">Notre histoire</a></li>
+            <li><a href="#" class="liennav">FAQ</a></li>
+        </ul>
+        </li>
+        <li><a href="" class="liennav">PANIER</a></li>
         
         {% if app.user == false %}
         <li>
-            <a href="/connection">Connexion</a>
+            <a href="/connection" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
         <li>
-            <div class="navbar">
-                <div class="dropdown">
-                    {% if app.user == true %} 
-                        <button class="dropbtn">
-                            {{ app.user.login }}
-                        </button>
+            <div class="dropdown">
+                {% if app.user == true %} 
+                    <button class="dropbtn">
+                        <div class="user-info">
+                        <img class="user-icon" src="{{ asset('build/images/user.png') }}" style="width: 60%;"> 
+                        <span class="user-login">{{ app.user.login }}</span>
+                        </div>
+                    </button>
                     <div class="dropdown-content">
                         <a href="#">Profil</a>
-                    </div>
-                    <div class="dropdown-content">
                         <a href="/logout">Déconnexion</a>
                     </div>
                 {% endif %}
-                </div>
             </div>
         </li>
     </ul>
 </nav>
+
+{% endblock %}

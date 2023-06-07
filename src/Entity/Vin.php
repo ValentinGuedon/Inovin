@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\VinRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VinRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VinRepository::class)]
+#[Vich\Uploadable]
 class Vin
 {
     #[ORM\Id]
@@ -36,6 +41,13 @@ class Vin
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
+    #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?Datetime $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?FicheDegustation $ficheDegustation = null;
@@ -78,6 +90,9 @@ class Vin
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vins')]
     private Collection $ateliers;
 
+
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Panier $panier = null;
 
     public function __construct()
     {
@@ -309,6 +324,31 @@ class Vin
         return $this;
     }
 
+    public function setPosterFile(File $image = null): Vin
+    {
+        $this->posterFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        $this->panier = $panier;
+        return $this;
+    }
+
     public function getCouleur(): ?string
     {
         return $this->couleur;
@@ -353,12 +393,12 @@ class Vin
         return $this;
     }
 
-    public function getarome(): array
+    public function getArome(): array
     {
         return $this->arome;
     }
 
-    public function setarome(?array $arome): self
+    public function setArome(?array $arome): self
     {
         $this->arome = $arome;
         return $this;

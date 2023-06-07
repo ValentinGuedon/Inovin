@@ -72,6 +72,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
 
+    #[ORM\OneToOne(targetEntity: Panier::class, mappedBy: 'User', cascade: ['persist', 'remove'])]
+    private ?Panier $panier = null;
+
     #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]
     private Collection $atelier;
 
@@ -83,6 +86,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->recettes = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
         $this->atelier = new ArrayCollection();
+        $this->panier = new Panier();
     }
 
     public function getId(): ?int
@@ -423,5 +427,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->atelier = $atelier;
 
         return $this;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
     }
 }
