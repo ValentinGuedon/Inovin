@@ -2,13 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\VinRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\VinRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: VinRepository::class)]
+#[Vich\Uploadable]
 class Vin
 {
     #[ORM\Id]
@@ -306,7 +311,7 @@ class Vin
 
         return $this;
     }
-
+  
     public function getCouleur(): ?string
     {
         return $this->couleur;
@@ -351,12 +356,12 @@ class Vin
         return $this;
     }
 
-    public function getarome(): array
+    public function getArome(): array
     {
         return $this->arome;
     }
 
-    public function setarome(?array $arome): self
+    public function setArome(?array $arome): self
     {
         $this->arome = $arome;
         return $this;
