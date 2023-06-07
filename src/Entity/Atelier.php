@@ -22,7 +22,7 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: User::class)]
+    #[ORM\ManyToMany(mappedBy: 'atelier', targetEntity: User::class)]
     private Collection $users;
 
 
@@ -88,7 +88,6 @@ class Atelier
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
             if ($user->getAtelier() === $this) {
                 $user->setAtelier(null);
             }

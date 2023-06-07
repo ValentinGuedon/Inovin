@@ -72,8 +72,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
 
-    #[ORM\ManyToOne(inversedBy: 'users')]
-    private ?Atelier $atelier = null;
+    #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]
+    private Collection $atelier;
 
     public function __construct()
     {
@@ -82,6 +82,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->jeux = new ArrayCollection();
         $this->recettes = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
+        $this->atelier = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -412,7 +413,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    public function getAtelier(): Collection
     {
         return $this->atelier;
     }
