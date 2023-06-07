@@ -16,7 +16,7 @@ class Panier
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToOne(inversedBy: 'panier', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'panier', targetEntity: User::class)]
     private ?User $user = null;
 
     #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Vin::class)]

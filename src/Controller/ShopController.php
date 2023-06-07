@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Repository\VinRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/shop', name: 'shop_')]
@@ -18,17 +18,19 @@ class ShopController extends AbstractController
     }
 
     #[Route('/add/{id}', name: 'add')]
-    public function addShop(int $id, RequestStack $requestStack): Response
+    public function add(int $id, SessionInterface $session): Response
     {
-        $session = $requestStack->getSession();
-        $panier = $session->get('paniers', []);
+        // Création du panier
+        $panier = $session->get('panier', []);
 
+        // Alimentation du panier
         if (!empty($panier[$id])) {
-            $panier[$id] = $panier[$id] + $_GET['quantite'];
+            $panier[$id] = $panier[$id] + $_POST['quantite'];
         } else {
-            $panier[$id] = 1;
+            $panier[$id] = $_POST['quantite'];
         }
-        $panier = $session->set('paniers', $panier);
+        // Mise a jour du panier
+        $panier = $session->set('panier', $panier);
 
         $this->addFlash('success', 'Votre panier à été mis à jour');
         return $this->redirectToRoute('shop_index', [], Response::HTTP_SEE_OTHER);

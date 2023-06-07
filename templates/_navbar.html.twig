@@ -12,15 +12,14 @@
                 <li><a href="#" class="liennav">Blog</a></li>
             </ul>
         </li>
-        <li><a href="" class="liennav">BOUTIQUE</a></li>
+        <li><a href="{{ path ('shop_index')}}" class="liennav">BOUTIQUE</a></li>
         <li><a href="" class="liennav">CONTACT</a>
             <ul class="listederoulante">
             <li><a href="#" class="liennav">Notre histoire</a></li>
             <li><a href="#" class="liennav">FAQ</a></li>
         </ul>
         </li>
-        <li><a href="" class="liennav">PANIER</a></li>
-
+        <li><a href="{{ path ('panier_index')}}" class="liennav">PANIER</a></li>
         {% if app.user == false %}
         <li>
             <a href="/connection" class="liennav">CONNEXION</a>
