@@ -73,10 +73,11 @@
     </rule>
     <rule ref="rulesets/naming.xml" >
         <exclude name="ShortVariable" />
+        <exclude name="LongVariable" />
     </rule>
-    <rule ref="rulesets/naming.xml/ShortVariable">
+    <rule ref="rulesets/naming.xml/LongVariable">
         <properties>
-            <property name="exceptions" value="id,qb" />
+            <property name="maximum" value="50" />
         </properties>
     </rule>
     <exclude-pattern>src/Migrations</exclude-pattern>
