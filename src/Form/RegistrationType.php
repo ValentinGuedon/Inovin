@@ -50,11 +50,6 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('login', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'login',
-                ],
-            ])
             ->add('name', TextType::class, [
                 'attr' => [
                     'placeholder' => 'name',
@@ -68,11 +63,6 @@ class RegistrationFormType extends AbstractType
             ->add('street', TextType::class, [
                 'attr' => [
                     'placeholder' => 'street',
-                ],
-            ])
-            ->add('streetnumber', IntegerType::class, [
-                'attr' => [
-                    'placeholder' => 'streetnumber',
                 ],
             ])
             ->add('postalcode', IntegerType::class, [

@@ -22,14 +22,13 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setName('UserName1');
         $user->setEmail('user@gmail.com');
-        $user->setLogin('UserLogin');
         $user->setFirstname('UserFirstname');
         $user->setRoles(['ROLE_USER']);
-        $user->setStreet('Rue Des Bourdons');
-        $user->setStreetnumber(99);
+        $user->setStreet('99 Rue Des Bourdons');
         $user->setPostalcode(75000);
         $user->setCity('Paris');
         $user->setPhone('0687654321');
+        $user->setParticipant(0);
 
         $birthdate = new DateTime('2020-01-01');
         $user->setBirthdate($birthdate);

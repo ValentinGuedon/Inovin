@@ -22,14 +22,13 @@ class AdminFixtures extends Fixture
         $admin = new User();
         $admin->setName('Kutuk');
         $admin->setEmail('yavuz@gmail.com');
-        $admin->setLogin('Yavz');
         $admin->setFirstname('Yavuz');
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setStreet('Rue Des Abeilles');
-        $admin->setStreetnumber(27);
+        $admin->setStreet('27 Rue Des Abeilles');
         $admin->setPostalcode(67000);
         $admin->setCity('Strasbourg');
         $admin->setPhone('0612345678');
+        $admin->setParticipant(0);
 
         $birthdate = new DateTime('2023-01-01');
         $admin->setBirthdate($birthdate);
