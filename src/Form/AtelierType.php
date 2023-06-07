@@ -15,6 +15,7 @@ class AtelierType extends AbstractType
             ->add('place')
             ->add('date')
             ->add('commentaire')
+            ->add('vin', null, ['choice_label' => 'nom'])
         ;
     }
 

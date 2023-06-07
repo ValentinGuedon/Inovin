@@ -25,7 +25,8 @@ class Atelier
     #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Vin::class)]
+
+    #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'ateliers')]
     private Collection $vin;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -99,7 +100,7 @@ class Atelier
     /**
      * @return Collection<int, Vin>
      */
-    public function getVin(): Collection
+    public function getvin(): Collection
     {
         return $this->vin;
     }
@@ -108,7 +109,7 @@ class Atelier
     {
         if (!$this->vin->contains($vin)) {
             $this->vin->add($vin);
-            $vin->setAtelier($this);
+            $vin->addAtelier($this); // Update the inverse side of the relationship
         }
 
         return $this;
@@ -117,15 +118,11 @@ class Atelier
     public function removeVin(Vin $vin): self
     {
         if ($this->vin->removeElement($vin)) {
-            // set the owning side to null (unless already changed)
-            if ($vin->getAtelier() === $this) {
-                $vin->setAtelier(null);
-            }
+            $vin->removeAtelier($this); // Update the inverse side of the relationship
         }
 
         return $this;
     }
-
     public function getCommentaire(): ?string
     {
         return $this->commentaire;
