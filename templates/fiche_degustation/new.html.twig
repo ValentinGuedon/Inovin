@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FicheDegustation{% endblock %}
+
+{% block body %}
+    <h1>Create new FicheDegustation</h1>
+
+    {{ include('fiche_degustation/_form.html.twig') }}
+
+    <a href="{{ path('app_fiche_degustation_index') }}">back to list</a>
+{% endblock %}

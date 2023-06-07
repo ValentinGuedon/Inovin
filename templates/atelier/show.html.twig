@@ -20,6 +20,12 @@
                 <td>{{ atelier.date ? atelier.date|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
+                <th>Invités</th>
+                {% for user in atelier.users %}
+                <td>{{ user.name}}</td>
+                {% endfor %}
+            </tr>
+            <tr>
                 <th>Commentaire</th>
                 <td>{{ atelier.commentaire }}</td>
             </tr>

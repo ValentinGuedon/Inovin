@@ -2,14 +2,14 @@
 <nav>
     <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;">
     <ul>
-
-        <li><a href="/" class="liennav">ACCUEIL</a></li>
-        <li><a href="" class="liennav">ATELIERS</a></li>
+        <li><a href="{{ path('app_home') }}" class="liennav">ACCUEIL</a></li>
+        <li><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
         <li><a href="#" class="liennav">VIN/VIN</a>
             <ul class="listederoulante">
-                <li><a href="#" class="liennav">Quizz du Vin</a></li>
-                <li><a href="#" class="liennav">Blog</a></li>
+                <li><a href="#" class="liennav">Quizz du vin</a></li>
+                <li><a href="#" class="liennav">le lexique du vin</a></li>
                 <li><a href="#" class="liennav">La carte des vins</a></li>
+                <li><a href="#" class="liennav">Blog</a></li>
             </ul>
         </li>
         <li><a href="{{ path ('shop_index')}}" class="liennav">BOUTIQUE</a></li>
@@ -20,21 +20,18 @@
         </ul>
         </li>
         <li><a href="{{ path ('panier_index')}}" class="liennav">PANIER</a></li>
-        
         {% if app.user == false %}
         <li>
             <a href="/connection" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
         <li>
-            <div class="dropdown">
-                {% if app.user == true %} 
-                    <button class="dropbtn">
-                        <div class="user-info">
-                        <img class="user-icon" src="{{ asset('build/images/user.png') }}" style="width: 60%;"> 
-                        <span class="user-login">{{ app.user.firstname }}</span>
-                        </div>
-                    </button>
+            <div class="navbar">
+                <div class="dropdown">
+                    {% if app.user == true %}
+                        <button class="dropbtn">
+                            {{ app.user.login }}
+                        </button>
                     <div class="dropdown-content">
                         <a href="#">Profil</a>
                         <a href="/logout">Déconnexion</a>

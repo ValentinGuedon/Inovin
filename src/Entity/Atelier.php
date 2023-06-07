@@ -22,10 +22,11 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: User::class)]
+    #[ORM\ManyToMany(mappedBy: 'atelier', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\OneToMany(mappedBy: 'atelier', targetEntity: Vin::class)]
+
+    #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'ateliers')]
     private Collection $vin;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
@@ -78,7 +79,7 @@ class Atelier
     {
         if (!$this->users->contains($user)) {
             $this->users->add($user);
-            $user->setAtelier($this);
+            $user->getAtelier()->add($this); // Add the Atelier to the user's atelier collection
         }
 
         return $this;
@@ -87,9 +88,8 @@ class Atelier
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getAtelier() === $this) {
-                $user->setAtelier(null);
+            if ($user->getAtelier()->contains($this)) {
+                $user->getAtelier()->removeElement($this);
             }
         }
 
@@ -99,7 +99,7 @@ class Atelier
     /**
      * @return Collection<int, Vin>
      */
-    public function getVin(): Collection
+    public function getvin(): Collection
     {
         return $this->vin;
     }
@@ -108,7 +108,7 @@ class Atelier
     {
         if (!$this->vin->contains($vin)) {
             $this->vin->add($vin);
-            $vin->setAtelier($this);
+            $vin->addAtelier($this); // Update the inverse side of the relationship
         }
 
         return $this;
@@ -117,15 +117,11 @@ class Atelier
     public function removeVin(Vin $vin): self
     {
         if ($this->vin->removeElement($vin)) {
-            // set the owning side to null (unless already changed)
-            if ($vin->getAtelier() === $this) {
-                $vin->setAtelier(null);
-            }
+            $vin->removeAtelier($this); // Update the inverse side of the relationship
         }
 
         return $this;
     }
-
     public function getCommentaire(): ?string
     {
         return $this->commentaire;

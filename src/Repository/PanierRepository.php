@@ -13,6 +13,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Panier|null findOneBy(array $criteria, array $orderBy = null)
  * @method Panier[]    findAll()
  * @method Panier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @SuppressWarnings("PHPMD")
  */
 class PanierRepository extends ServiceEntityRepository
 {
