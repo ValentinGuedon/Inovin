@@ -28,7 +28,7 @@ class AdminFixtures extends Fixture
         $admin->setPostalcode(67000);
         $admin->setCity('Strasbourg');
         $admin->setPhone('0612345678');
-        $admin->setParticipant(0);
+        $admin->setParticipant(null);
 
         $birthdate = new DateTime('2023-01-01');
         $admin->setBirthdate($birthdate);

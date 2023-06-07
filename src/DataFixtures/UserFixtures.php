@@ -28,7 +28,7 @@ class UserFixtures extends Fixture
         $user->setPostalcode(75000);
         $user->setCity('Paris');
         $user->setPhone('0687654321');
-        $user->setParticipant(0);
+        $user->setParticipant(null);
 
         $birthdate = new DateTime('2020-01-01');
         $user->setBirthdate($birthdate);
