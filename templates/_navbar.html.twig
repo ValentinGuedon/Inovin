@@ -1,14 +1,17 @@
+{% block content %}
 <nav>
+    <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;">
     <ul>
-        <li><a href="">Accueil</a></li>
-        <li><a href="">Ateliers</a></li>
-        <li><a href="">Boutique</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Panier</a></li>
+        <li><a href="" class="liennav">ACCUEIL</a></li>
+        <li><a href="" class="liennav">ATELIERS</a></li>
+        <li><a href="" class="liennav">VIN/VIN</a></li>
+        <li><a href="" class="liennav">BOUTIQUE</a></li>
+        <li><a href=""class="liennav">CONTACT</a></li>
+        <li><a href="" class="liennav">PANIER</a></li>
         
         {% if app.user == false %}
         <li>
-            <a href="/connection">Connexion</a>
+            <a href="/connection" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
         <li>
@@ -30,3 +33,4 @@
         </li>
     </ul>
 </nav>
+{% endblock %}
