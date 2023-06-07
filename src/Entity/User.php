@@ -31,9 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $login = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
@@ -41,9 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $street = null;
-
-    #[ORM\Column]
-    private ?int $streetnumber = null;
 
     #[ORM\Column]
     private ?int $postalcode = null;
@@ -72,11 +66,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
 
+
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class)]
     private ?Panier $panier = null;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Atelier $atelier = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $participant = null;
 
     public function __construct()
     {
@@ -157,18 +155,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLogin(): ?string
-    {
-        return $this->login;
-    }
-
-    public function setLogin(string $login): self
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -201,18 +187,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setStreet(string $street): self
     {
         $this->street = $street;
-
-        return $this;
-    }
-
-    public function getStreetnumber(): ?int
-    {
-        return $this->streetnumber;
-    }
-
-    public function setStreetnumber(int $streetnumber): self
-    {
-        $this->streetnumber = $streetnumber;
 
         return $this;
     }
@@ -444,6 +418,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setAtelier(?Atelier $atelier): self
     {
         $this->atelier = $atelier;
+
+        return $this;
+    }
+
+    public function isParticipant(): ?bool
+    {
+        return $this->participant;
+    }
+
+    public function setParticipant(?bool $participant): self
+    {
+        $this->participant = $participant;
 
         return $this;
     }
