@@ -70,7 +70,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Panier $panier = null;
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]
-    private Collection $atelier;
+    private ?Atelier $atelier;
 
     #[ORM\Column(nullable: true)]
     private ?bool $participant = null;
