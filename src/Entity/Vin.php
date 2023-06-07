@@ -40,7 +40,14 @@ class Vin
     private ?float $prix;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image;
+    private ?string $image = null;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
+    #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?Datetime $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?FicheDegustation $ficheDegustation = null;
@@ -82,6 +89,9 @@ class Vin
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Atelier $atelier;
+
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Panier $panier = null;
 
     public function __construct()
     {
@@ -311,7 +321,32 @@ class Vin
 
         return $this;
     }
-    
+
+    public function setPosterFile(File $poster = null): Vin
+    {
+        $this->posterFile = $poster;
+        if ($poster) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        $this->panier = $panier;
+        return $this;
+    }
+
     public function getCouleur(): ?string
     {
         return $this->couleur;
