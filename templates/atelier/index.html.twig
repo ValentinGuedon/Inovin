@@ -12,6 +12,7 @@
                 <th>Place</th>
                 <th>Date</th>
                 <th>Vin</th>
+                <th>Participants</th>
                 <th>Commentaire</th>
             </tr>
         </thead>
@@ -24,6 +25,9 @@
                 <td>{{ atelier.date ? atelier.date|date('Y-m-d') : '' }}</td>
                 {% for eachvin in atelier.vin %}
                 <td>{{eachvin.nom}}</td>
+                {% endfor %}
+                {% for user in atelier.users %}
+                <td>{{ user.name}}</td>
                 {% endfor %}
                 <td>{{ atelier.commentaire }}</td>
                 <td>

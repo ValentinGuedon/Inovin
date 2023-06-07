@@ -18,7 +18,7 @@ class AtelierType extends AbstractType
             ->add('date')
             ->add('commentaire')
             ->add('vin', null, ['choice_label' => 'nom'])
-            ->add('users', null, ['choice_label' => 'nom']);
+            ->add('users', null, ['choice_label' => 'name']);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
