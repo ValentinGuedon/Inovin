@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FicheDegustation index{% endblock %}
+
+{% block body %}
+    <h1>FicheDegustation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Limpidite</th>
+                <th>Couleur</th>
+                <th>Arome</th>
+                <th>Tanins</th>
+                <th>Alcool</th>
+                <th>Equilibre</th>
+                <th>Corps</th>
+                <th>FinDebouche</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche_degustation in fiche_degustations %}
+            <tr>
+                <td>{{ fiche_degustation.id }}</td>
+                <td>{{ fiche_degustation.limpidite }}</td>
+                <td>{{ fiche_degustation.couleur }}</td>
+                <td>{{ fiche_degustation.arome }}</td>
+                <td>{{ fiche_degustation.tanins }}</td>
+                <td>{{ fiche_degustation.alcool }}</td>
+                <td>{{ fiche_degustation.equilibre }}</td>
+                <td>{{ fiche_degustation.corps }}</td>
+                <td>{{ fiche_degustation.finDebouche }}</td>
+                <td>{{ fiche_degustation.note }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_degustation_show', {'id': fiche_degustation.id}) }}">show</a>
+                    <a href="{{ path('app_fiche_degustation_edit', {'id': fiche_degustation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_degustation_new') }}">Create new</a>
+{% endblock %}

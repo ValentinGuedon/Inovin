@@ -87,11 +87,13 @@ class Vin
     #[ORM\Column(length: 255)]
     private ?string $matiere;
 
-    #[ORM\ManyToOne(inversedBy: 'vin')]
-    private ?Atelier $atelier;
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vins')]
+    private Collection $ateliers;
+
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
+
 
     public function __construct()
     {
@@ -99,6 +101,7 @@ class Vin
         $this->recettes = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
+        $this->ateliers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -468,14 +471,26 @@ class Vin
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    public function getAteliers(): Collection
     {
-        return $this->atelier;
+        return $this->ateliers;
     }
 
-    public function setAtelier(?Atelier $atelier): self
+    public function addAtelier(Atelier $atelier): self
     {
-        $this->atelier = $atelier;
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->addVin($this); // Update the inverse side of the relationship
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): self
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            $atelier->removeVin($this); // Update the inverse side of the relationship
+        }
 
         return $this;
     }

@@ -24,6 +24,6 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "gsap": "^3.11.5"
+        "gsap": "^3.12.0"
     }
 }
