@@ -70,7 +70,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Panier $panier = null;
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]
-    private ?Atelier $atelier;
+    private Collection $atelier;
+
 
     #[ORM\Column(nullable: true)]
     private ?bool $participant = null;
@@ -411,12 +412,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAtelier(): ?Atelier
+    public function getAtelier(): Collection
     {
         return $this->atelier;
     }
 
-    public function setAtelier(?Atelier $atelier): self
+    public function setAtelier(Collection $atelier): self
     {
         $this->atelier = $atelier;
 
