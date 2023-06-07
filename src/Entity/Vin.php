@@ -40,7 +40,7 @@ class Vin
     private ?float $prix;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image;
+    private ?string $image = null;
 
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
     #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
@@ -325,10 +325,10 @@ class Vin
         return $this;
     }
 
-    public function setPosterFile(File $image = null): Vin
+    public function setPosterFile(File $poster = null): Vin
     {
-        $this->posterFile = $image;
-        if ($image) {
+        $this->posterFile = $poster;
+        if ($poster) {
             $this->updatedAt = new DateTime('now');
         }
         return $this;
