@@ -79,7 +79,7 @@ class Atelier
     {
         if (!$this->users->contains($user)) {
             $this->users->add($user);
-            $user->setAtelier($this);
+            $user->getAtelier()->add($this); // Add the Atelier to the user's atelier collection
         }
 
         return $this;
@@ -88,8 +88,8 @@ class Atelier
     public function removeUser(User $user): self
     {
         if ($this->users->removeElement($user)) {
-            if ($user->getAtelier() === $this) {
-                $user->setAtelier(null);
+            if ($user->getAtelier()->contains($this)) {
+                $user->getAtelier()->removeElement($this);
             }
         }
 
