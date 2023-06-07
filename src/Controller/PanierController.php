@@ -25,8 +25,8 @@ class PanierController extends AbstractController
                 'quantity' => $quantity
             ];
         }
-        // Calcul somme total du panier
-        $total = 0;
+            // Calcul somme total du panier
+            $total = 0;
         foreach ($panierWithData as $item) {
             $totalItem = $item['product']->getPrix() * $item['quantity'];
             $total += $totalItem;
