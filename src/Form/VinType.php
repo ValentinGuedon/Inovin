@@ -4,10 +4,11 @@ namespace App\Form;
 
 use App\Entity\Vin;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class VinType extends AbstractType
 {
@@ -20,7 +21,11 @@ class VinType extends AbstractType
             ->add('millesime')
             ->add('degreAlcool')
             ->add('prix')
-            ->add('image')
+            ->add('posterFile', VichFileType::class, [
+                'required'      => false,
+                'allow_delete'  => true, // not mandatory, default is true
+                'download_uri' => true, // not mandatory, default is true
+            ])
             ->add('couleur', ChoiceType::class, [
                 'choices' => [
                     'rouge' => 'rouge',
@@ -117,5 +122,12 @@ class VinType extends AbstractType
                 ], 'placeholder' => 'Choisissez un arôme',
                 'required' => true,
             ]);
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Vin::class,
+        ]);
     }
 }

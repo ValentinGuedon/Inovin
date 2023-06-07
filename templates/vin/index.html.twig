@@ -40,7 +40,7 @@
                 <td>{{ vin.millesime }}</td>
                 <td>{{ vin.degreAlcool }}</td>
                 <td>{{ vin.prix }}</td>
-                <td>{{ vin.image }}</td>
+                <td><img src="{{ vich_uploader_asset(vin) }}" alt="{{ vin.nom }}"></td>
                 <td>{{ vin.couleur }}</td>
                 <td>{{ vin.limpidite }}</td>
                 <td>{{ vin.fluidite }}</td>
