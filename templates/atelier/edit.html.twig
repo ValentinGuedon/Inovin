@@ -5,7 +5,38 @@
 {% block body %}
     <h1>Edit Atelier</h1>
 
-    {{ include('atelier/_form.html.twig', {'button_label': 'Update'}) }}
+    {# {{ include('atelier/_form.html.twig', {'button_label': 'Update'}) }} #}
+
+    {# atelier/form.html.twig #}
+
+{{ form_start(form) }}
+
+<div class="form-group">
+    {{ form_label(form.place) }}
+    {{ form_widget(form.place, { 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.date) }}
+    {{ form_widget(form.date, { 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.commentaire) }}
+    {{ form_widget(form.commentaire, { 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.vin) }}
+    {{ form_widget(form.vin, { 'attr': {'class': 'form-control'} }) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.users) }}
+    {{ form_widget(form.users, { 'attr': {'class': 'form-control', 'multiple': 'multiple'} }) }}
+</div>
+
+{{ form_end(form) }}
 
     <a href="{{ path('app_atelier_index') }}">back to list</a>
 
