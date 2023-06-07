@@ -311,7 +311,7 @@ class Vin
 
         return $this;
     }
-  
+    
     public function getCouleur(): ?string
     {
         return $this->couleur;
