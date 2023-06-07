@@ -94,6 +94,7 @@ class Vin
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
 
+
     public function __construct()
     {
         $this->favoris = new ArrayCollection();

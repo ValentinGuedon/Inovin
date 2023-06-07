@@ -31,9 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $password = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $login = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
@@ -41,9 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $street = null;
-
-    #[ORM\Column]
-    private ?int $streetnumber = null;
 
     #[ORM\Column]
     private ?int $postalcode = null;
@@ -77,6 +71,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]
     private Collection $atelier;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $participant = null;
 
     public function __construct()
     {
@@ -159,18 +156,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getLogin(): ?string
-    {
-        return $this->login;
-    }
-
-    public function setLogin(string $login): self
-    {
-        $this->login = $login;
-
-        return $this;
-    }
-
     public function getName(): ?string
     {
         return $this->name;
@@ -203,18 +188,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setStreet(string $street): self
     {
         $this->street = $street;
-
-        return $this;
-    }
-
-    public function getStreetnumber(): ?int
-    {
-        return $this->streetnumber;
-    }
-
-    public function setStreetnumber(int $streetnumber): self
-    {
-        $this->streetnumber = $streetnumber;
 
         return $this;
     }
@@ -417,7 +390,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getAtelier(): Collection
+    public function getPanier(): ?Panier
+    {
+        return $this->panier;
+    }
+
+    public function setPanier(?Panier $panier): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($panier === null && $this->panier !== null) {
+            $this->panier->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($panier !== null && $panier->getUser() !== $this) {
+            $panier->setUser($this);
+        }
+
+        $this->panier = $panier;
+        return $this;
+    }
+
+    public function getAtelier(): ?Atelier
     {
         return $this->atelier;
     }
@@ -429,8 +423,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPanier(): ?Panier
+    public function isParticipant(): ?bool
     {
-        return $this->panier;
+        return $this->participant;
+    }
+
+    public function setParticipant(?bool $participant): self
+    {
+        $this->participant = $participant;
+
+        return $this;
     }
 }

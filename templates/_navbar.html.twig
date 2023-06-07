@@ -20,21 +20,19 @@
         </ul>
         </li>
         <li><a href="" class="liennav">PANIER</a></li>
-        
+
         {% if app.user == false %}
         <li>
             <a href="/connection" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
         <li>
-            <div class="dropdown">
-                {% if app.user == true %} 
-                    <button class="dropbtn">
-                        <div class="user-info">
-                        <img class="user-icon" src="{{ asset('build/images/user.png') }}" style="width: 60%;"> 
-                        <span class="user-login">{{ app.user.login }}</span>
-                        </div>
-                    </button>
+            <div class="navbar">
+                <div class="dropdown">
+                    {% if app.user == true %}
+                        <button class="dropbtn">
+                            {{ app.user.login }}
+                        </button>
                     <div class="dropdown-content">
                         <a href="#">Profil</a>
                         <a href="/logout">Déconnexion</a>
