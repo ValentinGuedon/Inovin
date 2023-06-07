@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
-  
+    
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Atelier $atelier = null;
 
