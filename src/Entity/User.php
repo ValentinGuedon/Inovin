@@ -66,7 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
 
-    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class)]
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class, cascade: ['persist'])]
     private ?Panier $panier = null;
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, inversedBy: 'users')]

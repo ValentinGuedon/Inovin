@@ -1,0 +1,43 @@
+:root {
+    --couleur-fonce: #22323f;
+    --couleur-claire: #e2dad4;
+    --couleur-tierce: #9b2449;
+    --font: 'Montserrat', sans-serif;
+}
+
+.carre {
+    background-color: var(--couleur-tierce);
+    padding: 5%;
+    max-width: 20%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+.type {
+    border-radius: 40px;
+    border: none;
+    padding: 4% 30%;
+    margin-bottom: 8%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--couleur-claire);
+}
+
+.connexion {
+    margin-bottom: 5%;
+    color: var(--couleur-claire);
+    font-size: medium;
+}
+
+.bouton {
+    margin-bottom: 8%;
+    border: none;
+    border-radius: 40px;
+    padding: 3% 10%;
+    color: var(--couleur-fonce);
+    background-color: var(--couleur-claire);
+}
+
+.inscription {
+    color: var(--couleur-claire);
+    font-size: small;
+}
