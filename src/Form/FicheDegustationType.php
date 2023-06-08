@@ -33,6 +33,9 @@ class FicheDegustationType extends AbstractType
                 },
                 'multiple' => true,
                 'autocomplete' => true,
+                'attr' => [
+                    'class' => 'autocomplete-select'
+                ],
             ])
             ->add('user', EntityType::class, [
                 'class' => 'App\Entity\User',

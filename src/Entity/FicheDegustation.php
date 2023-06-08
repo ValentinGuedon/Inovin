@@ -162,9 +162,7 @@ class FicheDegustation
         return $this;
     }
 
-    /**
-     * @return Collection<int, Vin>
-     */
+
     public function getVin(): ?Vin
     {
         return $this->vin;

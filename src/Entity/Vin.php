@@ -505,7 +505,7 @@ class Vin
         return $this;
     }
 
-    public function getEmoji()
+    public function getEmoji(): string
     {
         if ($this->couleur === 'rouge') {
             return '🍷';
