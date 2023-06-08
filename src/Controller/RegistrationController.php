@@ -12,6 +12,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use App\Security\LoginFormAuthenticator;
 
 class RegistrationController extends AbstractController
 {
@@ -20,6 +21,7 @@ class RegistrationController extends AbstractController
         Request $request,
         UserPasswordHasherInterface $userPasswordHasher,
         UserAuthenticatorInterface $userAuthenticator,
+        LoginFormAuthenticator $authenticator,
         EntityManagerInterface $entityManager
     ): Response {
         $user = new User();
@@ -37,6 +39,12 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            return $userAuthenticator->authenticateUser(
+                $user,
+                $authenticator,
+                $request
+            );
+//ici pour renvoyer direct vers les fiches de dégustation
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
 
