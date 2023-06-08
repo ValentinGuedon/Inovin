@@ -1,0 +1,68 @@
+.cardcontainer {
+    display: flex;
+    width: 100vw;
+    justify-content  : center;
+}
+
+.card {
+    margin-top: 20px;
+    display: grid;
+    background-color:var(--couleur-claire);
+    padding: 40px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    max-width:60vw;
+    box-shadow: 0 1rem 1rem -0.75rem;
+}
+
+
+label {
+   display: inline-block;
+   margin-bottom: 10px;
+    padding: 15px;
+   background-color: var(--couleur-fonce);
+   border-radius: 5px;
+   color: var(--couleur-claire);
+}
+
+input, select {
+    border-radius: 5px;
+    margin : 5px 0px 20px 0px;
+    box-shadow: 2px 2px 4px #000000;
+}
+
+
+.form-row {
+    margin: 15px 15px ;
+    width: 12vw;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.form-group {
+    margin-top: 20px;
+}
+
+.form-submit {
+    display: flex;
+    justify-content: flex-end;
+}
+.form-submit button {
+    padding: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    font-family: var(--font);
+    border: none;
+    box-shadow: 2px 2px 4px #000000;
+    transition: background-color 0.2s ease;
+}
+
+button:hover
+ {
+    background-color: rgb(204, 28, 69);
+ }

@@ -42,16 +42,12 @@ class FicheDegustation
     #[ORM\Column]
     private ?int $note = null;
 
-    #[ORM\OneToMany(mappedBy: 'ficheDegustation', targetEntity: Vin::class)]
-    private Collection $vin;
+    #[ORM\ManyToOne(targetEntity: Vin::class, inversedBy: 'ficheDegustations')]
+    private ?Vin $vin = null;
 
     #[ORM\ManyToOne(inversedBy: 'ficheDegustations')]
     private ?User $user = null;
 
-    public function __construct()
-    {
-        $this->vin = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -169,29 +165,14 @@ class FicheDegustation
     /**
      * @return Collection<int, Vin>
      */
-    public function getVin(): Collection
+    public function getVin(): ?Vin
     {
         return $this->vin;
     }
 
-    public function addVin(Vin $vin): self
+    public function setVin(?Vin $vin): self
     {
-        if (!$this->vin->contains($vin)) {
-            $this->vin->add($vin);
-            $vin->setFicheDegustation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeVin(Vin $vin): self
-    {
-        if ($this->vin->removeElement($vin)) {
-            // set the owning side to null (unless already changed)
-            if ($vin->getFicheDegustation() === $this) {
-                $vin->setFicheDegustation(null);
-            }
-        }
+        $this->vin = $vin;
 
         return $this;
     }
