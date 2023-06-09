@@ -49,8 +49,8 @@ class Vin
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?Datetime $updatedAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'vin')]
-    private ?FicheDegustation $ficheDegustation = null;
+    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: FicheDegustation::class)]
+    private Collection $ficheDegustations;
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Favoris::class)]
     private Collection $favoris;
@@ -193,14 +193,24 @@ class Vin
         return $this;
     }
 
-    public function getFicheDegustation(): ?FicheDegustation
+    public function addFicheDegustation(FicheDegustation $ficheDegustation): self
     {
-        return $this->ficheDegustation;
+        if (!$this->ficheDegustations->contains($ficheDegustation)) {
+            $this->ficheDegustations->add($ficheDegustation);
+            $ficheDegustation->setVin($this);
+        }
+
+        return $this;
     }
 
-    public function setFicheDegustation(?FicheDegustation $ficheDegustation): self
+    public function removeFicheDegustation(FicheDegustation $ficheDegustation): self
     {
-        $this->ficheDegustation = $ficheDegustation;
+        if ($this->ficheDegustations->removeElement($ficheDegustation)) {
+            // set the owning side to null (unless already changed)
+            if ($ficheDegustation->getVin() === $this) {
+                $ficheDegustation->setVin(null);
+            }
+        }
 
         return $this;
     }
@@ -493,5 +503,14 @@ class Vin
         }
 
         return $this;
+    }
+
+    public function getEmoji(): string
+    {
+        if ($this->couleur === 'rouge') {
+            return '🍷';
+        } else {
+            return '🥂';
+        }
     }
 }
