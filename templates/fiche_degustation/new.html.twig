@@ -2,10 +2,80 @@
 
 {% block title %}New FicheDegustation{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
 {% block body %}
     <h1>Create new FicheDegustation</h1>
+    <div class="cardcontainer">
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="form-grid">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.limpidite) }}</p>
+                            {{ form_widget(form.limpidite) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.couleur) }}</p>
+                            {{ form_widget(form.couleur) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.arome) }}</p>
+                            {{ form_widget(form.arome) }}
+                        </div>
+                    </div>
 
-    {{ include('fiche_degustation/_form.html.twig') }}
+                    <div class="form-row">
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.tanins) }}</p>
+                            {{ form_widget(form.tanins) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.alcool)}}</p>
+                            {{ form_widget(form.alcool) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.equilibre) }}</p>
+                            {{ form_widget(form.equilibre) }}
+                        </div>
+                    </div>
 
+                    <div class="form-row">
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.corps) }}</p>
+                            {{ form_widget(form.corps) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.finDebouche)}}</p>
+                            {{ form_widget(form.finDebouche) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.note) }}</p>
+                            {{ form_widget(form.note) }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.vin) }}</p>
+                            {{ form_widget(form.vin) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.user) }}</p>
+                            {{ form_widget(form.user) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-submit">
+                    {{ form_widget(form) }}
+                    <button type="submit" class="submit">Ajouter</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
     <a href="{{ path('app_fiche_degustation_index') }}">back to list</a>
 {% endblock %}
