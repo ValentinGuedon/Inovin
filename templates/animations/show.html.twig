@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Atelier{% endblock %}
+
+{% block body %}
+<h2 class="nomanimation">{{ animation.name }}</h2>
+<div class="showatelier">
+    <div class="phototxtcta">
+      <div class="image-container">
+        <img src="{{ asset(animation.image) }}" class="img">
+      </div>
+      <div class="description-container">
+        <p class="desc">{{ animation.description }}</p>
+        <p class="prix">Prix : {{ animation.price }} €</p>
+
+        <div class="showcta">
+        <form action="/panier" method="get">
+            <label for="date">Date atelier : </label>
+                <select id="date" name="date" required>
+                    <option disabled selected value="">Sélectionner</option>
+                    <option value="1">12/06/2023</option>
+                    <option value="2">15/07/2023</option>
+                    <option value="3">10/08/2023</option>
+                    <option value="4">25/09/2023</option>
+                </select><br>
+                <label for="adults">Nombres de personnes</label>
+                <div class="showcta">
+                    <select id="nbPersonnes" name="nbPersonnes" required>
+                        <option disabled selected value="">--</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <button class="showcta" type="submit">Ajouter au panier</button>
+            </div>
+    </div>
+    </div>
+  </div> 
+{% endblock %}
