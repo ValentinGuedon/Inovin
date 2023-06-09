@@ -1,24 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Animation index{% endblock %}
+{% block title %} {{ parent() }} - Ateliers {% endblock %}
 
 {% block body %}
     <h1 class="titre">Les ateliers</h1>
-    <div class="atelier-container">
+    <div class="grid-container">
         {% for animation in animations %}
-        <div class="atelier">
-            <div class="card">
-                <div class="contenu">
+            <div class="grid-item1">
+                <div class="atelier">
                     <h2 class="soustitre">{{ animation.name }}</h2>
                     <img src="{{ asset(animation.image) }}" class="img">
                     <p class="resume">{{ animation.resume }}</p>
-                    <form action="/animation" method="get">
+                    <form action="{{ path('app_animation_show', {'id': animation.id}) }}" method="get">
                         <input type="hidden" name="id" value="{{ animation.id }}">
                         <button class="cta" type="submit">Découvrir</button>
                     </form>
                 </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 {% endblock %}

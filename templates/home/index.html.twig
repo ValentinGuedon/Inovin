@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} {{ parent() }} - Home !{% endblock title %}
+{% block title %} {{ parent() }} - Home {% endblock title %}
 
 {% block body %}
 <div class="image">
@@ -9,8 +9,33 @@
       <p class="txt-accueil">L’atelier Inovin est une expérience unique vous permettant de créer votre propre vin au travers d'une dégustation de cépages jusqu'à votre assemblage !</p>
       <a href="{{ path('app_animations_index') }}" class="cta-accueil">DÉCOUVRIR NOS ATELIERS</a>
     </div>
-    <img class="img-wine" src="{{ asset('build/images/wine.png') }}" style="width: 40%;">
+    <img class="img-wine" src="{{ asset('build/images/wine.png') }}" style="width:40%;">
   </div>
+
+  <section class="presentation">
+    <div class="background">
+        <h2 class="quisommesnous">Qui sommes-nous ?</h2>
+        <p class="textedepresentation"> Imaginez : une terre  où la culture du vin est presque inconnue,  où la nature environnante est riche de terroir.<br>
+
+          C'est dans ce décor que j'ai décidé de créer INOVIN.<br>
+          
+          Au départ, l'idée semble folle ! J'ai développé une véritable passion pour le vin et j'ai décidé de la partager à travers des ateliers.<br>
+          
+          C'est une première en Lozère, dont les valeurs communes sont: partage, convivialité, passion, transmission.
+          
+          INOVIN vise à etre la référence en matière d'atelier. L'objectif : rendre fiers nos clients de produire le vin qui reflète leur personnalité.
+          
+          Enthousiaste et motivé, Inovin décide de s'associer avec des partenaires locaux et régionaux pour promouvoir le terroir Lozérien, mettant en avant ses richesses naturelles et en faisant valoir les avantages de nos ateliers personnalisé dans une région inattendue.
+          
+          Avec INOVIN en Lozère, les participants découvrent une approche de la vinification et de la création du vin différente de celles traditionnellement associées aux grandes régions viticoles de France.<br class="spacer">
+          
+          INOVIN tente a prouver que la création d'un bon vin ne nécessite pas forcément de surface cultivée et l'utilisation de techniques sophistiquées. 
+          
+          Voilà l'histoire d' INOVIN en Lozère - une entreprise audacieuse, passionnée et innovante, qui s'impose dans un environnement atypique, en proposant une expérience inoubliable</p>
+    </div>
+    </div>
+    <img class="photocedric" src="{{ asset('build/images/cedric.jpg') }}" alt="illustration maison" width="40%">
+</section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 {% endblock %}
