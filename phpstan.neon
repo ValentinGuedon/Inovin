@@ -7,7 +7,7 @@ parameters:
     - src/Security
     ignoreErrors:
         -
-          message: '#Property [a-zA-Z0-9\\_]+::\$id is never written, only read.#'
+          message: '#Property [a-zA-Z0-9\\_]+::\$ficheDegustations is never written, only read.#'
           path: src/Entity/*
         - "#^Parameter.*(User).*(UserInterface).*#"
         - "#^Call to an undefined .*(UserInterface).*#"
