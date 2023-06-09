@@ -9,7 +9,6 @@ parameters:
         -
           message: '#Property [a-zA-Z0-9\\_]+::\$id is never written, only read.#'
           path: src/Entity/*
-    ignoreErrors:
         - "#^Parameter.*(User).*(UserInterface).*#"
         - "#^Call to an undefined .*(UserInterface).*#"
     reportUnmatchedIgnoredErrors: false
