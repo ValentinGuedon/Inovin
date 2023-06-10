@@ -15,9 +15,3 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
-
-services:
-    -
-        class: App\PHPStan\MyExtension
-        tags:
-            - phpstan.properties.readWriteExtension
