@@ -210,3 +210,34 @@ a{
 .user-login {
     margin-left: 5px;
 }
+
+.quisommesnous{
+    color: var(--couleur-fonce);
+}
+.presentation
+{
+display: flex;
+flex-direction: row-reverse;
+align-items: center;
+justify-content: center;
+padding: 5%;
+color: var(--couleur-fonce);
+}
+
+.background
+{
+background-color: var(--couleur-claire);
+padding: 3% 6%;
+}
+
+.textedepresentation
+{
+margin-top: 10%;
+margin-bottom: 10%;
+}
+
+.photocedric
+{
+margin-right: -5%;
+
+}

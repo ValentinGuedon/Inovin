@@ -12,14 +12,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class VinFixtures extends Fixture
 {
-    private $slugger;
+    private SluggerInterface $slugger;
 
     public function __construct(SluggerInterface $slugger)
     {
         $this->slugger = $slugger;
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $faker = Factory::create();
         $arome = ['fruité','animal','épicé','floral','végétal','marin'];

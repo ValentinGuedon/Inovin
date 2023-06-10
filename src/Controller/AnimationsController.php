@@ -17,4 +17,18 @@ class AnimationsController extends AbstractController
             'animations' => $animationRepository->findAll(),
         ]);
     }
+
+    #[Route('/animation/{id}', name: 'app_animation_show', methods: ['GET'])]
+    public function show(int $id, AnimationsRepository $animationRepository): Response
+    {
+        $animation = $animationRepository->find($id);
+
+        if (!$animation) {
+            throw $this->createNotFoundException('Atelier non trouvé');
+        }
+
+        return $this->render('animations/show.html.twig', [
+        'animation' => $animation,
+        ]);
+    }
 }
