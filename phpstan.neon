@@ -8,14 +8,13 @@ parameters:
         - src/Security
 
     ignoreErrors:
-        messages:
-            -
-                message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
-                paths: [src/Entity/*, src/DataFixtures/*]
-            -
-                message: "#^Parameter.*(User).*(UserInterface).*#"
-            -
-                message: "#^Call to an undefined .*(UserInterface).*#"
+        -
+            message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
+            paths: [src/Entity/*, src/DataFixtures/*]
+        -
+            message: "#^Parameter.*(User).*(UserInterface).*#"
+        -
+            message: "#^Call to an undefined .*(UserInterface).*#"
 
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
