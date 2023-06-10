@@ -8,7 +8,7 @@ parameters:
     ignoreErrors:
         -
           message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
-          path: src/Entity/*
+          path: [src/Entity/*, src/DataFixtures/*]
         - "#^Parameter.*(User).*(UserInterface).*#"
         - "#^Call to an undefined .*(UserInterface).*#"
     reportUnmatchedIgnoredErrors: false
