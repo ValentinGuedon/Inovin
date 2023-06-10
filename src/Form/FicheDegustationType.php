@@ -26,23 +26,23 @@ class FicheDegustationType extends AbstractType
             ->add('corps')
             ->add('finDebouche')
             ->add('note')
-            ->add('vin', EntityType::class, [
-                'class' => 'App\Entity\Vin',
-                'choice_label' => function (Vin $vin) {
-                    return $vin->getNom() . ' ' . $vin->getEmoji();
-                },
-                'multiple' => true,
-                'autocomplete' => true,
-                'attr' => [
-                    'class' => 'autocomplete-select'
-                ],
-            ])
-            ->add('user', EntityType::class, [
-                'class' => 'App\Entity\User',
-                'choice_label' => 'name',
-                'multiple' => true,
-                'autocomplete' => true,
-            ])
+            // ->add('vin', EntityType::class, [
+            //     'class' => 'App\Entity\Vin',
+            //     'choice_label' => function (Vin $vin) {
+            //         return $vin->getNom() . ' ' . $vin->getEmoji();
+            //     },
+            //     'multiple' => true,
+            //     'autocomplete' => true,
+            //     'attr' => [
+            //         'class' => 'autocomplete-select'
+            //     ],
+            // ])
+            // ->add('user', EntityType::class, [
+            //     'class' => 'App\Entity\User',
+            //     'choice_label' => 'name',
+            //     'multiple' => true,
+            //     'autocomplete' => true,
+            // ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver): void

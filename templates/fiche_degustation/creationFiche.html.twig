@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New FicheDegustation{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+{% block body %}
+    <div class="cardcontainer">
+        <h1 class="h1 crud">Remplissez votre fiche de dégustation</h1>
+        <div class="card">
+            <div class="card-body">
+                {{ form_start(form) }}
+                <div class="form-grid">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.vin) }}</p>
+                            {{ form_widget(form.vin) }}
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">{{ form_label(form.user) }}</p>
+                            {{ form_widget(form.user) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-submit">
+                    {{ form_widget(form) }}
+                    <button type="submit" class="submit">Ajouter</button>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

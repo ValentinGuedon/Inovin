@@ -16,13 +16,13 @@
         <li><a href="" class="liennav">CONTACT</a>
             <ul class="listederoulante">
             <li><a href="#" class="liennav">Notre histoire</a></li>
-            <li><a href="#" class="liennav">FAQ</a></li>
+            <li><a href="{{ path ('app_faq_visiteur')}}" class="liennav">FAQ</a></li>
         </ul>
         </li>
         <li><a href="{{ path ('panier_index')}}" class="liennav">PANIER</a></li>
         {% if app.user == false %}
         <li>
-            <a href="/connection" class="liennav">CONNEXION</a>
+            <a href="/login" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
         <li>
@@ -30,10 +30,10 @@
                 <div class="dropdown">
                     {% if app.user == true %}
                         <button class="dropbtn">
-                            {{ app.user.login }}
+                            {{ app.user.firstname }}
                         </button>
                     <div class="dropdown-content">
-                        <a href="#">Profil</a>
+                        <a href="/user/profil">Profil</a>
                         <a href="/logout">Déconnexion</a>
                     </div>
                 {% endif %}
