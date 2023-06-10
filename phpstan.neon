@@ -2,20 +2,27 @@ includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/phpstan/phpstan-doctrine/rules.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
+
 parameters:
     excludePaths:
-    - src/Security
+        - src/Security
+
     ignoreErrors:
-        -
-          message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
-          path: [src/Entity/*, src/DataFixtures/*]
-        - "#^Parameter.*(User).*(UserInterface).*#"
-        - "#^Call to an undefined .*(UserInterface).*#"
+        messages:
+            -
+                message: '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
+                paths: [src/Entity/*, src/DataFixtures/*]
+            -
+                message: "#^Parameter.*(User).*(UserInterface).*#"
+            -
+                message: "#^Call to an undefined .*(UserInterface).*#"
+
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
+
 services:
-	-
-		class: App\PHPStan\MyExtension
-		tags:
-			- phpstan.properties.readWriteExtension
+    -
+        class: App\PHPStan\MyExtension
+        tags:
+            - phpstan.properties.readWriteExtension
