@@ -1,0 +1,43 @@
+// body div p,
+// h1 {
+//     color: white;
+// }
+
+h1 {
+    margin-bottom: 2vh;
+}
+
+.divQuestionReponse {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.divtext {
+    width: 80%;
+}
+
+.bottomAnswer {
+    margin-bottom: 2.5%;
+    color: var(--couleur-claire);
+}
+
+.topQuestion {
+    margin-bottom: 0.5%;
+    color: var(--couleur-tierce);
+}
+
+.h1questions {
+    color: var(--couleur-tierce);
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+// .btnclick:active {
+//     background-color: green;
+// }
+
+// .dropdown-menu-content {
+//     display: none;
+// }

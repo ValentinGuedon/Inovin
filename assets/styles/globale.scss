@@ -45,7 +45,7 @@ ul{
 .listederoulante {
     display: none;
   }
-  
+
   nav ul li:hover .listederoulante {
     display: block;
   }
@@ -54,7 +54,7 @@ a{
     color:var(--couleur-claire);
     text-decoration: none;
   }
-  
+
   .listederoulante {
     position: absolute;
     background-color: var(--couleur-claire);
@@ -68,28 +68,28 @@ a{
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.15em;
-    
+
     display: inline-block;
     padding: 5px 10px;
     position: relative;
 }
 
-.liennav:after{    
+.liennav:after{
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
     display: block;
     height: 2px;
-    
+
     position: absolute;
     background: #e0115f;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
 
-.liennav:hover:after{ 
-    width: 100%; 
-    left: 0; 
+.liennav:hover:after{
+    width: 100%;
+    left: 0;
 }
 
 .liennav:hover{
@@ -179,7 +179,7 @@ a{
     text-decoration: none;
     margin-bottom: 5%;
 }
-    
+
 .cta-accueil:hover{
     background:#e0115f;
     text-decoration: none;
@@ -189,7 +189,7 @@ a{
     display: flex;
     align-items: center;
 }
-  
+
 .img-wine {
   position: absolute;
   bottom: 0;
@@ -209,4 +209,35 @@ a{
 
 .user-login {
     margin-left: 5px;
+}
+
+.quisommesnous{
+    color: var(--couleur-fonce);
+}
+.presentation
+{
+display: flex;
+flex-direction: row-reverse;
+align-items: center;
+justify-content: center;
+padding: 5%;
+color: var(--couleur-fonce);
+}
+
+.background
+{
+background-color: var(--couleur-claire);
+padding: 3% 6%;
+}
+
+.textedepresentation
+{
+margin-top: 10%;
+margin-bottom: 10%;
+}
+
+.photocedric
+{
+margin-right: -5%;
+
 }
