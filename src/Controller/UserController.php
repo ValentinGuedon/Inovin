@@ -3,12 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Atelier;
 use App\Form\UserType;
+use App\Repository\AtelierRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -18,6 +21,25 @@ class UserController extends AbstractController
     {
         return $this->render('user/index.html.twig', [
             'users' => $userRepository->findAll(),
+        ]);
+    }
+
+    /** @SuppressWarnings("PHPMD")
+*/
+    #[Route('/profil', name: 'app_user_index', methods: ['GET'])]
+    public function showProfil(
+        Security $security,
+        AtelierRepository $atelierRepository
+    ): Response {
+        $user = $security->getUser();
+        $currentDate = new \DateTime();
+        $atelier = $atelierRepository->findOneByDate($currentDate);
+        $vin = $atelier->getvin()->first();
+
+        return $this->render('profil/profil.html.twig', [
+            'user' => $user,
+            'atelier' => $atelier,
+            'vin' => $vin
         ]);
     }
 

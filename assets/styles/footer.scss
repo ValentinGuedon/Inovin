@@ -9,11 +9,12 @@ footer{
 font-family: var(--font);
 background-color: var(--couleur-claire);
 margin-top: 5%;
-padding: 3%;
+padding: 2% 3%;
 }
 
 h5{
 color:var(--couleur-fonce);
+margin-bottom: 2%;
 }
 
 .container{
@@ -25,23 +26,18 @@ display: flex;
 flex-wrap: wrap;
 }
 
-h4{
-margin-top: 0;
-margin-bottom: 10%;
-}
-
-.copy {
+.copy{
 text-align: center;
 color: var(--couleur-fonce);
+font-size: small;
+
 }
 
 .rows{
-margin: 20px 0;
 justify-content: space-around;
 color: var(--couleur-fonce);
-    
 list-style: none;
-padding-left: 5%;
+margin-left: 20%;
 height: 20px;
 } 
 
@@ -50,12 +46,17 @@ text-decoration: none;
 color: var(--couleur-fonce);
 }
 
-.legalnotice{
-    margin-top: 5%;
-    margin-left: 5%;
-}
-
 .colornotice{
     color: var(--couleur-fonce);
 }
-  
+
+.contact{
+    margin-bottom:5%;
+}
+
+.abus{
+    margin-top: 15%;
+    color: var(--couleur-fonce);
+    font-size: small;
+    text-align: center;
+}

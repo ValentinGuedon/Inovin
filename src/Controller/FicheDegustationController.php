@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\FicheDegustation;
+use App\Entity\User;
 use App\Form\FicheDegustationType;
 use App\Repository\FicheDegustationRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,7 +54,8 @@ class FicheDegustationController extends AbstractController
     public function edit(
         Request $request,
         FicheDegustation $ficheDegustation,
-        FicheDegustationRepository $ficheDegustationRepository
+        FicheDegustationRepository $ficheDegustationRepository,
+        UserRepository $user
     ): Response {
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
@@ -81,4 +84,12 @@ class FicheDegustationController extends AbstractController
 
         return $this->redirectToRoute('app_fiche_degustation_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    // #[Route('/{user}/{vin}', name: 'app_atelier', methods: ['POST'])]
+    // public function atelier(
+    //     Request $request,
+    //     FicheDegustation $ficheDegustation,
+    //     User $user,Vin $vin,
+    //     FicheDegustationRepository $ficheDegustationRepository
+    // );
 }
