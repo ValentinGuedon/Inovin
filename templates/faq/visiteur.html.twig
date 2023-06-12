@@ -21,15 +21,15 @@ dropdownBtn.addEventListener("click", function () {
     <div class="divQuestionReponse">
         {% for faq in faqs %}
 
-        
+
                 <div class="divtext">
                         <b><p class="topQuestion ptext">{{ faq.question }}</p></b>
                 </div>
                 <div class="divtext" >
                         <p class="bottomAnswer ptext">{{ faq.answer }}</p>
                 </div>
-        
-        
+
+
 
         {% else %}
                 <p>no records found</p>
@@ -37,7 +37,7 @@ dropdownBtn.addEventListener("click", function () {
 
         {# <p class="dropdown-menu-content">test</p>
         <button class="btnclick dropdown-btn">bonjour</button> #}
-        
+
 
 
         </div>

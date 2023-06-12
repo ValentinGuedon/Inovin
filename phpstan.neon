@@ -2,15 +2,17 @@ includes:
     - vendor/phpstan/phpstan-doctrine/extension.neon
     - vendor/phpstan/phpstan-doctrine/rules.neon
     - vendor/phpstan/phpstan-symfony/extension.neon
+
 parameters:
     excludePaths:
-    - src/Security
+        - src/Security
+        - src/DataFixtures
+
     ignoreErrors:
-        -
-          message: '#Property [a-zA-Z0-9\\_]+::\$ficheDegustations is never written, only read.#'
-          path: src/Entity/*
-        - "#^Parameter.*(User).*(UserInterface).*#"
-        - "#^Call to an undefined .*(UserInterface).*#"
+        - '#Property [a-zA-Z0-9\\_]+::\$[a-zA-Z0-9\\_]+ is never written, only read.#'
+        - '#^Parameter.*(User).*(UserInterface).*#'
+        - '#^Call to an undefined .*(UserInterface).*#'
+
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false

@@ -46,7 +46,7 @@ class VinType extends AbstractType
             ])
             ->add('fluidite', ChoiceType::class, [
                 'choices' => [
-                    'visqueuse' => 'limpide',
+                    'visqueuse' => 'visqueuse',
                     'grasse' => 'grasse',
                     'épaisse' => 'epaisse',
                     'coulante' => 'coulante',

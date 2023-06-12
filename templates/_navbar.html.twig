@@ -27,10 +27,10 @@
                 <div class="dropdown">
                     {% if app.user == true %}
                         <button class="dropbtn">
-                            {{ app.user.login }}
+                            {{ app.user.firstname }}
                         </button>
                     <div class="dropdown-content">
-                        <a href="#">Profil</a>
+                        <a href="/user/profil">Profil</a>
                         <a href="/logout">Déconnexion</a>
                     </div>
                 {% endif %}
