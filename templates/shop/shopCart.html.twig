@@ -6,7 +6,7 @@
 {% block body %}
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" >
-
+<link rel="stylesheet" href="/build/app.css">
 
 {% if items is empty %}
   <div class="card container-sm">
@@ -17,10 +17,10 @@
     </div>
   </div>
 {% else %}
-  <table class="table container-sm">
+  <table class=" container-sm sk-table">
     <thead>
       <tr>
-        <th class="text-uppercase">Produit</th>
+        <th colspan="2" class="text-uppercase sk-cell">Produit</th>
         <th class="text-uppercase">Prix</th>
         <th class="text-uppercase">Quantité</th>
         <th class="text-uppercase">Total</th>
@@ -30,11 +30,12 @@
     <tbody>
     {% for item in items %}
       <tr>
-        <td>{{ item.product.nom }}<img src="{{ vich_uploader_asset(item.product) }}" alt="{{ item.product.nom }}"></td>
+        <td class="sk-cell">{{ item.product.nom }}</td>
+        <td><img src="{{ vich_uploader_asset(item.product) }}" alt="{{ item.product.nom }}"></td>
         <td>{{ item.product.prix }}</td>
         <td>{{ item.quantity}}</td>
         <td>{{ item.product.prix * item.quantity}} €</td>
-        <td><a href="{{ path('panier_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></a></td>
+        <td><a href="{{ path('panier_remove', {'id': item.product.id}) }}" class="btn sk-button-card" title="Supprimer"><i class="bi bi-trash"></i></a></td>
       </tr>
     {% endfor %}
     </tbody>
@@ -48,5 +49,5 @@
   </table> 
 {% endif %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 {% endblock %}

@@ -1,21 +1,105 @@
-.title{
-    color: white;
-    margin-left: 10%;
-    margin-bottom: 5%;
-}
-
-.section{
-    display: flex;
+// Global
+.sk-container{
     width: 80%;
+    margin-top:2%;
+    margin-left: auto;
+    margin-right: auto;
+    
 }
 
-.card{
+// Caroussel
+.sk-carousel{
     background-color: var(--couleur-claire);
-    border-radius: 10%;
-    width:80%;
-    height: 50vh;
+    border-radius:10px;
+}
+.sk-detail{
+    color: var(--couleur-claire);
 }
 
-.picture{
-    width:500%;
+.sk-button-caroussel{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    width: 300px;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button-caroussel:hover{
+    background: #e0115f;
+    text-decoration: none;
+}
+
+.sk-quantite-caroussel{
+    color: var(--couleur-claire);
+    width: 50%;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button-slide:hover{
+    background-color: initial;
+    color: var(--couleur-tierce);
+}
+
+// divider
+.sk-divider {
+    width: 80%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 6px;
+    background-color: var(--couleur-tierce);
+}
+
+//Card
+.sk-card{
+    height: 60vh;
+    transition: transform 0.5s ease;
+}
+
+.sk-card:hover{
+    transform: scale(1.1); 
+}
+
+.sk-card-title{
+    width: 150%;
+   
+}
+
+.sk-picture{
+    transition: transform 0.5s ease;
+    text-align: center;
+}
+
+.sk-picture:hover{
+    transform: scale(1.2);
+}
+
+.sk-form{
+    margin-top: 50px;
+    width: 110%;
+}
+
+.sk-button{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    width: 110%;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button:hover {
+    background: #e0115f;
+    text-decoration: none;
+}
+
+.sk-quantite{
+    color: var(--couleur-claire);
+    width: 120%;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
 }

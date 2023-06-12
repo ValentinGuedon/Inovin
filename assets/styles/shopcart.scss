@@ -1,0 +1,18 @@
+.sk-table{
+    background-color: var(--couleur-claire);
+    border-radius: 10px;
+}
+
+.sk-cell{
+    padding: 1%;
+}
+
+.sk-button-card{
+    color: var(--couleur-tierce);
+    transition: transform 0.5s ease;
+}
+
+.sk-button-card:hover{
+    color: var(--couleur-tierce);
+    transform: scale(1.5);
+}
