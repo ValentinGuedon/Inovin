@@ -4,7 +4,6 @@
     margin-top:2%;
     margin-left: auto;
     margin-right: auto;
-    
 }
 
 // Caroussel
@@ -56,21 +55,21 @@
 //Card
 .sk-card{
     height: 60vh;
+    width: 40vh;
     transition: transform 0.5s ease;
 }
 
-.sk-card:hover{
-    transform: scale(1.1); 
+.sk-cardbody{
+    width: 30vh;
 }
 
+
 .sk-card-title{
-    width: 150%;
-   
+   color: black;
 }
 
 .sk-picture{
     transition: transform 0.5s ease;
-    text-align: center;
 }
 
 .sk-picture:hover{
@@ -85,8 +84,8 @@
 .sk-button{
     background-color: var(--couleur-tierce);
     color: var(--couleur-claire);
-    width: 110%;
     border-radius: 70px;
+    margin-left: 0;
     padding: 3% 10%;
     border: none;
 }
@@ -96,10 +95,12 @@
     text-decoration: none;
 }
 
-.sk-quantite{
-    color: var(--couleur-claire);
-    width: 120%;
-    border-radius: 70px;
-    padding: 3% 10%;
-    border: none;
+.sk-quantity{
+    margin-top: 2%;
+}
+
+.sk-quantity input {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
 }
