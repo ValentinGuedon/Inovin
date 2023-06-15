@@ -24,10 +24,8 @@
     <header>
     {% include "_navbar.html.twig" %}
     </header>
-    <body>
-        {% block body %}
-        {% endblock %}
-
+    <body {{ stimulus_controller('symfony/ux-swup/swup') }}>
+        {% block body %}{% endblock %}
         {% include '_footer.html.twig'%}
     </body>
 </html>
