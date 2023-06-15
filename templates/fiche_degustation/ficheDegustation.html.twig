@@ -7,7 +7,7 @@
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
 {% block body %}
-    <div class="cardcontainer">
+    {# <div class="cardcontainer">
         <h1 class="h1 crud">{{vin.nom}}</h1>
         <div class="card">
             <div class="card-body">
@@ -65,6 +65,6 @@
                 {{ form_end(form) }}
             </div>
         </div>
-    </div>
+    </div> #}
     <a href="{{ path('app_fiche_degustation_index') }}">back to list</a>
 {% endblock %}

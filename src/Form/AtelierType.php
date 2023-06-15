@@ -29,7 +29,7 @@ class AtelierType extends AbstractType
             ])
             ->add('users', null, [
                 'choice_label' => function (User $user) {
-                    return $user->getName() . '🧑';
+                    return $user->getName() . ' 🧑';
                 },
                 'multiple' => true,
                 'autocomplete' => true,

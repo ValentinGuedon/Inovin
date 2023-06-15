@@ -54,13 +54,6 @@ class VinType extends AbstractType
                 ],               'placeholder' => 'Choisissez une fluidité',
                 'required' => true,
             ])
-            ->add('brillance', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
-
-                ],'label' => 'Choisissez une brillance /10',
-            ])
             ->add('arome', ChoiceType::class, [
                 'choices' => [
                     'fruité' => 'fruite',
@@ -74,13 +67,6 @@ class VinType extends AbstractType
                 'required' => true,
                 'multiple' => true,
                 'expanded' => true,
-            ])
-            ->add('intensite', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
-
-                ],'label' => 'Choisissez une intensité /10',
             ])
             ->add('douceur', NumberType::class, [
                 'attr' => [

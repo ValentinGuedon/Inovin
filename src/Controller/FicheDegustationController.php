@@ -84,12 +84,4 @@ class FicheDegustationController extends AbstractController
 
         return $this->redirectToRoute('app_fiche_degustation_index', [], Response::HTTP_SEE_OTHER);
     }
-
-    // #[Route('/{user}/{vin}', name: 'app_atelier', methods: ['POST'])]
-    // public function atelier(
-    //     Request $request,
-    //     FicheDegustation $ficheDegustation,
-    //     User $user,Vin $vin,
-    //     FicheDegustationRepository $ficheDegustationRepository
-    // );
 }
