@@ -1,0 +1,106 @@
+// Global
+.sk-container{
+    width: 80%;
+    margin-top:2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Caroussel
+.sk-carousel{
+    background-color: var(--couleur-claire);
+    border-radius:10px;
+}
+.sk-detail{
+    color: var(--couleur-claire);
+}
+
+.sk-button-caroussel{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    width: 300px;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button-caroussel:hover{
+    background: #e0115f;
+    text-decoration: none;
+}
+
+.sk-quantite-caroussel{
+    color: var(--couleur-claire);
+    width: 50%;
+    border-radius: 70px;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button-slide:hover{
+    background-color: initial;
+    color: var(--couleur-tierce);
+}
+
+// divider
+.sk-divider {
+    width: 80%;
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 6px;
+    background-color: var(--couleur-tierce);
+}
+
+//Card
+.sk-card{
+    height: 60vh;
+    width: 40vh;
+    transition: transform 0.5s ease;
+}
+
+.sk-cardbody{
+    width: 30vh;
+}
+
+
+.sk-card-title{
+   color: black;
+}
+
+.sk-picture{
+    transition: transform 0.5s ease;
+}
+
+.sk-picture:hover{
+    transform: scale(1.2);
+}
+
+.sk-form{
+    margin-top: 50px;
+    width: 110%;
+}
+
+.sk-button{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    border-radius: 70px;
+    margin-left: 0;
+    padding: 3% 10%;
+    border: none;
+}
+
+.sk-button:hover {
+    background: #e0115f;
+    text-decoration: none;
+}
+
+.sk-quantity{
+    margin-top: 2%;
+}
+
+.sk-quantity input {
+    width: 50px;
+    height: 30px;
+    font-size: 14px;
+}
