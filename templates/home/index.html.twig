@@ -37,5 +37,6 @@
     <img class="photocedric" src="{{ asset('build/images/cedric.jpg') }}" alt="illustration maison" width="40%">
 </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+ 
 {% endblock %}
+{% block javascripts %} {{ parent()}} <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>{% endblock %}

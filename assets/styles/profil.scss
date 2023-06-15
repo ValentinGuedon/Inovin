@@ -1,0 +1,69 @@
+.content{
+    color: white;
+    font-family: var(--font), sans-serif;
+}
+
+/* CTA atelier */
+.sk-atelier {
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.sk-atelier h2 {
+    margin-bottom: 5%;
+}
+
+.sk-cta-atelier {
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    border-radius: 70px;
+    padding: 3%;
+}
+
+// divider
+.sk-divider-profil {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 5%;
+    height: 3px;
+    background-color: var(--couleur-tierce);
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 5%;
+    font-size: 5em;
+    text-decoration: underline;
+}
+
+.titlesection{
+    margin-left: 10%;
+    font-size : 2.5em;
+    margin-bottom: 5%;
+}
+
+.information{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: auto;
+    justify-items: center; 
+    align-items: center;
+    margin-bottom: 5%;
+    gap: 20%;
+    width: 80%;
+    height: 30vh;
+    background-color: var(--couleur-claire);
+    border-radius: 10px;
+    padding: 3%;
+    color: var(--couleur-tierce);
+}
+
+.information p {
+    justify-self: start;
+}
+
+.attribut{
+    font-weight: bolder;
+    text-transform: uppercase;
+}

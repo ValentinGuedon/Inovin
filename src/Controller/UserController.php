@@ -24,17 +24,19 @@ class UserController extends AbstractController
         ]);
     }
 
-    /** @SuppressWarnings("PHPMD")
-*/
+    /** @SuppressWarnings("PHPMD")*/
     #[Route('/profil', name: 'app_user_index', methods: ['GET'])]
-    public function showProfil(
-        Security $security,
-        AtelierRepository $atelierRepository
-    ): Response {
+    public function showProfil(Security $security, AtelierRepository $atelierRepository): Response
+    {
         $user = $security->getUser();
         $currentDate = new \DateTime();
         $atelier = $atelierRepository->findOneByDate($currentDate);
-        $vin = $atelier->getvin()->first();
+
+        if ($atelier !== null) {
+            $vin = $atelier->getvin()->first();
+        } else {
+            $vin = 0;
+        }
 
         return $this->render('profil/profil.html.twig', [
             'user' => $user,
