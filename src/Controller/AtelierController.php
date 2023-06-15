@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Atelier;
+use App\Entity\Profil;
 use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\FicheDegustation;
@@ -38,20 +39,23 @@ class AtelierController extends AbstractController
         SessionInterface $session
     ): Response {
         $ficheDegustation = new FicheDegustation();
-        $vin = $atelier->getvin()->first();
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
         $i = $session->get('form_iteration', 0);
-
+        $vinCollection = $atelier->getvin();
+        if ($i > count($vinCollection)) {
+            $i = $session->set('form_iteration', 0);
+        }
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $i++;
-            $ficheDegustationRepository->save($ficheDegustation, true);
-            $vinCollection = $atelier->getvin();
-            $vin = $vinCollection[$i] ?? null;
             $session->set('form_iteration', $i);
+            $ficheDegustationRepository->save($ficheDegustation, true);
+            $vin = $vinCollection[$i] ?? null;
+
+
             if ($vin !== null) {
                 $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
                 return $this->renderForm('fiche_degustation/FicheDegustation.html.twig', [
@@ -61,7 +65,12 @@ class AtelierController extends AbstractController
                     'form' => $form
                 ]);
             } else {
-                return $this->redirectToRoute('app_atelier_index');
+                $favoriteFiche =  $user->getFavoriteFicheDegustation();
+                $profil = $favoriteFiche->getvin()->getProfil();
+                return $this->render('atelier/ficheProfil.html.twig', [
+                    'profil' => $profil,
+                    'user' => $user
+                ]);
             }
         }
         return $this->renderForm('fiche_degustation/FicheDegustation.html.twig', [

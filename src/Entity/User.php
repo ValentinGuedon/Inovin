@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Entity\FicheDegustation;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\Criteria;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -75,6 +77,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(nullable: true)]
     private ?bool $participant = null;
+
+    #[ORM\ManyToOne(inversedBy: 'user')]
+    private ?Profil $profil = null;
 
     public function __construct()
     {
@@ -240,10 +245,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+    public function getFavoriteFicheDegustation(): ?FicheDegustation
+    {
+        $criteria = Criteria::create()
+            ->orderBy(['note' => Criteria::DESC])
+            ->setMaxResults(1);
+
+        return $this->ficheDegustations->matching($criteria)->first() ?: null;
+    }
 
     /**
      * @return Collection<int, FicheDegustation>
      */
+
+
     public function getFicheDegustations(): Collection
     {
         return $this->ficheDegustations;
@@ -432,6 +447,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setParticipant(?bool $participant): self
     {
         $this->participant = $participant;
+
+        return $this;
+    }
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
 
         return $this;
     }
