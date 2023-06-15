@@ -94,6 +94,9 @@ class Vin
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
 
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Profil $profil = null;
+
 
     public function __construct()
     {
@@ -512,5 +515,17 @@ class Vin
         } else {
             return ' 🥂';
         }
+    }
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
+
+        return $this;
     }
 }
