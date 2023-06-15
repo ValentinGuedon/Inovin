@@ -34,10 +34,10 @@ class VinFixtures extends Fixture
                 $vin = new Vin();
                 if ($i === 1 ? $vin->setCouleur('rouge') : $vin->setCouleur('blanc')) {
                 }
-                $vin->setNom($faker->text());
+                $vin->setNom($faker->name());
                 $vin->setSlug($this->slugger->slug($vin->getNom));
                 $vin->setDescription($faker->text());
-                $vin->setRegion($faker->text());
+                $vin->setRegion($faker->name());
                 $vin->setMillesime($faker->numberBetween(1900, 1999));
                 $vin->setDegreAlcool($faker->numberBetween(11, 20));
                 $vin->setPrix($faker->numberBetween(5, 1800));

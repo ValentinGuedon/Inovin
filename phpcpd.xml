@@ -1,0 +1,5 @@
+<phpcpd>
+    <exclude>
+        <directory>src/Form</directory>
+    </exclude>
+</phpcpd>

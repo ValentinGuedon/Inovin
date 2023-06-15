@@ -97,6 +97,10 @@ class Vin
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Profil $profil = null;
+
+
 
     public function __construct()
     {
@@ -511,11 +515,12 @@ class Vin
     public function getEmoji(): string
     {
         if ($this->couleur === 'rouge') {
-            return '🍷';
+            return ' 🍷';
         } else {
-            return '🥂';
+            return ' 🥂';
         }
     }
+
 
     public function getSlug(): ?string
     {
@@ -525,6 +530,15 @@ class Vin
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
 
         return $this;
     }
