@@ -34,7 +34,12 @@ class UserController extends AbstractController
         $user = $security->getUser();
         $currentDate = new \DateTime();
         $atelier = $atelierRepository->findOneByDate($currentDate);
-        $vin = $atelier->getvin()->first();
+
+        if ($atelier !== null) {
+            $vin = $atelier->getvin()->first();
+        } else {
+            $vin = 0;
+        }
 
         return $this->render('profil/profil.html.twig', [
             'user' => $user,

@@ -1,4 +1,3 @@
-import './bootstrap.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -13,8 +12,8 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-const titre = document.querySelector('h1');
-const txt = document.querySelector('p');
+const titre = document.querySelector('.titre-accueil');
+const txt = document.querySelector('.txt-accueil');
 const btn = document.querySelector('.cta-accueil');
 const imgwine = document.querySelector('.img-wine');
 const allItems = document.querySelector('.liennav');
