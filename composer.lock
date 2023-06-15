@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+
     "content-hash": "abd84622cc2225599d3835c6e3950f6c",
 
     "packages": [
@@ -9464,7 +9465,7 @@
         },
         {
             "name": "phpstan/phpstan",
-
+          
             "version": "1.10.19",
             "source": {
                 "type": "git",
@@ -9475,7 +9476,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpstan/phpstan/zipball/af5a296ff02610c1bfb4ddfac9fd4a08657b9046",
                 "reference": "af5a296ff02610c1bfb4ddfac9fd4a08657b9046",
-
                 "shasum": ""
             },
             "require": {
@@ -9526,7 +9526,6 @@
             ],
 
             "time": "2023-06-14T15:26:58+00:00"
-
         },
         {
             "name": "phpstan/phpstan-doctrine",

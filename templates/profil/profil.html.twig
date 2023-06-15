@@ -1,1 +1,4 @@
-    <a href="{{ path('fiche',{'atelier':atelier.id,'user':user.id,'vin':vin.id})}}">Rejoindre la dégustation</a>
+    {% if atelier is not empty %}
+    <a href="{{ path('fiche',{'atelier':atelier.id,'user':user.id,'vin':vin.id})}}">Rejoindre la dégustation</a> 
+    {% endif %}
+
