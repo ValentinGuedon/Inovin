@@ -531,6 +531,9 @@ class Vin
     {
         $this->slug = $slug;
 
+        return $this;
+    }
+
     public function getProfil(): ?Profil
     {
         return $this->profil;
