@@ -1,41 +1,125 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_degustation.html.twig' %}
 
-{% block title %}New FicheDegustation{% endblock %}
+{% block title %} {{ parent() }} - Fiche de dégustation {% endblock title %}
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
+
 {% block body %}
+<div class="form-title">
+    <div class="ss-titre">L'OEIL</div>
+  </div>
 <div class="cardcontainer">
-    <h1 class="h1 crud">{{ vin.nom }}</h1>
-    <div class="card">
-        <div class="card-body">
-            {{ form_start(form) }}
-            <div class="form-grid">
-                <div class="form-row">
-                    <div class="form-group">
-                        <p class="form-label">{{ form_label(form.limpidite) }}</p>
-                        {{ form_widget(form.limpidite) }}
-                    </div>
-                    <div class="form-group">
-                        <p class="form-label">{{ form_label(form.couleur) }}</p>
-                        {{ form_widget(form.couleur) }}
-                    </div>
-                    <div class="form-group">
-                        <p class="form-label">{{ form_label(form.arome) }}</p>
-                        {{ form_widget(form.arome) }}
-                    </div>
-                </div>
+    <div class="form-column">
+      <div class="form-row">
+        <div class="form-group">
+          <div class="form-group">
+            <p class="form-label">Couleur</p>
+            <div class="couleur-checkbox">
+              <label>
+                <input type="checkbox" name="couleur1" value="couleur1" class="checkbox-framboise">
+                Framboise
+              </label>
+              <label>
+                <input type="checkbox" name="couleur2" value="couleur2" class="checkbox-cerise">
+                Cerise
+              </label>
+              <label>
+                <input type="checkbox" name="couleur3" value="couleur3" class="checkbox-rubis">
+                Rubis
+              </label>
+              <label>
+                <input type="checkbox" name="couleur4" value="couleur4" class="checkbox-pourpre">
+                Pourpre
+              </label>
+              <label>
+                <input type="checkbox" name="couleur5" value="couleur5" class="checkbox-violet">
+                Violet
+              </label>
+              <label>
+                <input type="checkbox" name="couleur6" value="couleur6" class="checkbox-grenat">
+                Grenat
+              </label>
+              <label>
+                <input type="checkbox" name="couleur7" value="couleur7" class="checkbox-tuile">
+                Tuilé
+              </label>
             </div>
-            <div class="form-submit">
-                {{ form_widget(form) }}
-                <button type="submit" class="submit">Ajouter</button>
-            </div>
-            {{ form_end(form) }}
+          </div>
         </div>
+      </div>
     </div>
+    <div class="form-column">
+      <div class="form-row">
+        <div class="form-group">
+          <div class="form-group">
+            <p class="form-label">Limpidité</p>
+            <div class="vertical-range">
+              <input type="range" min="1" max="4" value="1" class="custom-range">
+              <div class="labels">
+                <span class="label">Floue</span>
+                <span class="label">Trouble</span>
+                <span class="label">Voilé</span>
+                <span class="label">Limpide</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-column">
+        <div class="form-row">
+          <div class="form-group">
+            <div class="form-group">
+              <p class="form-label">Fludité</p>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="couleur1" value="couleur1" class="checkbox">
+                  Visqueuse
+                </label>
+                <label>
+                  <input type="checkbox" name="couleur2" value="couleur2" class="checkbox">
+                  Grasse
+                </label>
+                <label>
+                  <input type="checkbox" name="couleur3" value="couleur3" class="checkbox">
+                  Épaisse
+                </label>
+                <label>
+                  <input type="checkbox" name="couleur4" value="couleur4" class="checkbox">
+                  Coulante
+                </label>
+                <label>
+                  <input type="checkbox" name="couleur5" value="couleur5" class="checkbox">
+                  Fluide
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="form-title">
+        <div class="ss-titre">LE NEZ</div>
+      </div>
+    
+      <div class="form-title">
+        <div class="ss-titre">LA BOUCHE</div>
+      </div>
+    
+      <div class="form-title">
+        <div class="ss-titre">LES ÉMOTIONS</div>
+      </div>
+    
+      <div class="form-title">
+        <div class="ss-titre">NOTATION</div>
+      </div>
+  </div>
+
+  <div class="form-submit">
+    <button type="submit" class="submit">Enregistrer fiche</button>
 </div>
 
-    <a href="{{ path('app_fiche_degustation_index') }}">back to list</a>
-{% endblock %}
+  <a href="{{ path('app_fiche_degustation_index') }}">Retour</a> 
+  {% endblock %}

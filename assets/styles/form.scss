@@ -1,58 +1,223 @@
+header {
+    background-image: url(/assets/images/wave.svg);
+    background-size: cover;
+}
+
+.titre-fiche {
+    font-size: larger;
+    color: var(--couleur-tierce);
+    position: absolute;
+    right: 0;
+    margin-top: 10%;
+    margin-right: 10%;
+}
+
+.h1-crud {
+    color: var(--couleur-fonce);
+    position: absolute;
+    right: 0;
+    margin-top: 15%;
+    margin-right: 10%;
+}
+
+.ss-titre {
+    color: var(--couleur-claire);
+    border-bottom: solid 1px var(--couleur-claire);
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 1%;
+
+}
+
+.form-title {
+    grid-column: 1 / span 5; /* Le titre doit occuper les deux colonnes */
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
 .cardcontainer {
-    display: flex;
-    width: 100vw;
-    align-items: center;
-    flex-direction: column;
-}
-
-.titrecrud {
-    margin-bottom: 20px;
-}
-
-.card {
-    margin-top: 20px;
-    display: grid;
-    background-color:var(--couleur-claire);
-    padding: 40px;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-    max-width:60vw;
-    box-shadow: 0 1rem 1rem -0.75rem;
-}
-
-
-label {
-   display: inline-block;
-   margin-bottom: 10px;
-    padding: 15px;
-   background-color: var(--couleur-fonce);
-   border-radius: 5px;
-   color: var(--couleur-claire);
-}
-
-input, select {
-    border-radius: 5px;
-    margin : 5px 0px 20px 0px;
-    box-shadow: 2px 2px 4px #000000;
-    transition: 0.2s ease;
-}
-
-
-.form-row {
-    margin: 15px 15px ;
-    width: 12vw;
-}
-
-.form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
 }
-.form-group {
-    margin-top: 20px;
+  
+  .form-column {
+    flex: 0 0 48%;
+    margin-bottom: 50px;
+  }
+  
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+ 
+  }
+
+
+/* Oeil - Checkbox Couleur */
+
+.form-label{
+    margin-bottom: 30%;
+    margin-left: 30%;
+    font-style: bold;
 }
 
-.form-submit {
+.couleur-checkbox input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+    outline: none;
+  }
+
+  .couleur-checkbox, .form-label{
+    color: var(--couleur-claire);
+  }
+
+  .couleur-checkbox .checkbox-framboise {
+    background-color: #9e0e40; 
+  }
+  
+  .couleur-checkbox .checkbox-cerise {
+    background-color: #a41247;
+  }
+  
+  .couleur-checkbox .checkbox-rubis {
+    background-color: #e0115f;
+  }
+
+  .couleur-checkbox .checkbox-pourpre {
+    background-color: #9e0e40;
+  }
+
+  .couleur-checkbox .checkbox-violet {
+    background-color: #6c344f;
+  }
+
+  .couleur-checkbox .checkbox-grenat {
+    background-color: #6e0b14;
+  }
+
+  .couleur-checkbox .checkbox-tuile {
+    background-color: #a24d3f;
+  }
+
+  .couleur-checkbox input[type="checkbox"]:checked::before  {
+    content: "\2713"; /* Code Unicode pour le symbole de coche */
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    color: var(--couleur-claire);
+    margin-right: 5px;
+  }
+
+.couleur-checkbox {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30%;
+}
+
+.couleur-checkbox label {
+    margin-bottom: 15%;
+    white-space: nowrap;
+}
+
+
+/* Oeil - Curseur Limpidité */
+.custom-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width:110%;
+    height: 10px;
+    background-color: #ffffff;
+    outline: none;
+    border-radius: 50px;
+    writing-mode: sideways-lr;
+    transform: rotate(-90deg);
+  }
+  
+  .custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 30px;
+    background-color:  var(--couleur-tierce);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .custom-range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .vertical-range {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 150px;
+  }
+  
+  .labels {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: -140px;
+    margin-left: 97px;
+  }
+  
+
+  .label {
+    color: var(--couleur-claire);
+    padding: 25px;
+    
+   /* margin-top: 41px; */
+  }
+
+/* Oeil - Fluidité */
+
+  .checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--couleur-claire);
+    background-color: var(--couleur-fonce);
+    margin-right: 5px;
+    margin-bottom: 20%;
+ 
+  }
+  
+  .checkbox{
+    display: flex;
+    flex-direction: column;
+    color: var(--couleur-claire);
+
+  }
+
+  .checkbox label {
+    margin-bottom: 10px;
+    white-space: nowrap;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+/* Bouton submit */
+  .form-submit {
     display: flex;
     justify-content: flex-end;
 }
