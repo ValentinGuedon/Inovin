@@ -35,6 +35,7 @@ class VinFixtures extends Fixture
                 if ($i === 1 ? $vin->setCouleur('rouge') : $vin->setCouleur('blanc')) {
                 }
                 $vin->setNom($faker->name());
+                $vin->setSlug($this->slugger->slug($vin->getNom));
                 $vin->setDescription($faker->text());
                 $vin->setRegion($faker->name());
                 $vin->setMillesime($faker->numberBetween(1900, 1999));
