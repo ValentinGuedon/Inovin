@@ -87,7 +87,7 @@ class Vin
     #[ORM\Column(length: 255)]
     private ?string $matiere;
 
-    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vins')]
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vin')]
     private Collection $ateliers;
 
 
