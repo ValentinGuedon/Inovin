@@ -254,6 +254,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->ficheDegustations->matching($criteria)->first() ?: null;
     }
 
+    public function getLastFicheDegustation(): ?FicheDegustation
+    {
+        $criteria = Criteria::create()
+            ->orderBy(['id' => Criteria::DESC])
+            ->setMaxResults(1);
+
+        return $this->ficheDegustations->matching($criteria)->first() ?: null;
+    }
+
     /**
      * @return Collection<int, FicheDegustation>
      */

@@ -9465,7 +9465,7 @@
         },
         {
             "name": "phpstan/phpstan",
-          
+
             "version": "1.10.19",
             "source": {
                 "type": "git",
