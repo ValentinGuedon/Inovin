@@ -40,9 +40,7 @@ class AtelierController extends AbstractController
         User $user,
         Vin $vin,
         FicheDegustationRepository $ficheDegustationRepository,
-        VinRepository $vinRepository,
         Request $request,
-        SluggerInterface $slugger
     ): Response {
         $ficheDegustation = new FicheDegustation();
         $ficheDegustation->setVin($vin);
@@ -90,7 +88,6 @@ class AtelierController extends AbstractController
     public function new(
         Request $request,
         AtelierRepository $atelierRepository,
-        UserRepository $userRepository
     ): Response {
         $atelier = new Atelier();
         $form = $this->createForm(AtelierType::class, $atelier);
