@@ -7,14 +7,17 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use DateTime;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class UserFixtures extends Fixture
 {
+    private SluggerInterface $slugger;
     private UserPasswordHasherInterface $passwordHasher;
 
-    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    public function __construct(UserPasswordHasherInterface $passwordHasher, SluggerInterface $slugger)
     {
         $this->passwordHasher = $passwordHasher;
+        $this->slugger = $slugger;
     }
 
     public function load(ObjectManager $manager): void
@@ -32,7 +35,8 @@ class UserFixtures extends Fixture
 
         $birthdate = new DateTime('2020-01-01');
         $user->setBirthdate($birthdate);
-
+        $slug = $this->slugger->slug($user->getName());
+        $user->setSlug($slug);
         // Hashage du mot de passe
         $password = $this->passwordHasher->hashPassword($user, '123456');
         $user->setPassword($password);

@@ -17,6 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use  Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/atelier')]
 class AtelierController extends AbstractController
@@ -29,7 +31,10 @@ class AtelierController extends AbstractController
         ]);
     }
 
-    #[Route('/{atelier}/{user}/{vin}', name: 'fiche', methods: ['GET','POST'])]
+    #[Route('/{atelierSlug}/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
+    #[ParamConverter('atelier', class: Atelier::class, options: ['mapping' => ['atelierSlug' => 'slug']])]
+    #[ParamConverter('user', class: User::class, options: ['mapping' => ['userSlug' => 'slug']])]
+    #[ParamConverter('vin', class: Vin::class, options: ['mapping' => ['vinSlug' => 'slug']])]
     public function showFiche(
         Atelier $atelier,
         User $user,
@@ -37,6 +42,7 @@ class AtelierController extends AbstractController
         FicheDegustationRepository $ficheDegustationRepository,
         VinRepository $vinRepository,
         Request $request,
+        SluggerInterface $slugger
     ): Response {
         $ficheDegustation = new FicheDegustation();
         $ficheDegustation->setVin($vin);
