@@ -94,8 +94,12 @@ class Vin
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Profil $profil = null;
+
 
 
     public function __construct()
@@ -515,6 +519,19 @@ class Vin
         } else {
             return ' 🥂';
         }
+    }
+
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     public function getProfil(): ?Profil

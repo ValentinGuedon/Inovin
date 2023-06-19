@@ -22,8 +22,8 @@ margin: 0 auto;
 }
   
 .row {
-display: flex;
-flex-wrap: wrap;
+display: flex !important;
+flex-wrap: wrap !important;
 }
 
 .copy{
@@ -34,11 +34,11 @@ font-size: small;
 }
 
 .rows{
-justify-content: space-around;
-color: var(--couleur-fonce);
-list-style: none;
-margin-left: 20%;
-height: 20px;
+justify-content: space-around !important;
+color: var(--couleur-fonce) !important;
+list-style: none !important;
+margin-left: 20% !important;
+height: 20px !important;
 } 
 
 .rows a{

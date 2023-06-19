@@ -30,9 +30,9 @@ class ShopController extends AbstractController
             $panier[$id] = $quantity;
         }
 
-            $this->addFlash('success', 'Votre panier à été mis à jour');
-             // Mise a jour du panier
-            $panier = $session->set('panier', $panier);
+        // Mise a jour du panier
+        $this->addFlash('success', 'Votre panier à été mis à jour');
+        $panier = $session->set('panier', $panier);
 
         return $this->redirectToRoute('shop_index', [], Response::HTTP_SEE_OTHER);
     }
