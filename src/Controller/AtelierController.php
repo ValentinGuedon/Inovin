@@ -64,6 +64,7 @@ class AtelierController extends AbstractController
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
                 $profil = $favoriteFiche->getvin()->getProfil();
+                $user->setProfil($profil);
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user
