@@ -90,11 +90,10 @@ class Vin
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vin')]
     private Collection $ateliers;
 
-
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
