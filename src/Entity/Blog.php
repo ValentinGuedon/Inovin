@@ -31,10 +31,11 @@ class Blog
     #[ORM\Column(type: Types::TEXT)]
     private ?string $text = null;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private string $poster = '';
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $image = null;
 
-    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'poster')]
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
+    // #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
     private ?File $posterFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
@@ -93,25 +94,24 @@ class Blog
         return $this;
     }
 
-    public function getPoster(): ?string
+    public function getImage(): ?string
     {
-        return $this->poster;
+        return $this->image;
     }
 
-    public function setPoster(string $poster): self
+    public function setImage(?string $image): self
     {
-        $this->poster = $poster;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function setPosterFile(File $image = null): Blog
+    public function setPosterFile(File $poster = null): Blog
     {
-        $this->posterFile = $image;
-        if ($image) {
+        $this->posterFile = $poster;
+        if ($poster) {
             $this->updatedAt = new DateTime('now');
         }
-
         return $this;
     }
 
