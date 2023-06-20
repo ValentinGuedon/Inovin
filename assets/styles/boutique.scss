@@ -1,6 +1,12 @@
+.sk-title{
+    margin-top: 10%;
+    color: white;
+    text-align: center;
+}
+
 // Global
 .sk-container{
-    width: 80%;
+    width: 70%;
     margin-top:2%;
     margin-left: auto;
     margin-right: auto;
@@ -10,6 +16,9 @@
 .sk-carousel{
     background-color: var(--couleur-claire);
     border-radius:10px;
+}
+.sk-picture-carousell{
+    width: 400px;
 }
 .sk-detail{
     color: var(--couleur-claire);
@@ -21,6 +30,7 @@
     width: 300px;
     border-radius: 70px;
     padding: 3% 10%;
+    margin-bottom: 2%;
     border: none;
 }
 
@@ -54,6 +64,7 @@
 
 //Card
 .sk-card{
+    background-color: var(--couleur-claire);
     height: 60vh;
     width: 40vh;
     transition: transform 0.5s ease;
@@ -68,11 +79,12 @@
    color: black;
 }
 
-.sk-picture{
+.sk-picture-shop{
+    width: 150px;
     transition: transform 0.5s ease;
 }
 
-.sk-picture:hover{
+.sk-picture-shop:hover{
     transform: scale(1.2);
 }
 
@@ -103,4 +115,13 @@
     width: 50px;
     height: 30px;
     font-size: 14px;
+}
+
+.paginator{
+    margin-top: 5%;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: white;
 }

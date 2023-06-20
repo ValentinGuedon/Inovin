@@ -27,3 +27,19 @@ TL1
     .from(imgwine, { duration: 1, x: 100, opacity: 0 }, '-=0.5');
 
 TL1.play();
+
+
+// Display and close modal contact
+const contactButton = document.querySelector("#contactModal");
+
+contactButton.addEventListener('click', () => {
+    let contactModal = document.querySelector("#content-modal");
+    contactModal.style.display = "block";
+})
+
+const contactClose = document.querySelector('#contactclose')
+
+contactClose.addEventListener('click', () => {
+    let contactModal = document.querySelector("#content-modal");
+    contactModal.style.display = "none";
+})
