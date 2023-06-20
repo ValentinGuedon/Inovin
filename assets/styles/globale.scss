@@ -1,70 +1,70 @@
-
-*{
+* {
     margin: 0;
 }
 
-:root{
+:root {
     --couleur-fonce: #22323f;
-    --couleur-claire:#e2dad4;
-    --couleur-tierce:#9b2449;
+    --couleur-claire: #e2dad4;
+    --couleur-tierce: #9b2449;
     --font: 'Montserrat', sans-serif;
 }
 
-body{
+body {
     font-family: var(--font);
     background-color: var(--couleur-fonce);
 }
 
-header{
+header {
     background-image: url(/assets/images/wave.svg);
     background-size: cover;
     height: 50vh;
 }
 
-.img-logo{
-    position:absolute;
-    left:0;
+.img-logo {
+    position: absolute;
+    left: 0;
 }
 
 /* NavBar*/
-nav ul li{
+nav ul li {
     list-style: none;
     padding: 3%;
 }
 
-nav{
+nav {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
 
-ul{
+ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
+
 .listederoulante {
     display: none;
-  }
+}
 
-  nav ul li:hover .listederoulante {
+nav ul li:hover .listederoulante {
     display: block;
-  }
+}
 
-a{
-    color:var(--couleur-claire);
+a {
+    color: var(--couleur-claire);
     text-decoration: none;
-  }
+}
 
-  .listederoulante {
+.listederoulante {
     position: absolute;
     background-color: var(--couleur-claire);
     text-decoration: none;
     min-width: 10%;
     z-index: 1;
-  }
+}
 
-.liennav{
+.liennav {
     color: var(--couleur-tierce);
     text-transform: uppercase;
     text-decoration: none;
@@ -75,7 +75,7 @@ a{
     position: relative;
 }
 
-.liennav:after{
+.liennav:after {
     background: none repeat scroll 0 0 transparent;
     bottom: 0;
     content: "";
@@ -88,13 +88,13 @@ a{
     width: 0;
 }
 
-.liennav:hover:after{
+.liennav:hover:after {
     width: 100%;
     left: 0;
 }
 
-.liennav:hover{
-    color:#e0115f;
+.liennav:hover {
+    color: #e0115f;
 }
 
 /* Gère la couleur du bouton */
@@ -150,7 +150,7 @@ a{
 
 
 /* Index Page */
-.titre-accueil{
+.titre-accueil {
     color: var(--couleur-claire);
     padding-left: 10%;
     padding-bottom: 2%;
@@ -159,11 +159,11 @@ a{
     margin-right: 40%;
 }
 
-.color-modif{
+.color-modif {
     color: var(--couleur-tierce);
 }
 
-.txt-accueil{
+.txt-accueil {
     color: var(--couleur-claire);
     padding-left: 10%;
     padding-bottom: 2%;
@@ -172,7 +172,7 @@ a{
     margin-bottom: 3%;
 }
 
-.cta-accueil{
+.cta-accueil {
     color: var(--couleur-claire);
     background: var(--couleur-tierce);
     text-align: center;
@@ -183,8 +183,8 @@ a{
     margin-bottom: 5%;
 }
 
-.cta-accueil:hover{
-    background:#e0115f;
+.cta-accueil:hover {
+    background: #e0115f;
     text-decoration: none;
 }
 
@@ -194,11 +194,11 @@ a{
 }
 
 .img-wine {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left:-30;
-  margin-right: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: -30;
+    margin-right: 0;
 }
 
 .user-info {
@@ -214,33 +214,30 @@ a{
     margin-left: 5px;
 }
 
-.quisommesnous{
+.quisommesnous {
     color: var(--couleur-fonce);
 }
-.presentation
-{
-display: flex;
-flex-direction: row-reverse;
-align-items: center;
-justify-content: center;
-padding: 5%;
-color: var(--couleur-fonce);
+
+.presentation {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    color: var(--couleur-fonce);
 }
 
-.background
-{
-background-color: var(--couleur-claire);
-padding: 3% 6%;
+.background {
+    background-color: var(--couleur-claire);
+    padding: 3% 6%;
 }
 
-.textedepresentation
-{
-margin-top: 10%;
-margin-bottom: 10%;
+.textedepresentation {
+    margin-top: 10%;
+    margin-bottom: 10%;
 }
 
-.photocedric
-{
-margin-right: -5%;
+.photocedric {
+    margin-right: -5%;
 
 }

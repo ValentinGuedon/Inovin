@@ -1,0 +1,47 @@
+.blogH1 {
+    text-align: center;
+}
+
+.blogDivContent {
+    width: 50%;
+    margin: 0 25%;
+}
+
+.blogDivCard {
+    width: 50%;
+
+    background-color: var(--couleur-claire);
+}
+
+.blogTitle {
+    // text-align: center;
+
+    color: var(--couleur-tierce);
+}
+
+.blogDate {
+    // text-align: center;
+    margin: 0.5em auto 2em;
+    color: var(--couleur-fonce);
+}
+
+
+.blogImagep {
+    // text-align: center;
+    margin-bottom: 3em;
+}
+
+.blogImage {
+    height: auto;
+    width: auto;
+    max-width: 100%;
+}
+
+.blogDescription {
+    // text-align: center;
+    margin-bottom: 3rem;
+}
+
+.blogShow {
+    margin-bottom: 3em;
+}

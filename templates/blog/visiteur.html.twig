@@ -3,33 +3,22 @@
 {% block title %}Blog index{% endblock %}
 
 {% block body %}
-    <h1>Visiteur</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Text</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for blog in blogs %}
-            <tr>
-                <td>{{ blog.title }}</td>
-                <td>{{ blog.date ? blog.date|date('Y-m-d') : '' }}</td>
-                <td>{{ blog.description }}</td>
-                <td>{{ blog.text }}</td>
-                <td><img src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}"></td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {# <h1 class="blogH1">Blog</h1> #}
+        <div class="blogDivContent">
+            {% for blog in blogs %}
+            <div class="blogDivCard">
+                    <h2 class="blogTitle">{{ blog.title }}</h2>
+                    <p class="blogDate">{{ blog.date ? blog.date|date('Y-m-d') : '' }}</p>
+                    <p class="blogImagep"> <img class="blogImage" src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}"></p>
+                    <p class="blogDescription">{{ blog.description }}</p>
+                    <p class="blogShow"><a  href="{{ path('app_blog_show', {'id': blog.id}) }}">Lire plus</a></p>
+            </div>
+            {% else %}
+            
+                    <p>no records found</p>
+                
+            {% endfor %}
+        </div>
+        
 
 {% endblock %}
