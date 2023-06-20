@@ -90,7 +90,6 @@ class Vin
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vins')]
     private Collection $ateliers;
 
-
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
 
