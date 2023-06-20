@@ -3,45 +3,62 @@
 }
 
 .blogDivContent {
-    width: 50%;
-    margin: 0 25%;
+    text-align: center;
+    margin: 0 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    grid-template-rows: minmax(200px, auto);
+    grid-gap: 3em;
 }
 
 .blogDivCard {
-    width: 50%;
-
+    width: 100%;
     background-color: var(--couleur-claire);
+    border-radius: 15px;
+    // align-self: center;
 }
 
 .blogTitle {
-    // text-align: center;
-
     color: var(--couleur-tierce);
 }
 
 .blogDate {
-    // text-align: center;
     margin: 0.5em auto 2em;
     color: var(--couleur-fonce);
 }
 
 
 .blogImagep {
-    // text-align: center;
     margin-bottom: 3em;
 }
 
 .blogImage {
     height: auto;
-    width: auto;
-    max-width: 100%;
+    width: 70%;
 }
 
 .blogDescription {
-    // text-align: center;
+    text-justify: inter-word;
     margin-bottom: 3rem;
 }
 
 .blogShow {
     margin-bottom: 3em;
+}
+
+.blogShow a {
+    color: var(--couleur-tierce);
+}
+
+@media (min-width: 567px) {
+
+    .blogDivContent {
+        text-align: center;
+        margin: 0 2em;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+        grid-template-rows: minmax(200px, auto);
+        grid-gap: 3em;
+    }
+
 }
