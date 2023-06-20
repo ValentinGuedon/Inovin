@@ -4,9 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-
-    "content-hash": "abd84622cc2225599d3835c6e3950f6c",
-
+    "content-hash": "8c4f874b2aa69446fae8109d459021c4",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -9465,7 +9463,6 @@
         },
         {
             "name": "phpstan/phpstan",
-
             "version": "1.10.19",
             "source": {
                 "type": "git",
@@ -9524,7 +9521,6 @@
                     "type": "tidelift"
                 }
             ],
-
             "time": "2023-06-14T15:26:58+00:00"
         },
         {
