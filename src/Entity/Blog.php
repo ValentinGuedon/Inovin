@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\BlogRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
 #[Vich\Uploadable]
@@ -35,7 +36,7 @@ class Blog
     private ?string $image = null;
 
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
-    // #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
+    #[Assert\File(maxSize: '2M', mimeTypes: ['image/jpg', 'image/jpeg', 'image/png', 'image/webp'])]
     private ?File $posterFile = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]

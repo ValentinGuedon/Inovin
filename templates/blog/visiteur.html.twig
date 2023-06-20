@@ -3,7 +3,7 @@
 {% block title %}Blog index{% endblock %}
 
 {% block body %}
-    <h1>Blog index Admin</h1>
+    <h1>Visiteur</h1>
 
     <table class="table">
         <thead>
@@ -23,10 +23,6 @@
                 <td>{{ blog.description }}</td>
                 <td>{{ blog.text }}</td>
                 <td><img src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}"></td>
-                <td>
-                    <a href="{{ path('app_blog_show', {'id': blog.id}) }}">show</a>
-                    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
-                </td>
             </tr>
         {% else %}
             <tr>
@@ -36,5 +32,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_blog_new') }}">Create new</a>
 {% endblock %}

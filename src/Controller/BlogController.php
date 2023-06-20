@@ -21,6 +21,14 @@ class BlogController extends AbstractController
         ]);
     }
 
+    #[Route('/visiteur', name: 'app_blog_visiteur', methods: ['GET'])]
+    public function indexVisiteur(BlogRepository $blogRepository): Response
+    {
+        return $this->render('blog/visiteur.html.twig', [
+            'blogs' => $blogRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_blog_new', methods: ['GET', 'POST'])]
     public function new(Request $request, BlogRepository $blogRepository): Response
     {
