@@ -32,6 +32,9 @@ class Atelier
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = 'atelier';
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -130,6 +133,18 @@ class Atelier
     public function setCommentaire(?string $commentaire): self
     {
         $this->commentaire = $commentaire;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
