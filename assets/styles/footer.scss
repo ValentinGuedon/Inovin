@@ -5,7 +5,7 @@
     --font: 'Montserrat', sans-serif;
 }
 
-footer{
+.foot{
 font-family: var(--font);
 background-color: var(--couleur-claire);
 margin-top: 5%;
@@ -21,7 +21,7 @@ margin-bottom: 2%;
 margin: 0 auto;
 }
   
-.row {
+.rowa {
 display: flex !important;
 flex-wrap: wrap !important;
 }
@@ -33,7 +33,7 @@ font-size: small;
 
 }
 
-.rows{
+.rowas{
 justify-content: space-around !important;
 color: var(--couleur-fonce) !important;
 list-style: none !important;
@@ -41,7 +41,7 @@ margin-left: 20% !important;
 height: 20px !important;
 } 
 
-.rows a{
+.rowas a{
 text-decoration: none;
 color: var(--couleur-fonce);
 }
