@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/panier', name: 'panier_')]
-class PanierController extends AbstractController
+class CartController extends AbstractController
 {
     #[Route('/', name: 'index')]
     public function index(SessionInterface $session, VinRepository $vinRepository): Response
