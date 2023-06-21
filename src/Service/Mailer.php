@@ -1,6 +1,6 @@
 <?php
 
-namespace App\service;
+namespace App\Service;
 
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
@@ -9,14 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class MailerService
 {
-    private $mailer;
+    private MailerInterface $mailer;
 
     public function __construct(MailerInterface $mailer)
     {
         $this->mailer = $mailer;
     }
 
-    public function sendFicheEmail($userEmail, $pdfPaths)
+    public function sendFicheEmail(string $userEmail, array $pdfPaths): void
     {
         $email = (new Email())
             ->from('your_email@example.com')
