@@ -18,8 +18,10 @@
     border-bottom: 1px solid var(--couleur-tierce);
 }
 
-.sk-product{
+.sk-product {
     width: 200px;
+    white-space: normal;
+    overflow-wrap: break-word;
 }
 
 .sk-button-card{
