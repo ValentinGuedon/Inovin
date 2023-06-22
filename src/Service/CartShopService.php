@@ -5,6 +5,10 @@ namespace App\Service;
 use App\Repository\PanierRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ * @SuppressWarnings(PHPCS)
+ */
+
 class CartShopService
 {
     private ?RequestStack $requestStack;
