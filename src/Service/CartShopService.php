@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\RequestStack;
 /**
  * @SuppressWarnings(PHPCS)
  */
-
 class CartShopService
 {
     private ?RequestStack $requestStack;
@@ -33,6 +32,7 @@ class CartShopService
 
         // Mise a jour du panier
         //$session->addFlash('sk-alert', 'Votre panier a été mis à jour');
+        /** @var Session $session */
         $session->getFlashBag()->add('sk-alert', 'Votre panier a été mis à jour');
 
 
