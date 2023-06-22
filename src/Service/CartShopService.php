@@ -4,17 +4,20 @@ namespace App\Service;
 
 use App\Repository\PanierRepository;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 /**
- * @SuppressWarnings(PHPCS)
+ * @var array $config
  */
 class CartShopService
 {
     private ?RequestStack $requestStack;
+    private ?FlashBagInterface $flashBagInterface;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack, FlashBagInterface $flashBagInterface)
     {
         $this->requestStack = $requestStack;
+        $this->flashBagInterface = $flashBagInterface;
     }
 
     public function addToCart(int $id, int $quantity): void
@@ -32,8 +35,7 @@ class CartShopService
 
         // Mise a jour du panier
         //$session->addFlash('sk-alert', 'Votre panier a été mis à jour');
-        /** @var Session $session */
-        $session->getFlashBag()->add('sk-alert', 'Votre panier a été mis à jour');
+        $this->flashBagInterface->flashBag->add('sk-alert', 'Votre panier a été mis à jour');
 
 
         $panier = $session->set('panier', $panier);
