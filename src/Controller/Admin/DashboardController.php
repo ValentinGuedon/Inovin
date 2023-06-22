@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Faq;
 use App\Entity\Vin;
 use App\Entity\Blog;
+use App\Entity\User;
 use App\Entity\Cepage;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
@@ -40,6 +42,11 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('Inovin');
     }
 
+    // public function configureActions(User $user): Actions
+    // {
+    //     // faut mettre ici pour enlever le delete/edit
+    // }
+
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
@@ -62,6 +69,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Vin')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
+        ]);
+
+        yield MenuItem::subMenu('User')->setSubItems([
+            MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
