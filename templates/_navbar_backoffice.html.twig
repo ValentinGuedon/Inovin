@@ -1,8 +1,9 @@
 {% block content %}
 {% include "_popUpMessage.html.twig" %}
-<nav>
-    <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;">
-    <ul>
+<div class="stickyTest">
+<nav class="navBackoffice">
+    <ul class="ulBackoffice">
+    {# <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;"> #}
         <li><a href="{{ path('app_home') }}" class="liennav">ACCUEIL</a></li>
         <li><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
         <li style="position: relative;"><a href="#" class="liennav">VINOTHÈQUE</a>
@@ -21,9 +22,8 @@
             <a href="/login" class="liennav">CONNEXION</a>
         </li>
         {% endif %}
-        <li class="panier"><a href="{{ path ('panier_index')}}"><img src="{{ asset('build/images/panier.png') }}" style="width: 30px; height: 30px;"></a></li>
 
-        <li>
+        {# <li>
             <div class="navbar">
                 <div class="dropdown">
                     {% if app.user == true %}
@@ -36,7 +36,8 @@
                     </div>
                 {% endif %}
             </div>
-        </li>
+        </li> #}
     </ul>
 </nav>
+</div>
 {% endblock %}
