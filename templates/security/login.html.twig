@@ -35,7 +35,7 @@
 
     <button class="bouton" type="submit"> Se connecter </button>
 </form>
-
-        <p class="inscription">Vous n'avez pas de compte ? <a href="/register">S'inscrire</a></p>
-        </div>
+    <p class="inscription">Vous n'avez pas de compte ? <strong><a href="{{ path('app_register') }}">S'inscrire</a></strong></p><br>
+    <p class="inscription">Vous avez oublié votre mot de passe ? <strong><a href="{{ path ('app_forgot_password_request') }}">Réinitialiser</a></strong></p>
+</div>
 {% endblock %}

@@ -36,7 +36,8 @@ class RegistrationFormType extends AbstractType
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password',
-                'placeholder' => 'password'
+                'placeholder' => 'password',
+                'class' => 'type'
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -53,43 +54,51 @@ class RegistrationFormType extends AbstractType
             ->add('name', TextType::class, [
                 'attr' => [
                     'placeholder' => 'name',
+                    'class' => 'type'
                 ],
             ])
             ->add('firstname', TextType::class, [
                 'attr' => [
                     'placeholder' => 'firstname',
+                    'class' => 'type'
                 ],
             ])
             ->add('street', TextType::class, [
                 'attr' => [
                     'placeholder' => 'street',
+                    'class' => 'type'
                 ],
             ])
             ->add('postalcode', IntegerType::class, [
                 'attr' => [
                     'placeholder' => 'postalcode',
+                    'class' => 'type'
                 ],
             ])
             ->add('city', TextType::class, [
                 'attr' => [
                     'placeholder' => 'city',
+                    'class' => 'type'
                 ],
             ])
             ->add('birthdate', DateType::class, [
                 'widget' => 'single_text',
                 'attr' => [
                     'placeholder' => 'birthdate',
+                    'class' => 'type'
                 ],
                 'data' => new DateTime(),
             ])
             ->add('email', TextType::class, [
                 'attr' => [
                     'placeholder' => 'email',
+                    'class' => 'type'
                 ],
             ])
             ->add('phone', TextType::class, [
                 'attr' => [
                     'placeholder' => 'phone',
+                    'class' => 'type'
                 ],
                 // new Regex([
                 //     'pattern' => '/^[0-9]{10}$/',
