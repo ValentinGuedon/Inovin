@@ -13,6 +13,7 @@
 body{
     font-family: var(--font);
     background-color: var(--couleur-fonce);
+   
 }
 
 header{
@@ -24,9 +25,10 @@ header{
 .img-logo{
     position:absolute;
     left:0;
+    margin-left: 4%;
 }
 
-nav ul li{
+nav ul .linav{
     list-style: none;
     padding: 3%;
 }
@@ -46,8 +48,8 @@ ul{
     display: none;
   }
 
-  nav ul li:hover .listederoulante {
-    display: block;
+nav ul .linav:hover .listederoulante {
+    display: block !important;
   }
 
 a{
@@ -55,7 +57,7 @@ a{
     text-decoration: none;
   }
 
-  .listederoulante {
+.listederoulante {
     position: absolute;
     background-color: var(--couleur-claire);
     text-decoration: none;
@@ -80,7 +82,6 @@ a{
     content: "";
     display: block;
     height: 2px;
-
     position: absolute;
     background: #e0115f;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
