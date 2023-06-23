@@ -1,0 +1,149 @@
+// ------------------------ Blog Visiteur ----------------------------------------
+
+// body {
+//     background-color: aqua !important;
+// }
+
+.blogH1 {
+    text-align: center;
+}
+
+.blogDivContent {
+    text-align: center;
+    margin: 0 1em;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    grid-template-rows: minmax(200px, auto);
+    grid-gap: 2em;
+}
+
+.blogDivCard {
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color: var(--couleur-claire);
+    border-radius: 15px;
+    // align-self: center;
+}
+
+.blogTitle {
+    color: var(--couleur-tierce);
+    // margin-left: 3em;
+}
+
+.blogDate {
+    margin: 0.5em auto 2em;
+    color: var(--couleur-fonce);
+}
+
+.blogImage {
+    height: auto;
+    width: 80%;
+    max-width: 25em;
+    margin-bottom: 1em;
+}
+
+.blogDescription {
+    text-align: center;
+    margin: 0 2em 2em;
+    text-align: justify;
+}
+
+.blogShow {
+    margin-bottom: 1em;
+}
+
+.blogShow a {
+    color: var(--couleur-tierce);
+}
+
+@media (min-width: 567px) {
+
+    .blogDivContent {
+        margin: 0 1em;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+        grid-template-rows: minmax(200px, auto);
+        grid-gap: 2em;
+    }
+
+}
+
+@media (min-width: 1580px) {
+
+    .blogDivContent {
+        grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+        grid-gap: 2em;
+    }
+
+    .blogImage {
+        height: auto;
+        max-width: none;
+    }
+}
+
+// -------------------------- Blog Visiteur Show ----------------------------------------
+
+.blogDivContent2 {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 1fr);
+    grid-template-rows: minmax(200px, auto);
+    grid-gap: 3em;
+    max-width: 70em;
+}
+
+.blogImage2 {
+    height: auto;
+    width: auto;
+    min-width: 40%;
+    max-width: 90%;
+    max-height: 80vh;
+}
+
+.blogText {
+    text-align: center;
+    margin: 3em 3em 2em;
+    text-align: justify;
+}
+
+.blogBackBtn {
+    color: var(--couleur-tierce);
+}
+
+.blogBackBtnP {
+    margin-left: 3em;
+    margin-bottom: 2em;
+}
+
+.blogDivCard div {
+    text-align: center;
+}
+
+.blogMargin {
+    margin-left: 2em;
+}
+
+.blogTitle2 {
+    margin-left: 2em;
+    color: var(--couleur-tierce);
+}
+
+.blogDate2 {
+    margin: 0.5em 0 2em 3.5em;
+    color: var(--couleur-fonce);
+}
+
+// @media (min-width: 1050px) {
+
+//     .blogDivContent2 {
+//         width: 70%;
+//         margin-left: auto;
+//         margin-right: auto;
+//     }
+
+//     .blogImage2 {
+//         width: 50%;
+//     }
+
+// }

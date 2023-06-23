@@ -107,6 +107,11 @@ class Blog
         return $this;
     }
 
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
     public function setPosterFile(File $poster = null): Blog
     {
         $this->posterFile = $poster;
@@ -114,10 +119,5 @@ class Blog
             $this->updatedAt = new DateTime('now');
         }
         return $this;
-    }
-
-    public function getPosterFile(): ?File
-    {
-        return $this->posterFile;
     }
 }
