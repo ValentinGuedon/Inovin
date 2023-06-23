@@ -9,6 +9,7 @@ grumphp:
             project: '8.0'
         phpcs:
             standard: ~
+            ignore_patterns: ["*/config/*","*/tests/*","*/var/*","*/vendor/*"]
         phpstan:
             configuration: ./phpstan.neon
             level: 1
