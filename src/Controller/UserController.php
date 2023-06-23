@@ -24,13 +24,10 @@ class UserController extends AbstractController
         ]);
     }
 
-    /** @SuppressWarnings("PHPMD")
-*/
+    /** @SuppressWarnings("PHPMD")*/
     #[Route('/profil', name: 'app_user_index', methods: ['GET'])]
-    public function showProfil(
-        Security $security,
-        AtelierRepository $atelierRepository
-    ): Response {
+    public function showProfil(Security $security, AtelierRepository $atelierRepository): Response
+    {
         $user = $security->getUser();
         $currentDate = new \DateTime();
         $atelier = $atelierRepository->findOneByDate($currentDate);

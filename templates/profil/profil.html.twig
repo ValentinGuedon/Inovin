@@ -1,4 +1,53 @@
-    {% if atelier is not empty %}
-    <a href="{{ path('fiche',{'atelier':atelier.id,'user':user.id,'vin':vin.id})}}">Rejoindre la dégustation</a> 
-    {% endif %}
+{% extends 'base.html.twig' %}
 
+{% block title %}{{ parent()}} - Mon compte{% endblock %}
+
+{% block stylesheets %}
+{{ parent()}}
+{% endblock %}
+
+
+{% block body %}
+<div class="content">
+    <h1 class="title">Mon compte</h1>
+
+    <div class="sk-atelier">
+        {% if atelier is not empty %}
+            <h2>Accéder à l'atelier de dégustation</h2>
+            <a class="sk-cta-atelier" href="{{ path('fiche',{'atelierSlug':atelier.slug,'userSlug':user.slug,'vinSlug':vin.slug})}}">Let's Go</a>
+        {% endif %}
+    </div>
+
+    <div class="sk-divider-profil"></div>
+
+    <h2 class="titlesection">Mes informations : </h2>
+
+    <div class="information">
+        <p><span class="attribut">Nom : </span> {{user.name}}</p>
+        <p><span class="attribut">Date de naissance : </span> {{user.birthdate|date('d-m-Y')}}</p>
+        <p><span class="attribut">Prénom : </span> {{user.firstname}}</p>
+        <p><span class="attribut">Adresse : </span> {{user.street}}</p>
+        <p><span class="attribut">Téléphone : </span>{{user.phone}}</p>
+        <p><span class="attribut">Code postal : </span> {{user.postalcode}}</p>
+        <p><span class="attribut">Email : </span> {{user.email}}</p>
+        <p><span class="attribut">Ville : </span> {{user.city}}</p>
+    </div>
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mon profil gustatif : </h2>
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mes recettes : </h2>
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mes ateliers : </h2>
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mes fiches de dégustation : </h2>
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mes commandes : </h2>
+
+
+</div>
+{% endblock %}

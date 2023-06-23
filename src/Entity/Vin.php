@@ -87,12 +87,18 @@ class Vin
     #[ORM\Column(length: 255)]
     private ?string $matiere;
 
-    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vins')]
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vin')]
     private Collection $ateliers;
-
 
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Panier $panier = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
+    #[ORM\ManyToOne(inversedBy: 'vin')]
+    private ?Profil $profil = null;
+
 
 
     public function __construct()
@@ -512,5 +518,30 @@ class Vin
         } else {
             return ' 🥂';
         }
+    }
+
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getProfil(): ?Profil
+    {
+        return $this->profil;
+    }
+
+    public function setProfil(?Profil $profil): self
+    {
+        $this->profil = $profil;
+
+        return $this;
     }
 }

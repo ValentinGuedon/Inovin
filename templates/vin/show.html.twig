@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vin{% endblock %}
+{% block title %}{{ parent() }} - Vin{% endblock %}
 
 {% block body %}
     <h1>Vin</h1>
@@ -86,9 +86,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_vin_index') }}">back to list</a>
+    <a href="{{ path('app_vin_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_vin_edit', {'id': vin.id}) }}">edit</a>
+    <a href="{{ path('app_vin_edit', {'slug': vin.slug}) }}">Modifier</a>
 
     {{ include('vin/_delete_form.html.twig') }}
 {% endblock %}

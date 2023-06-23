@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Atelier;
+use App\Entity\Profil;
 use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\FicheDegustation;
@@ -11,11 +12,13 @@ use App\Form\FicheDegustationType;
 use App\Repository\AtelierRepository;
 use App\Repository\FicheDegustationRepository;
 use App\Repository\UserRepository;
+use App\Repository\VinRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use  Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/atelier')]
 class AtelierController extends AbstractController
@@ -28,43 +31,51 @@ class AtelierController extends AbstractController
         ]);
     }
 
-    #[Route('/{atelier}/{user}/{vin}', name: 'fiche', methods: ['GET','POST'])]
+    #[Route('/{atelierSlug}/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
+    #[ParamConverter('atelier', class: Atelier::class, options: ['mapping' => ['atelierSlug' => 'slug']])]
+    #[ParamConverter('user', class: User::class, options: ['mapping' => ['userSlug' => 'slug']])]
+    #[ParamConverter('vin', class: Vin::class, options: ['mapping' => ['vinSlug' => 'slug']])]
     public function showFiche(
         Atelier $atelier,
         User $user,
         Vin $vin,
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
-        SessionInterface $session
     ): Response {
         $ficheDegustation = new FicheDegustation();
-        $vin = $atelier->getvin()->first();
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
-        $i = $session->get('form_iteration', 0);
-
+        $vinCollection = $atelier->getvin();
+        $vinCollectionId = [];
+        foreach ($vinCollection as $vinId) {
+            $vinCollectionId[] = $vinId->getId();
+        }
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $i++;
             $ficheDegustationRepository->save($ficheDegustation, true);
-            $vinCollection = $atelier->getvin();
-            $vin = $vinCollection[$i] ?? null;
-            $session->set('form_iteration', $i);
-            if ($vin !== null) {
-                $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
-                return $this->renderForm('fiche_degustation/FicheDegustation.html.twig', [
-                    'atelier' => $atelier,
-                    'user' => $user,
-                    'vin' => $vin,
-                    'form' => $form
+            $nextVin = $user->getLastFicheDegustation()->getVin()->getId();
+            $nextVin = array_search($nextVin, $vinCollectionId);
+            $nextVin = $vinCollectionId[$nextVin + 1] ?? null;
+
+            if ($nextVin !== null) {
+                return $this->redirectToRoute('fiche', [
+                    'atelier' => $atelier->getId(),
+                    'user' => $user->getId(),
+                    'vin' => $nextVin,
                 ]);
             } else {
-                return $this->redirectToRoute('app_atelier_index');
+                $favoriteFiche =  $user->getFavoriteFicheDegustation();
+                $profil = $favoriteFiche->getvin()->getProfil();
+                $user->setProfil($profil);
+                return $this->render('atelier/ficheProfil.html.twig', [
+                    'profil' => $profil,
+                    'user' => $user
+                ]);
             }
         }
-        return $this->renderForm('fiche_degustation/FicheDegustation.html.twig', [
+        return $this->render('fiche_degustation/FicheDegustation.html.twig', [
             'atelier' => $atelier,
             'user' => $user,
             'vin' => $vin,
@@ -77,7 +88,6 @@ class AtelierController extends AbstractController
     public function new(
         Request $request,
         AtelierRepository $atelierRepository,
-        UserRepository $userRepository
     ): Response {
         $atelier = new Atelier();
         $form = $this->createForm(AtelierType::class, $atelier);

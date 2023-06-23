@@ -1,0 +1,33 @@
+{% extends 'base_backoffice.html.twig' %}
+
+{% block title %}Blog index{% endblock %}
+
+{% block body %}
+<div class="blogDivBody">
+    <h1>Blog</h1>
+        {% for blog in blogs %}
+<hr class="blogHr">
+                <h3>{{ blog.title }} </h3>
+                {{ blog.date ? blog.date|date('Y-m-d') : '' }}
+                <div>
+                    <img src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}">
+                   <p>{{ blog.description }} </p>
+                    <p>{{ blog.text }}</p>
+                </div>
+
+
+                <div>
+                    <a href="{{ path('app_blog_show', {'id': blog.id}) }}">show</a>
+                    <a href="{{ path('app_blog_edit', {'id': blog.id}) }}">edit</a>
+                </div>
+
+
+        {% else %}
+            <p>
+                colspan="6">no records found
+            </p>
+        {% endfor %}
+<hr class="blogHr">
+    <a href="{{ path('app_blog_new') }}">Create new</a>
+    </div>
+{% endblock %}

@@ -41,10 +41,13 @@ security:
     access_control:
     
         - { path: ^/cepage, roles: ROLE_ADMIN }
-        - { path: ^/user, roles: ROLE_ADMIN }
+        - { path: ^/user, roles: ROLE_USER }
+        - { path: ^/atelier/[^/]+/[^/]+/[^/]+$, roles: ROLE_USER }
         - { path: ^/atelier, roles: ROLE_ADMIN }
         - { path: ^/vin, roles: ROLE_ADMIN }
         - { path: '^/faq(?!/visiteur)', roles: 'ROLE_ADMIN' }
+        - { path: '^/blog(?!/visiteur)', roles: ROLE_ADMIN }
+        - { path: ^/vin, roles: ROLE_ADMIN }
         # - { path: ^/shop, roles: ROLE_USER }
 
 when@test:

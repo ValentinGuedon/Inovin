@@ -1,4 +1,5 @@
 {% block content %}
+{% include "_popUpMessage.html.twig" %}
 <nav>
     <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;">
     <ul>
@@ -6,15 +7,15 @@
         <li class="linav"><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
         <li class="linav" style="position: relative;"><a href="#" class="liennav">VINOTHÈQUE</a>
             <ul class="listederoulante">
-                <li class="linav"><a href="#" class="liennav">Le quizz</a></li>
-                <li class="linav"><a href="#" class="liennav">Lexique</a></li>
-                <li class="linav"><a href="#" class="liennav">La carte des vins</a></li>
-                <li class="linav"><a href="#" class="liennav">Blog</a></li>
-                <li class="linav"><a href="#" class="liennav">FAQ</a></li>
+                <li><a href="#" class="liennav">Le quizz</a></li>
+                <li><a href="#" class="liennav">Lexique</a></li>
+                <li><a href="#" class="liennav">La carte des vins</a></li>
+                <li><a href="{{ path('app_blog_visiteur') }}" class="liennav">Blog</a></li>
+                <li><a href="{{ path('app_faq_visiteur') }}" class="liennav">FAQ</a></li>
             </ul>
         </li>
-        <li class="linav"><a href="{{ path ('shop_index')}}" class="liennav">BOUTIQUE</a></li>
-        <li class="linav"><a href="" class="liennav">CONTACT</a></li>
+        <li><a href="{{ path ('shop_index')}}" class="liennav">BOUTIQUE</a></li>
+        <li><a id='contactModal' class="liennav">CONTACT</a></li>
         {% if app.user == false %}
         <li class="linav">
             <a href="/login" class="liennav">CONNEXION</a>

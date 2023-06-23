@@ -21,6 +21,7 @@ class VinType extends AbstractType
             ->add('millesime')
             ->add('degreAlcool')
             ->add('prix')
+            ->add('profil', null, ['choice_label' => 'name'])
             ->add('posterFile', VichFileType::class, [
                 'required'      => false,
                 'allow_delete'  => true, // not mandatory, default is true
