@@ -35,7 +35,7 @@ class MailerService
         $this->mailer->send($email);
     }
 
-    public function sendContactEmail($data): void
+    public function sendContactEmail(array $data): void
     {
         $email = (new Email())
         ->from(new Address($data['email'], $data['name']))
