@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Service\MailerService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -23,5 +25,17 @@ class HomeController extends AbstractController
     public function showHistoire(): Response
     {
         return $this->render('histoire/histoire.html.twig');
+    }
+
+    #[Route('/contact', name: 'contact')]
+    public function contact(MailerService $mailer, Request $request): Response
+    {
+        // Get the form data
+        $data = $request->request->all();
+
+        // Call the mailer service
+        $mailer->sendContactEmail($data);
+
+        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }
 }

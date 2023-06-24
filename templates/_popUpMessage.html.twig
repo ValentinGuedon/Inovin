@@ -2,7 +2,7 @@
   <div class="modal-content-contact">
     <span id="contactclose" class="close-button-modal">&times;</span>
           <div class="text">Formulaire de contact</div>
-            <form action="/contact" method="GET">
+            <form action="{{ path('contact') }}" method="post">
                 <div class="field-contact">
                   <input type="text" placeholder="Nom" maxlenght="30" name="name">
                 </div>

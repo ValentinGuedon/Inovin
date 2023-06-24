@@ -30,16 +30,18 @@ TL1.play();
 
 
 // Display and close modal contact
-const contactButton = document.querySelector("#contactModal");
+const contactButtons = document.querySelectorAll(".contactModal");
 
-contactButton.addEventListener('click', () => {
-    let contactModal = document.querySelector("#content-modal");
-    contactModal.style.display = "block";
-})
+contactButtons.forEach((contactButton) => {
+    contactButton.addEventListener('click', () => {
+        let contactModal = document.querySelector("#content-modal");
+        contactModal.style.display = "block";
+    });
+});
 
 const contactClose = document.querySelector('#contactclose')
 
 contactClose.addEventListener('click', () => {
     let contactModal = document.querySelector("#content-modal");
     contactModal.style.display = "none";
-})
+});
