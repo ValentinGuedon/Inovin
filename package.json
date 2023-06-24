@@ -9,7 +9,6 @@
         "@swup/slide-theme": "^1.0",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/ux-autocomplete": "file:vendor/symfony/ux-autocomplete/assets",
-        "@symfony/ux-swup": "file:vendor/symfony/ux-swup/assets",
         "@symfony/webpack-encore": "^4.0.0",
         "core-js": "^3.23.0",
         "eslint": "^8.13.0",

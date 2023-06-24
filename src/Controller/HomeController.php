@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Service\MailerService;
+use App\Controller\Form\ContactForm;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
@@ -28,13 +30,30 @@ class HomeController extends AbstractController
     }
 
     #[Route('/contact', name: 'contact')]
-    public function contact(MailerService $mailer, Request $request): Response
+    public function contact(MailerService $mailer, Request $request, ValidatorInterface $validator): Response
     {
-        // Get the form data
-        $data = $request->request->all();
+        // Create a ContactForm object
+        $form = new ContactForm();
+        $form->setName($request->request->get('name'));
+        $form->setEmail($request->request->get('email'));
+        $form->setContent($request->request->get('content'));
+
+        // Validate the form
+        $errors = $validator->validate($form);
+
+        // check if there are any errors
+        if (count($errors) > 0) {
+            foreach ($errors as $error) {
+                $this->addFlash('error', $error->getMessage());
+            }
+
+            return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
+        }
 
         // Call the mailer service
-        $mailer->sendContactEmail($data);
+        $message = $mailer->sendContactEmail($form->toArray());
+
+        $this->addFlash('success', $message);
 
         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
     }

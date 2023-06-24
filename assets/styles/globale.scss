@@ -240,5 +240,35 @@ a {
 
 .photocedric {
     margin-right: -5%;
+}
 
+/* Alarm form contact mail */
+.sk-success{
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    width: 30%;
+    height:5vh;
+    margin: auto;
+    position: fixed;
+    top: 25%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sk-error{
+    color: var(--couleur-claire);
+    background-color: red;
+    width: 30%;
+    height:5vh;
+    margin: auto;
+    position: fixed;
+    top: 25%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -29,7 +29,7 @@ TL1
 TL1.play();
 
 
-// Display and close modal contact
+// Display and close modal contact mail in home/index.html.twig
 const contactButtons = document.querySelectorAll(".contactModal");
 
 contactButtons.forEach((contactButton) => {
@@ -45,3 +45,16 @@ contactClose.addEventListener('click', () => {
     let contactModal = document.querySelector("#content-modal");
     contactModal.style.display = "none";
 });
+
+
+// close automatically alert message contact mail in home/index.html.twig
+const alertElements = document.querySelectorAll('.sk-success, .sk-error');
+
+function closeAlert() {
+    alertElements.forEach(element => {
+        element.style.display = 'none';
+    });
+}
+
+// Choose a time limit (5000 milliseconds)
+setTimeout(closeAlert, 5000);

@@ -2,7 +2,18 @@
 
 {% block title %} {{ parent() }} - Home {% endblock title %}
 
+
 {% block body %}
+<!--Message-->
+  {% for category, messages in app.flashes %}
+      {% for message in messages %}
+      <div class="sk-{{ category }}">
+              {{ message }}
+      </div>
+      {% endfor %}
+  {% endfor %}
+
+<!--Main-->
 <div class="image">
     <div class="content">
       <h1 class="titre-accueil">De la dégustation à la création de votre vin <span class="color-modif">personnalisé</span></h1>

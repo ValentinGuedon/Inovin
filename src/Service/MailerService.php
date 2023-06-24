@@ -35,14 +35,20 @@ class MailerService
         $this->mailer->send($email);
     }
 
-    public function sendContactEmail(array $data): void
+    public function sendContactEmail(array $data): string
     {
-        $email = (new Email())
-        ->from(new Address($data['email'], $data['name']))
-        ->to('inovinstrasbourg@gmail.com')
-        ->subject('Formulaire de contact')
-        ->html($this->twig->render('newContactMail.html.twig', ['data' => $data]));
+        try {
+            $email = (new Email())
+            ->from(new Address($data['email'], $data['name']))
+            ->to('inovinstrasbourg@gmail.com')
+            ->subject('Formulaire de contact')
+            ->html($this->twig->render('newContactMail.html.twig', ['data' => $data]));
 
-        $this->mailer->send($email);
+            $this->mailer->send($email);
+            return 'Votre message a bien été envoyé';
+        } catch (\Exception $e) {
+            return 'Nous sommes désolé, une erreur s\'est produite lors de l\'envoi du mail,
+             veuillez réessayer plus tard';
+        }
     }
 }
