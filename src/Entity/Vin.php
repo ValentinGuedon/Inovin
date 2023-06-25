@@ -99,6 +99,9 @@ class Vin
     #[ORM\ManyToOne(inversedBy: 'vin')]
     private ?Profil $profil = null;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'watchlist')]
+    private Collection $users;
+
 
 
     public function __construct()
@@ -108,6 +111,7 @@ class Vin
         $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -541,6 +545,33 @@ class Vin
     public function setProfil(?Profil $profil): self
     {
         $this->profil = $profil;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): static
+    {
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addWatchlist($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): static
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeWatchlist($this);
+        }
 
         return $this;
     }

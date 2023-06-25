@@ -84,6 +84,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
+    #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'users')]
+    #[ORM\JoinTable(name:'watchlist')]
+    private Collection $watchlist;
+
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
@@ -93,6 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->caracteristiques = new ArrayCollection();
         $this->atelier = new ArrayCollection();
         $this->panier = new Panier();
+        $this->watchlist = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -485,5 +490,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->slug = $slug;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Vin>
+     */
+    public function getWatchlist(): Collection
+    {
+        return $this->watchlist;
+    }
+
+    public function addWatchlist(Vin $watchlist): static
+    {
+        if (!$this->watchlist->contains($watchlist)) {
+            $this->watchlist->add($watchlist);
+        }
+
+        return $this;
+    }
+
+    public function removeWatchlist(Vin $watchlist): static
+    {
+        $this->watchlist->removeElement($watchlist);
+
+        return $this;
+    }
+
+    public function isInWatchlist(Vin $vin): bool
+    {
+        return $this->watchlist->contains($vin);
     }
 }
