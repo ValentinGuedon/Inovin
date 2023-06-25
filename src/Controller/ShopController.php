@@ -34,11 +34,6 @@ class ShopController extends AbstractController
     #[Route('/{slug}/watchlist', name: 'watchlist', methods: ['GET', 'POST'])]
     public function addToWatchlist(Vin $vin, UserRepository $userRepository): Response
     {
-        if (!$vin) {
-            throw $this->createNotFoundException(
-                'Il n\'existe pas de vin avec ce nom'
-            );
-        }
 
         /** @var \App\Entity\User */
         $user = $this->getUser();
