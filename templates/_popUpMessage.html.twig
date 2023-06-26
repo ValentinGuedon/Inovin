@@ -2,14 +2,14 @@
   <div class="modal-content-contact">
     <span id="contactclose" class="close-button-modal">&times;</span>
           <div class="text">Formulaire de contact</div>
-            <form action="/contact" method="GET">
-                <div class="field-contact">
+            <form action="{{ path('contact') }}" method="post">
+                <div class="form-group field-contact">
                   <input type="text" placeholder="Nom" maxlenght="30" name="name">
                 </div>
-                <div class="field-contact"> 
+                <div class="form-group field-contact"> 
                   <input type="email" placeholder="exemple@gmail.com" maxlenght="30" required name="email">
                 </div>
-                <div class="field-contact">
+                <div class="form-group field-contact">
                   <textarea placeholder="Votre message" maxlenght="200" required name="content"></textarea>
                 </div>
                 <button class="send">Envoyer</button>
