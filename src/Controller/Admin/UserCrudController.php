@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\HiddenField;
@@ -17,6 +19,13 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+        ->disable(Action::NEW, Action::DELETE, Action::EDIT)
+        ;
+    }
+
     public function configureFields(string $pageName): iterable
     {
         yield HiddenField::new('id')->hideOnForm()->hideOnIndex();
@@ -25,17 +34,13 @@ class UserCrudController extends AbstractCrudController
 
         yield TextField::new('name');
         yield TextField::new('firstname');
-        yield TextField::new('street');
+        yield TextField::new('street')
+        ->setSortable(false);
         yield IntegerField::new('postalcode');
         yield TextField::new('city');
-        yield DateField::new('birthdate')->setFormat('yyyy-MM-dd');
-        yield TextField::new('phone');
-
-        yield AssociationField::new('ficheDegustations');
-        yield AssociationField::new('favoris');
-        yield AssociationField::new('jeux');
-        yield AssociationField::new('recettes');
-        yield AssociationField::new('caracteristiques');
-        yield AssociationField::new('atelier');
+        yield DateField::new('birthdate')
+            ->setFormat('dd/MM yyyy');
+        yield TextField::new('phone')
+        ->setSortable(false);
     }
 }
