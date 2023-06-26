@@ -60,7 +60,7 @@ class ShopController extends AbstractController
             $this->addFlash('sk-alert', 'Vous devez être connecté pour attribuer une note.');
         } else {
             $note = new Note();
-            $note = $note->setNote($request->query->get('note'));
+            $note = $note->setNote((int)$request->query->get('note'));
             $note->setVin($vin);
 
             if ($user->alreadyNote($vin)) {
