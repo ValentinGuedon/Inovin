@@ -1,7 +1,7 @@
 .carre {
     background-color: var(--couleur-tierce);
     padding: 5%;
-    max-width: 20%;
+    max-width: 30%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     margin: auto;
 }
@@ -28,9 +28,11 @@
     padding: 3% 10%;
     color: var(--couleur-fonce);
     background-color: var(--couleur-claire);
+    cursor: pointer;
 }
 
 .inscription {
     color: var(--couleur-claire);
     font-size: small;
+    text-align: center;
 }

@@ -28,7 +28,7 @@ class CartShopService
         }
 
         // Mise a jour du panier
-        //$session->addFlash('sk-alert', 'Votre panier a été mis à jour');
+
         $session->getFlashBag()->add('sk-alert', 'Votre panier a été mis à jour'); /* @phpstan-ignore-line */
 
         $panier = $session->set('panier', $panier);
