@@ -12,6 +12,7 @@
 body {
     font-family: var(--font);
     background-color: var(--couleur-fonce);
+   
 }
 
 header {
@@ -20,13 +21,13 @@ header {
     height: 50vh;
 }
 
-.img-logo {
-    position: absolute;
-    left: 0;
+.img-logo{
+    position:absolute;
+    left:0;
+    margin-left: 4%;
 }
 
-/* NavBar*/
-nav ul li {
+nav ul .linav{
     list-style: none;
     padding: 3%;
 }
@@ -81,7 +82,6 @@ a {
     content: "";
     display: block;
     height: 2px;
-
     position: absolute;
     background: #e0115f;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
