@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Vin;
+
 use App\Service\CartShopService;
 use App\Repository\VinRepository;
 use App\Repository\UserRepository;
@@ -10,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/shop', name: 'shop_')]
@@ -22,6 +25,7 @@ class ShopController extends AbstractController
 
         return $this->render('shop/index.html.twig', ['articles' => $articles]);
     }
+
 
     #[Route('/add/{id}/{quantity}', name: 'add', methods: ['GET', 'POST'])]
     public function add(int $id, int $quantity, Request $request, CartShopService $cartShopService): Response
@@ -47,5 +51,12 @@ class ShopController extends AbstractController
         return new JsonResponse([
             'isInWatchlist' => $this->getUser()->isInWatchlist($vin)
         ]);
+
+    #[Route('/add/{id}/{quantity}', name: 'add')]
+    public function add(int $id, int $quantity, Request $request, CartShopService $cartShopService): Response
+    {
+        $cartShopService->addToCart($id, $quantity);
+
+        return $this->redirectToRoute('shop_index', [], Response::HTTP_SEE_OTHER);
     }
 }
