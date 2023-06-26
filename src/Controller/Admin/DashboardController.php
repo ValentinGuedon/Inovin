@@ -7,9 +7,11 @@ use App\Entity\Vin;
 use App\Entity\Blog;
 use App\Entity\User;
 use App\Entity\Cepage;
+use App\Entity\Atelier;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -36,10 +38,13 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($url);
     }
 
+
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Inovin');
+            ->setTitle('Inovin')
+            ;
     }
 
     // public function configureActions(User $user): Actions
@@ -75,6 +80,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('User', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);
+
+        yield MenuItem::subMenu('Atelier', 'fas fa-map')->setSubItems([
+            MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
+        ]);
+
 
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
