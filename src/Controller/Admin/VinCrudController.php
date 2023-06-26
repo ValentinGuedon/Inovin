@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Vin;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -22,6 +23,9 @@ class VinCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')
+            ->hideOnForm()
+            ->hideOnIndex(),
             TextField::new('nom'),
             TextareaField::new('description'),
             // TextEditorField::new('description'),
@@ -29,13 +33,13 @@ class VinCrudController extends AbstractCrudController
             IntegerField::new('millesime'),
             NumberField::new('degreAlcool'),
             NumberField::new('prix'),
-            ImageField::new('image')->setUploadDir('public/uploads/images/posters'),
+            ImageField::new('image')->setUploadDir('public/uploads/images/posters')->hideOnIndex(),
 
             // CollectionField::new('ficheDegustations'),
-            CollectionField::new('favoris'),
-            CollectionField::new('recettes'),
-            CollectionField::new('caracteristiques'),
-            CollectionField::new('cepages'),
+            // CollectionField::new('favoris'),
+            // CollectionField::new('recettes'),
+            // CollectionField::new('caracteristiques'),
+            // CollectionField::new('cepages'),
 
             TextField::new('couleur'),
             TextField::new('limpidite'),

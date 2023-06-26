@@ -51,27 +51,28 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::subMenu('FAQ')->setSubItems([
+        yield MenuItem::subMenu('FAQ', 'fas fa-question')->setSubItems([
             MenuItem::linkToCrud('Créer Question', 'fas fa-plus', Faq::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Question', 'fas fa-eye', Faq::class)
         ]);
 
-        yield MenuItem::subMenu('Blog')->setSubItems([
+        yield MenuItem::subMenu('Blog', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('Créer Article', 'fas fa-plus', Blog::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Article', 'fas fa-eye', Blog::class)
         ]);
 
-        yield MenuItem::subMenu('Cepage')->setSubItems([
+        yield MenuItem::subMenu('Cepage', 'fas fa-wine-glass')->setSubItems([
             MenuItem::linkToCrud('Créer un Cépage', 'fas fa-plus', Cepage::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Cépages', 'fas fa-eye', Cepage::class)
         ]);
 
-        yield MenuItem::subMenu('Vin')->setSubItems([
+        yield MenuItem::subMenu('Vin', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
+            // MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_DETAIL),
             MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
         ]);
 
-        yield MenuItem::subMenu('User')->setSubItems([
+        yield MenuItem::subMenu('User', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);
 

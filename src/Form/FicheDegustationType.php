@@ -15,131 +15,181 @@ class FicheDegustationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder
-        ->add('couleur', ChoiceType::class, [
+        $builder->add('couleur', ChoiceType::class, [
             'choices' => [
-                'framboise' => 'limpide',
-                'cerise' => 'voilé',
-                'rubis' => 'trouble',
-                'pourpre' => 'flou',
+                'Framboise' => 'framboise',
+                'Cerise' => 'cerise',
+                'Rubis' => 'rubis',
+                'Pourpre' => 'pourpre',
+                'Violet' => 'violet',
+                'Grenat' => 'grenat',
+                'Tuilé' => 'tuilé',
             ],
-            'placeholder' => 'Choisissez une limpidité',
+            'choice_attr' => function ($choice) {
+                $colors = [
+                    'framboise' => [
+                        'value' => 'framboise',
+                        'class' => 'checkbox-framboise',
+                    ],
+                    'cerise' => [
+                        'value' => 'cerise',
+                        'class' => 'checkbox-cerise',
+                    ],
+                    'rubis' => [
+                        'value' => 'rubis',
+                        'class' => 'checkbox-rubis',
+                    ],
+                    'pourpre' => [
+                        'value' => 'pourpre',
+                        'class' => 'checkbox-pourpre',
+                    ],
+                    'violet' => [
+                        'value' => 'violet',
+                        'class' => 'checkbox-violet',
+                    ],
+                    'grenat' => [
+                        'value' => 'grenat',
+                        'class' => 'checkbox-grenat',
+                    ],
+                    'tuilé' => [
+                        'value' => 'tuilé',
+                        'class' => 'checkbox-tuilé',
+                    ],
+                ];
+                return ['class' => $colors[$choice]['class']];
+            },
             'required' => true,
+            'expanded' => true,
         ])
-            ->add('limpidite', ChoiceType::class, [
-                'choices' => [
-                    'limpide' => 'limpide',
-                    'voilé' => 'voilé',
-                    'trouble' => 'trouble',
-                    'flou' => 'flou',
-                ],
-                'placeholder' => 'Choisissez une limpidité',
-                'required' => true,
-            ])
-            ->add('fluidite', ChoiceType::class, [
-                'choices' => [
-                    'visqueuse' => 'visqueuse',
-                    'grasse' => 'grasse',
-                    'épaisse' => 'epaisse',
-                    'coulante' => 'coulante',
-                    'fluide' => 'fluide',
-                ],               'placeholder' => 'Choisissez une fluidité',
-                'required' => true,
-            ])
+
+        ->add('fluidite', ChoiceType::class, [
+            'choices' => [
+                'Visqueuse' => 'visqueuse',
+                'Grasse' => 'grasse',
+                'Épaisse' => 'epaisse',
+                'Coulante' => 'coulante',
+                'Fluide' => 'fluide',
+            ],
+            'required' => true,
+            'expanded' => true,
+        ])
+
             ->add('arome', ChoiceType::class, [
                 'choices' => [
-                    'fruité' => 'fruite',
-                    'animal' => 'animal',
-                    'épicé' => 'epice',
-                    'floral' => 'floral',
-                    'végétal' => 'vegetal',
-                    'marin' => 'marin',
+                    'Floral' => [
+                        'Chèvrefeuille' => 'Chèvrefeuille',
+                        'Fleur d\'oranger' => 'Fleur d\'oranger',
+                        'Violette' => 'Violette',
+                        'Rose' => 'Rose',
+                        'Acacia' => 'Acacia',
+                        'Tilleul' => 'Tilleul',
+                        'Jasmin' => 'Jasmin',
+                        'Camomille' => 'Camomille',
+                        'Foin' => 'Foin',
+                        'Herbe Coupée' => 'Herbe',
+                    ],
+                    'Fruité' => [
+                        'Pêche-abricot' => 'Pêche-abricot',
+                        'Cerise' => 'Cerise',
+                        'Prune' => 'Prune',
+                        'Olive verte' => 'Olive verte',
+                        'Framboise' => 'Framboise',
+                        'Mûre' => 'Mûre',
+                        'Fraise' => 'Fraise',
+                        'Cassis' => 'Cassis',
+                        'Poire' => 'Poire',
+                        'Pomme' => 'Pomme',
+                    ],
+
+                    'Animal' => [
+                        'Musc' => 'Musc',
+                        'Cuir' => 'Cuir',
+                        'Fourrure' => 'Fourrure',
+                    ],
+
+                    'Végétal' => [
+                        'Foin' => 'Foin',
+                        'Herbe coupée' => 'Herbe coupée',
+                        'Thym' => 'Thym',
+                        'Humus' => 'Humus',
+                        'Champignon' => 'Champignon',
+                        'Terre' => 'Terre',
+                        'Ecorce' => 'Ecorce',
+                        'Résine' => 'Résine',
+                        'Santal' => 'Santal',
+                        'Chêne' => 'Chêne',
+                    ],
+
+
+                    'Épicé' => [
+                        'Canelle' => 'Canelle',
+                        'Poivre' => 'Poivre',
+                        'Curry' => 'Curry',
+                        'Safran' => 'Safran',
+                    ],
+
+                    'Marin' => [
+                        'Algue' => 'Algue',
+                        'Iode' => 'Iode',
+                    ],
+
                 ],
-                'placeholder' => 'Choisissez un arôme',
                 'required' => true,
                 'multiple' => true,
                 'expanded' => true,
-            ])
-            ->add('brillance', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
 
-                ],'label' => 'Choisissez une brillance /10',
             ])
-            ->add('arome', ChoiceType::class, [
-                'choices' => [
-                    'fruité' => 'fruite',
-                    'animal' => 'animal',
-                    'épicé' => 'epice',
-                    'floral' => 'floral',
-                    'végétal' => 'vegetal',
-                    'marin' => 'marin',
-                ],
-                'placeholder' => 'Choisissez un arôme',
-                'required' => true,
-                'multiple' => true,
-                'expanded' => true,
-            ])
-            ->add('intensite', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
 
-                ],'label' => 'Choisissez une intensité /10',
-            ])
-            ->add('douceur', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
-
-                ],'label' => 'Choisissez une douceur /10',
-            ])
-            ->add('alcool', NumberType::class, [
-                'attr' => [
-                    'min' => 0,
-                    'max' => 10,
-                ],'label' => "Choisissez un ressenti d'alcool/10"
-            ])
-            ->add('persistance', ChoiceType::class, [
-                'choices' => [
-                    'courte' => 'courte',
-                    'moyenne' => 'moyenne',
-                    'persistante' => 'persistante',
-                ],
-                'placeholder' => 'Choisissez une persistance',
-                'required' => true,
-            ])
             ->add('structure', ChoiceType::class, [
                 'choices' => [
-                    'légère' => 'legere',
-                    'fluide' => 'fluide',
-                    'charpentée' => 'charpente',
+                    'Légère' => 'legere',
+                    'Fluide' => 'fluide',
+                    'Charpentée' => 'charpente',
                 ],
-                'placeholder' => 'Choisissez une persistance',
                 'required' => true,
+                'expanded' => true,
             ])
+
+
             ->add('matiere', ChoiceType::class, [
                 'choices' => [
-                    'massive' => 'massive',
-                    'étoffée' => 'etoffee',
-                    'légère' => 'legere',
-                    'fluette' => 'fluette',
-                ], 'placeholder' => 'Choisissez un arôme',
+                    'Massive' => 'massive',
+                    'Étoffée' => 'etoffee',
+                    'Légère' => 'legere',
+                    'Fluette' => 'fluette',
+                ],
                 'required' => true,
+                'expanded' => true,
             ])
+
             ->add('emotion', ChoiceType::class, [
                 'choices' => [
                     'Joie' => 'joie',
-                    'Satisfaction' => 'etoffee',
+                    'Satisfaction' => 'satisfaction',
                     'Étonnement' => 'etonnement',
                     'Ennui' => 'ennui',
-                    'Dêgout' => 'dêgout',
-                ], 'placeholder' => 'Choisissez un arôme',
+                    'Dégout' => 'degout',
+                ],
                 'required' => true,
+                'expanded' => true,
             ])
-            ->add('note')
-            ;
+
+            ->add('note', ChoiceType::class, [
+                'choices' => [
+                    '0/10' => 0,
+                    '1/10' => 1,
+                    '2/10' => 2,
+                    '3/10' => 3,
+                    '4/10' => 4,
+                    '5/10' => 5,
+                    '6/10' => 6,
+                    '7/10' => 7,
+                    '8/10' => 8,
+                    '9/10' => 9,
+                    '10/10' => 10,
+                ],
+                'required' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

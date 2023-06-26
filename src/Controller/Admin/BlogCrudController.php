@@ -21,6 +21,9 @@ class BlogCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')
+            ->hideOnForm()
+            ->hideOnIndex(),
             TextField::new('title'),
             TextField::new('description'),
             DateField::new('date'),
