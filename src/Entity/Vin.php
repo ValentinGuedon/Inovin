@@ -102,6 +102,8 @@ class Vin
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'watchlist')]
     private Collection $users;
 
+    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class)]
+    private Collection $notes;
 
 
     public function __construct()
@@ -112,6 +114,7 @@ class Vin
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -571,6 +574,36 @@ class Vin
     {
         if ($this->users->removeElement($user)) {
             $user->removeWatchlist($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Note>
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): static
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes->add($note);
+            $note->setVin($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): static
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getVin() === $this) {
+                $note->setVin(null);
+            }
         }
 
         return $this;

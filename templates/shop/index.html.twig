@@ -42,15 +42,19 @@
               <img class="d-block sk-caroussel-picture" src="{{ vich_uploader_asset(article) }}" alt="{{ article.nom }}">
             </div>
           <div class="d-flex mt-3 flex-column">
-            <div class="d-flex">
-            <p class="mb-0 flex-grow-1 sk-note">Note :</p>
+            <div class="d-flex sk-note">
               <div class="d-flex ms-2">
-                <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star" style="color: black;"></i></a></p>
               </div>
+              {% for note in notes %}
+              {% if note.vin_id == article.id and note.averageNote > 0 %}
+              <p class="flex-grow-1 ms-5"><em>Note {{note.averageNote|round(1)}}/5</em></p>
+              {% endif %}
+            {% endfor %}
           </div>
           <div class="sk-note">
             <div class="col-7">
@@ -92,6 +96,7 @@
 </div>
 
 <div class="sk-divider"></div>
+
  
 <!--Card-->
 <div class="container">
@@ -100,16 +105,20 @@
   <div class="col-sm-4 mb-5">
     <div class="card h-100 sk-cardbody" style="width: 22rem;">
       <div class="card-header d-flex justify-content-between w-100 mt-auto">
-         <p class="mb-0">Note :</p>
          <div class="d-flex">
-          <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a href=""><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star" style="color: black;"></i></a></p>
          </div>
+         {% for note in notes %}
+          {% if note.vin_id == article.id and note.averageNote > 0 %}
+        <p class=" small"><em>Note {{note.averageNote|round(1)}}/5</em></p>
+          {% endif %}
+        {% endfor %}
          <p class="mb-0"><a class="watchlist" href="{{  path('shop_watchlist', {slug: article.slug})}} ">
-         <i class="bi fs-4 {{ app.user.isInWatchlist(article) ? 'bi-heart-fill' : 'bi-heart' }}" style="color: black;"></i></a></p>
+         <i class="bi fs-4 {{ app.user and app.user.isInWatchlist(article) ? 'bi-heart-fill' : 'bi-heart' }}" style="color: black;"></i></a></p> 
       </div>
       <div class="d-flex h-100">
         <img class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(article) }}" alt="{{ article.nom }}">

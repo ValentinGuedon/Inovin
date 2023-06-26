@@ -88,6 +88,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name:'watchlist')]
     private Collection $watchlist;
 
+    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Note::class, cascade:['persist'])]
+    private Collection $notes;
+
+
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
@@ -98,6 +102,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->atelier = new ArrayCollection();
         $this->panier = new Panier();
         $this->watchlist = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -519,5 +524,43 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isInWatchlist(Vin $vin): bool
     {
         return $this->watchlist->contains($vin);
+    }
+
+    /**
+     * @return Collection<int, Note>
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): static
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes->add($note);
+            $note->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function updateNote(Note $note): static
+    {
+        foreach ($this->notes as $existingNote) {
+            if ($existingNote->getVin() === $note->getVin()) {
+                $existingNote->setNote($note->getNote());
+            }
+        }
+        return $this;
+    }
+
+    public function alreadyNote(Vin $vin): bool
+    {
+        foreach ($this->notes as $note) {
+            if ($note->getVin() === $vin) {
+                return true;
+            }
+        }
+        return false;
     }
 }

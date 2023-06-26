@@ -39,6 +39,17 @@ class VinRepository extends ServiceEntityRepository
         }
     }
 
+    public function averageNotesByVin(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('v')
+            ->select('v.id AS vin_id, AVG(n.note) AS averageNote')
+            ->leftJoin('v.notes', 'n')
+            ->groupBy('v.id')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
 //    /**
 //     * @return Vin[] Returns an array of Vin objects
 //     */

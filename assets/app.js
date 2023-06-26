@@ -85,3 +85,4 @@ watchlists.forEach((watchlist) => {
         }
     }
 });
+      
