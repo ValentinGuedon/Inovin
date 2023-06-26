@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Service\MailerService;
-use App\Controller\Form\ContactForm;
+use App\Form\ContactForm;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;

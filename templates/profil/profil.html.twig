@@ -3,6 +3,8 @@
 {% block title %}{{ parent()}} - Mon compte{% endblock %}
 
 {% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 {{ parent()}}
 {% endblock %}
 
@@ -22,16 +24,80 @@
 
     <h2 class="titlesection">Mes informations : </h2>
 
-    <div class="information">
-        <p><span class="attribut">Nom : </span> {{user.name}}</p>
-        <p><span class="attribut">Date de naissance : </span> {{user.birthdate|date('d-m-Y')}}</p>
-        <p><span class="attribut">Prénom : </span> {{user.firstname}}</p>
-        <p><span class="attribut">Adresse : </span> {{user.street}}</p>
-        <p><span class="attribut">Téléphone : </span>{{user.phone}}</p>
-        <p><span class="attribut">Code postal : </span> {{user.postalcode}}</p>
-        <p><span class="attribut">Email : </span> {{user.email}}</p>
-        <p><span class="attribut">Ville : </span> {{user.city}}</p>
+    <table class="sk-custom-table mb-5">
+        <tbody>
+        <tr>
+            <th>Nom</th>
+            <td>{{ user.name }}</td>
+        </tr>
+         <tr>
+            <th>Prénom</th>
+            <td>{{ user.firstname }}</td>
+        </tr>
+         <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+         <tr>
+            <th>Téléphone</th>
+            <td>{{ user.phone }}</td>
+        </tr>
+        <tr>
+            <th>Date de naissance</th>
+            <td>{{ user.birthdate|date('d-m-Y') }}</td>
+        </tr>
+        <tr>
+            <th>Adresse</th>
+            <td>{{ user.street }}</td>
+        </tr>
+        <tr>
+            <th>Code postal</th>
+            <td>{{ user.postalcode }}</td>
+        </tr>
+        <tr>
+            <th>Ville</th>
+            <td>{{ user.city }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div class="sk-divider-profil"></div>
+    <h2 class="titlesection">Mes favoris : </h2>
+
+    {% if user.getWatchlist().isEmpty() %}
+    <div class="carre mb-5">
+        <p class="text-center fw-bold">Votre watchlist est vide.</p>
     </div>
+    {% else %}
+        <table class="sk-custom-table mb-5">
+  <thead>
+    <tr>
+      <th scope="col">Nom</th>
+      <th scope="col">Description</th>
+      <th scope="col">Région</th>
+      <th scope="col">Année</th>
+      <th scope="col">Prix</th>
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for vin in user.getWatchlist() %}
+    <tr>
+      <td>{{ vin.nom }}</td>
+      <td>{{ vin.description }}</td>
+      <td>{{ vin.region }}</td>
+      <td>{{ vin.millesime }}</td>
+      <td>{{ vin.prix }} €</td>
+      <td class="text-center sk-trash"><a href="{{ path('app_profil_delete_watchlist', {slug: vin.slug })}}" title="Supprimer" data-toggle="tooltip"><i class="bi bi-trash"></i></a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+    {% endif %}
+
+
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mon profil gustatif : </h2>
@@ -50,4 +116,11 @@
 
 
 </div>
+
+{% block javascripts %} {{ parent()}}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 {% endblock %}
+
+{% endblock %}
+
+
