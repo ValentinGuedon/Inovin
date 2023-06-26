@@ -4,6 +4,7 @@ includes:
     - vendor/phpstan/phpstan-symfony/extension.neon
 
 parameters:
+    treatPhpDocTypesAsCertain: false
     excludePaths:
         - src/Security
         - src/DataFixtures
