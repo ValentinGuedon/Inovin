@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Faq;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -19,9 +20,10 @@ class FaqCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->disable(Action::NEW)
-        ;
+        ->reorder(Crud::PAGE_INDEX, [Action::EDIT, Action::DELETE])
+        ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
+
 
     public function configureFields(string $pageName): iterable
     {
@@ -32,6 +34,7 @@ class FaqCrudController extends AbstractCrudController
             TextField::new('question')
                 ->setSortable(false),
             TextField::new('answer')
+                ->setLabel('Réponse')
                 ->setSortable(false),
         ];
     }

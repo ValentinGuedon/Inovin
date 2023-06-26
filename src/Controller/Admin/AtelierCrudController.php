@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Atelier;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -21,9 +22,9 @@ class AtelierCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->disable(Action::NEW)
-        ;
+        ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
+
 
     public function configureFields(string $pageName): iterable
     {
@@ -33,9 +34,13 @@ class AtelierCrudController extends AbstractCrudController
                 ->hideOnIndex(),
             DateField::new('date'),
             TextField::new('place')
+            ->setLabel('Nombre de Places')
             ->setSortable(false),
             TextareaField::new('commentaire')
             ->setSortable(false),
+
+        // TextField::new('address'),
+        // TextField::new('horaire'),
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Blog;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -23,8 +24,7 @@ class BlogCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->disable(Action::NEW)
-        ;
+        ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
 
     public function configureFields(string $pageName): iterable
@@ -33,12 +33,14 @@ class BlogCrudController extends AbstractCrudController
             IdField::new('id')
             ->hideOnForm()
             ->hideOnIndex(),
-            TextField::new('title'),
+            TextField::new('title')
+            ->setLabel('Titre'),
             DateField::new('date')
             ->setFormat('dd/MM yyyy'),
             TextField::new('description')
                 ->setSortable(false),
             TextareaField::new('text')
+                ->setLabel('Article')
                 ->setSortable(false),
             ImageField::new('image')->setUploadDir('public/uploads/images/posters')
                 // setBasePath permet d'afficher les images dans l'index
