@@ -100,10 +100,6 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => 'phone',
                     'class' => 'type'
                 ],
-                // new Regex([
-                //     'pattern' => '/^[0-9]{10}$/',
-                //     'message' => 'Please enter a valid 10-digit phone number.',
-                // ]),
             ]);
     }
 
