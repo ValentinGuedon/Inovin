@@ -156,6 +156,10 @@ a {
     position: relative;
 }
 
+.liennavtoggle {
+    display: none !important;
+}
+
 .liennav:after {
     background: none repeat scroll 0 0 transparent;
     bottom: 0;

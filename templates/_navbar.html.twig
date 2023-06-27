@@ -2,7 +2,7 @@
 {% include "_popUpMessage.html.twig" %}
 <nav>
     <img class="img-logo" src="{{ asset('build/images/Logo.png') }}">
-    <ul class ="ulnavpad">
+    <ul class ="ulnavpad" id="navMenu">
         <li class="linav marginLinks"><a href="{{ path('app_home') }}" class="liennav">ACCUEIL</a></li>
         <li class="linav marginLinks"><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
         <li class="linav marginLinks"><a href="#" class="liennav">VINOTHÈQUE</a>
@@ -54,14 +54,7 @@
   <div class="bar3"></div>
 </div>
 
-<ul class="navMenu ulDisplayedToggle" id="navMenu">
-    <li><a href="index.html" style="color:black;">Home</a> </li>
-    <li><a href="skills.html" style="color:black;">Compétences</a> </li>
-    <li><a href="experiences.html" style="color:black;">Expériences</a> </li>
-    <li><a href="valeurs.html" style="color:black;">Valeurs</a> </li>
-    <li><a href="monProjet.html" style="color:black;">Projet</a> </li>
-    <li></li>
-</ul>
+
 
 
 
@@ -73,7 +66,7 @@
 <script>
 function myFunction(x) {
   x.classList.toggle("change");
-  document.getElementById("navMenu").classList.toggle("ulDisplayedToggle")
+  document.getElementById("navMenu").classList.toggle("liennavtoggle")
 }
 </script>
 
@@ -114,6 +107,27 @@ function myFunction(x) {
 
 
 {# NE PLUS UTILISER #}
+
+
+{# <ul class="navMenu ulDisplayedToggle" id="navMenu">
+    <li><a href="index.html" style="color:black;">Home</a> </li>
+    <li><a href="skills.html" style="color:black;">Compétences</a> </li>
+    <li><a href="experiences.html" style="color:black;">Expériences</a> </li>
+    <li><a href="valeurs.html" style="color:black;">Valeurs</a> </li>
+    <li><a href="monProjet.html" style="color:black;">Projet</a> </li>
+    <li></li>
+</ul> #}
+
+{# // document.getElementById("navMenu").classList.toggle("ulDisplayedToggle") #}
+
+
+
+
+{# Si tu mets liennavtoggle dans l'ul ça l'enlève, mais aussi quand c'est en grand #}
+
+
+
+
 
 
  {# <i class="fa fa-bars" id="burgerMenuIcon" onclick="onClickMenu()"></i> #}
