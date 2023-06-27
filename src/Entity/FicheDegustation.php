@@ -48,6 +48,9 @@ class FicheDegustation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $emotion = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $brillance = null;
+
 
     public function getId(): ?int
     {
@@ -183,6 +186,18 @@ class FicheDegustation
     public function setEmotion(?string $emotion): self
     {
         $this->emotion = $emotion;
+
+        return $this;
+    }
+
+    public function getBrillance(): ?int
+    {
+        return $this->brillance;
+    }
+
+    public function setBrillance(?int $brillance): static
+    {
+        $this->brillance = $brillance;
 
         return $this;
     }

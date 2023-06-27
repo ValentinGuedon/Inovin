@@ -168,6 +168,11 @@
     <div class="ss-titre">ÉVALUATION</div>
     {{ form_widget(form.note) }}
   </div>
+  <div class="brillance">
+  {{ form_widget(form.brillance)}}
+  <output></output>
+  {{form.brillance.vars.value}}
+  </div>
 <div class="form-submit">
     {{ form_widget(form.submit, { 'label': 'Valider' }) }}
 </div>
@@ -204,5 +209,13 @@ emotionImages.forEach((image) => {
     image.classList.add('active');
   });
 });
+    document.addEventListener("DOMContentLoaded", function() {
+        var brillanceInput = document.getElementById("brillance-field");
+        var brillanceValue = document.getElementById("brillance-value");
+
+        brillanceInput.addEventListener("input", function() {
+            brillanceValue.textContent = brillanceInput.value;
+        });
+    });
 </script>
   {% endblock %}

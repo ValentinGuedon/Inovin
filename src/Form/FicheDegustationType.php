@@ -82,6 +82,17 @@ class FicheDegustationType extends AbstractType
                 'class' => 'custom-range',
             ],
         ])
+        ->add('brillance', RangeType::class, [
+            'label' => 'Persistance',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range brillance',
+                'id' => 'brillance-field',
+                'oninput' => "this.nextElementSibling.value = this.value"
+            ],
+        ])
 
         ->add('fluidite', ChoiceType::class, [
             'choices' => [
@@ -173,8 +184,6 @@ class FicheDegustationType extends AbstractType
                     return ['class' => 'matiere-button'];
                 }
             ])
-
-
             ->add('matiere', ChoiceType::class, [
                 'choices' => [
                     'Massive' => 'massive',
