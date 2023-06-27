@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Atelier;
 use App\Entity\Profil;
-use DateTime;
 use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\FicheDegustation;
@@ -19,7 +18,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use  Symfony\Component\String\Slugger\SluggerInterface;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/atelier')]
@@ -33,21 +31,17 @@ class AtelierController extends AbstractController
         ]);
     }
 
-    #[Route('/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
+    #[Route('/{atelierSlug}/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
+    #[ParamConverter('atelier', class: Atelier::class, options: ['mapping' => ['atelierSlug' => 'slug']])]
     #[ParamConverter('user', class: User::class, options: ['mapping' => ['userSlug' => 'slug']])]
     #[ParamConverter('vin', class: Vin::class, options: ['mapping' => ['vinSlug' => 'slug']])]
     public function showFiche(
-        AtelierRepository $atelierRepository,
+        Atelier $atelier,
         User $user,
         Vin $vin,
         FicheDegustationRepository $ficheDegustationRepository,
-        VinRepository $vinRepository,
         Request $request,
     ): Response {
-        $atelier = $atelierRepository->findOneBy(['date' => new \DateTime('today')]);
-        if (!$atelier) {
-            throw $this->createNotFoundException('No atelier found for today.');
-        }
         $ficheDegustation = new FicheDegustation();
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
@@ -66,15 +60,11 @@ class AtelierController extends AbstractController
             $nextVin = $vinCollectionId[$nextVin + 1] ?? null;
 
             if ($nextVin !== null) {
-                $atelierSlug = $atelier->getSlug();
-                $userSlug = $user->getSlug();
-                $vinSlug = $vinRepository->find($nextVin)->getSlug();
-                if ($atelierSlug && $userSlug && $vinSlug) {
-                    return $this->redirectToRoute('fiche', [
-                        'userSlug' => $userSlug,
-                        'vinSlug' => $vinSlug,
-                    ]);
-                }
+                return $this->redirectToRoute('fiche', [
+                    'atelier' => $atelier->getId(),
+                    'user' => $user->getId(),
+                    'vin' => $nextVin,
+                ]);
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
                 $profil = $favoriteFiche->getvin()->getProfil();
@@ -85,7 +75,8 @@ class AtelierController extends AbstractController
                 ]);
             }
         }
-        return $this->render('fiche_degustation\ficheDegustation.html.twig', [
+        return $this->render('fiche_degustation/FicheDegustation.html.twig', [
+            'atelier' => $atelier,
             'user' => $user,
             'vin' => $vin,
             'form' => $form
