@@ -8,6 +8,10 @@ header {
     height: 30vh;
 }
 
+label {
+    color: #ffffff;
+}
+
 .titre-fiche {
     font-size: larger;
     color: var(--couleur-tierce);
@@ -34,13 +38,17 @@ header {
     transform: translate(-50%, -50%);
     padding-bottom: 0.5%;
     max-width: 150px;
+    margin-top: 20px;
 }
 
 .form-title {
     grid-column: 1/ span 3; /* titre occupe les 2 colonnes */
     text-align: center;
     margin-bottom: 2%;
-    margin-top: 2%;
+    margin-top: 4%;
+  }
+  .form-title.evaluation{
+    margin:40px 0 40px 0;
   }
 
 .cardcontainer {
@@ -68,13 +76,13 @@ header {
   .form-label{
     color: var(--couleur-claire);
     text-align: center;
-    margin-bottom: 20px;
+    margin: 20px 0 20px 0;
     font-weight: bold;
   }
 
 /* Oeil - Checkbox Couleur */
 
-.checkbox-container input[type="checkbox"],.checkbox-container input[type="radio"],.matiere-button input[type="radio"] {
+.checkbox-container input[type="checkbox"],.checkbox-container input[type="radio"],.matiere-button input[type="radio"],.aroma input[type="checkbox"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -86,7 +94,7 @@ header {
   border:solid 1px  var(--couleur-claire);
 }
 
-.checkbox-container input[type="checkbox"]:checked::before,.checkbox-container input[type="radio"]:checked::before,.matiere-button input[type="radio"]:checked::before {
+.checkbox-container input[type="checkbox"]:checked::before,.checkbox-container input[type="radio"]:checked::before,.matiere-button input[type="radio"]:checked::before,.aroma input[type="checkbox"]:checked::before {
   content: "";
   content: "\2713"; /* Code Unicode pour le symbole de coche */
   display: inline-block;
@@ -210,17 +218,19 @@ select:hover {
 .arome {
   color: var(--couleur-claire);
   margin-top: 4%;
-  left: 0;
   display: flex;
+  max-width: 15vw;
+  text-align: center;
+  cursor: pointer;
 }
 
 .aroma-container {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 186px);
     grid-gap: 10px;
     margin-left: 10%;
     margin-right: 10%;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
@@ -236,9 +246,21 @@ select:hover {
 .aroma {
     padding: 20px;
 }
-.eachArome-container{
-    display: grid;
-    grid-template-columns: 1;
+
+.aroma-choices{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.aromainput{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.aroma-choices:last-child{
+    margin-bottom: 20px;
 }
 .cta{
   margin-bottom: 10%;
@@ -280,6 +302,7 @@ li{
   grid-column-start: 1;
   grid-column-end: 4;
   align-items: center;
+  margin-top: 20px;
 
 }
 
@@ -291,7 +314,6 @@ li{
   gap: 40px;
 
 }
-
 
 .emotion-label.emotion-title-label input[type="checkbox"] {
   display: none;
@@ -306,14 +328,16 @@ li{
 
 }
 
-.img-emotion:hover {
+.img-emotion:hover , .img-emotion:checked{
   background-color: #e0115f;
   scale: 1.12;
 }
 
-.emotion-cta.selected {
-  background-color: #e0115f;
+.img-emotion.active{
+    background-color: #e0115f;
+    scale: 1.12;
 }
+
 
 .emotion-cta {
   display: none;
@@ -342,11 +366,15 @@ li{
   align-items: center;
   text-align: center;
 }
+.active {
+    background-color: #e0115f;
+    scale: 1.12;
+}
 
 
 /* Bouton submit */
 
-.submit {
+button[type="submit"] {
   padding: 20px;
   border-radius: 5px;
   font-weight: bold;
@@ -361,9 +389,17 @@ li{
 }
 
 .form-submit{
-  background-color: var(--couleur-claire);
+  background-color: var(--couleur-fonce);
   height: 20vh;
   display: grid;
 grid-column-start: 1;
 grid-column-end: 4;
+}
+
+.matiere-structure-container
+{
+    display: grid;
+    grid-template-columns: repeat(2,279px);
+    justify-content: center;
+    align-items: flex-start;
 }

@@ -5,6 +5,7 @@
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
+
 {% endblock %}
 
 {% block body %}
@@ -74,21 +75,24 @@
     </div>
 <div class="aroma-container">
         {% for category, choices in form.arome.vars.choices %}
-                <div class="eachArome-container">
+        <div class="aroma-choices">
                 <h3 class="cta arome">{{ category }}</h3>
                     <div class="aroma" style="display: none;">
                         {% for value, label in choices %}
+                        <div class='aromainput'>
                             {{ form_widget(form.arome[value]) }}
                             {{ form_label(form.arome[value]) }}
+                        </div>
                         {% endfor %}
                     </div>
-            </div>
+        </div>
         {% endfor %}
+</div>
 
 </div>
 </div>
 </div>
-</div>
+
 <div class="emotions-container emotions-row">
     <ul id="selected-aromas" class="selected-aromas"></ul>
 </div>
@@ -113,7 +117,7 @@
       </div>
     </div>
   </div>
-
+<div class="matiere-structure-container">
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -132,8 +136,24 @@
       </div>
     </div>
   </div>
-
-        {{ form_widget(form.matiere, {'attr':{'class':'matiere-button'}}) }}
+  <div class="form-column">
+    <div class="form-row">
+      <div class="form-group">
+        <div class="checkbox-container">
+          <p class="form-label">
+            {{ form_label(form.matiere, null, {'label_attr': {'class': 'fludity-checkbox'}}) }}
+          </p>
+          {% for choice in form.matiere %}
+            <label class="checkbox-label">
+              {{ form_widget(choice, {'attr': {'class': 'checkbox-custom ' ~ choice.vars.value}}) }}
+              <span class="checkbox-custom-indicator"></span>
+              {{ choice.vars.label }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="form-title">
@@ -152,7 +172,7 @@
   </div>
   {% endfor %}
 </div>
-  <div class="form-title">
+  <div class="form-title evaluation">
     <div class="ss-titre">ÉVALUATION</div>
     {{ form_widget(form.note) }}
   </div>
@@ -162,6 +182,8 @@
 {{ form_end(form) }}
   <a href="{{ path('app_fiche_degustation_index') }}">Retour</a>
 <script>
+
+// Script apparition arômes
     document.addEventListener('DOMContentLoaded', function() {
         var ctaElements = document.querySelectorAll('.arome');
         for (var i = 0; i < ctaElements.length; i++) {
@@ -171,11 +193,23 @@
         function toggleAroma() {
             var aroma = this.nextElementSibling;
             if (aroma.style.display === 'none') {
-                aroma.style.display = 'flex';
+                aroma.style.display = 'grid';
             } else {
                 aroma.style.display = 'none';
             }
         }
     });
+
+    // script émotion
+const emotionImages = document.querySelectorAll('.img-emotion');
+
+emotionImages.forEach((image) => {
+  image.addEventListener('click', () => {
+    emotionImages.forEach((img) => {
+      img.classList.remove('active');
+    });
+    image.classList.add('active');
+  });
+});
 </script>
   {% endblock %}
