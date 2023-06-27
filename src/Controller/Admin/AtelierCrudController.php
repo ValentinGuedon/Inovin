@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -33,14 +34,14 @@ class AtelierCrudController extends AbstractCrudController
                 ->hideOnForm()
                 ->hideOnIndex(),
             DateField::new('date'),
-            TextField::new('place')
+            IntegerField::new('place')
             ->setLabel('Nombre de Places')
             ->setSortable(false),
             TextareaField::new('commentaire')
             ->setSortable(false),
 
-        // TextField::new('address'),
-        // TextField::new('horaire'),
+        TextField::new('address'),
+        TextField::new('horaire'),
         ];
     }
 }

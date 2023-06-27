@@ -12,7 +12,6 @@
 body {
     font-family: var(--font);
     background-color: var(--couleur-fonce);
-   
 }
 
 header {
@@ -21,28 +20,100 @@ header {
     height: 50vh;
 }
 
-.img-logo{
-    position:absolute;
-    left:0;
-    margin-left: 4%;
+.img-logo {
+    //     position: absolute;
+    //     left: 0;
+    //     margin-left: 4%;
+    // width: 10%;
+    width: 100px;
+    height: 100px;
 }
 
-nav ul .linav{
+
+
+
+
+
+
+// C'est la gestion du bouton burger DE ICI
+
+.burgerBars {
+    display: none;
+    cursor: pointer;
+}
+
+.bar1,
+.bar2,
+.bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.ulDisplayedToggle {
+    display: none;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .burgerBars {
+        display: inline-block !important;
+    }
+
+    body {
+        background-color: green;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.ulnavpad {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ulnavpad li {
+    padding: 0;
+}
+
+nav ul .linav {
     list-style: none;
-    padding: 3%;
+    // padding: 3%;
 }
 
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+// .ul {}
 
 .listederoulante {
     display: none;
@@ -55,6 +126,15 @@ nav ul li:hover .listederoulante {
 a {
     color: var(--couleur-claire);
     text-decoration: none;
+}
+
+.marginLinks {
+    margin-top: 2.5vh;
+    margin-right: 2.5vw;
+}
+
+.marginpanier {
+    margin-top: 1.7vh;
 }
 
 .listederoulante {
@@ -72,7 +152,7 @@ a {
     letter-spacing: 0.15em;
 
     display: inline-block;
-    padding: 5px 10px;
+    // padding: 5px 10px;
     position: relative;
 }
 
@@ -243,11 +323,11 @@ a {
 }
 
 /* Alarm form contact mail */
-.sk-success{
+.sk-success {
     color: var(--couleur-claire);
     background-color: var(--couleur-tierce);
     width: 30%;
-    height:5vh;
+    height: 5vh;
     margin: auto;
     position: fixed;
     top: 25%;
@@ -258,11 +338,11 @@ a {
     align-items: center;
 }
 
-.sk-error{
+.sk-error {
     color: var(--couleur-claire);
     background-color: red;
     width: 30%;
-    height:5vh;
+    height: 5vh;
     margin: auto;
     position: fixed;
     top: 25%;
