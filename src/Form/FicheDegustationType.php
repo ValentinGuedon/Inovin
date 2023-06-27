@@ -6,10 +6,12 @@ use App\Entity\FicheDegustation;
 use App\Entity\Vin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FicheDegustationType extends AbstractType
 {
@@ -60,6 +62,25 @@ class FicheDegustationType extends AbstractType
             },
             'required' => true,
             'expanded' => true,
+        ])
+
+        ->add('limpidite', RangeType::class, [
+            'label' => 'Limpidité',
+            'attr' => [
+                'min' => 1,
+                'max' => 4,
+                'value' => 1,
+                'class' => 'custom-range',
+            ],
+        ])
+        ->add('persistance', RangeType::class, [
+            'label' => 'Persistance',
+            'attr' => [
+                'min' => 1,
+                'max' => 4,
+                'value' => 1,
+                'class' => 'custom-range',
+            ],
         ])
 
         ->add('fluidite', ChoiceType::class, [
@@ -148,6 +169,9 @@ class FicheDegustationType extends AbstractType
                 ],
                 'required' => true,
                 'expanded' => true,
+                'choice_attr' => function ($choice) {
+                    return ['class' => 'matiere-button'];
+                }
             ])
 
 
@@ -172,6 +196,9 @@ class FicheDegustationType extends AbstractType
                 ],
                 'required' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'matiere-button'
+                ]
             ])
 
             ->add('note', ChoiceType::class, [
@@ -189,6 +216,10 @@ class FicheDegustationType extends AbstractType
                     '10/10' => 10,
                 ],
                 'required' => true,
+            ])
+
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider',
             ]);
     }
 

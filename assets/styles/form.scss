@@ -65,7 +65,7 @@ header {
 
 /* Oeil - Checkbox Couleur */
 
-.checkbox-container input[type="checkbox"] {
+.checkbox-container input[type="checkbox"],.checkbox-container input[type="radio"],.matiere-button input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -77,7 +77,7 @@ header {
   border:solid 1px  var(--couleur-claire);
 }
 
-.checkbox-container input[type="checkbox"]:checked::before {
+.checkbox-container input[type="checkbox"]:checked::before,.checkbox-container input[type="radio"]:checked::before,.matiere-button input[type="radio"]:checked::before {
   content: "";
   content: "\2713"; /* Code Unicode pour le symbole de coche */
   display: inline-block;
@@ -106,31 +106,30 @@ header {
   scale: 1.12;
 }
 /* Personnalisation des couleurs pour chaque checkbox */
-.checkbox-container .checkbox-custom.framboise {
+.checkbox-framboise {
   background-color: #9e0e40;
 }
 
-.checkbox-container .checkbox-custom.cerise {
+.checkbox-cerise {
   background-color: #a41247;
 }
 
-.checkbox-container .checkbox-custom.rubis {
+.checkbox-rubis {
   background-color: #e0115f;
 }
 
-.checkbox-container .checkbox-custom.pourpre {
+.checkbox-pourpre {
   background-color: #9e0e40;
 }
 
-.checkbox-container .checkbox-custom.violet {
+.checkbox-violet {
   background-color: #6c344f;
 }
 
-.checkbox-container .checkbox-custom.grenat {
+.checkbox-grenat {
   background-color: #6e0b14;
 }
-
-.checkbox-container .checkbox-custom.tuilé {
+ .checkbox-tuilé {
   background-color: #a24d3f;
 }
 
@@ -243,7 +242,7 @@ li{
   list-style: none;
   color:var(--couleur-claire);
   padding: 3%;
-} 
+}
 
 /* Emotion */
 
@@ -252,7 +251,7 @@ li{
   grid-column-start: 1;
   grid-column-end: 4;
   align-items: center;
- 
+
 }
 
 .emotions-row {
@@ -260,9 +259,10 @@ li{
   flex-wrap: nowrap;
   margin: auto;
   justify-content: center;
-  gap: 40px; 
- 
+  gap: 40px;
+
 }
+
 
 .emotion-label.emotion-title-label input[type="checkbox"] {
   display: none;
@@ -274,7 +274,7 @@ li{
   border-radius: 50%;
   box-shadow: 2px 2px 4px #000000;
   margin-bottom: 20px;
- 
+
 }
 
 .img-emotion:hover {
@@ -300,7 +300,7 @@ li{
 .emotion-label-text {
   text-align: center;
   color: var(--couleur-claire);
-  margin-top: 5px; 
+  margin-top: 5px;
 }
 
 .emotion-cta:checked + .img-emotion {

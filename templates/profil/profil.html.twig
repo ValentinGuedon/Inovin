@@ -14,7 +14,7 @@
     <div class="sk-atelier">
         {% if atelier is not empty %}
             <h2>Accéder à l'atelier de dégustation</h2>
-            <a class="sk-cta-atelier" href="{{ path('fiche',{'atelierSlug':atelier.slug,'userSlug':user.slug,'vinSlug':vin.slug})}}">Let's Go</a>
+            <a class="sk-cta-atelier" href="{{ path('fiche',{'userSlug':user.slug,'vinSlug':vin.slug})}}">Let's Go</a>
         {% endif %}
     </div>
 

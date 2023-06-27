@@ -13,7 +13,6 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Faq|null findOneBy(array $criteria, array $orderBy = null)
  * @method Faq[]    findAll()
  * @method Faq[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @SuppressWarnings("PHPMD")
  */
 class FaqRepository extends ServiceEntityRepository
 {

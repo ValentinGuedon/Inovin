@@ -25,9 +25,6 @@ class FicheDegustation
     private ?array $arome = null;
 
     #[ORM\Column]
-    private ?int $alcool = null;
-
-    #[ORM\Column]
     private ?string $fluidite = null;
 
     #[ORM\Column]
@@ -51,17 +48,6 @@ class FicheDegustation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $emotion = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $douceur = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $acidite = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $brillance = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $intensite = null;
 
     public function getId(): ?int
     {
@@ -100,18 +86,6 @@ class FicheDegustation
     public function setArome(array $arome): self
     {
         $this->arome = $arome;
-
-        return $this;
-    }
-
-    public function getAlcool(): ?int
-    {
-        return $this->alcool;
-    }
-
-    public function setAlcool(int $alcool): self
-    {
-        $this->alcool = $alcool;
 
         return $this;
     }
@@ -209,54 +183,6 @@ class FicheDegustation
     public function setEmotion(?string $emotion): self
     {
         $this->emotion = $emotion;
-
-        return $this;
-    }
-
-    public function getDouceur(): ?int
-    {
-        return $this->douceur;
-    }
-
-    public function setDouceur(?int $douceur): self
-    {
-        $this->douceur = $douceur;
-
-        return $this;
-    }
-
-    public function getAcidite(): ?int
-    {
-        return $this->acidite;
-    }
-
-    public function setAcidite(?int $acidite): self
-    {
-        $this->acidite = $acidite;
-
-        return $this;
-    }
-
-    public function getBrillance(): ?int
-    {
-        return $this->brillance;
-    }
-
-    public function setBrillance(?int $brillance): self
-    {
-        $this->brillance = $brillance;
-
-        return $this;
-    }
-
-    public function getIntensite(): ?int
-    {
-        return $this->intensite;
-    }
-
-    public function setIntensite(?int $intensite): self
-    {
-        $this->intensite = $intensite;
 
         return $this;
     }

@@ -24,7 +24,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    /** @SuppressWarnings("PHPMD")*/
     #[Route('/profil', name: 'app_user_index', methods: ['GET'])]
     public function showProfil(Security $security, AtelierRepository $atelierRepository): Response
     {

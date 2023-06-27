@@ -13,7 +13,6 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Profil|null findOneBy(array $criteria, array $orderBy = null)
  * @method Profil[]    findAll()
  * @method Profil[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @SuppressWarnings("PHPMD")
  */
 class ProfilRepository extends ServiceEntityRepository
 {
