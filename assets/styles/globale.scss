@@ -72,10 +72,16 @@ header {
 
     .burgerBars {
         display: inline-block !important;
+        margin-top: 1vh;
+        margin-right: 1vh;
     }
 
     body {
         background-color: green;
+    }
+
+    .liennavtoggle {
+        display: none !important;
     }
 }
 
@@ -154,10 +160,6 @@ a {
     display: inline-block;
     // padding: 5px 10px;
     position: relative;
-}
-
-.liennavtoggle {
-    display: none !important;
 }
 
 .liennav:after {
