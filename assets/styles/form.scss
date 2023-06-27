@@ -12,6 +12,9 @@ label {
     color: #ffffff;
 }
 
+.page {
+    margin: 0 10% 0 10%;
+}
 .titre-fiche {
     font-size: larger;
     color: var(--couleur-tierce);
@@ -32,7 +35,7 @@ label {
 .ss-titre {
     color: var(--couleur-claire);
     border-bottom: solid 1px var(--couleur-claire);
-    text-align: center;
+    text-align: left;
     position: relative;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -75,9 +78,12 @@ label {
 
   .form-label{
     color: var(--couleur-claire);
-    text-align: center;
     margin: 20px 0 20px 0;
     font-weight: bold;
+  }
+
+  .form-label.middle {
+    text-align: center;
   }
 
 /* Oeil - Checkbox Couleur */
@@ -222,6 +228,7 @@ select:hover {
   max-width: 15vw;
   text-align: center;
   cursor: pointer;
+  justify-content: center;
 }
 
 .aroma-container {
@@ -396,10 +403,15 @@ grid-column-start: 1;
 grid-column-end: 4;
 }
 
+.form-submit:hover{
+    scale: 1.2;
+}
+
 .matiere-structure-container
 {
     display: grid;
     grid-template-columns: repeat(2,279px);
     justify-content: center;
     align-items: flex-start;
+    margin: 20px 0px 20px 0px;
 }

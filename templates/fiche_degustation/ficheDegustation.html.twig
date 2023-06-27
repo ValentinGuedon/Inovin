@@ -9,6 +9,8 @@
 {% endblock %}
 
 {% block body %}
+
+<div class="page">
 {{ form_start(form) }}
 <div class="ss-titre">L'OEIL</div>
 <div class="cardcontainer">
@@ -34,7 +36,7 @@
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
-        <p class="form-label">{{ form_label(form.limpidite)}}</p>
+        <p class="form-label middle">{{ form_label(form.limpidite)}}</p>
         <div class="vertical-range">
                 {{ form_widget(form.limpidite, {'attr': {'class': 'custom-range'}}) }}
           <div class="labels">
@@ -67,12 +69,10 @@
     </div>
   </div>
 </div>
-
-{# <div class="cardcontainer full"> #}
-  <div class="form-title">
-    <div class="ss-titre">LE NEZ</div>
-        <p class="arome-label">Arômes</p>
-    </div>
+<div class="form-title">
+<div class="ss-titre">LE NEZ</div>
+    <p class="arome-label">Arômes</p>
+</div>
 <div class="aroma-container">
         {% for category, choices in form.arome.vars.choices %}
         <div class="aroma-choices">
@@ -88,36 +88,13 @@
         </div>
         {% endfor %}
 </div>
-
-</div>
-</div>
-</div>
-
 <div class="emotions-container emotions-row">
     <ul id="selected-aromas" class="selected-aromas"></ul>
 </div>
-</div
-<div class="cardcontainer full">
 <div class="form-title">
 <div class="ss-titre">LA BOUCHE</div>
 </div>
-  <div class="form-column">
-    <div class="form-row">
-      <div class="form-group">
-        <p class="form-label">{{ form_label(form.persistance)}}</p>
-        <div class="vertical-range">
-                {{ form_widget(form.persistance, {'attr': {'class': 'custom-range'}}) }}
-          <div class="labels">
-            <span class="label">Durable</span>
-            <span class="label">Longue</span>
-            <span class="label">Moyenne</span>
-            <span class="label">Courte</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-<div class="matiere-structure-container">
+<div class="cardcontainer">
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -132,6 +109,22 @@
               {{ choice.vars.label }}
             </label>
           {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+    <div class="form-column">
+    <div class="form-row">
+      <div class="form-group">
+        <p class="form-label middle">{{ form_label(form.persistance)}}</p>
+        <div class="vertical-range">
+                {{ form_widget(form.persistance, {'attr': {'class': 'custom-range'}}) }}
+          <div class="labels">
+            <span class="label">Durable</span>
+            <span class="label">Longue</span>
+            <span class="label">Moyenne</span>
+            <span class="label">Courte</span>
+          </div>
         </div>
       </div>
     </div>
@@ -155,7 +148,6 @@
     </div>
   </div>
 </div>
-
 <div class="form-title">
   <div class="ss-titre">LES ÉMOTIONS</div>
 </div>
@@ -181,6 +173,7 @@
 </div>
 {{ form_end(form) }}
   <a href="{{ path('app_fiche_degustation_index') }}">Retour</a>
+</div>
 <script>
 
 // Script apparition arômes
