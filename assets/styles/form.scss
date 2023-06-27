@@ -1,7 +1,11 @@
+body{
+    width: 100vw;
+}
 
 header {
     background-image: url(/assets/images/wave.svg);
     background-size: cover;
+    height: 30vh;
 }
 
 .titre-fiche {
@@ -43,6 +47,10 @@ header {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 10px;
+    margin: 5%;
+}
+.cardcontainer.full {
+    grid-template-columns: 1fr;
 }
 
   .form-column {
@@ -60,7 +68,8 @@ header {
   .form-label{
     color: var(--couleur-claire);
     text-align: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
+    font-weight: bold;
   }
 
 /* Oeil - Checkbox Couleur */
@@ -201,16 +210,36 @@ select:hover {
 .arome {
   color: var(--couleur-claire);
   margin-top: 4%;
-  position: absolute;
   left: 0;
-}
-.arome-label{
-  color: var(--couleur-claire);
-  position: absolute;
-  left: 0;
-  margin-left: 15%;
+  display: flex;
 }
 
+.aroma-container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .aroma-flex{
+    display: flex;
+  }
+
+.arome-label{
+  color: var(--couleur-claire);
+  font-weight: bold;
+  margin: 30px 0px 30px 0px;
+}
+.aroma {
+    padding: 20px;
+}
+.eachArome-container{
+    display: grid;
+    grid-template-columns: 1;
+}
 .cta{
   margin-bottom: 10%;
   padding: 10px 55px;

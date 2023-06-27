@@ -30,7 +30,6 @@
       </div>
     </div>
   </div>
-
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -47,7 +46,6 @@
       </div>
     </div>
   </div>
-
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -67,31 +65,35 @@
       </div>
     </div>
   </div>
+</div>
 
+{# <div class="cardcontainer full"> #}
   <div class="form-title">
     <div class="ss-titre">LE NEZ</div>
-    <p class="arome-label">Arômes</p>
-  </div>
-  <div class="form-column">
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-{% for category, choices in form.arome.vars.choices %}
-    <h3 class="cta arome">{{ category }}</h3>
-    <div class="aroma" style="display: none;">
-        {% for value, label in choices %}
-            {{ form_widget(form.arome[value]) }}
-            {{ form_label(form.arome[value]) }}
-        {% endfor %}
+        <p class="arome-label">Arômes</p>
     </div>
-{% endfor %}
+<div class="aroma-container">
+        {% for category, choices in form.arome.vars.choices %}
+                <div class="eachArome-container">
+                <h3 class="cta arome">{{ category }}</h3>
+                    <div class="aroma" style="display: none;">
+                        {% for value, label in choices %}
+                            {{ form_widget(form.arome[value]) }}
+                            {{ form_label(form.arome[value]) }}
+                        {% endfor %}
+                    </div>
             </div>
-        </div>
-    </div>
+        {% endfor %}
+
+</div>
+</div>
+</div>
+</div>
 <div class="emotions-container emotions-row">
     <ul id="selected-aromas" class="selected-aromas"></ul>
 </div>
-
+</div
+<div class="cardcontainer full">
 <div class="form-title">
 <div class="ss-titre">LA BOUCHE</div>
 </div>
@@ -132,11 +134,7 @@
   </div>
 
         {{ form_widget(form.matiere, {'attr':{'class':'matiere-button'}}) }}
-
-
-  </div>
 </div>
-
 
 <div class="form-title">
   <div class="ss-titre">LES ÉMOTIONS</div>
@@ -173,7 +171,7 @@
         function toggleAroma() {
             var aroma = this.nextElementSibling;
             if (aroma.style.display === 'none') {
-                aroma.style.display = 'block';
+                aroma.style.display = 'flex';
             } else {
                 aroma.style.display = 'none';
             }
