@@ -7,7 +7,9 @@ header {
     background-size: cover;
     height: 30vh;
 }
-
+form {
+    width:70vw
+}
 label {
     color: #ffffff;
 }
@@ -56,14 +58,16 @@ label {
 
 .cardcontainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr minmax(0, 1fr); 
     grid-gap: 10px;
     margin: 5%;
 }
 .cardcontainer.full {
     grid-template-columns: 1fr;
 }
-
+.cardcontainer:nth-child(2){
+    align-self: flex-end;
+}
   .form-column {
     flex: 0 0 48%;
     margin-bottom: 20px;
@@ -75,6 +79,15 @@ label {
     justify-content: space-around;
     margin-bottom: 10px;
   }
+  .horizontal-row ,.range-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+
 
   .form-label{
     color: var(--couleur-claire);
@@ -185,8 +198,46 @@ label {
     flex-direction: column;
     align-items: center;
     margin-top: 150px;
+
   }
 
+  .horizontal-range {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+  }
+
+  .horizontal-range input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width:70vw;
+    height: 10px;
+    background-color: #ffffff;
+    outline: none;
+    border-radius: 50px;
+    writing-mode: sideways-lr;
+    grid-row: 2
+  }
+
+  .horizontal-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 30px;
+    background-color:  var(--couleur-tierce);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .horizontal-range output {
+    align-self: flex-end;
+}
+
+.horizontal-range label {
+    align-self: flex-start;
+}
   .labels{
     display: flex;
     flex-direction: column;
@@ -202,6 +253,9 @@ label {
   }
 
 
+output {
+    color: #ffffff;
+  }
 /* Le nez - arome */
 select {
   width: 130px;
@@ -414,4 +468,10 @@ grid-column-end: 4;
     justify-content: center;
     align-items: flex-start;
     margin: 20px 0px 20px 0px;
+}
+
+
+// Fourre-tout
+.flex-start {
+    align-self: flex-start;
 }

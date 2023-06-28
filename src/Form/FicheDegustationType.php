@@ -83,14 +83,58 @@ class FicheDegustationType extends AbstractType
             ],
         ])
         ->add('brillance', RangeType::class, [
-            'label' => 'Persistance',
+            'label' => 'Brillance',
             'attr' => [
                 'min' => 1,
                 'max' => 10,
                 'value' => 1,
                 'class' => 'horizontal-range brillance',
                 'id' => 'brillance-field',
-                'oninput' => "this.nextElementSibling.value = this.value"
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('acidite', RangeType::class, [
+            'label' => 'Acidité',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range acidite',
+                'id' => 'acidite-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('ressentiAlcool', RangeType::class, [
+            'label' => 'Ressenti d\'alcool',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range ressentiAlcool',
+                'id' => 'ressentiAlcool-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('douceur', RangeType::class, [
+            'label' => 'Douceur',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range douceur',
+                'id' => 'douceur-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('intensite', RangeType::class, [
+            'label' => 'Intensité',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range intensite',
+                'id' => 'intensite-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
             ],
         ])
 

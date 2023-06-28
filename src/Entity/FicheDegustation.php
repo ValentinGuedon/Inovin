@@ -51,6 +51,18 @@ class FicheDegustation
     #[ORM\Column(nullable: true)]
     private ?int $brillance = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $douceur = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $acidite = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $ressentiAlcool = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $intensite = null;
+
 
     public function getId(): ?int
     {
@@ -198,6 +210,54 @@ class FicheDegustation
     public function setBrillance(?int $brillance): static
     {
         $this->brillance = $brillance;
+
+        return $this;
+    }
+
+    public function getDouceur(): ?int
+    {
+        return $this->douceur;
+    }
+
+    public function setDouceur(?int $douceur): static
+    {
+        $this->douceur = $douceur;
+
+        return $this;
+    }
+
+    public function getAcidite(): ?int
+    {
+        return $this->acidite;
+    }
+
+    public function setAcidite(?int $acidite): static
+    {
+        $this->acidite = $acidite;
+
+        return $this;
+    }
+
+    public function getRessentiAlcool(): ?int
+    {
+        return $this->ressentiAlcool;
+    }
+
+    public function setRessentiAlcool(?int $ressentiAlcool): static
+    {
+        $this->ressentiAlcool = $ressentiAlcool;
+
+        return $this;
+    }
+
+    public function getIntensite(): ?int
+    {
+        return $this->intensite;
+    }
+
+    public function setIntensite(?int $intensite): static
+    {
+        $this->intensite = $intensite;
 
         return $this;
     }

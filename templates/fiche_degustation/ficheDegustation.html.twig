@@ -69,6 +69,18 @@
     </div>
   </div>
 </div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.brillance) }}
+        </div>
+        <output>{{ form.brillance.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.brillance) }}
+    </div>
+</div>
+
 <div class="form-title">
 <div class="ss-titre">LE NEZ</div>
     <p class="arome-label">Arômes</p>
@@ -91,8 +103,52 @@
 <div class="emotions-container emotions-row">
     <ul id="selected-aromas" class="selected-aromas"></ul>
 </div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.intensite) }}
+        </div>
+        <output>{{ form.intensite.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.intensite) }}
+    </div>
+</div>
 <div class="form-title">
 <div class="ss-titre">LA BOUCHE</div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.douceur) }}
+        </div>
+        <output>{{ form.douceur.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.douceur) }}
+    </div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.ressentiAlcool) }}
+        </div>
+        <output>{{ form.ressentiAlcool.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.ressentiAlcool) }}
+    </div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.acidite) }}
+        </div>
+        <output>{{ form.acidite.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.acidite) }}
+    </div>
 </div>
 <div class="cardcontainer">
   <div class="form-column">
@@ -168,11 +224,6 @@
     <div class="ss-titre">ÉVALUATION</div>
     {{ form_widget(form.note) }}
   </div>
-  <div class="brillance">
-  {{ form_widget(form.brillance)}}
-  <output></output>
-  {{form.brillance.vars.value}}
-  </div>
 <div class="form-submit">
     {{ form_widget(form.submit, { 'label': 'Valider' }) }}
 </div>
@@ -209,13 +260,13 @@ emotionImages.forEach((image) => {
     image.classList.add('active');
   });
 });
-    document.addEventListener("DOMContentLoaded", function() {
+    {# document.addEventListener("DOMContentLoaded", function() {
         var brillanceInput = document.getElementById("brillance-field");
         var brillanceValue = document.getElementById("brillance-value");
 
         brillanceInput.addEventListener("input", function() {
             brillanceValue.textContent = brillanceInput.value;
         });
-    });
+    }); #}
 </script>
   {% endblock %}
