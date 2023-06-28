@@ -29,17 +29,32 @@ TL1
 TL1.play();
 
 
-// Display and close modal contact
-const contactButton = document.querySelector("#contactModal");
+// Display and close modal contact mail in home/index.html.twig
+const contactButtons = document.querySelectorAll(".contactModal");
 
-contactButton.addEventListener('click', () => {
-    let contactModal = document.querySelector("#content-modal");
-    contactModal.style.display = "block";
-})
+contactButtons.forEach((contactButton) => {
+    contactButton.addEventListener('click', () => {
+        let contactModal = document.querySelector("#content-modal");
+        contactModal.style.display = "block";
+    });
+});
 
 const contactClose = document.querySelector('#contactclose')
 
 contactClose.addEventListener('click', () => {
     let contactModal = document.querySelector("#content-modal");
     contactModal.style.display = "none";
-})
+});
+
+
+// close automatically alert message contact mail in home/index.html.twig
+const alertElements = document.querySelectorAll('.sk-success, .sk-error');
+
+function closeAlert() {
+    alertElements.forEach(element => {
+        element.style.display = 'none';
+    });
+}
+
+// Choose a time limit (5000 milliseconds)
+setTimeout(closeAlert, 5000);
