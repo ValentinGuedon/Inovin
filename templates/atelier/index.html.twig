@@ -10,6 +10,8 @@
             <tr>
                 <th>Id</th>
                 <th>Place</th>
+                <th>Horaire</th>
+                <th>Adresse</th>
                 <th>Date</th>
                 <th>Vin</th>
                 <th>Participants</th>
@@ -22,6 +24,8 @@
                 <td>{{ atelier.id }}</td>
                 <td>{{ atelier.place }}</td>
                 <td>{{ atelier.date ? atelier.date|date('Y-m-d') : '' }}</td>
+                <td>{{ atelier.address}}</td>
+                <td>{{ atelier.horaire }}</td>
                 {% for eachvin in atelier.vin %}
                 <td>{{eachvin.nom}}</td>
                 {% endfor %}

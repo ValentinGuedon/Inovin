@@ -7,13 +7,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\AnimationsRepository;
 
 #[Route('/panier', name: 'panier_')]
 class CartController extends AbstractController
 {
     #[Route('/', name: 'index')]
-    public function index(SessionInterface $session, VinRepository $vinRepository): Response
-    {
+    public function index(
+        SessionInterface $session,
+        VinRepository $vinRepository,
+        AnimationsRepository $animationRepository
+    ): Response {
         // Récupère le panier ou le créer
         $panier = $session->get('panier', []);
 
@@ -21,7 +25,7 @@ class CartController extends AbstractController
         $panierWithData = [];
         foreach ($panier as $id => $quantity) {
             $panierWithData[] = [
-                'product' => $vinRepository->find($id),
+                'product' => $animationRepository->find($id),
                 'quantity' => $quantity
             ];
         }

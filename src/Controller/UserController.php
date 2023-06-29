@@ -2,16 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Vin;
 use App\Entity\User;
-use App\Entity\Atelier;
 use App\Form\UserType;
-use App\Repository\AtelierRepository;
+use App\Entity\Atelier;
+use App\Repository\VinRepository;
 use App\Repository\UserRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\AtelierRepository;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -24,6 +26,27 @@ class UserController extends AbstractController
         ]);
     }
 
+    // Cal to remove vin in watchlist in user profil
+    #[Route('/profil/{slug}', name: 'app_profil_delete_watchlist', methods: ['GET'])]
+    public function removeWatchlist(
+        string $slug,
+        UserRepository $userRepository,
+        VinRepository $vinRepository
+    ): Response {
+        $user = $this->getUser();
+        $vin = $vinRepository->findOneBy(['slug' => $slug]);
+
+        if (!$vin) {
+            throw $this->createNotFoundException('Vin non trouvé.');
+        }
+
+        $user->removeWatchlist($vin);
+        $userRepository->save($user, true);
+
+        return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    /** @SuppressWarnings("PHPMD")*/
     #[Route('/profil', name: 'app_user_index', methods: ['GET'])]
     public function showProfil(Security $security, AtelierRepository $atelierRepository): Response
     {

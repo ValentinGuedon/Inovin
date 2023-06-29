@@ -58,3 +58,31 @@ function closeAlert() {
 
 // Choose a time limit (5000 milliseconds)
 setTimeout(closeAlert, 5000);
+
+
+// Add to watchlist user
+const watchlists = document.querySelectorAll(".watchlist");
+
+watchlists.forEach((watchlist) => {
+    watchlist.addEventListener("click", addToWatchlist);
+
+    function addToWatchlist(e) {
+        e.preventDefault();
+
+        const watchlistLink = e.currentTarget;
+        const link = watchlistLink.href;
+
+        try {
+            fetch(link)
+                .then(res => res.json())
+                .then(data => {
+                    const watchlistIcon = watchlistLink.querySelector(".bi");
+                    watchlistIcon.classList.toggle("bi-heart-fill", data.isInWatchlist);
+                    watchlistIcon.classList.toggle("bi-heart", !data.isInWatchlist);
+                });
+
+        } catch(err) {
+            //console.error(err);
+        }
+    }
+});

@@ -42,7 +42,8 @@ class BlogCrudController extends AbstractCrudController
             TextareaField::new('text')
                 ->setLabel('Article')
                 ->setSortable(false),
-            ImageField::new('image')->setUploadDir('public/uploads/images/posters')
+            ImageField::new('image')
+                ->setUploadDir('public/uploads/images/posters')
                 // setBasePath permet d'afficher les images dans l'index
                 ->setBasePath('uploads/images/posters')
                 ->setSortable(false),

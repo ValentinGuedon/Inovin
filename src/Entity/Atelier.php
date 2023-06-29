@@ -29,11 +29,18 @@ class Atelier
     #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'ateliers')]
     private Collection $vin;
 
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $slug = 'atelier';
+    #[ORM\Column(length: 255)]
+    private ?string $address = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $horaire = null;
+
+    #[ORM\ManyToOne(inversedBy: 'ateliers')]
+    private ?Animations $animations = null;
 
     public function __construct()
     {
@@ -137,14 +144,38 @@ class Atelier
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getAddress(): ?string
     {
-        return $this->slug;
+        return $this->address;
     }
 
-    public function setSlug(?string $slug): static
+    public function setAddress(?string $address): self
     {
-        $this->slug = $slug;
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getHoraire(): ?string
+    {
+        return $this->horaire;
+    }
+
+    public function setHoraire(?string $horaire): self
+    {
+        $this->horaire = $horaire;
+
+        return $this;
+    }
+
+    public function getAnimations(): ?Animations
+    {
+        return $this->animations;
+    }
+
+    public function setAnimations(?Animations $animations): static
+    {
+        $this->animations = $animations;
 
         return $this;
     }

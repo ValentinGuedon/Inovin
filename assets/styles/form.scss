@@ -48,7 +48,8 @@ label {
 }
 
 .form-title {
-    grid-column: 1/ span 3; /* titre occupe les 2 colonnes */
+    grid-column: 1/ span 3;
+    /* titre occupe les 2 colonnes */
     text-align: center;
     margin-bottom: 2%;
     margin-top: 4%;
@@ -72,9 +73,9 @@ label {
   .form-column {
     flex: 0 0 48%;
     margin-bottom: 20px;
-  }
+}
 
-  .form-row {
+.form-row {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -90,7 +91,7 @@ label {
 
 
 
-  .form-label{
+.form-label {
     color: var(--couleur-claire);
     margin: 20px 0 20px 0;
     font-weight: bold;
@@ -127,21 +128,22 @@ label {
 }
 
 .checkbox-container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .checkbox-label {
-  display: flex;
-  align-items: center;
-  color: var(--couleur-claire);
-  margin-bottom: 20px;
-  margin-bottom: 20%;
+    display: flex;
+    align-items: center;
+    color: var(--couleur-claire);
+    margin-bottom: 20px;
+    margin-bottom: 20%;
 }
 
 .checkbox-container input:hover {
-  scale: 1.12;
+    scale: 1.12;
 }
+
 /* Personnalisation des couleurs pour chaque checkbox */
 .checkbox-framboise {
   background-color: #9e0e40;
@@ -181,20 +183,20 @@ label {
     border-radius: 50px;
     writing-mode: sideways-lr;
     transform: rotate(-90deg);
-  }
+}
 
-  .custom-range::-webkit-slider-thumb {
+.custom-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 8px;
     height: 30px;
-    background-color:  var(--couleur-tierce);
+    background-color: var(--couleur-tierce);
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s;
-  }
+}
 
-  .vertical-range {
+.vertical-range {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -247,12 +249,12 @@ label {
     justify-content: flex-start;
     margin-top: -140px;
     margin-left: 97px;
-  }
+}
 
-  .label{
+.label {
     color: var(--couleur-claire);
     padding: 25px;
-  }
+}
 
 
 output {
@@ -260,21 +262,21 @@ output {
   }
 /* Le nez - arome */
 select {
-  width: 130px;
-  height: 35px;
-  color: var(--couleur-claire);
-  background-color: var(--couleur-tierce);
-  border-radius: 40px;
-  border: none;
-  box-shadow: 2px 2px 4px #000000;
-  margin-left: 10%;
-  margin-right: 10%;
-  text-align: center;
+    width: 130px;
+    height: 35px;
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    border-radius: 40px;
+    border: none;
+    box-shadow: 2px 2px 4px #000000;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
 }
 
 select:hover {
-  background-color: #e0115f;
-  scale: 1.12;
+    background-color: #e0115f;
+    scale: 1.12;
 }
 
 .arome {
@@ -331,16 +333,16 @@ select:hover {
   box-shadow: 2px 2px 4px #000000;
 }
 
-.cta-container{
-  margin-top: 20%;
+.cta-container {
+    margin-top: 20%;
 }
 
-.cta:hover{
-  scale: 1.12;
+.cta:hover {
+    scale: 1.12;
 }
 
-.cta.selected{
-  background-color: #e0115f;
+.cta.selected {
+    background-color: #e0115f;
 }
 
 /* A garder pour trouver une solution : problème de <li> non personnalisable sans personnaliser l'ensemble des <li> du site */
@@ -365,7 +367,6 @@ li{
   grid-column-start: 1;
   grid-column-end: 4;
   align-items: center;
-  margin-top: 20px;
 
 }
 
@@ -379,7 +380,7 @@ li{
 }
 
 .emotion-label.emotion-title-label input[type="checkbox"] {
-  display: none;
+    display: none;
 }
 
 .img-emotion {
@@ -403,14 +404,14 @@ li{
 
 
 .emotion-cta {
-  display: none;
+    display: none;
 }
 
 .emotion-custom-indicator {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
 }
 
 .emotion-label-text {
@@ -419,15 +420,15 @@ li{
   margin-top: 5px;
 }
 
-.emotion-cta:checked + .img-emotion {
-  background-color: #e0115f;
+.emotion-cta:checked+.img-emotion {
+    background-color: #e0115f;
 }
 
 .emotion-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 .active {
     background-color: #e0115f;
