@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -146,6 +145,7 @@ class Animations
     public function setSlug($slug)
     {
         $this->slug = $slug;
+    }
 
     /**
      * @return Collection<int, Atelier>
