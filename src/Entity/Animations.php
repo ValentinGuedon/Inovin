@@ -136,15 +136,17 @@ class Animations
         return $this->posterFile;
     }
 
-    public function getSlug()
+    public function getSlug(): ?string
     {
         return $this->slug;
     }
 
 
-    public function setSlug($slug)
+    public function setSlug(string $slug): ?string
     {
         $this->slug = $slug;
+
+        return $this;
     }
 
     /**
