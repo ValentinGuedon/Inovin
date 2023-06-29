@@ -69,6 +69,19 @@
     background-color: var(--couleur-tierce);
 }
 
+.sk-button-search{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
+    border-radius: 70px;
+    padding: 1% 3%;
+    border: none;
+
+    &:hover{
+        background: #e0115f;
+        text-decoration: none;
+    }
+}
+
 /* Card */
 .sk-cardbody{
     background-color: var(--couleur-claire);
@@ -98,15 +111,4 @@
 
 .text-bg-sk-badges{
     background-color:var(--couleur-tierce);
-}
-
-
-/* KNP Paginator*/
-.paginator{
-    margin-top: 5%;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    color: white;
 }

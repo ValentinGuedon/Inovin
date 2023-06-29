@@ -39,6 +39,7 @@ class VinRepository extends ServiceEntityRepository
         }
     }
 
+    // récupère les notes moyennes pour chaque vin
     public function averageNotesByVin(): array
     {
         $queryBuilder = $this->createQueryBuilder('v')
@@ -50,28 +51,48 @@ class VinRepository extends ServiceEntityRepository
         return $queryBuilder->getResult();
     }
 
-//    /**
-//     * @return Vin[] Returns an array of Vin objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('v.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    // récupère la couleur pour chaque vin
+    public function getCouleurChoices(): array
+    {
+        $queryBuilder = $this->createQueryBuilder('v')
+            ->select('v.couleur')
+            ->distinct(true)
+            ->orderBy('v.couleur', 'ASC');
+            $results = $queryBuilder->getQuery()->getResult();
 
-//    public function findOneBySomeField($value): ?Vin
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $choices = [];
+        foreach ($results as $result) {
+            $choices[$result['couleur']] = $result['couleur'];
+        }
+
+        return $choices;
+    }
+
+    public function search(array $fields): array
+    {
+
+        $queryBuilder = $this->createQueryBuilder('v');
+
+        if ($fields['nom']) {
+            $queryBuilder->andwhere('v.nom LIKE :nom')
+            ->setParameter('nom', '%' . $fields['nom'] . '%')
+            ->orderBy('v.nom', 'ASC');
+        }
+
+        if ($fields['millesime']) {
+            $queryBuilder->andwhere('v.millesime LIKE :millesime')
+            ->setParameter('millesime', '%' . $fields['millesime'] . '%');
+        }
+
+        if ($fields['couleur']) {
+            $queryBuilder->andwhere('v.couleur LIKE :couleur')
+            ->setParameter('couleur', '%' . $fields['couleur'] . '%');
+        }
+
+        if ($queryBuilder) {
+            return $queryBuilder->getQuery()->getResult();
+        }
+
+        return $this->findAll();
+    }
 }
