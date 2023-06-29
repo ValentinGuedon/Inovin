@@ -4,13 +4,18 @@ namespace App\Controller;
 
 use App\Entity\Vin;
 use App\Entity\Note;
+use App\Form\SearchVinType;
 use App\Service\CartShopService;
 use App\Repository\VinRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/shop', name: 'shop_')]
@@ -19,10 +24,25 @@ class ShopController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET', 'POST'])]
     public function index(VinRepository $vinRepository, Request $request): Response
     {
-        $articles = $vinRepository->findAll();
+        $form = $this->createForm(SearchVinType::class);
+        $form->handleRequest($request);
         $notes = $vinRepository->AverageNotesByVin();
+        $articles = $vinRepository->findAll();
 
-        return $this->render('shop/index.html.twig', ['articles' => $articles, 'notes' => $notes]);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $field = [ 'nom' => $form->getData()['search'],
+            'millesime' => $form->getData()['date'],
+            'couleur' => $form->getData()['couleur']];
+
+            $articles = $vinRepository->search($field);
+
+            if (count($articles) === 0) {
+                $this->addFlash('sk-alert', 'Pas d\'articles pour vos critères de recherche.');
+                $articles = $vinRepository->findAll();
+            }
+        }
+
+        return $this->render('shop/index.html.twig', ['articles' => $articles, 'notes' => $notes, 'form' => $form]);
     }
 
     #[Route('/add/{id}/{quantity}', name: 'add', methods: ['GET', 'POST'])]
@@ -36,7 +56,6 @@ class ShopController extends AbstractController
     #[Route('/{slug}/watchlist', name: 'watchlist', methods: ['GET', 'POST'])]
     public function addToWatchlist(Vin $vin, UserRepository $userRepository): Response
     {
-
         /** @var \App\Entity\User */
         $user = $this->getUser();
         if ($user->isInWatchlist($vin)) {
