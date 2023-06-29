@@ -88,7 +88,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\JoinTable(name:'watchlist')]
     private Collection $watchlist;
 
-    #[ORM\OneToMany(mappedBy: 'User', targetEntity: Note::class, cascade:['persist'])]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class, cascade:['persist'])]
     private Collection $notes;
 
 
