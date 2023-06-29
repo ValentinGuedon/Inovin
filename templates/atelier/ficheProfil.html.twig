@@ -7,8 +7,21 @@
         <h1 class='titreFiche animate blur'>Vous êtes {{ profil.name }}</h1>
         <p class="animate blur description">{{ profil.description }}</p>
         <div class=></div>
-        <a href="{{ path('app_vin_index') }}" class='grid-end'>
-            Je<br> crée<br> mon <br>vin
-        <img src={{ asset('build/images/Wine-Glass-alone.png') }} class='wineglass-shape'></a>
-    </div>
+        <div class='grid-end'>
+        Je<br> crée<br> mon <br>vin
+        <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()">
+        </div>
+
+
+<script>
+function expandGlass() {
+  var glass = document.querySelector('.wineglass-shape');
+  glass.classList.add('expanded');
+
+  setTimeout(function() {
+    window.location.href = "{{ path('app_vin_index') }}";
+  }, 500);
+}
+
+    </script>
 {% endblock %}

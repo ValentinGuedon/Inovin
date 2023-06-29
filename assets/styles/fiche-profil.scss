@@ -28,12 +28,9 @@ overflow: visible;
     height: 8vh;
     justify-self: end;
     cursor: pointer;
-
-}
-.wineglass-shape {
     position: relative;
     animation: jumpAnimation 2s infinite;
-  }
+}
 
   @keyframes jumpAnimation {
     0% {
@@ -53,64 +50,69 @@ overflow: visible;
     }
   }
 
+
+.wineglass-shape.expanded {
+transform: scale(10);
+transition: 0.3s ease-in-out}
+
+
 .grid-end {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+display: flex;
+justify-content: flex-end;
+align-items: center;
 }
 
 
-    .animate.pop {
-        animation-duration: 0.5s;
-        animation-name: animate-pop;
-      }
-
-      .animate.pop2{
-        animation-duration: 0.5s;
-        animation-name: animate-pop2;
-      }
-
-    @keyframes animate-pop {
-        0% {
-          opacity: 0;
-          transform: scale(0.5, 0.5);
-        }
-
-        100% {
-          opacity: 1;
-          transform: scale(1, 1);
-        }
-      }
-
-      @keyframes animate-pop2 {
-        0% {
-          opacity: 0;
-          transform: scale(1.5, 1.5);
-        }
-
-        100% {
-          opacity: 1;
-          transform: scale(1, 1);
-        }
-      }
-
-    .animate.blur {
-        animation-duration: 4s;
-        animation-name: animate-blur;
+.animate.pop {
+    animation-duration: 0.5s;
+    animation-name: animate-pop;
     }
 
+    .animate.pop2{
+    animation-duration: 0.5s;
+    animation-name: animate-pop2;
+    }
 
-    @keyframes animate-blur {
-        0% {
-          opacity: 0;
+@keyframes animate-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
 
-        }
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    }
 
-        100% {
-          opacity: 1;
-        }
-      }
+    @keyframes animate-pop2 {
+    0% {
+        opacity: 0;
+        transform: scale(1.5, 1.5);
+    }
 
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+    }
+
+.animate.blur {
+    animation-duration: 4s;
+    animation-name: animate-blur;
+}
+
+
+@keyframes animate-blur {
+    0% {
+        opacity: 0;
+
+    }
+
+    100% {
+        opacity: 1;
+    }
+    }
 
 
 @media only screen and (max-width: 600px) {
@@ -128,4 +130,10 @@ h1 {
 .wineglass-shape {
     gap: 40px;
 }
+}
+
+@media only screen and (min-width: 900px) {
+    .fiche-grid{
+        padding: 50px;
+    }
 }
