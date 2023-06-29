@@ -11,8 +11,10 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 #[ORM\Entity(repositoryClass: VinRepository::class)]
+#[UniqueEntity('nom', message: 'ce nom existe déjà')]
 #[Vich\Uploadable]
 class Vin
 {

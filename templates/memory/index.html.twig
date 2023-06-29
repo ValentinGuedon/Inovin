@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Memory {% endblock title %}
+
+
+{% block body %}
+
+  <div class="containermemory game-board">
+      <h1 class="h1memory">Memory des étiquettes de vins</h1>
+
+    <section class="score-panel">
+      <ul class="stars">
+        <li>
+          <i class="rating fa fa-star-o"></i>
+        </li>
+        <li>
+          <i class="rating fa fa-star-o"></i>
+        </li>
+        <li>
+          <i class="rating fa fa-star-o"></i>
+        </li>
+      </ul>
+
+      <span class="timer">
+        <span class="timer-minutes">00</span>
+        <span>:</span>
+        <span class="timer-seconds">00</span>
+      </span>
+
+      <div>
+        <span class="moves">0</span> Mouvements
+      </div>
+
+      <div class="restart">
+        <i class="fa fa-repeat"></i>
+      </div>
+    </section>
+
+    <ul class="deck">
+    </ul>
+  </div>
+
+  <div class="container win-dialog">
+    <section>
+      <div>
+        <i class="win-icon fa fa-check-circle-o"></i>
+        <h1 class="win-banner">Tu as gagné !</h1>
+        <p class="win-summary">Tu as gagné en
+          <span class="win-minutes">00</span> minutes,
+          <span class="win-seconds">00</span> seconds, utilisé
+          <span class="win-moves">00</span> mouvements, pour
+          <span class="win-stars">0</span> étoiles !
+        </p>
+        <span class="win-button">
+         Rejouer !
+        </span>
+      </div>
+    </section>
+  </div>
+
+
+  {% endblock %}
+
+  {% block javascripts %} {{ parent()}} <script src="dist/bundle-app.js"></script>{% endblock %}
