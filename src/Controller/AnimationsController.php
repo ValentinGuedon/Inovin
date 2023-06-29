@@ -34,7 +34,7 @@ class AnimationsController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $slug = $slugger->slug($animation->getName());
+            $slug = $slugger->slug($animation->getNom());
             $animation->setSlug($slug);
             $animationRepository->save($animation, true);
 
@@ -50,9 +50,9 @@ class AnimationsController extends AbstractController
     #[Route('/{slug}', name: 'app_animation_show', methods: ['GET'])]
     public function show(Animations $animation): Response
     {
-        if (!$animation) {
-            throw $this->createNotFoundException('Atelier non trouvé');
-        }
+        //if (!$animation) {
+           // throw $this->createNotFoundException('Atelier non trouvé');
+        //}
 
         return $this->render('animations/show.html.twig', [
         'animation' => $animation,

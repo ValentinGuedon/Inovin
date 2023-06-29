@@ -146,7 +146,7 @@ class Animations
     {
         $this->slug = $slug;
 
-        return $this;
+        return $this->slug;
     }
 
     /**
