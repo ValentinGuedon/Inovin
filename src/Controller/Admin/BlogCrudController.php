@@ -27,7 +27,7 @@ class BlogCrudController extends AbstractCrudController
             TextField::new('title'),
             TextField::new('description'),
             DateField::new('date'),
-            TextareaField::new('text'),
+            TextEditorField::new('text'),
             ImageField::new('image')->setUploadDir('public/uploads/images/posters'),
             // ImageField::new('posterFile')->setUploadDir('public/uploads/images/posters'),
         ];
