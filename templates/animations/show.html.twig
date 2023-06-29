@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Atelier{% endblock %}
+{% block title %}Atelier{% endblock %}
 
 {% block body %}
 <h2 class="nomanimation">{{ animation.name }}</h2>
@@ -24,18 +24,32 @@
                     <option value="4">25/09/2023</option>
                 </select><br>
                 <label for="adults">Nombres de personnes</label>
+
                 <div class="showcta">
-                    <select id="nbPersonnes" name="nbPersonnes" required>
-                        <option disabled selected value="">--</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                  <div class="nombrepersonne">
+                    <form action="{{path ('add', {'id': animation.id})}}" method="post">
+                        <label for="date">Réserver un atelier : </label>
+                        <select id="date" name="date" required>
+                          <option disabled selected value="">Sélectionner</option>
+                          {% for atelier in animation.ateliers %}
+                              <option value="{{ atelier.id }}">{{ atelier.address }} - {{ atelier.horaire }}</option>
+                          {% endfor %}
+                      </select><br>
+                    </div>
+                    <div class="nombrepersonne">
+                        <label for="adults">Nombre de personnes :</label>
+                            <select id="nbPersonnes" name="nbPersonnes" required>
+                                <option disabled selected value="">Sélectionner</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                   </div>
+                        <button class="cta" type="submit">Je réserve mon atelier</button>
+                    </form>
                 </div>
-                <button class="showcta" type="submit">Ajouter au panier</button>
             </div>
+        </div>
     </div>
-    </div>
-  </div> 
 {% endblock %}
