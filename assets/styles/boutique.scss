@@ -1,10 +1,4 @@
-.sk-title{
-    margin-top: 10%;
-    color: white;
-    text-align: center;
-}
-
-// Global
+/* Global position */
 .sk-container{
     width: 70%;
     margin-top:2%;
@@ -12,7 +6,12 @@
     margin-right: auto;
 }
 
-//alert
+.sk-rubrique{
+    color: var(--couleur-claire);
+    border-bottom: 1px solid var(--couleur-tierce);
+}
+
+/* alert */
 .alert-sk-alert{
     background-color: var(--couleur-tierce);
     margin-bottom: 10%;
@@ -23,17 +22,27 @@
     background-color: var(--couleur-claire);
     border-radius:10px;
 }
-.sk-picture-carousell{
-    width: 400px;
+
+.sk-caroussel-body{
+    height: 450px;
 }
-.sk-detail{
-    color: var(--couleur-claire);
+
+.sk-caroussel-picture{
+    height: 100%; 
+    width: 300px; 
+    object-fit: cover; 
+    margin-left: 100px;
 }
+
+.sk-note{
+    margin-left: 100px;
+}
+
 
 .sk-button-caroussel{
     background-color: var(--couleur-tierce);
     color: var(--couleur-claire);
-    width: 300px;
+    width: 250px;
     border-radius: 70px;
     padding: 3% 10%;
     margin-bottom: 2%;
@@ -45,20 +54,12 @@
     text-decoration: none;
 }
 
-.sk-quantite-caroussel{
-    color: var(--couleur-claire);
-    width: 50%;
-    border-radius: 70px;
-    padding: 3% 10%;
-    border: none;
-}
-
 .sk-button-slide:hover{
     background-color: initial;
     color: var(--couleur-tierce);
 }
 
-// divider
+/* divider */
 .sk-divider {
     width: 80%;
     margin-top: 2%;
@@ -68,35 +69,17 @@
     background-color: var(--couleur-tierce);
 }
 
-//Card
-.sk-card{
-    background-color: var(--couleur-claire);
-    height: 60vh;
-    width: 40vh;
-    transition: transform 0.5s ease;
-}
-
+/* Card */
 .sk-cardbody{
-    width: 30vh;
+    background-color: var(--couleur-claire);
 }
 
-
-.sk-card-title{
-   color: black;
-}
-
-.sk-picture-shop{
-    width: 150px;
+.sk-picture-shop {
     transition: transform 0.5s ease;
-}
-
-.sk-picture-shop:hover{
-    transform: scale(1.2);
-}
-
-.sk-form{
-    margin-top: 50px;
-    width: 110%;
+  
+    &:hover {
+      transform: scale(1.2);
+    }
 }
 
 .sk-button{
@@ -106,23 +89,19 @@
     margin-left: 0;
     padding: 3% 10%;
     border: none;
+
+    &:hover{
+        background: #e0115f;
+        text-decoration: none;
+    }
 }
 
-.sk-button:hover {
-    background: #e0115f;
-    text-decoration: none;
+.text-bg-sk-badges{
+    background-color:var(--couleur-tierce);
 }
 
-.sk-quantity{
-    margin-top: 2%;
-}
 
-.sk-quantity input {
-    width: 50px;
-    height: 30px;
-    font-size: 14px;
-}
-
+/* KNP Paginator*/
 .paginator{
     margin-top: 5%;
     font-size: 1.2em;
