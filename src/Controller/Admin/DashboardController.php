@@ -38,8 +38,6 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($url);
     }
 
-
-
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -47,13 +45,10 @@ class DashboardController extends AbstractDashboardController
             ;
     }
 
-    // public function configureActions(User $user): Actions
-    // {
-    //     // faut mettre ici pour enlever le delete/edit
-    // }
-
     public function configureMenuItems(): iterable
     {
+        yield MenuItem::linkToUrl('Dashboard', 'fa fa-home', '/');
+
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
         yield MenuItem::subMenu('FAQ', 'fas fa-question')->setSubItems([
@@ -73,7 +68,6 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::subMenu('Vin', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
-            // MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_DETAIL),
             MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
         ]);
 
@@ -85,8 +79,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
         ]);
-
-
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }
