@@ -15,8 +15,9 @@
             <li class="linav marginLinks"><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
             <li class="linav marginLinks"><a href="#" class="liennav">VINOTHÈQUE</a>
                 <ul class="listederoulante">
+                    <li><a href="{{ path('app_lexique') }}" class="liennav">Lexique</a></li>
                     <li><a href="#" class="liennav">Le quizz</a></li>
-                    <li><a href="#" class="liennav">Lexique</a></li>
+                     <li><a href="{{ path('app_memory') }}" class="liennav">Memory</a></li>
                     <li><a href="#" class="liennav">La carte des vins</a></li>
                     <li><a href="{{ path('app_blog_visiteur') }}" class="liennav">Blog</a></li>
                     <li><a href="{{ path('app_faq_visiteur') }}" class="liennav">FAQ</a></li>
@@ -47,21 +48,7 @@
                 </div>
             </li>
         </ul>
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
 
 <script>
 function myFunction(x) {
@@ -69,82 +56,5 @@ function myFunction(x) {
   document.getElementById("navMenu").classList.toggle("liennavtoggle")
 }
 </script>
-
 </nav>
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{# NE PLUS UTILISER #}
-
-
-{# <ul class="navMenu ulDisplayedToggle" id="navMenu">
-    <li><a href="index.html" style="color:black;">Home</a> </li>
-    <li><a href="skills.html" style="color:black;">Compétences</a> </li>
-    <li><a href="experiences.html" style="color:black;">Expériences</a> </li>
-    <li><a href="valeurs.html" style="color:black;">Valeurs</a> </li>
-    <li><a href="monProjet.html" style="color:black;">Projet</a> </li>
-    <li></li>
-</ul> #}
-
-{# // document.getElementById("navMenu").classList.toggle("ulDisplayedToggle") #}
-
-
-
-
-{# Si tu mets liennavtoggle dans l'ul ça l'enlève, mais aussi quand c'est en grand #}
-
-
-
-
-
-
- {# <i class="fa fa-bars" id="burgerMenuIcon" onclick="onClickMenu()"></i> #}
-            {# <ul class="navMenu ulDisplayedOrNot" id="navMenu">
-                <li><a href="index.html" style="color:black;">Home</a> </li>
-                <li><a href="skills.html" style="color:black;">Compétences</a> </li>
-                <li><a href="experiences.html" style="color:black;">Expériences</a> </li>
-                <li><a href="valeurs.html" style="color:black;">Valeurs</a> </li>
-                <li><a href="monProjet.html" style="color:black;">Projet</a> </li>
-                <li></li>
-            </ul> #}
-
-{# <script>
-function onClickMenu() {
-    document.getElementById("navMenu").classList.toggle("ulDisplayedOrNot");
-}
-</script> #}
-
-
-{# ICI NON PLUS #}
