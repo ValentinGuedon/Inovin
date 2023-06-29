@@ -1,5 +1,5 @@
 .img-profil {
-    width: 30vw;
+    width: 60vw;
     -webkit-mask:url(https://i.ibb.co/mBrmH0k/Mf15d.png) center/contain no-repeat;
     mask: url(https://i.ibb.co/mBrmH0k/Mf15d.png) center/contain no-repeat;
 transition: all 0.3s ease-in-out;
@@ -18,12 +18,46 @@ overflow: visible;
     gap: 100px 20px;
     max-width: 800px;
     margin: 0 auto;
+    padding: 30px;
     justify-content: center;
 }
 
 .wineglass-shape {
     background-size: cover;
-    background-position: center;}
+    background-position: center;
+    height: 8vh;
+    justify-self: end;
+    cursor: pointer;
+
+}
+.wineglass-shape {
+    position: relative;
+    animation: jumpAnimation 2s infinite;
+  }
+
+  @keyframes jumpAnimation {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-20px) rotate(-5deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+    75% {
+      transform: translateY(-20px) rotate(-5deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+
+.grid-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
 
 
     .animate.pop {
@@ -76,3 +110,22 @@ overflow: visible;
           opacity: 1;
         }
       }
+
+
+
+@media only screen and (max-width: 600px) {
+h1 {
+    font-size: 1em;
+}
+.fiche-grid {
+    grid-template-columns: repeat(1,1fr);
+    place-items: center;
+    gap: 20px;
+}
+.img-profil{
+    width: 50vw;
+}
+.wineglass-shape {
+    gap: 40px;
+}
+}
