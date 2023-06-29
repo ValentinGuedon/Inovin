@@ -80,9 +80,9 @@ watchlists.forEach((watchlist) => {
                     watchlistIcon.classList.toggle("bi-heart-fill", data.isInWatchlist);
                     watchlistIcon.classList.toggle("bi-heart", !data.isInWatchlist);
                 });
+
         } catch(err) {
             //console.error(err);
         }
     }
 });
-      

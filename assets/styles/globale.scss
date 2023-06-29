@@ -17,31 +17,152 @@ body {
 header {
     background-image: url(/assets/images/wave.svg);
     background-size: cover;
-    height: 50vh;
+    height: 70vh;
 }
 
 .img-logo {
-    position: absolute;
-    left: 0;
+    //     position: absolute;
+    //     left: 0;
+    //     margin-left: 4%;
+    // width: 10%;
+    width: 100%;
+    height: auto;
 }
 
-/* NavBar*/
-nav ul li {
+.divlogonav {
+    width: 20%;
+    min-width: 150px;
+    max-width: 200px;
+}
+
+
+
+
+
+// C'est la gestion du bouton burger DE ICI
+.bar1,
+.bar2,
+.bar3 {
+    display: none;
+}
+
+.change .bar1 {
+    transform: translate(0, 11px) rotate(-45deg);
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: translate(0, -11px) rotate(45deg);
+}
+
+.ulDisplayedToggle {
+    display: none;
+}
+
+.burgerBars {
+    display: inline-flex !important;
+    flex-direction: row;
+    margin-top: 1.5vh;
+    // align-items: center;
+    // margin-top: 2.5vh;
+    // margin-right: 3vh;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .burgerzz {
+        cursor: pointer;
+        margin-top: 5vh;
+    }
+
+    .burgerBars {
+        display: inline-flex !important;
+        flex-direction: column;
+        align-items: end;
+        margin-top: -2vh;
+        margin-right: 3vh;
+    }
+
+    #navMenu {
+        display: flex;
+        align-items: end;
+    }
+
+    .ulnavburger {
+        display: flex;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    .liennavtoggle {
+        display: none !important;
+    }
+
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: #333;
+        margin: 6px 0;
+        transition: 0.4s;
+        display: block !important;
+    }
+
+    .marginLinks {
+        margin-right: 0 !important;
+        margin-bottom: 1vh;
+        margin-top: 1vh !important;
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+.ulnavburger {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+}
+
+.ulnavburger li {
+    padding: 0;
+}
+
+
+
+
+
+
+
+
+
+.ulnavpad {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.ulnavpad li {
+    padding: 0;
+}
+
+nav ul .linav {
     list-style: none;
-    padding: 3%;
+    // padding: 3%;
 }
 
 nav {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
-ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
+// .ul {}
 
 .listederoulante {
     display: none;
@@ -56,12 +177,25 @@ a {
     text-decoration: none;
 }
 
+.marginLinks {
+    margin-top: 2.5vh;
+    margin-right: 2.5vw;
+}
+
+.marginpanier {
+    margin-top: 1.7vh;
+}
+
 .listederoulante {
     position: absolute;
     background-color: var(--couleur-claire);
     text-decoration: none;
     min-width: 10%;
     z-index: 1;
+}
+
+.listederoulante li {
+    margin-top: 1.2vh;
 }
 
 .liennav {
@@ -71,7 +205,7 @@ a {
     letter-spacing: 0.15em;
 
     display: inline-block;
-    padding: 5px 10px;
+    // padding: 5px 10px;
     position: relative;
 }
 
@@ -81,7 +215,6 @@ a {
     content: "";
     display: block;
     height: 2px;
-
     position: absolute;
     background: #e0115f;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
@@ -105,10 +238,12 @@ a {
     border-color: var(--couleur-fonce);
     background-color: var(--couleur-claire);
     color: var(--couleur-fonce);
-    padding: 10% 167%;
+    padding: 10px 50px;
     /* Important for vertical align on mobile phones */
     margin: 0;
     /* Important for vertical align on mobile phones */
+    margin-left: 2.5vw;
+    margin-top: -3vh;
 }
 
 /* ajoute le fond rouge quand tu hover */
@@ -243,11 +378,11 @@ a {
 }
 
 /* Alarm form contact mail */
-.sk-success{
+.sk-success {
     color: var(--couleur-claire);
     background-color: var(--couleur-tierce);
     width: 30%;
-    height:5vh;
+    height: 5vh;
     margin: auto;
     position: fixed;
     top: 25%;
@@ -258,11 +393,11 @@ a {
     align-items: center;
 }
 
-.sk-error{
+.sk-error {
     color: var(--couleur-claire);
     background-color: red;
     width: 30%;
-    height:5vh;
+    height: 5vh;
     margin: auto;
     position: fixed;
     top: 25%;

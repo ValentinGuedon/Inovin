@@ -17,6 +17,8 @@ class AtelierType extends AbstractType
         $builder
             ->add('place')
             ->add('date')
+            ->add('horaire')
+            ->add('address')
             ->add('commentaire')
             ->add('vin', null, ['choice_label' => function (Vin $vin) {
                 return $vin->getNom() . ' ' . $vin->getEmoji();

@@ -63,7 +63,6 @@ class FicheDegustation
     #[ORM\Column(nullable: true)]
     private ?int $intensite = null;
 
-
     public function getId(): ?int
     {
         return $this->id;

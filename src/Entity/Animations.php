@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
+
 use DateTime;
 use Doctrine\DBAL\Types\Types;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\AnimationsRepository;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -20,10 +23,10 @@ class Animations
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $nom = null;
 
     #[ORM\Column]
-    private ?int $price = null;
+    private ?int $prix = null;
 
     #[ORM\Column(length: 2000)]
     private ?string $resume = null;
@@ -35,6 +38,7 @@ class Animations
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
     #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
     private ?File $posterFile = null;
@@ -45,31 +49,39 @@ class Animations
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
 
+    #[ORM\OneToMany(mappedBy: 'animations', targetEntity: Atelier::class)]
+    private Collection $ateliers;
+
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getNom(): ?string
     {
-        return $this->name;
+        return $this->nom;
     }
 
-    public function setName(string $name): self
+    public function setNom(string $nom): self
     {
-        $this->name = $name;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrix(): ?int
     {
-        return $this->price;
+        return $this->prix;
     }
 
-    public function setPrice(int $price): self
+    public function setPrix(int $prix): self
     {
-        $this->price = $price;
+        $this->prix = $prix;
 
         return $this;
     }
@@ -110,6 +122,7 @@ class Animations
         return $this;
     }
 
+
     public function setPosterFile(File $poster = null): Animations
     {
         $this->posterFile = $poster;
@@ -133,6 +146,33 @@ class Animations
     public function setSlug($slug)
     {
         $this->slug = $slug;
+
+    /**
+     * @return Collection<int, Atelier>
+     */
+    public function getAteliers(): Collection
+    {
+        return $this->ateliers;
+    }
+
+    public function addAtelier(Atelier $atelier): static
+    {
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->setAnimations($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            // set the owning side to null (unless already changed)
+            if ($atelier->getAnimations() === $this) {
+                $atelier->setAnimations(null);
+            }
+        }
 
         return $this;
     }
