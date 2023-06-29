@@ -2,25 +2,26 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Faq;
+use App\Entity\Atelier;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class FaqCrudController extends AbstractCrudController
+class AtelierCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Faq::class;
+        return Atelier::class;
     }
 
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->reorder(Crud::PAGE_INDEX, [Action::EDIT, Action::DELETE])
         ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
 
@@ -29,13 +30,17 @@ class FaqCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')
-            ->hideOnForm()
-            ->hideOnIndex(),
-            TextField::new('question')
-                ->setSortable(false),
-            TextField::new('answer')
-                ->setLabel('Réponse')
-                ->setSortable(false),
+                ->hideOnForm()
+                ->hideOnIndex(),
+            DateField::new('date'),
+            TextField::new('place')
+            ->setLabel('Nombre de Places')
+            ->setSortable(false),
+            TextareaField::new('commentaire')
+            ->setSortable(false),
+
+        // TextField::new('address'),
+        // TextField::new('horaire'),
         ];
     }
 }
