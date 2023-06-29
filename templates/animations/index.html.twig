@@ -8,9 +8,9 @@
         {% for animation in animations %}
             <div class="grid-item1">
                 <div class="atelier">
-                    <h2 class="soustitre">{{ animation.name }}</h2>
+                    <h2 class="soustitre">{{ animation.nom }}</h2>
                     <img src="{{ asset(animation.image) }}" class="img">
-                    <p class="resume">{{ animation.resume }}</p>
+                    <p class="resume">{{ animation.description }}</p>
                     <form action="{{ path('app_animation_show', {'id': animation.id}) }}" method="get">
                         <input type="hidden" name="id" value="{{ animation.id }}">
                         <button class="cta" type="submit">Découvrir</button>

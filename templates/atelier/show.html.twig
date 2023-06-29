@@ -16,6 +16,14 @@
                 <td>{{ atelier.place }}</td>
             </tr>
             <tr>
+                <th>Horaire</th>
+                <td>{{ atelier. horaire}}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ atelier. address}}</td>
+            </tr>
+            <tr>
                 <th>Date</th>
                 <td>{{ atelier.date ? atelier.date|date('Y-m-d') : '' }}</td>
             </tr>
@@ -38,3 +46,4 @@
 
     {{ include('atelier/_delete_form.html.twig') }}
 {% endblock %}
+

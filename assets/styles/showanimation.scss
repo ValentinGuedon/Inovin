@@ -1,6 +1,7 @@
 .nomanimation{
     margin-left: 10%;
     color: var(--couleur-claire);
+    text-transform : uppercase;
 }
 
 .showatelier {
@@ -13,6 +14,7 @@
 
   .img{
     margin-right: 700px;
+   
   }
 
   .phototxtcta {
@@ -43,20 +45,8 @@
     color: var(--couleur-claire);
     margin-top: 3%;
   }
-  
-  .showcta {
-    color: var(--couleur-claire);
-    background: var(--couleur-tierce);
-    text-align: center;
-    border-radius: 70px;
-    margin-top: 3%;
-    padding: 1% 10%;
-    text-decoration: none;
-    border: none;
 
-  }
-  
-  .showcta:hover {
-    background: #e0115f;
-    text-decoration: none;
-  }
+.nombrepersonne{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}

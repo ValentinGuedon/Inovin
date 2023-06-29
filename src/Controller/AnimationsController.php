@@ -6,6 +6,8 @@ use App\Repository\AnimationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
+use App\Service\CartShopService;
 
 #[Route('/animations')]
 class AnimationsController extends AbstractController
@@ -30,5 +32,14 @@ class AnimationsController extends AbstractController
         return $this->render('animations/show.html.twig', [
         'animation' => $animation,
         ]);
+    }
+
+    #[Route('/add/{id}', name: 'add')]
+    public function add(int $id, Request $request, CartShopService $cartShopService): Response
+    {
+        $quantity = $request->request->get('nbPersonnes');
+        $cartShopService->addToCart($id, $quantity);
+
+        return $this->redirectToRoute('panier_index', [], Response::HTTP_SEE_OTHER);
     }
 }
