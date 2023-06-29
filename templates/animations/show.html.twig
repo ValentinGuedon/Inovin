@@ -7,7 +7,7 @@
 <div class="showatelier">
     <div class="phototxtcta">
       <div class="image-container">
-        <img src="{{ asset(animation.image) }}" class="img">
+        <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.name }}" class="img">
       </div>
       <div class="description-container">
         <p class="desc">{{ animation.description }}</p>

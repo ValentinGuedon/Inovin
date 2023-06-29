@@ -2,10 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\AnimationsRepository;
+use DateTime;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\AnimationsRepository;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: AnimationsRepository::class)]
+#[Vich\Uploadable]
 class Animations
 {
     #[ORM\Id]
@@ -25,8 +31,19 @@ class Animations
     #[ORM\Column(length: 2000)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 255)]
+
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
+    #[Assert\File(maxSize: '1M', mimeTypes: ['image/jpeg', 'image/png', 'image/webp'])]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?Datetime $updatedAt = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
 
     public function getId(): ?int
     {
@@ -86,9 +103,36 @@ class Animations
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function setPosterFile(File $poster = null): Animations
+    {
+        $this->posterFile = $poster;
+        if ($poster) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }
