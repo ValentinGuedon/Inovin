@@ -33,13 +33,20 @@ class BlogCrudController extends AbstractCrudController
             IdField::new('id')
             ->hideOnForm()
             ->hideOnIndex(),
-
-            TextField::new('title'),
-            TextField::new('description'),
-            DateField::new('date'),
-            TextEditorField::new('text'),
-            ImageField::new('image')->setUploadDir('public/uploads/images/posters'),
-
+            TextField::new('title')
+            ->setLabel('Titre'),
+            DateField::new('date')
+            ->setFormat('dd/MM yyyy'),
+            TextField::new('description')
+                ->setSortable(false),
+            TextareaField::new('text')
+                ->setLabel('Article')
+                ->setSortable(false),
+            ImageField::new('image')
+                ->setUploadDir('public/uploads/images/posters')
+                // setBasePath permet d'afficher les images dans l'index
+                ->setBasePath('uploads/images/posters')
+                ->setSortable(false),
             // ImageField::new('posterFile')->setUploadDir('public/uploads/images/posters'),
         ];
     }
