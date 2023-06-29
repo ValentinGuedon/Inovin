@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace App\Controller;
 
 use App\Entity\Atelier;

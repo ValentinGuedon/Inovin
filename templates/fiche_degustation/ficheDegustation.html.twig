@@ -11,7 +11,7 @@
 {% block body %}
 
 <div class="page">
-{{ form_start(form) }}
+{{ form_start(form, {'class':'formFiche'}) }}
 <div class="ss-titre">L'OEIL</div>
 <div class="cardcontainer">
   <div class="form-column">
@@ -258,13 +258,5 @@ emotionImages.forEach((image) => {
     image.classList.add('active');
   });
 });
-    {# document.addEventListener("DOMContentLoaded", function() {
-        var brillanceInput = document.getElementById("brillance-field");
-        var brillanceValue = document.getElementById("brillance-value");
-
-        brillanceInput.addEventListener("input", function() {
-            brillanceValue.textContent = brillanceInput.value;
-        });
-    }); #}
 </script>
   {% endblock %}

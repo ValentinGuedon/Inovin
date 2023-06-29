@@ -1,3 +1,12 @@
-<h1>{{user.firstname}}</h1>
-<h1>{{profil.name}}</h1>
-<p> {{profil.description}}</p>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="fiche-grid">
+        <h1 class='titreFiche animate pop2'>{{ user.firstname }}</h1>
+        <img src="{{ vich_uploader_asset(profil, 'profilFile') }}" class="img-profil animate pop">
+        <h1 class='titreFiche animate blur'>Vous êtes {{ profil.name }}</h1>
+        <p class="animate blur description">{{ profil.description }}</p>
+        <a href="">
+        {# <img src={{ asset('build/images/Wine-Glassalone.png') }} class='wineglasse-shape'> #}
+    </div>
+{% endblock %}

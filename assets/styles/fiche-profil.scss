@@ -1,0 +1,78 @@
+.img-profil {
+    width: 30vw;
+    -webkit-mask:url(https://i.ibb.co/mBrmH0k/Mf15d.png) center/contain no-repeat;
+    mask: url(https://i.ibb.co/mBrmH0k/Mf15d.png) center/contain no-repeat;
+transition: all 0.3s ease-in-out;
+overflow: visible;
+}
+
+.titreFiche{
+    color: var(--couleur-claire);
+}
+.description{
+    color: var(--couleur-claire);
+}
+.fiche-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.wineglass-shape {
+    background-size: cover;
+    background-position: center;}
+
+
+    .animate.pop {
+        animation-duration: 0.5s;
+        animation-name: animate-pop;
+      }
+
+      .animate.pop2{
+        animation-duration: 0.5s;
+        animation-name: animate-pop2;
+      }
+
+    @keyframes animate-pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.5, 0.5);
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
+
+      @keyframes animate-pop2 {
+        0% {
+          opacity: 0;
+          transform: scale(1.5, 1.5);
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1, 1);
+        }
+      }
+
+    .animate.blur {
+        animation-duration: 4s;
+        animation-name: animate-blur;
+    }
+
+
+    @keyframes animate-blur {
+        0% {
+          opacity: 0;
+
+        }
+
+        100% {
+          opacity: 1;
+        }
+      }
