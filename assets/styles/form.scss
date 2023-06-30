@@ -1,18 +1,11 @@
-body{
-    width: 100vw;
-}
 
-header {
-    background-image: url(/assets/images/wave.svg);
-    background-size: cover;
-    height: 30vh;
-}
 .formFiche {
     width:70vw;
     margin-bottom: 20px;
 }
+
 label {
-    color: #ffffff;
+    color: var(--couleur-claire);
 }
 
 .page {
@@ -345,15 +338,6 @@ select:hover {
     background-color: #e0115f;
 }
 
-/* A garder pour trouver une solution : problème de <li> non personnalisable sans personnaliser l'ensemble des <li> du site */
-/*  .li-arome{
-  list-style: none;
-  background-color: rgb(204, 28, 69);
-  padding: 10px 30px;
-  border-radius: 50px;
-  color:var(--couleur-claire);
-}  */
-
 li{
   list-style: none;
   color:var(--couleur-claire);
@@ -430,7 +414,7 @@ li{
     align-items: center;
     text-align: center;
 }
-.active {
+.activefiche {
     background-color: #e0115f;
     scale: 1.12;
 }
@@ -508,6 +492,7 @@ grid-column-end: 4;
     height: 18vh;
     padding-top: 10px;
   }
+
   .h1-crud{
     margin-top: 18%;
     color: var(--couleur-claire);

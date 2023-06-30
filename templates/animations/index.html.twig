@@ -8,9 +8,9 @@
         {% for animation in animations %}
             <div class="grid-item1">
                 <div class="atelier">
-                    <h2 class="soustitre">{{ animation.name }}</h2>
-                    <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.name }}" class="img">
-                    <p class="resume">{{ animation.resume }}</p>
+                    <h2 class="soustitre">{{ animation.nom }}</h2>
+                    <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.nom }}" class="img">
+                    <p class="resume">{{ animation.description}}</p>
                     <form action="{{ path('app_animation_show', {'slug': animation.slug}) }}" method="get">
                         <button class="cta" type="submit">Découvrir</button>
                     </form>
