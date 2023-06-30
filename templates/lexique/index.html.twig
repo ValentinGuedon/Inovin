@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Lexique {% endblock title %}
+
+{% block body %}
+<div class="global">
+    <h1 class="lexique-vin">Lexique du vin</h1>
+
+    <ul class="alpha">
+        {% for letter in 'A'..'Z' %}
+            <li class="li-alpha">
+                <a href="#{{ letter }}">{{ letter }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% for letter, terms in lexique %}
+        <h2 class ="lexique"id="{{ letter }}">{{ letter }}</h2>
+        <ul class="definition">
+            {% for term, definition in terms %}
+                <li class="termes"> {{ term }}</li>
+                    <br>{{ definition }}
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+{% endblock %}
