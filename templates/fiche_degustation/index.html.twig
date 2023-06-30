@@ -1,4 +1,4 @@
-{% extends 'base_backoffice.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% block title %}FicheDegustation index{% endblock %}
 
@@ -46,6 +46,5 @@
         {% endfor %}
         </tbody>
     </table>
-
     <a href="{{ path('app_fiche_degustation_new') }}">Create new</a>
 {% endblock %}

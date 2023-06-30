@@ -38,8 +38,6 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($url);
     }
 
-
-
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
@@ -47,14 +45,11 @@ class DashboardController extends AbstractDashboardController
             ;
     }
 
-    // public function configureActions(User $user): Actions
-    // {
-    //     // faut mettre ici pour enlever le delete/edit
-    // }
-
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToUrl('Accueil', 'fa fa-home', '/');
+
+        // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
         yield MenuItem::subMenu('FAQ', 'fas fa-question')->setSubItems([
             MenuItem::linkToCrud('Créer Question', 'fas fa-plus', Faq::class)->setAction(Crud::PAGE_NEW),
@@ -66,27 +61,23 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Voir Article', 'fas fa-eye', Blog::class)
         ]);
 
-        yield MenuItem::subMenu('Cepage', 'fas fa-wine-glass')->setSubItems([
+        yield MenuItem::subMenu('Cepages', 'fas fa-wine-glass')->setSubItems([
             MenuItem::linkToCrud('Créer un Cépage', 'fas fa-plus', Cepage::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Cépages', 'fas fa-eye', Cepage::class)
         ]);
 
-        yield MenuItem::subMenu('Vin', 'fas fa-wine-bottle')->setSubItems([
+        yield MenuItem::subMenu('Vins', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
-            // MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_DETAIL),
             MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
         ]);
 
-        yield MenuItem::subMenu('User', 'fas fa-user')->setSubItems([
+        yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);
 
-        yield MenuItem::subMenu('Atelier', 'fas fa-map')->setSubItems([
+        yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([
             MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
         ]);
-
-
-        // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

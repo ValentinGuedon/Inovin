@@ -35,15 +35,19 @@
             <li class="linav marginLinks">
                 <div class="navbar">
                     <div class="dropdown">
-                        {% if app.user == true %}
+                        {% if app.user %}
                             <button class="dropbtn">
-                                {{ app.user.firstname }}
+                            {{ app.user.firstname }}
                             </button>
-                        <div class="dropdown-content ">
-                            <a href="/user/profil">Profil</a>
+                        <div class="dropdown-content">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="/admin">Admin</a>
+                            {% else %}
+                                <a href="/user/profil">Profil</a>
+                            {% endif %}
                             <a href="/logout">Déconnexion</a>
                         </div>
-                        {% endif %}
+                    {% endif %}
                     </div>
                 </div>
             </li>

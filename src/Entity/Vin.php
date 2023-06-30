@@ -57,8 +57,8 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Favoris::class)]
     private Collection $favoris;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Recette::class)]
-    private Collection $recettes;
+    #[ORM\OneToMany(mappedBy: 'vin1', targetEntity: Recette::class)]
+    private Collection $recettes1;
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Caracteristique::class)]
     private Collection $caracteristiques;
@@ -107,16 +107,27 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class)]
     private Collection $notes;
 
+    #[ORM\OneToMany(mappedBy: 'vin3', targetEntity: Recette::class)]
+    private Collection $recettes3;
+
+    #[ORM\OneToMany(mappedBy: 'vin4', targetEntity: Recette::class)]
+    private Collection $recettes4;
+
+    #[ORM\OneToMany(mappedBy: 'vin2', targetEntity: Recette::class)]
+    private Collection $recettes2;
 
     public function __construct()
     {
         $this->favoris = new ArrayCollection();
-        $this->recettes = new ArrayCollection();
+        $this->recettes1 = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->notes = new ArrayCollection();
+        $this->recettes2 = new ArrayCollection();
+        $this->recettes3 = new ArrayCollection();
+        $this->recettes4 = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -263,27 +274,27 @@ class Vin
     /**
      * @return Collection<int, Recette>
      */
-    public function getRecettes(): Collection
+    public function getRecettes1(): Collection
     {
-        return $this->recettes;
+        return $this->recettes1;
     }
 
-    public function addRecette(Recette $recette): self
+    public function addRecette1(Recette $recette1): self
     {
-        if (!$this->recettes->contains($recette)) {
-            $this->recettes->add($recette);
-            $recette->setVin($this);
+        if (!$this->recettes1->contains($recette1)) {
+            $this->recettes1->add($recette1);
+            $recette1->setVin1($this);
         }
 
         return $this;
     }
 
-    public function removeRecette(Recette $recette): self
+    public function removeRecette1(Recette $recette1): self
     {
-        if ($this->recettes->removeElement($recette)) {
+        if ($this->recettes1->removeElement($recette1)) {
             // set the owning side to null (unless already changed)
-            if ($recette->getVin() === $this) {
-                $recette->setVin(null);
+            if ($recette1->getVin1() === $this) {
+                $recette1->setVin1(null);
             }
         }
 
@@ -605,6 +616,96 @@ class Vin
             // set the owning side to null (unless already changed)
             if ($note->getVin() === $this) {
                 $note->setVin(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes3(): Collection
+    {
+        return $this->recettes3;
+    }
+
+    public function addRecettes3(Recette $recettes3): static
+    {
+        if (!$this->recettes3->contains($recettes3)) {
+            $this->recettes3->add($recettes3);
+            $recettes3->setVin3($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecettes3(Recette $recettes3): static
+    {
+        if ($this->recettes3->removeElement($recettes3)) {
+            // set the owning side to null (unless already changed)
+            if ($recettes3->getVin3() === $this) {
+                $recettes3->setVin3(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes4(): Collection
+    {
+        return $this->recettes4;
+    }
+
+    public function addRecettes4(Recette $recettes4): static
+    {
+        if (!$this->recettes4->contains($recettes4)) {
+            $this->recettes4->add($recettes4);
+            $recettes4->setVin4($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecettes4(Recette $recettes4): static
+    {
+        if ($this->recettes4->removeElement($recettes4)) {
+            // set the owning side to null (unless already changed)
+            if ($recettes4->getVin4() === $this) {
+                $recettes4->setVin4(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes2(): Collection
+    {
+        return $this->recettes2;
+    }
+
+    public function addRecettes2(Recette $recettes2): static
+    {
+        if (!$this->recettes2->contains($recettes2)) {
+            $this->recettes2->add($recettes2);
+            $recettes2->setVin2($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecettes2(Recette $recettes2): static
+    {
+        if ($this->recettes2->removeElement($recettes2)) {
+            // set the owning side to null (unless already changed)
+            if ($recettes2->getVin2() === $this) {
+                $recettes2->setVin2(null);
             }
         }
 

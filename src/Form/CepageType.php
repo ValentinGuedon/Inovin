@@ -14,8 +14,6 @@ class CepageType extends AbstractType
         $builder
             ->add('type')
             ->add('description')
-            // ->add('vin')
-            // ->add('caracteristiques')
         ;
     }
 
