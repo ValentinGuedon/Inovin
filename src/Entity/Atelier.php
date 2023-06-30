@@ -33,6 +33,9 @@ class Atelier
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = 'atelier';
+
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
@@ -176,6 +179,18 @@ class Atelier
     public function setAnimations(?Animations $animations): static
     {
         $this->animations = $animations;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
