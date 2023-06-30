@@ -224,7 +224,7 @@
     <div class="ss-titre">ÉVALUATION</div>
     {{ form_widget(form.note) }}
   </div>
-    {{ form_widget(form.submit, { 'label': 'Valider' }) }}
+{{ form_widget(form.submit, {'label': 'Valider', 'attr': {'class': 'buttonFiche'}}) }}
 {{ form_end(form) }}
   <a href="{{ path('app_fiche_degustation_index') }}">Retour</a>
 </div>
