@@ -3,15 +3,15 @@
 {% block title %}Atelier{% endblock %}
 
 {% block body %}
-<h2 class="nomanimation">{{ animation.name }}</h2>
+<h2 class="nomanimation">{{ animation.nom }}</h2>
 <div class="showatelier">
     <div class="phototxtcta">
       <div class="image-container">
-        <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.name }}" class="img">
+        <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.nom }}" class="img">
       </div>
       <div class="description-container">
         <p class="desc">{{ animation.description }}</p>
-        <p class="prix">Prix : {{ animation.price }} €</p>
+        <p class="prix">Prix : {{ animation.prix }} €</p>
 
         <div class="showcta">
         <form action="/panier" method="get">
@@ -52,4 +52,5 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
