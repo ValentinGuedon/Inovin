@@ -1,0 +1,36 @@
+.global{
+    margin: 0% 25%;
+    }
+
+    .lexique-vin{
+        color: var(--couleur-claire);
+    }
+
+    .lexique {
+        color: var(--couleur-claire);
+        margin-top: 10%;
+    }
+
+    .termes{
+        text-transform: uppercase;
+        font-size: larger;
+        padding: 0 !important;
+        margin-top: 5%;
+        letter-spacing : 5px;
+    }
+
+    .definition {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--couleur-claire);
+    }
+
+
+    .li-alpha:not(:last-child) {
+        border-right: 2px solid var(--couleur-claire);
+    }
+
+    .alpha{
+        margin: 5% 35%;
+    }
