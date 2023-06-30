@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - Nouvel atélier{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un atelier</h1>
+
+    {{ include('animations/_form.html.twig') }}
+
+    <a href="{{ path('app_animations_index') }}">Retour à l'accueil</a>
+{% endblock %}
