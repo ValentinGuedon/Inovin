@@ -5,10 +5,13 @@
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
+
 {% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
+
+<div class="page">
+{{ form_start(form, {'class':'formFiche'}) }}
 <div class="ss-titre">L'OEIL</div>
 <div class="cardcontainer">
   <div class="form-column">
@@ -23,20 +26,19 @@
                       <span class="checkbox-custom-indicator"></span>
                       {{ choice.vars.label }}
                   </label>
-                 
+
               {% endfor %}
           </div>
       </div>
       </div>
     </div>
   </div>
-
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
-        <p class="form-label">Limpidité</p>
+        <p class="form-label middle">{{ form_label(form.limpidite)}}</p>
         <div class="vertical-range">
-          <input type="range" min="1" max="4" value="1" class="custom-range">
+                {{ form_widget(form.limpidite, {'attr': {'class': 'custom-range'}}) }}
           <div class="labels">
             <span class="label">Floue</span>
             <span class="label">Trouble</span>
@@ -47,7 +49,6 @@
       </div>
     </div>
   </div>
-
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -58,8 +59,7 @@
           <div class="checkbox-custom">
             {% for choice in form.fluidite %}
               <label class="checkbox-label">
-                {{ form_widget(choice, {'attr': {'class': 'checkbox-input ' ~ choice.vars.value}, 'name': form.fluidite.vars.full_name ~ '[]', 'value': choice.vars.value, 'checked': choice.vars.checked}) }}
-                <span class="checkbox-custom-indicator"></span>
+                {{ form_widget(choice, {'attr': {'class': 'checkbox-input'}, 'name': form.fluidite.vars.full_name ~ '[]', 'value': choice.vars.value, 'checked': choice.vars.checked}) }}
                 {{ choice.vars.label }}
               </label>
             {% endfor %}
@@ -68,135 +68,89 @@
       </div>
     </div>
   </div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.brillance) }}
+        </div>
+        <output>{{ form.brillance.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.brillance) }}
+    </div>
+</div>
 
-  <div class="form-title">
-    <div class="ss-titre">LE NEZ</div>
+<div class="form-title">
+<div class="ss-titre">LE NEZ</div>
     <p class="arome-label">Arômes</p>
-  </div>
-  <div class="form-column">
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-              <select id="{{ form.arome.vars.id }}-fruite" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Fruité'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Fruité'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-                <select id="{{ form.arome.vars.id }}-floral" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Floral'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Floral'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
 </div>
-
-<div class="form-column">
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-                <select id="{{ form.arome.vars.id }}-animal" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Animal'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Animal'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="aroma-container">
+        {% for category, choices in form.arome.vars.choices %}
+        <div class="aroma-choices">
+                <h3 class="cta arome">{{ category }}</h3>
+                    <div class="aroma" style="display: none;">
+                        {% for value, label in choices %}
+                        <div class='aromainput'>
+                            {{ form_widget(form.arome[value]) }}
+                            {{ form_label(form.arome[value]) }}
+                        </div>
+                        {% endfor %}
+                    </div>
         </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-                <select id="{{ form.arome.vars.id }}-vegetal" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Végétal'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Végétal'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
+        {% endfor %}
 </div>
-
-<div class="form-column">
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-                <select id="{{ form.arome.vars.id }}-epice" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Épicé'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Épicé'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group">
-            <div class="checkbox-container">
-                <select id="{{ form.arome.vars.id }}-marin" name="{{ form.arome.vars.full_name }}" class="aroma-select">
-                    <option value="" disabled selected>{{ form.arome.vars.choices['Marin'].label|trans }}</option>
-                    {% for choice in form.arome.vars.choices['Marin'].choices %}
-                        {% set isSelected = choice.value == form.arome.vars.value %}
-                        <option value="{{ choice.value }}" {% if isSelected %}selected{% endif %}>
-                            {{ choice.label|trans }}
-                        </option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="emotions-container emotions-row">
     <ul id="selected-aromas" class="selected-aromas"></ul>
 </div>
-
-  <div class="form-title">
-    <div class="ss-titre">LA BOUCHE</div>
-  </div>
-  
-  <div class="form-column">
-    <div class="form-row">
-      <div class="form-group">
-        <p class="form-label">Persistance</p>
-        <div class="vertical-range">
-          <input type="range" min="1" max="4" value="1" class="custom-range">
-          <div class="labels">
-            <span class="label">Durable</span>
-            <span class="label">Longue</span>
-            <span class="label">Moyenne</span>
-            <span class="label">Courte</span>
-          </div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.intensite) }}
         </div>
-      </div>
+        <output>{{ form.intensite.vars.value }}</output>
     </div>
-  </div>
-  
+    <div class="form-row">
+        {{ form_widget(form.intensite) }}
+    </div>
+</div>
+<div class="form-title">
+<div class="ss-titre">LA BOUCHE</div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.douceur) }}
+        </div>
+        <output>{{ form.douceur.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.douceur) }}
+    </div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.ressentiAlcool) }}
+        </div>
+        <output>{{ form.ressentiAlcool.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.ressentiAlcool) }}
+    </div>
+</div>
+<div class="horizontal-range">
+    <div class="range-row">
+        <div class="flex-start">
+            {{ form_label(form.acidite) }}
+        </div>
+        <output>{{ form.acidite.vars.value }}</output>
+    </div>
+    <div class="form-row">
+        {{ form_widget(form.acidite) }}
+    </div>
+</div>
+<div class="cardcontainer">
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -215,21 +169,41 @@
       </div>
     </div>
   </div>
-  
-  
-<div class="form-group">
-  {{ form_label(form.matiere, 'Matière', {'label_attr': {'class': 'form-label'}}) }}
-  <div class="cta-container">
-    {% for choice in form.matiere %}
-      <button class="cta matiere" name="{{ form.matiere.vars.full_name }}" value="{{ choice.vars.value }}" onclick="selectCTA(event, 'matiere')">
-        {{ form_widget(choice, {'attr': {'class': 'emotion-cta', 'data-value': choice.vars.value}})}}
-        {{ choice.vars.label|default(choice.vars.value) }}
-      </button>
-    {% endfor %}
+    <div class="form-column">
+    <div class="form-row">
+      <div class="form-group">
+        <p class="form-label middle">{{ form_label(form.persistance)}}</p>
+        <div class="vertical-range">
+                {{ form_widget(form.persistance, {'attr': {'class': 'custom-range'}}) }}
+          <div class="labels">
+            <span class="label">Durable</span>
+            <span class="label">Longue</span>
+            <span class="label">Moyenne</span>
+            <span class="label">Courte</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-column">
+    <div class="form-row">
+      <div class="form-group">
+        <div class="checkbox-container">
+          <p class="form-label">
+            {{ form_label(form.matiere, null, {'label_attr': {'class': 'fludity-checkbox'}}) }}
+          </p>
+          {% for choice in form.matiere %}
+            <label class="checkbox-label">
+              {{ form_widget(choice, {'attr': {'class': 'checkbox-custom ' ~ choice.vars.value}}) }}
+              <span class="checkbox-custom-indicator"></span>
+              {{ choice.vars.label }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-  
 <div class="form-title">
   <div class="ss-titre">LES ÉMOTIONS</div>
 </div>
@@ -246,34 +220,43 @@
   </div>
   {% endfor %}
 </div>
-
-  <div class="form-title">
+  <div class="form-title evaluation">
     <div class="ss-titre">ÉVALUATION</div>
     {{ form_widget(form.note) }}
   </div>
-
-<div class="form-submit">
-    <button type="submit" class="submit">Enregistrer fiche</button>
-</div>
-
+    {{ form_widget(form.submit, { 'label': 'Valider' }) }}
 {{ form_end(form) }}
-  <script>
-    const aromaSelects = document.querySelectorAll('.aroma-select');
-    aromaSelects.forEach(select => {
-      select.addEventListener('change', (event) => {
-        const selectedAroma = event.target.value;
-        const selectedAromaLabel = event.target.options[event.target.selectedIndex].text;
-        if (selectedAroma) {
-          const selectedList = document.getElementById('selected-aromas');
-          const listItem = document.createElement('li');
-          listItem.textContent = selectedAromaLabel;
-          selectedList.appendChild(listItem);
-    
-          // Réinitialise le sélecteur à son placeholder d'origine
-          event.target.selectedIndex = 0;
+  <a href="{{ path('app_fiche_degustation_index') }}">Retour</a>
+</div>
+<script>
+
+// Script apparition arômes
+    document.addEventListener('DOMContentLoaded', function() {
+        var ctaElements = document.querySelectorAll('.arome');
+        for (var i = 0; i < ctaElements.length; i++) {
+            ctaElements[i].addEventListener('click', toggleAroma);
         }
-      });
-    });    
-  </script>
-  <a href="{{ path('app_fiche_degustation_index') }}">Retour</a> 
+
+        function toggleAroma() {
+            var aroma = this.nextElementSibling;
+            if (aroma.style.display === 'none') {
+                aroma.style.display = 'grid';
+            } else {
+                aroma.style.display = 'none';
+            }
+        }
+    });
+
+    // script émotion
+const emotionImages = document.querySelectorAll('.img-emotion');
+
+emotionImages.forEach((image) => {
+  image.addEventListener('click', () => {
+    emotionImages.forEach((img) => {
+      img.classList.remove('active');
+    });
+    image.classList.add('active');
+  });
+});
+</script>
   {% endblock %}

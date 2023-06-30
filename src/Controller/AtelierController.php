@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:ignoreFile
 namespace App\Controller;
 
 use App\Entity\Atelier;
@@ -39,6 +39,7 @@ class AtelierController extends AbstractController
         Atelier $atelier,
         User $user,
         Vin $vin,
+        VinRepository $vinRepository,
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
     ): Response {
@@ -61,9 +62,9 @@ class AtelierController extends AbstractController
 
             if ($nextVin !== null) {
                 return $this->redirectToRoute('fiche', [
-                    'atelier' => $atelier->getId(),
-                    'user' => $user->getId(),
-                    'vin' => $nextVin,
+                    'atelierSlug' => $atelier->getSlug(),
+                    'userSlug' => $user->getSlug(),
+                    'vinSlug' => $vinRepository->find($nextVin)->getSlug()
                 ]);
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
@@ -71,7 +72,8 @@ class AtelierController extends AbstractController
                 $user->setProfil($profil);
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
-                    'user' => $user
+                    'user' => $user,
+                    'vin' => $favoriteFiche->getVin(),
                 ]);
             }
         }

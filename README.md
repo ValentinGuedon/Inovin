@@ -10,14 +10,11 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
     * PHP_CodeSniffer to check PSR12
     * PHPStan focuses on finding errors in your code (without actually running it)
-    * PHPmd will check if you follow PHP best practices
-
   If tests fail, the commit is canceled and a warning message is displayed to developper.
 
 * Github Action as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
 
     * Tasks to check if vendor, .idea, env.local are not versionned,
-    * PHP_CodeSniffer, PHPStan and PHPmd with same configuration as GrumPHP.
 
 ## Getting Started for Students
 
@@ -42,7 +39,6 @@ It's symfony website-skeleton project with some additional library (webpack, fix
 
 1. Run `php ./vendor/bin/phpcs` to launch PHP code sniffer
 2. Run `php ./vendor/bin/phpstan analyse src --level max` to launch PHPStan
-3. Run `php ./vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
 4. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
 
 ### Windows Users
@@ -80,7 +76,6 @@ Some files are used to manage automatic deployments (using tools as Caprover, Do
 * [GrumPHP](https://github.com/phpro/grumphp)
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [PHPStan](https://github.com/phpstan/phpstan)
-* [PHPMD](http://phpmd.org)
 * [ESLint](https://eslint.org/)
 * [Sass-Lint](https://github.com/sasstools/sass-lint)
 

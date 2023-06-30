@@ -13,7 +13,6 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Blog|null findOneBy(array $criteria, array $orderBy = null)
  * @method Blog[]    findAll()
  * @method Blog[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @SuppressWarnings("PHPMD")
  */
 class BlogRepository extends ServiceEntityRepository
 {

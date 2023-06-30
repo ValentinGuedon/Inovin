@@ -1,14 +1,29 @@
+body{
+    width: 100vw;
+}
+
 header {
     background-image: url(/assets/images/wave.svg);
     background-size: cover;
+    height: 30vh;
+}
+.formFiche {
+    width:70vw;
+    margin-bottom: 20px;
+}
+label {
+    color: #ffffff;
 }
 
+.page {
+    margin: 0 10% 0 10%;
+}
 .titre-fiche {
     font-size: larger;
     color: var(--couleur-tierce);
     position: absolute;
     right: 0;
-    margin-top: 5%;
+    top: 20px;
     margin-right: 10%;
 }
 
@@ -16,7 +31,7 @@ header {
     color: var(--couleur-fonce);
     position: absolute;
     right: 0;
-    margin-top: 8%;
+    top: 50px;
     margin-right: 10%;
 }
 
@@ -29,6 +44,7 @@ header {
     transform: translate(-50%, -50%);
     padding-bottom: 0.5%;
     max-width: 150px;
+    margin-top: 20px;
 }
 
 .form-title {
@@ -36,16 +52,25 @@ header {
     /* titre occupe les 2 colonnes */
     text-align: center;
     margin-bottom: 2%;
-    margin-top: 2%;
-}
+    margin-top: 4%;
+  }
+  .form-title.evaluation{
+    margin:40px 0 40px 0;
+  }
 
 .cardcontainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr minmax(0, 1fr);
     grid-gap: 10px;
+    margin: 5%;
 }
-
-.form-column {
+.cardcontainer.full {
+    grid-template-columns: 1fr;
+}
+.cardcontainer:nth-child(2){
+    align-self: flex-end;
+}
+  .form-column {
     flex: 0 0 48%;
     margin-bottom: 20px;
 }
@@ -55,39 +80,51 @@ header {
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 10px;
-}
+  }
+  .horizontal-row ,.range-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+
 
 .form-label {
     color: var(--couleur-claire);
+    margin: 20px 0 20px 0;
+    font-weight: bold;
+  }
+
+  .form-label.middle {
     text-align: center;
-    margin-bottom: 2%;
-}
+  }
 
 /* Oeil - Checkbox Couleur */
 
-.checkbox-container input[type="checkbox"] {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    margin-right: 5px;
-    outline: none;
-    border: solid 1px var(--couleur-claire);
+.checkbox-container input[type="checkbox"],.checkbox-container input[type="radio"],.matiere-button input[type="radio"],.aroma input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 5px;
+  outline: none;
+  border:solid 1px  var(--couleur-claire);
 }
 
-.checkbox-container input[type="checkbox"]:checked::before {
-    content: "";
-    content: "\2713";
-    /* Code Unicode pour le symbole de coche */
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    text-align: center;
-    line-height: 20px;
-    color: var(--couleur-claire);
+.checkbox-container input[type="checkbox"]:checked::before,.checkbox-container input[type="radio"]:checked::before,.matiere-button input[type="radio"]:checked::before,.aroma input[type="checkbox"]:checked::before {
+  content: "";
+  content: "\2713"; /* Code Unicode pour le symbole de coche */
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  color: var(--couleur-claire);
 }
 
 .checkbox-container {
@@ -108,39 +145,38 @@ header {
 }
 
 /* Personnalisation des couleurs pour chaque checkbox */
-.checkbox-container .checkbox-custom.framboise {
-    background-color: #9e0e40;
+.checkbox-framboise {
+  background-color: #9e0e40;
 }
 
-.checkbox-container .checkbox-custom.cerise {
-    background-color: #a41247;
+.checkbox-cerise {
+  background-color: #a41247;
 }
 
-.checkbox-container .checkbox-custom.rubis {
-    background-color: #e0115f;
+.checkbox-rubis {
+  background-color: #e0115f;
 }
 
-.checkbox-container .checkbox-custom.pourpre {
-    background-color: #9e0e40;
+.checkbox-pourpre {
+  background-color: #9e0e40;
 }
 
-.checkbox-container .checkbox-custom.violet {
-    background-color: #6c344f;
+.checkbox-violet {
+  background-color: #6c344f;
 }
 
-.checkbox-container .checkbox-custom.grenat {
-    background-color: #6e0b14;
+.checkbox-grenat {
+  background-color: #6e0b14;
 }
-
-.checkbox-container .checkbox-custom.tuilé {
-    background-color: #a24d3f;
+ .checkbox-tuilé {
+  background-color: #a24d3f;
 }
 
 /* Oeil - Curseur Limpidité */
 .custom-range {
     -webkit-appearance: none;
     appearance: none;
-    width: 110%;
+    width:100%;
     height: 10px;
     background-color: #ffffff;
     outline: none;
@@ -165,9 +201,48 @@ header {
     flex-direction: column;
     align-items: center;
     margin-top: 150px;
+
+  }
+
+  .horizontal-range {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .horizontal-range input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width:30vw;
+    height: 10px;
+    background-color: #ffffff;
+    outline: none;
+    border-radius: 50px;
+    writing-mode: sideways-lr;
+    grid-row: 2
+  }
+
+  .horizontal-range input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 30px;
+    background-color:  var(--couleur-tierce);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .horizontal-range output {
+    align-self: flex-end;
 }
 
-.labels {
+.horizontal-range label {
+    align-self: flex-start;
+}
+  .labels{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -182,6 +257,9 @@ header {
 }
 
 
+output {
+    color: #ffffff;
+  }
 /* Le nez - arome */
 select {
     width: 130px;
@@ -202,23 +280,57 @@ select:hover {
 }
 
 .arome {
-    color: var(--couleur-claire);
-    margin-top: 4%;
-    position: absolute;
-    left: 0;
+  color: var(--couleur-claire);
+  margin-top: 4%;
+  display: flex;
+  max-width: 15vw;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
 }
 
-.arome-label {
-    color: var(--couleur-claire);
-    position: absolute;
-    left: 0;
-    margin-left: 15%;
+.aroma-container {
+    display: grid;
+    grid-template-columns: repeat(3, 186px);
+    grid-gap: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .aroma-flex{
+    display: flex;
+  }
+
+.arome-label{
+  color: var(--couleur-claire);
+  font-weight: bold;
+  margin: 30px 0px 30px 0px;
+}
+.aroma {
+    padding: 20px;
 }
 
-.cta {
-    margin-bottom: 10%;
-    padding: 10px 55px;
-    box-shadow: 2px 2px 4px #000000;
+.aroma-choices{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.aromainput{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.aroma-choices:last-child{
+    margin-bottom: 20px;
+}
+.cta{
+  margin-bottom: 10%;
+  padding: 10px 55px;
+  box-shadow: 2px 2px 4px #000000;
 }
 
 .cta-container {
@@ -242,28 +354,28 @@ select:hover {
   color:var(--couleur-claire);
 }  */
 
-li {
-    list-style: none;
-    color: var(--couleur-claire);
-    padding: 3%;
+li{
+  list-style: none;
+  color:var(--couleur-claire);
+  padding: 3%;
 }
 
 /* Emotion */
 
 .emotions-container {
-    display: grid;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    align-items: center;
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  align-items: center;
 
 }
 
 .emotions-row {
-    display: flex;
-    flex-wrap: nowrap;
-    margin: auto;
-    justify-content: center;
-    gap: 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: auto;
+  justify-content: center;
+  gap: 40px;
 
 }
 
@@ -272,22 +384,24 @@ li {
 }
 
 .img-emotion {
-    width: 50px;
-    background-color: var(--couleur-tierce);
-    border-radius: 50%;
-    box-shadow: 2px 2px 4px #000000;
-    margin-bottom: 20px;
+  width: 50px;
+  background-color: var(--couleur-tierce);
+  border-radius: 50%;
+  box-shadow: 2px 2px 4px #000000;
+  margin-bottom: 20px;
 
 }
 
-.img-emotion:hover {
+.img-emotion:hover , .img-emotion:checked{
+  background-color: #e0115f;
+  scale: 1.12;
+}
+
+.img-emotion.active{
     background-color: #e0115f;
     scale: 1.12;
 }
 
-.emotion-cta.selected {
-    background-color: #e0115f;
-}
 
 .emotion-cta {
     display: none;
@@ -301,9 +415,9 @@ li {
 }
 
 .emotion-label-text {
-    text-align: center;
-    color: var(--couleur-claire);
-    margin-top: 5px;
+  text-align: center;
+  color: var(--couleur-claire);
+  margin-top: 5px;
 }
 
 .emotion-cta:checked+.img-emotion {
@@ -316,28 +430,91 @@ li {
     align-items: center;
     text-align: center;
 }
+.active {
+    background-color: #e0115f;
+    scale: 1.12;
+}
 
 
 /* Bouton submit */
 
-.submit {
-    padding: 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    background-color: var(--couleur-tierce);
-    color: var(--couleur-claire);
-    border: none;
-    box-shadow: 2px 2px 4px #000000;
-    position: absolute;
-    right: 0;
-    margin-right: 15%;
-    margin-top: 3%;
+button[type="submit"] {
+  padding: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: var(--couleur-tierce);
+  color: var(--couleur-claire);
+  border: none;
+  box-shadow: 2px 2px 4px #000000;
+  position: absolute;
+  right: 0;
+  margin-right: 15%;
+  margin-top: 3%;
 }
 
-.form-submit {
-    background-color: var(--couleur-claire);
-    height: 20vh;
+.form-submit{
+  background-color: var(--couleur-fonce);
+  height: 20vh;
+  display: grid;
+grid-column-start: 1;
+grid-column-end: 4;
+}
+
+.form-submit:hover{
+    scale: 1.2;
+}
+
+.matiere-structure-container
+{
     display: grid;
-    grid-column-start: 1;
-    grid-column-end: 4;
+    grid-template-columns: repeat(2,279px);
+    justify-content: center;
+    align-items: flex-start;
+    margin: 20px 0px 20px 0px;
+}
+
+
+// Fourre-tout
+.flex-start {
+    align-self: flex-start;
+}
+
+@media only screen and (max-width: 600px) {
+    .cardcontainer,.aroma-container, .emotions-container {
+    grid-template-columns: 1fr;
+  }
+  * {
+    margin: 0;
+    align-items: center;
+  }
+
+  .emotions-row{
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .img-emotion {
+    margin: 0;
+  }
+
+  .ss-titre {
+    margin-bottom: 10px;
+  }
+  .horizontal-range input[type=range]{
+    width: 50vw;
+  }
+
+  header {
+    height: 18vh;
+    padding-top: 10px;
+  }
+  .h1-crud{
+    margin-top: 18%;
+    color: var(--couleur-claire);
+    top:1.5em;
+  }
+
+  .titre-fiche {
+    margin-top: 0;
+  }
 }
