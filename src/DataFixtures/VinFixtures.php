@@ -52,6 +52,7 @@ class VinFixtures extends Fixture
                 $vin->setBrillance($faker->numberBetween(0, 10));
                 $vin->setAlcool($faker->numberBetween(0, 10));
                 $vin->setDouceur($faker->numberBetween(0, 10));
+
                 if ($i === 2) {
                     if ($vin->getDouceur() <= 5) {
                         $vin->setProfil($this->getReference('Le chardo-né'));
