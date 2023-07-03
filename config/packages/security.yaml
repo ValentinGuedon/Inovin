@@ -42,7 +42,7 @@ security:
     
         - { path: ^/cepage, roles: ROLE_ADMIN }
         - { path: ^/user, roles: ROLE_USER }
-        - { path: ^/atelier/[^/]+/[^/]+/[^/]+$, roles: ROLE_USER }
+        - { path: ^/atelier/[^/]+/[^/]+$, roles: ROLE_USER }
         - { path: ^/atelier, roles: ROLE_ADMIN }
         - { path: ^/vin, roles: ROLE_ADMIN }
         - { path: '^/faq(?!/visiteur)', roles: 'ROLE_ADMIN' }
