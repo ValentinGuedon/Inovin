@@ -25,9 +25,6 @@ class FicheDegustation
     private ?array $arome = null;
 
     #[ORM\Column]
-    private ?int $alcool = null;
-
-    #[ORM\Column]
     private ?string $fluidite = null;
 
     #[ORM\Column]
@@ -52,16 +49,20 @@ class FicheDegustation
     private ?string $emotion = null;
 
     #[ORM\Column(nullable: true)]
+    private ?int $brillance = null;
+
+    #[ORM\Column(nullable: true)]
     private ?int $douceur = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $acidite = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $brillance = null;
+    private ?int $ressentiAlcool = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $intensite = null;
+
 
     public function getId(): ?int
     {
@@ -100,18 +101,6 @@ class FicheDegustation
     public function setArome(array $arome): self
     {
         $this->arome = $arome;
-
-        return $this;
-    }
-
-    public function getAlcool(): ?int
-    {
-        return $this->alcool;
-    }
-
-    public function setAlcool(int $alcool): self
-    {
-        $this->alcool = $alcool;
 
         return $this;
     }
@@ -213,12 +202,24 @@ class FicheDegustation
         return $this;
     }
 
+    public function getBrillance(): ?int
+    {
+        return $this->brillance;
+    }
+
+    public function setBrillance(?int $brillance): static
+    {
+        $this->brillance = $brillance;
+
+        return $this;
+    }
+
     public function getDouceur(): ?int
     {
         return $this->douceur;
     }
 
-    public function setDouceur(?int $douceur): self
+    public function setDouceur(?int $douceur): static
     {
         $this->douceur = $douceur;
 
@@ -230,21 +231,21 @@ class FicheDegustation
         return $this->acidite;
     }
 
-    public function setAcidite(?int $acidite): self
+    public function setAcidite(?int $acidite): static
     {
         $this->acidite = $acidite;
 
         return $this;
     }
 
-    public function getBrillance(): ?int
+    public function getRessentiAlcool(): ?int
     {
-        return $this->brillance;
+        return $this->ressentiAlcool;
     }
 
-    public function setBrillance(?int $brillance): self
+    public function setRessentiAlcool(?int $ressentiAlcool): static
     {
-        $this->brillance = $brillance;
+        $this->ressentiAlcool = $ressentiAlcool;
 
         return $this;
     }
@@ -254,7 +255,7 @@ class FicheDegustation
         return $this->intensite;
     }
 
-    public function setIntensite(?int $intensite): self
+    public function setIntensite(?int $intensite): static
     {
         $this->intensite = $intensite;
 

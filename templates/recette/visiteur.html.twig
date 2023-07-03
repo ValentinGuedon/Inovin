@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Recette{% endblock %}
+
+{% block body %}
+        <h1 class="h1 crud">Créez</h1>
+                {{ form_start(form) }}
+                        <p class="form-label">{{ form_label(form.nom) }}</p>
+                        {{ form_widget(form.nom) }}
+                            <p class="form-label">{{ form_label(form.vin1)}}</p>
+                        {{ form_widget(form.vin1) }}
+
+                        <p class="form-label">{{ form_label(form.quantite) }}</p>
+                            {{ form_widget(form.quantite) }}
+                        <p class="form-label">{{ form_label(form.vin2)}}</p>
+                            {{ form_widget(form.vin2) }}
+                        <p class="form-label">{{ form_label(form.quantite2) }}</p>
+                            {{ form_widget(form.quantite2) }}
+                        <p class="form-label">{{ form_label(form.vin3)}}</p>
+                            {{ form_widget(form.vin3) }}
+                        <p class="form-label">{{ form_label(form.quantite3) }}</p>
+                            {{ form_widget(form.quantite3) }}
+                        <p class="form-label">{{ form_label(form.vin4)}}</p>
+                            {{ form_widget(form.vin4) }}
+                        <p class="form-label">{{ form_label(form.quantite4) }}</p>
+                            {{ form_widget(form.quantite4) }}
+                        {{ form_widget(form) }}
+                        <button type="submit" class="submit">Ajouter</button>
+                {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

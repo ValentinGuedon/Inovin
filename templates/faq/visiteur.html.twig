@@ -3,42 +3,17 @@
 {% block title %}Faq index{% endblock %}
 
 {% block body %}
-<script>
-
-const dropdownBtn = document.querySelector(".dropdown-btn");
-// We create a variable dropdownMenu set to the DOM element
-const dropdownMenu = document.querySelector(".dropdown-menu-content");
-
-// We listen for a click event
-dropdownBtn.addEventListener("click", function () {
-  // On click we toggle the class visible on the dropdown
-  dropdownMenu.classList.toggle("visible");
-});
-
-</script>
-
     <h1 class="h1questions">Questions fréquentes:</h1>
     <div class="divQuestionReponse">
         {% for faq in faqs %}
-
-
                 <div class="divtext">
                         <b><p class="topQuestion ptext">{{ faq.question }}</p></b>
                 </div>
                 <div class="divtext" >
                         <p class="bottomAnswer ptext">{{ faq.answer }}</p>
                 </div>
-
-
-
         {% else %}
                 <p>no records found</p>
         {% endfor %}
-
-        {# <p class="dropdown-menu-content">test</p>
-        <button class="btnclick dropdown-btn">bonjour</button> #}
-
-
-
         </div>
 {% endblock %}

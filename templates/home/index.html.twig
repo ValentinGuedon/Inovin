@@ -2,7 +2,6 @@
 
 {% block title %} {{ parent() }} - Home {% endblock title %}
 
-
 {% block body %}
 <!--Message-->
   {% for category, messages in app.flashes %}
@@ -34,7 +33,7 @@
           
           C'est une première en Lozère, dont les valeurs communes sont: partage, convivialité, passion, transmission.
           
-          INOVIN vise à etre la référence en matière d'atelier. L'objectif : rendre fiers nos clients de produire le vin qui reflète leur personnalité.
+          INOVIN vise à etre la référence en matière d'atelier. <br> L'objectif : rendre fiers nos clients de produire le vin qui reflète leur personnalité.
           
           Enthousiaste et motivé, Inovin décide de s'associer avec des partenaires locaux et régionaux pour promouvoir le terroir Lozérien, mettant en avant ses richesses naturelles et en faisant valoir les avantages de nos ateliers personnalisé dans une région inattendue.
           
@@ -46,8 +45,6 @@
     </div>
     </div>
     <img class="photocedric" src="{{ asset('build/images/cedric.jpg') }}" alt="illustration maison" width="40%">
-</section>
-
- 
+</section> 
 {% endblock %}
 {% block javascripts %} {{ parent()}} <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>{% endblock %}

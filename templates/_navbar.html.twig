@@ -15,8 +15,9 @@
             <li class="linav marginLinks"><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
             <li class="linav marginLinks"><a href="#" class="liennav">VINOTHÈQUE</a>
                 <ul class="listederoulante">
+                    <li><a href="{{ path('app_lexique') }}" class="liennav">Lexique</a></li>
                     <li><a href="#" class="liennav">Le quizz</a></li>
-                    <li><a href="#" class="liennav">Lexique</a></li>
+                     <li><a href="{{ path('app_memory') }}" class="liennav">Memory</a></li>
                     <li><a href="#" class="liennav">La carte des vins</a></li>
                     <li><a href="{{ path('app_blog_visiteur') }}" class="liennav">Blog</a></li>
                     <li><a href="{{ path('app_faq_visiteur') }}" class="liennav">FAQ</a></li>
@@ -34,27 +35,29 @@
             <li class="linav marginLinks">
                 <div class="navbar">
                     <div class="dropdown">
-                        {% if app.user == true %}
+                        {% if app.user %}
                             <button class="dropbtn">
-                                {{ app.user.firstname }}
+                            {{ app.user.firstname }}
                             </button>
-                        <div class="dropdown-content ">
-                            <a href="/user/profil">Profil</a>
+                        <div class="dropdown-content">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="/admin">Tableau de bord</a>
+                            {% else %}
+                                <a href="/user/profil">Profil</a>
+                            {% endif %}
                             <a href="/logout">Déconnexion</a>
                         </div>
-                        {% endif %}
+                    {% endif %}
                     </div>
                 </div>
             </li>
         </ul>
 </div>
-
 <script>
 function myFunction(x) {
   x.classList.toggle("change");
   document.getElementById("navMenu").classList.toggle("liennavtoggle")
 }
 </script>
-
 </nav>
 {% endblock %}

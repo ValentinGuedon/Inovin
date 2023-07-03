@@ -13,7 +13,6 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Atelier|null findOneBy(array $criteria, array $orderBy = null)
  * @method Atelier[]    findAll()
  * @method Atelier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- * @SuppressWarnings("PHPMD")
  */
 class AtelierRepository extends ServiceEntityRepository
 {

@@ -15,8 +15,8 @@ class AnimationsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('price', IntegerType::class)
+            ->add('nom', TextType::class)
+            ->add('prix', IntegerType::class)
             ->add('resume', TextType::class)
             ->add('description', TextType::class)
             ->add('posterFile', VichFileType::class, [

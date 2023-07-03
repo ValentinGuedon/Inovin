@@ -17,7 +17,7 @@
 .modal-content-contact {
     background-color: rgba(0, 0, 0, 0.5);
     width: 30%;
-    height: 70%;
+    height: 7%;
     position: fixed;
     z-index: 100;
     top: 10%;
@@ -70,7 +70,7 @@ textarea {
     font-size: 18px;
     font-weight: 600;
     background: var(--couleur-tierce);
-    color:white;
+    color:var(--couleur-claire);
     border: none;
     outline: none;
     cursor: pointer;

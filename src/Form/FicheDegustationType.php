@@ -6,10 +6,12 @@ use App\Entity\FicheDegustation;
 use App\Entity\Vin;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\RangeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class FicheDegustationType extends AbstractType
 {
@@ -60,6 +62,80 @@ class FicheDegustationType extends AbstractType
             },
             'required' => true,
             'expanded' => true,
+        ])
+
+        ->add('limpidite', RangeType::class, [
+            'label' => 'Limpidité',
+            'attr' => [
+                'min' => 1,
+                'max' => 4,
+                'value' => 1,
+                'class' => 'custom-range',
+            ],
+        ])
+        ->add('persistance', RangeType::class, [
+            'label' => 'Persistance',
+            'attr' => [
+                'min' => 1,
+                'max' => 4,
+                'value' => 1,
+                'class' => 'custom-range',
+            ],
+        ])
+        ->add('brillance', RangeType::class, [
+            'label' => 'Brillance',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range brillance',
+                'id' => 'brillance-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('acidite', RangeType::class, [
+            'label' => 'Acidité',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range acidite',
+                'id' => 'acidite-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('ressentiAlcool', RangeType::class, [
+            'label' => 'Ressenti d\'alcool',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range ressentiAlcool',
+                'id' => 'ressentiAlcool-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('douceur', RangeType::class, [
+            'label' => 'Douceur',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range douceur',
+                'id' => 'douceur-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
+        ])
+        ->add('intensite', RangeType::class, [
+            'label' => 'Intensité',
+            'attr' => [
+                'min' => 1,
+                'max' => 10,
+                'value' => 1,
+                'class' => 'horizontal-range intensite',
+                'id' => 'intensite-field',
+                'oninput' => "this.parentNode.previousElementSibling.querySelector('output').textContent = this.value"
+            ],
         ])
 
         ->add('fluidite', ChoiceType::class, [
@@ -148,9 +224,10 @@ class FicheDegustationType extends AbstractType
                 ],
                 'required' => true,
                 'expanded' => true,
+                'choice_attr' => function ($choice) {
+                    return ['class' => 'matiere-button'];
+                }
             ])
-
-
             ->add('matiere', ChoiceType::class, [
                 'choices' => [
                     'Massive' => 'massive',
@@ -172,6 +249,9 @@ class FicheDegustationType extends AbstractType
                 ],
                 'required' => true,
                 'expanded' => true,
+                'attr' => [
+                    'class' => 'matiere-button'
+                ]
             ])
 
             ->add('note', ChoiceType::class, [
@@ -189,6 +269,10 @@ class FicheDegustationType extends AbstractType
                     '10/10' => 10,
                 ],
                 'required' => true,
+            ])
+
+            ->add('submit', SubmitType::class, [
+                'label' => 'Valider',
             ]);
     }
 

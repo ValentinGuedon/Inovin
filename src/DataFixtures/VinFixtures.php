@@ -37,7 +37,7 @@ class VinFixtures extends Fixture
                     $vin->setProfil($this->getReference('Le terrien'));
                 }
                 $vin->setNom($faker->name());
-                $vin->setSlug($this->slugger->slug($vin->getNom));
+                $vin->setSlug($this->slugger->slug($vin->getNom()));
                 $vin->setDescription($faker->text());
                 $vin->setRegion($faker->name());
                 $vin->setMillesime($faker->numberBetween(1900, 1999));
@@ -52,6 +52,7 @@ class VinFixtures extends Fixture
                 $vin->setBrillance($faker->numberBetween(0, 10));
                 $vin->setAlcool($faker->numberBetween(0, 10));
                 $vin->setDouceur($faker->numberBetween(0, 10));
+
                 if ($i === 2) {
                     if ($vin->getDouceur() <= 5) {
                         $vin->setProfil($this->getReference('Le chardo-né'));

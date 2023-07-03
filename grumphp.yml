@@ -13,10 +13,3 @@ grumphp:
         phpstan:
             configuration: ./phpstan.neon
             level: 1
-        phpmd:
-            whitelist_patterns:
-                - 'src'
-            exclude:
-                - '\src\Kernel.php'
-            ruleset:
-                - 'phpmd.xml'

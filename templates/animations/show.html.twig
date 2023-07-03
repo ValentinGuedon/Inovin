@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Atelier{% endblock %}
+{% block title %} {{ parent() }} - Atelier {% endblock title %}
 
 {% block body %}
 <h2 class="nomanimation">{{ animation.nom }}</h2>
@@ -10,8 +10,11 @@
         <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.nom }}" class="img">
       </div>
       <div class="description-container">
-        <p class="desc">{{ animation.description }}</p>
+        <p class="desc">{{ animation.resume }}</p>
         <p class="prix">Prix : {{ animation.prix }} €</p>
+
+        <div class="showcta">
+        <form action="/panier" method="get">
                 <div class="showcta">
                   <div class="nombrepersonne">
                     <form action="{{path ('add', {'id': animation.id})}}" method="post">

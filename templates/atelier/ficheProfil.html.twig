@@ -1,3 +1,27 @@
-<h1>{{user.firstname}}</h1>
-<h1>{{profil.name}}</h1>
-<p> {{profil.description}}</p>
+{% extends 'base_degustation.html.twig' %}
+
+{% block body %}
+    <div class="fiche-grid">
+        <h1 class='titreFiche animate pop2'>{{ user.firstname }}</h1>
+        <img src="{{ vich_uploader_asset(profil, 'profilFile') }}" class="img-profil animate pop">
+        <h1 class='titreFiche animate blur'>Vous êtes {{ profil.name }}</h1>
+        <p class="animate blur description">{{ profil.description }}</p>
+        <div class=></div>
+        <div class='grid-end'>
+        Je<br> crée<br> mon <br>vin
+        <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()">
+        </div>
+
+
+<script>
+function expandGlass() {
+  var glass = document.querySelector('.wineglass-shape');
+  glass.classList.add('expanded');
+
+  setTimeout(function() {
+    window.location.href = "{{ path('app_vin_index') }}";
+  }, 500);
+}
+
+    </script>
+{% endblock %}
