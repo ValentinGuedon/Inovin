@@ -489,11 +489,6 @@ li{
         grid-template-columns: 1fr;
     }
 
-    * {
-        margin: 0;
-        align-items: center;
-    }
-
     .emotions-row {
         flex-direction: column;
         gap: 15px;
@@ -512,8 +507,7 @@ li{
     }
 
     header {
-        height: 18vh;
-        padding-top: 10px;
+        height: 30vh;
     }
 
     .h1-crud {
