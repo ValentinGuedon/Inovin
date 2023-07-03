@@ -36,11 +36,7 @@ header {
     max-width: 200px;
 }
 
-
-
-
-
-// C'est la gestion du bouton burger DE ICI
+// Gestion du bouton burger navbar
 .bar1,
 .bar2,
 .bar3 {
@@ -67,9 +63,6 @@ header {
     display: inline-flex !important;
     flex-direction: row;
     margin-top: 1.5vh;
-    // align-items: center;
-    // margin-top: 2.5vh;
-    // margin-right: 3vh;
 }
 
 @media screen and (max-width: 1000px) {
@@ -134,14 +127,6 @@ header {
     padding: 0;
 }
 
-
-
-
-
-
-
-
-
 .ulnavpad {
     display: flex;
     flex-direction: row;
@@ -154,7 +139,6 @@ header {
 
 nav ul .linav {
     list-style: none;
-    // padding: 3%;
 }
 
 nav {
@@ -162,8 +146,6 @@ nav {
     flex-direction: row;
     justify-content: space-between;
 }
-
-// .ul {}
 
 .listederoulante {
     display: none;
@@ -204,9 +186,7 @@ a {
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 0.15em;
-
     display: inline-block;
-    // padding: 5px 10px;
     position: relative;
 }
 
