@@ -31,19 +31,20 @@ class AtelierController extends AbstractController
         ]);
     }
 
-    #[Route('/{atelierSlug}/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
-    #[ParamConverter('atelier', class: Atelier::class, options: ['mapping' => ['atelierSlug' => 'slug']])]
+    #[Route('/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
     #[ParamConverter('user', class: User::class, options: ['mapping' => ['userSlug' => 'slug']])]
     #[ParamConverter('vin', class: Vin::class, options: ['mapping' => ['vinSlug' => 'slug']])]
     public function showFiche(
-        Atelier $atelier,
+        AtelierRepository $atelierRepository,
         User $user,
         Vin $vin,
         VinRepository $vinRepository,
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
     ): Response {
+        $currentDate = new \DateTime();
         $ficheDegustation = new FicheDegustation();
+        $atelier = $atelierRepository->findOneByDate($currentDate);
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
         $vinCollection = $atelier->getvin();

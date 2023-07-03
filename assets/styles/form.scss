@@ -1,14 +1,10 @@
-body {
-    width: 100vw;
-}
-
 .formFiche {
     width: 70vw;
     margin-bottom: 20px;
 }
 
 label {
-    color: #ffffff;
+    color: var(--couleur-claire);
 }
 
 .page {
@@ -360,19 +356,10 @@ select:hover {
     background-color: #e0115f;
 }
 
-/* A garder pour trouver une solution : problème de <li> non personnalisable sans personnaliser l'ensemble des <li> du site */
-/*  .li-arome{
+li{
   list-style: none;
-  background-color: rgb(204, 28, 69);
-  padding: 10px 30px;
-  border-radius: 50px;
   color:var(--couleur-claire);
-}  */
-
-li {
-    list-style: none;
-    color: var(--couleur-claire);
-    padding: 3%;
+  padding: 3%;
 }
 
 /* Emotion */
@@ -447,11 +434,10 @@ li {
     text-align: center;
 }
 
-.active {
+.activefiche {
     background-color: #e0115f;
     scale: 1.12;
 }
-
 
 /* Bouton submit */
 
@@ -496,7 +482,7 @@ li {
 }
 
 @media only screen and (max-width: 600px) {
-
+  
     .cardcontainer,
     .aroma-container,
     .emotions-container {

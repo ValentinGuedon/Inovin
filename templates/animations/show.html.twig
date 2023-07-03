@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Atelier{% endblock %}
+{% block title %} {{ parent() }} - Atelier {% endblock title %}
 
 {% block body %}
 <h2 class="nomanimation">{{ animation.nom }}</h2>
@@ -10,21 +10,11 @@
         <img src="{{ vich_uploader_asset(animation) }}" alt="{{ animation.nom }}" class="img">
       </div>
       <div class="description-container">
-        <p class="desc">{{ animation.description }}</p>
+        <p class="desc">{{ animation.resume }}</p>
         <p class="prix">Prix : {{ animation.prix }} €</p>
 
         <div class="showcta">
         <form action="/panier" method="get">
-            <label for="date">Date atelier : </label>
-                <select id="date" name="date" required>
-                    <option disabled selected value="">Sélectionner</option>
-                    <option value="1">12/06/2023</option>
-                    <option value="2">15/07/2023</option>
-                    <option value="3">10/08/2023</option>
-                    <option value="4">25/09/2023</option>
-                </select><br>
-                <label for="adults">Nombres de personnes</label>
-
                 <div class="showcta">
                   <div class="nombrepersonne">
                     <form action="{{path ('add', {'id': animation.id})}}" method="post">
