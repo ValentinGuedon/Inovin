@@ -15,6 +15,15 @@
         Continuez les achats sur <strong>Inovin</strong>, apprenez en plus en consultant notre blog, ou visitez votre Liste d'envies.</p>
 </div>
 {% else %}
+<!--Message-->
+{% for category, messages in app.flashes %}
+    {% for message in messages %}
+        <div class=" w-50 container-sm text-white alert alert-{{ category }}">
+        <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
 <h2 class="container-sm sk-title py-2 mb-4">Votre panier</h2>
 {% for item in items %}
 {% if item.service is not null %}

@@ -21,7 +21,6 @@ class CartController extends AbstractController
         // Récupère le panier ou le créer
         $panier = $session->get('panier', []);
 
-
         // Création d'un tableau avec les informations de vin Entity en animations Entity
         $panierWithData = [];
         foreach ($panier as $id => $quantity) {

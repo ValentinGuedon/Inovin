@@ -14,8 +14,6 @@
         <p class="prix">Prix : {{ animation.prix }} €</p>
 
         <div class="showcta">
-        <form action="/panier" method="get">
-                <div class="showcta">
                   <div class="nombrepersonne">
                     <form action="{{path ('add', {'id': animation.id})}}" method="post">
                         <label for="date">Date atelier : </label>
