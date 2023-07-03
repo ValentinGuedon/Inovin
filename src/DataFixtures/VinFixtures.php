@@ -29,7 +29,7 @@ class VinFixtures extends Fixture
         $structure = ['légère','fluide','charpentée'];
         $matiere = ['massive','étoffée','légère','fluette'];
 
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 1; $i <= 2; $i++) {
             for ($j = 0; $j < 5; $j++) {
                 $vin = new Vin();
                 if ($i === 1) {
@@ -53,6 +53,7 @@ class VinFixtures extends Fixture
                 $vin->setAlcool($faker->numberBetween(0, 10));
                 $vin->setDouceur($faker->numberBetween(0, 10));
                 if ($i === 2) {
+                    $vin->setCouleur('blanc');
                     if ($vin->getDouceur() <= 5) {
                         $vin->setProfil($this->getReference('Le chardo-né'));
                     } else {
