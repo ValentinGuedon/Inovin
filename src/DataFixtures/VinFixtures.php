@@ -52,6 +52,7 @@ class VinFixtures extends Fixture
                 $vin->setBrillance($faker->numberBetween(0, 10));
                 $vin->setAlcool($faker->numberBetween(0, 10));
                 $vin->setDouceur($faker->numberBetween(0, 10));
+
                 if ($i === 2) {
                     $vin->setCouleur('blanc');
                     if ($vin->getDouceur() <= 5) {
