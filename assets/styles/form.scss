@@ -463,66 +463,16 @@ li{
     grid-column-end: 4;
 }
 
-.form-submit:hover {
+
+ /*
+ input:hover,select:hover {
     scale: 1.2;
-}
+ }
 
-.matiere-structure-container {
-    display: grid;
-    grid-template-columns: repeat(2, 279px);
-    justify-content: center;
-    align-items: flex-start;
-    margin: 20px 0px 20px 0px;
-}
-
-
-// Fourre-tout
-.flex-start {
-    align-self: flex-start;
-}
-
-@media only screen and (max-width: 600px) {
-  
-    .cardcontainer,
-    .aroma-container,
-    .emotions-container {
-        grid-template-columns: 1fr;
-    }
-
-    * {
-        margin: 0;
-        align-items: center;
-    }
-
-    .emotions-row {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .img-emotion {
-        margin: 0;
-    }
-
-    .ss-titre {
-        margin-bottom: 10px;
-    }
-
-    .horizontal-range input[type=range] {
-        width: 50vw;
-    }
-
-    header {
-        height: 18vh;
-        padding-top: 10px;
-    }
-
-    .h1-crud {
-        margin-top: 18%;
-        color: var(--couleur-claire);
-        top: 1.5em;
-    }
-
-    .titre-fiche {
-        margin-top: 0;
-    }
+.form-submit{
+  background-color: var(--couleur-claire);
+  height: 20vh;
+  display: grid;
+grid-column-start: 1;
+grid-column-end: 4;
 }
