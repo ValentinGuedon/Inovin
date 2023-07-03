@@ -2,12 +2,6 @@ body {
     width: 100vw;
 }
 
-header {
-    background-image: url(/assets/images/wave.svg);
-    background-size: cover;
-    height: 50vh;
-}
-
 .formFiche {
     width: 70vw;
     margin-bottom: 20px;
@@ -509,11 +503,6 @@ li {
         grid-template-columns: 1fr;
     }
 
-    * {
-        margin: 0;
-        align-items: center;
-    }
-
     .emotions-row {
         flex-direction: column;
         gap: 15px;
@@ -532,8 +521,7 @@ li {
     }
 
     header {
-        height: 18vh;
-        padding-top: 10px;
+        height: 30vh;
     }
 
     .h1-crud {
