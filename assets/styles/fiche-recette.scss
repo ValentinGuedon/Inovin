@@ -6,8 +6,6 @@
     align-items: center;
 }
 
-.recette {}
-
 .vgh1Recette {
     color: var(--couleur-claire);
     text-align: center;
@@ -71,6 +69,7 @@
     margin: 0 auto;
     padding: 20px;
     box-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
 
     &:hover {
         background: #e0115f;

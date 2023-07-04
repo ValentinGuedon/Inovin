@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\Recette;
+use App\Repository\VinRepository;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -19,7 +22,15 @@ class RecetteType extends AbstractType
             ->add('quantite2')
             ->add('quantite3')
             ->add('quantite4')
-            ->add('vin1', null, [
+            ->add('vin1', EntityType::class, [
+                'class' => Vin::class,
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('v')
+                    ->join('v.ateliers', 'atelier')
+                    ->where("atelier=:id")
+                    ->setParameter('id', $options['idAtelier'])
+                    ->orderBy('v.nom', 'DESC');
+                },
                 'choice_label' => 'nom',
             ])
             ->add('vin2', null, [
@@ -38,6 +49,7 @@ class RecetteType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Recette::class,
+            'idAtelier' => '',
         ]);
     }
 }

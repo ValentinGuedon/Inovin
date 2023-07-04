@@ -25,7 +25,7 @@ class RecetteController extends AbstractController
     public function visiteur(Request $request, RecetteRepository $recetteRepository): Response
     {
         $recette = new Recette();
-        $form = $this->createForm(RecetteType::class, $recette);
+        $form = $this->createForm(RecetteType::class, $recette, ['idAtelier' => 2]);
         $form->handleRequest($request);
 
 

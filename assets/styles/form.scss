@@ -286,6 +286,7 @@ select {
 select:hover {
     background-color: #e0115f;
     scale: 1.12;
+    cursor: pointer;
 }
 
 .arome {
@@ -356,10 +357,10 @@ select:hover {
     background-color: #e0115f;
 }
 
-li{
-  list-style: none;
-  color:var(--couleur-claire);
-  padding: 3%;
+li {
+    list-style: none;
+    color: var(--couleur-claire);
+    padding: 3%;
 }
 
 /* Emotion */
@@ -482,15 +483,11 @@ li{
 }
 
 @media only screen and (max-width: 600px) {
-<<<<<<< HEAD
 
     .titre-accueil {
         font-size: 200%;
     }
 
-=======
-  
->>>>>>> 432f575792cdf687e718fbc7d42ebe23760df547
     .cardcontainer,
     .aroma-container,
     .emotions-container {
