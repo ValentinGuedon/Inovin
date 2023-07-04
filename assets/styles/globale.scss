@@ -12,7 +12,7 @@
 body {
     font-family: var(--font);
     background-color: var(--couleur-fonce);
-
+    // width: 100vw;
 }
 
 header {
@@ -22,10 +22,6 @@ header {
 }
 
 .img-logo {
-    //     position: absolute;
-    //     left: 0;
-    //     margin-left: 4%;
-    // width: 10%;
     width: 100%;
     height: auto;
 }
@@ -65,7 +61,48 @@ header {
     margin-top: 1.5vh;
 }
 
+.vgFormField input {
+    background-color: var(--couleur-claire);
+    border: none;
+    border-radius: 70px;
+    height: 28px;
+    min-width: 180px;
+    max-width: 500px;
+    width: 40%;
+    text-align: center;
+}
+
+.marginpanier {
+    margin-top: 1.7vh;
+}
+
 @media screen and (max-width: 1000px) {
+
+    .ulnavburger {
+        background-color: var(--couleur-claire);
+        padding: 0 10px;
+        border: 3px solid var(--couleur-tierce);
+    }
+
+    nav ul li:hover .listederoulante {
+        display: block;
+        margin-right: 280px;
+        width: 140px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        background-color: var(--couleur-claire);
+        padding: 0;
+        border: 3px solid var(--couleur-tierce);
+    }
+
+    nav ul li:hover .listederoulante li {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        margin-right: 10px;
+    }
 
     .burgerzz {
         cursor: pointer;
@@ -112,6 +149,11 @@ header {
         margin-top: 1vh !important;
         display: flex;
         justify-content: center;
+    }
+
+    .marginpanier {
+        margin-bottom: 1vh;
+        margin-top: 0;
     }
 
 }
@@ -163,10 +205,6 @@ a {
 .marginLinks {
     margin-top: 2.5vh;
     margin-right: 2.5vw;
-}
-
-.marginpanier {
-    margin-top: 1.7vh;
 }
 
 .listederoulante {
