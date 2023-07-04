@@ -78,7 +78,7 @@ class ShopController extends AbstractController
     #[Route('/{slug}/note', name: 'note', methods: ['GET', 'POST'])]
     public function addNote(Vin $vin, Request $request, UserRepository $userRepository): Response
     {
-        /** @var \App\Entity\User */
+        /** @var \App\Entity\User */ /* @phpstan-ignore-line */
         $user = $this->getUser();
         if (!$user) {
             $this->addFlash('sk-alert', 'Vous devez être connecté pour attribuer une note.');
