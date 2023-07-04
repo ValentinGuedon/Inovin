@@ -29,15 +29,15 @@
 {% if item.service is not null %}
 <div class="sk-card-cart card mb-3 mx-3">
   <div class="row g-0">
-    <div class="col-md-2">
-      <img src="{{ vich_uploader_asset(item.service) }}" class="img-fluid rounded-start" alt="{{ item.service.nom }}">
+    <div class="col-md-2 d-flex justify-content-center align-self-center">
+      <img class="img-fluid rounded-start w-50" src="{{ vich_uploader_asset(item.service) }}" alt="{{ item.service.nom }}">
     </div>
     <div class="col-md-10">
       <div class="row">
-        <div class="col-md-8 mt-4 sk-vertical-separator">
+        <div class="col-md-8 mt-4 mb-4 sk-vertical-separator">
           <div class="card-body">
             <h5 class="card-title">{{ item.service.nom }}</h5>
-            <p class="card-text">{{ item.service.description }}</p>
+            <p class="card-text text-break">{{ item.service.description }}</p>
           </div>
         </div>
         <div class="col-md-4 mt-4">
@@ -53,7 +53,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-end">{{ item.service.prix }}</td>
+                  <td class="text-end">{{ item.service.prix }} €</td>
                   <td class="text-end">{{ item.quantity}}</td>
                   <td class="text-end">{{ item.service.prix * item.quantity}} €</td>
                   <td class="text-end"><a href="{{ path('panier_remove', {'id': item.service.id}) }}" class="btn" title="Supprimer"><i class="bi bi-trash"></i></a></td>
@@ -67,20 +67,20 @@
 </div>
 {% endif %}
 {% endfor %}
-
+<div class="sk-divider"></div>
 {% for item in items %}
 {% if item.product is not null %}
-<div class="sk-card-cart card mb-3 mx-3">
+<div class="sk-card-cart card mb-3 mt-4 mx-3">
   <div class="row g-0">
-    <div class="col-md-2">
-      <img src="{{ vich_uploader_asset(item.product) }}" class="img-fluid rounded-start" alt="{{ item.product.nom }}">
+    <div class="col-md-2 d-flex justify-content-center align-self-center">
+      <img class="img-fluid rounded-start w-50" src="{{ vich_uploader_asset(item.product) }}" alt="{{ item.product.nom }}">
     </div>
     <div class="col-md-10">
       <div class="row">
-        <div class="col-md-8 mt-4 sk-vertical-separator">
+        <div class="col-md-8 mt-4 mb-4 sk-vertical-separator">
           <div class="card-body">
             <h5 class="card-title">{{ item.product.nom }}</h5>
-            <p class="card-text">{{ item.product.description }}</p>
+            <p class="card-text text-break">{{ item.product.description }}</p>
           </div>
         </div>
         <div class="col-md-4 mt-4">
@@ -96,7 +96,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="text-end">{{ item.product.prix }}</td>
+                  <td class="text-end">{{ item.product.prix }} €</td>
                   <td class="text-end">{{ item.quantity}}</td>
                   <td class="text-end">{{ item.product.prix * item.quantity}} €</td>
                   <td class="text-end"><a href="{{ path('panier_remove', {'id': item.product.id}) }}" class="btn" title="Supprimer"><i class="bi bi-trash"></i></a></td>
