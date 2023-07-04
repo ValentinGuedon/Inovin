@@ -66,7 +66,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $recettes;
 
 
-
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class, cascade: ['persist'])]
     private ?Panier $panier = null;
 

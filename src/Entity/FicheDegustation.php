@@ -64,9 +64,9 @@ class FicheDegustation
     #[ORM\Column(nullable: true)]
     private ?int $intensite = null;
 
+
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
-
 
     public function getId(): ?int
     {

@@ -78,9 +78,21 @@ class AtelierController extends AbstractController
         foreach ($vinCollection as $vinId) {
             $vinCollectionId[] = $vinId->getId();
         }
-        // Récupère le formulaire du  vin
+        //Vérifie l'existence d'une fiche pour ce vin
+        $existingFiche = $ficheDegustationRepository->findOneBy([
+            'user' => $user,
+            'vin' => $vin,
+        ]);
+        if ($existingFiche) {
+            // Si oui, la met à jour
+            $ficheDegustation = $existingFiche;
+            $ficheDegustation->setDate($currentDate);
+            $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
+            $form->handleRequest($request);
+        } else {
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheDegustationRepository->save($ficheDegustation, true);
@@ -105,7 +117,6 @@ class AtelierController extends AbstractController
                 // envoi du mail récapitulatif des dégustations
                 $userEmail = $user->getEmail();
                 $mailerService->sendAtelierEmail($userEmail, $fiches);
-
                 // Redirection vers la page de profil de consommateur
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
