@@ -1,38 +1,23 @@
-.sk-table{
-    background-color: var(--couleur-claire);
+.sk-title{
+    background-color: var(--couleur-tierce);
+    color: var(--couleur-claire);
     border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.sk-cell{
-    padding: 1%;
+.sk-card-cart{
+    background-color: var(--couleur-claire);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
-.sk-picture{
-    width:100px;
-}
-.sk-cell-total{
-    padding-bottom: 1%;
+.sk-vertical-separator {
+    border-right: 2px solid var(--couleur-tierce);
 }
 
-.sk-border{
-    border-bottom: 1px solid var(--couleur-tierce);
+.sk-total{
+    color: var(--couleur-claire);
 }
 
-.sk-product {
-    width: 200px;
-    white-space: normal;
-    overflow-wrap: break-word;
-}
-
-.sk-button-card{
-    color: var(--couleur-tierce);
-    transition: transform 0.5s ease;
-}
-
-.sk-button-card:hover{
-    color: var(--couleur-tierce);
-    transform: scale(1.5);
-}
 
 .sk-checkout{
     background-color: var(--couleur-tierce);
@@ -40,6 +25,7 @@
     width:20%;
     text-align: center;
     border-radius: 70px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     margin-top: 5%;
     padding: 2%;
     border: none;

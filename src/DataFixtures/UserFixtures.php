@@ -32,6 +32,7 @@ class UserFixtures extends Fixture
         $user->setCity('Paris');
         $user->setPhone('0687654321');
         $user->setParticipant(null);
+        $user->setArome('a:0:{}');
 
         $birthdate = new DateTime('2020-01-01');
         $user->setBirthdate($birthdate);

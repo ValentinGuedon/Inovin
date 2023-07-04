@@ -8,6 +8,7 @@ use App\Entity\Blog;
 use App\Entity\User;
 use App\Entity\Cepage;
 use App\Entity\Atelier;
+use App\Entity\Recette;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -78,6 +79,10 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([
             MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
+        ]);
+
+        yield MenuItem::subMenu('Recettes', 'fas fa-eye-dropper')->setSubItems([
+            MenuItem::linkToCrud('Voir Recette', 'fas fa-eye', Recette::class)
         ]);
     }
 }

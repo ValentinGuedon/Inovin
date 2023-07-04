@@ -45,6 +45,7 @@ class ShopController extends AbstractController
         return $this->render('shop/index.html.twig', ['articles' => $articles, 'notes' => $notes, 'form' => $form]);
     }
 
+
     #[Route('/add/{id}/{quantity}', name: 'add', methods: ['GET', 'POST'])]
     public function add(int $id, int $quantity, Request $request, CartShopService $cartShopService): Response
     {

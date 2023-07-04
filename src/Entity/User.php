@@ -89,6 +89,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class, cascade:['persist'])]
     private Collection $notes;
 
+    #[ORM\Column(length: 255)]
+    private ?string $wineType = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $wineColor = null;
+
+    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    private array $arome = [];
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $content = null;
+
 
     public function __construct()
     {
@@ -537,5 +549,56 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             }
         }
         return false;
+    }
+
+    public function getWineType(): ?string
+    {
+        return $this->wineType;
+    }
+
+    public function setWineType(string $wineType): self
+    {
+        $this->wineType = $wineType;
+
+        return $this;
+    }
+
+
+    public function getWineColor(): ?string
+    {
+        return $this->wineColor;
+    }
+
+
+    public function setWineColor(string $wineColor): self
+    {
+        $this->wineColor = $wineColor;
+
+        return $this;
+    }
+
+    public function getArome(): array
+    {
+        return $this->arome;
+    }
+
+
+    public function setArome(?array $arome): self
+    {
+        $this->arome = $arome;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(?string $content): static
+    {
+        $this->content = $content;
+
+        return $this;
     }
 }
