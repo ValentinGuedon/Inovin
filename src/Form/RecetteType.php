@@ -35,12 +35,36 @@ class RecetteType extends AbstractType
             ])
             ->add('vin2', null, [
                 'choice_label' => 'nom',
+                'class' => Vin::class,
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('v')
+                    ->join('v.ateliers', 'atelier')
+                    ->where("atelier=:id")
+                    ->setParameter('id', $options['idAtelier'])
+                    ->orderBy('v.nom', 'DESC');
+                },
             ])
             ->add('vin3', null, [
                 'choice_label' => 'nom',
+                'class' => Vin::class,
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('v')
+                    ->join('v.ateliers', 'atelier')
+                    ->where("atelier=:id")
+                    ->setParameter('id', $options['idAtelier'])
+                    ->orderBy('v.nom', 'DESC');
+                },
             ])
             ->add('vin4', null, [
                 'choice_label' => 'nom',
+                'class' => Vin::class,
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('v')
+                    ->join('v.ateliers', 'atelier')
+                    ->where("atelier=:id")
+                    ->setParameter('id', $options['idAtelier'])
+                    ->orderBy('v.nom', 'DESC');
+                },
             ])
         ;
     }
