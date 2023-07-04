@@ -58,7 +58,8 @@ class ShopController extends AbstractController
     public function addToWatchlist(Vin $vin, UserRepository $userRepository): Response
     {
         /** @var \App\Entity\User */
-        if ($user = $this->getUser()) {
+        $user = $this->getUser();
+        if ($user) {
             if ($user->isInWatchlist($vin)) {
                 $user->removeWatchlist($vin);
             } else {
@@ -78,7 +79,7 @@ class ShopController extends AbstractController
     #[Route('/{slug}/note', name: 'note', methods: ['GET', 'POST'])]
     public function addNote(Vin $vin, Request $request, UserRepository $userRepository): Response
     {
-        /** @var \App\Entity\User */ /* @phpstan-ignore-line */
+        /** @var \App\Entity\User */
         $user = $this->getUser();
         if (!$user) {
             $this->addFlash('sk-alert', 'Vous devez être connecté pour attribuer une note.');
