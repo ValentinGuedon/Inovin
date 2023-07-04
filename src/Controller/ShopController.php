@@ -57,7 +57,7 @@ class ShopController extends AbstractController
     #[Route('/{slug}/watchlist', name: 'watchlist', methods: ['GET', 'POST'])]
     public function addToWatchlist(Vin $vin, UserRepository $userRepository): Response
     {
-            /** @var \App\Entity\User */
+        /** @var \App\Entity\User */
         if ($user = $this->getUser()) {
             if ($user->isInWatchlist($vin)) {
                 $user->removeWatchlist($vin);
