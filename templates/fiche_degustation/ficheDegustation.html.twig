@@ -22,7 +22,7 @@
           <div class="checkbox-custom">
               {% for choice in form.couleur %}
                   <label class="checkbox-label">
-                      {{ form_widget(choice, {'attr': {'class': 'checkbox-input ' ~ choice.vars['attr']['class']} }) }}
+                      {{ form_widget(choice, {'attr': {'class': 'checkbox-input' ~ choice.vars['attr']['class']} }) }}
                       <span class="checkbox-custom-indicator"></span>
                       {{ choice.vars.label }}
                   </label>

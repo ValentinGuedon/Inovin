@@ -2,20 +2,21 @@
 
 namespace App\Form;
 
+use DateTime;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use DateTime;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Regex;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -35,72 +36,61 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password',
-                'placeholder' => 'password',
-                'class' => 'type'
+                'attr' => ['autocomplete' => 'nouveau mot de passe',
                 ],
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Entrez un mot de passe',
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Your password should be at least {{ limit }} characters',
+                        'minMessage' => 'Votre mot de passe doit faire au moins {{ limit }} charactères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
                 ],
             ])
-            ->add('name', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'name',
-                    'class' => 'type'
-                ],
-            ])
-            ->add('firstname', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'firstname',
-                    'class' => 'type'
-                ],
-            ])
-            ->add('street', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'street',
-                    'class' => 'type'
-                ],
-            ])
-            ->add('postalcode', IntegerType::class, [
-                'attr' => [
-                    'placeholder' => 'postalcode',
-                    'class' => 'type'
-                ],
-            ])
-            ->add('city', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'city',
-                    'class' => 'type'
-                ],
-            ])
+            ->add('name', TextType::class, [])
+            ->add('firstname', TextType::class, [])
+            ->add('street', TextType::class, [])
+            ->add('postalcode', IntegerType::class, [])
+            ->add('city', TextType::class, [])
             ->add('birthdate', DateType::class, [
-                'widget' => 'single_text',
-                'attr' => [
-                    'placeholder' => 'birthdate',
-                    'class' => 'type'
-                ],
                 'data' => new DateTime(),
+                'years' => range(date('Y') - 50, date('Y')),
             ])
-            ->add('email', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'email',
-                    'class' => 'type'
+            ->add('email', TextType::class, [])
+            ->add('phone', TextType::class, [])
+            ->add('wineColor', ChoiceType::class, [
+                'choices' => [
+                    'Blanc' => 'Blanc',
+                    'Rouge' => 'Rouge',
                 ],
+                'required' => true,
+                'expanded' => false,
             ])
-            ->add('phone', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'phone',
-                    'class' => 'type'
+            ->add('wineType', ChoiceType::class, [
+                'choices' => [
+                    'Sec' => 'Sec',
+                    'Sucré' => 'Sucré',
                 ],
-            ]);
+                'required' => true,
+                'expanded' => false,
+            ])
+            ->add('arome', ChoiceType::class, [
+                'choices' => [
+                    'Animal' => 'Animal',
+                    'Epicé' => 'Epice',
+                    'Floral' => 'Floral',
+                    'Fruité' => 'Fruité',
+                    'Marin' => 'Marin',
+                    'Végétal' => 'Végétal',
+                ],
+                'required' => true,
+                'multiple' => true,
+                'expanded' => true,
+            ])
+            ->add('content', TextType::class, []);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
