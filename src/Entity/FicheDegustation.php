@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\FicheDegustationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: FicheDegustationRepository::class)]
@@ -62,6 +63,9 @@ class FicheDegustation
 
     #[ORM\Column(nullable: true)]
     private ?int $intensite = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $date = null;
 
 
     public function getId(): ?int
@@ -258,6 +262,18 @@ class FicheDegustation
     public function setIntensite(?int $intensite): static
     {
         $this->intensite = $intensite;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(?\DateTimeInterface $date): static
+    {
+        $this->date = $date;
 
         return $this;
     }

@@ -21,6 +21,7 @@ use  Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\MailerInterface;
+use App\Service\MailerService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/atelier')]
@@ -62,7 +63,7 @@ class AtelierController extends AbstractController
         VinRepository $vinRepository,
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
-        MailerInterface $mailer,
+        MailerService $mailerService,
     ): Response {
         // Récupère les informations de l'atelier
         $currentDate = new \DateTime();
@@ -70,40 +71,40 @@ class AtelierController extends AbstractController
         $atelier = $atelierRepository->findOneByDate($currentDate);
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
+        $ficheDegustation->setDate($currentDate);
+        // Récupère les vins de l'atelier
         $vinCollection = $atelier->getvin();
         $vinCollectionId = [];
         foreach ($vinCollection as $vinId) {
             $vinCollectionId[] = $vinId->getId();
         }
+        // Récupère le formulaire du  vin
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheDegustationRepository->save($ficheDegustation, true);
-
-            // itère la liste des vins
+            // Itère au vin suivant
             $nextVin = $user->getLastFicheDegustation()->getVin()->getId();
             $nextVin = array_search($nextVin, $vinCollectionId);
             $nextVin = $vinCollectionId[$nextVin + 1] ?? null;
+            // Si nouveau vin, régénère fiche
             if ($nextVin !== null) {
                 return $this->redirectToRoute('fiche', [
                     'userSlug' => $user->getSlug(),
                     'vinSlug' => $vinRepository->find($nextVin)->getSlug()
                 ]);
 
-            // Redirection vers le profil de consommateur
+            // Si tous les vins soumis, redirection vers le profil de consommateur
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
                 $profil = $favoriteFiche->getvin()->getProfil();
                 $user->setProfil($profil);
-                // envoi du mail récapitulatif des dégustations
-                $email = (new Email())
-                ->from('your_email@example.com')
-                ->to('your_email@example.com')
-                ->subject('Retrouvez vos fiches de dégustation')
-                ->html('<p>Vos fiches de dégustations réalisées en atelier sont à votre disposition en pdf.</p>');
+                $fiches = $user->getFicheDegustationsFromDate($currentDate);
 
-                $mailer->send($email);
+                // envoi du mail récapitulatif des dégustations
+                $userEmail = $user->getEmail();
+                $mailerService->sendAtelierEmail($userEmail, $fiches);
 
                 // Redirection vers la page de profil de consommateur
                 return $this->render('atelier/ficheProfil.html.twig', [
@@ -113,6 +114,7 @@ class AtelierController extends AbstractController
                 ]);
             }
         }
+        // Affiche le formulaire de dégustation
         return $this->render('fiche_degustation/FicheDegustation.html.twig', [
             'atelier' => $atelier,
             'user' => $user,

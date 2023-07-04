@@ -276,6 +276,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->ficheDegustations->matching($criteria)->first() ?: null;
     }
 
+    public function getFicheDegustationsFromDate(\DateTimeInterface $date): Collection
+    {
+        $criteria = Criteria::create()
+        ->where(Criteria::expr()->eq('date', $date))
+        ->orderBy(['id' => Criteria::DESC]);
+
+        return $this->ficheDegustations->matching($criteria);
+    }
     /**
      * @return Collection<int, FicheDegustation>
      */
