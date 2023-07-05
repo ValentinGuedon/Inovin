@@ -12,12 +12,17 @@
       <div class="description-container">
         <p class="desc">{{ animation.resume }}</p>
         <p class="prix">Prix : {{ animation.prix }} €</p>
-
         <div class="showcta">
-        <form action="/panier" method="get">
-                <div class="showcta">
                   <div class="nombrepersonne">
                     <form action="{{path ('add', {'id': animation.id})}}" method="post">
+                        <label for="date">Date atelier : </label>
+                        <select id="date" name="date" required>
+                            <option disabled selected value="">Sélectionner</option>
+                            <option value="1">12/06/2023</option>
+                            <option value="2">15/07/2023</option>
+                            <option value="3">10/08/2023</option>
+                            <option value="4">25/09/2023</option>
+                        </select><br>
                         <label for="date">Réserver un atelier : </label>
                         <select id="date" name="date" required>
                           <option disabled selected value="">Sélectionner</option>

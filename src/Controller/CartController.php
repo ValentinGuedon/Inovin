@@ -21,20 +21,28 @@ class CartController extends AbstractController
         // Récupère le panier ou le créer
         $panier = $session->get('panier', []);
 
-        // Création d'un tableau avec les informations de vin Entity
+        // Création d'un tableau avec les informations de vin Entity en animations Entity
         $panierWithData = [];
         foreach ($panier as $id => $quantity) {
             $panierWithData[] = [
-                'product' => $animationRepository->find($id),
-                'quantity' => $quantity
+                'service' => $animationRepository->find($id),
+                'quantity' => $quantity,
+                'product' => $vinRepository->find($id)
             ];
         }
+
 
         // Calcul somme total du panier
         $total = 0;
         foreach ($panierWithData as $item) {
-            $totalItem = $item['product']->getPrix() * $item['quantity'];
-            $total += $totalItem;
+            if ($item['service']) {
+                $totalItemService = $item['service']->getPrix() * $item['quantity'];
+                $total += $totalItemService;
+            }
+            if ($item['product']) {
+                $totalItemProduct = $item['product']->getPrix() * $item['quantity'];
+                $total += $totalItemProduct;
+            }
         }
 
         return $this->render('shop/shopCart.html.twig', ['items' => $panierWithData, 'total' => $total]);

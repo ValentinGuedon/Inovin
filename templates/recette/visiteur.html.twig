@@ -3,28 +3,83 @@
 {% block title %}New Recette{% endblock %}
 
 {% block body %}
-        <h1 class="h1 crud">Créez</h1>
-                {{ form_start(form) }}
-                        <p class="form-label">{{ form_label(form.nom) }}</p>
-                        {{ form_widget(form.nom) }}
-                            <p class="form-label">{{ form_label(form.vin1)}}</p>
-                        {{ form_widget(form.vin1) }}
+        <h1 class="vgh1Recette">Créez votre vin!</h1>
+         {% for flashError in app.flashes('error') %}
+                    <div class="vgFlash">
+                        <p>{{ flashError }}</p>
+                    </div>
+                {% endfor %}
 
-                        <p class="form-label">{{ form_label(form.quantite) }}</p>
-                            {{ form_widget(form.quantite) }}
-                        <p class="form-label">{{ form_label(form.vin2)}}</p>
-                            {{ form_widget(form.vin2) }}
-                        <p class="form-label">{{ form_label(form.quantite2) }}</p>
-                            {{ form_widget(form.quantite2) }}
-                        <p class="form-label">{{ form_label(form.vin3)}}</p>
-                            {{ form_widget(form.vin3) }}
-                        <p class="form-label">{{ form_label(form.quantite3) }}</p>
-                            {{ form_widget(form.quantite3) }}
-                        <p class="form-label">{{ form_label(form.vin4)}}</p>
-                            {{ form_widget(form.vin4) }}
-                        <p class="form-label">{{ form_label(form.quantite4) }}</p>
-                            {{ form_widget(form.quantite4) }}
-                        {{ form_widget(form) }}
-                        <button type="submit" class="submit">Ajouter</button>
-                {{ form_end(form, {'render_rest': false}) }}
+                    {{ form_start(form) }}
+                        <div class="vgVisiteurDivForm" id="vgFormSection">
+                            <p class="form-label vgblanc">Nom de votre recette</p>
+                            <div class="vgFormField"> {{ form_widget(form.nom) }} </div>
+
+
+                            <p class="form-label vgblanc"> Vin de base</p>
+                                <div class="vgSelect">{{ form_widget(form.vin1) }}</div>
+                            <p class="form-label vgblanc">Ajouter une quantité</p>
+                                <div class="vgFormField">{{ form_widget(form.quantite) }} </div>
+
+
+                            <p class="form-label vgblanc">Vin d'ajustement</p>
+                                <div class="vgSelect">{{ form_widget(form.vin2) }} </div>
+                            <p class="form-label vgblanc">Ajouter une quantité</p>
+                               <div class="vgFormField"> {{ form_widget(form.quantite2) }} </div>
+
+<i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
+
+                            <p class="form-label vgIdVin3 vgblanc">Vin supplémentaire</p>
+                            <div class="vgSelect vgIdVin3">{{ form_widget(form.vin3) }}</div>
+                            <p class="form-label vgIdVin3 vgblanc">Ajouter une quantité</p>
+                            <div class="vgIdVin3 vgFormField">{{ form_widget(form.quantite3) }}</div>
+
+<i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
+                            {# here 2 #}
+                            <p class="form-label vgIdVin4 vgblanc">Vin supplémentaire</p>
+                                <div class="vgSelect vgIdVin4"> {{ form_widget(form.vin4) }} </div>
+                            <p class="form-label vgIdVin4 vgblanc">Ajouter une quantité</p>
+                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div>
+
+                            <div class="vgDivButtonSearch">
+                            {{ form_widget(form) }}
+                            <button type="submit" class="submit vgButtonSearch vgblanc">Ajouter votre recette</button>
+                </div>
+            </div>
+
+
+{{ form_end(form, {'render_rest': false}) }}
+
+
+{# gestion des boutons  #}
+<script>
+    function displayVin3() {
+        let formElements = document.querySelectorAll("#vgFormSection .vgIdVin3");
+        formElements.forEach(function (element) {
+            element.classList.toggle("vgShowVin3");
+        });
+
+    }
+
+    function displayVin4() {
+        let formElements = document.querySelectorAll("#vgFormSection .vgIdVin4");
+        formElements.forEach(function (element) {
+            element.classList.toggle("vgShowVin4");
+        });
+    }
+
+    function displayButtonPlus3(){
+        document.querySelector("#vgFormSection .vgIPlus1").classList.toggle("fa-minus");
+        document.querySelector("#vgFormSection .vgIPlus1").classList.toggle("fa-plus");
+    }
+
+    function displayButtonPlus4(){
+            document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-minus");
+            document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-plus");
+        }
+
+
+
+</script>
+
 {% endblock %}

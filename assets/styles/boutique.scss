@@ -6,6 +6,7 @@
     margin-right: auto;
 }
 
+
 .sk-rubrique{
     color: var(--couleur-claire);
     border-bottom: 1px solid var(--couleur-tierce);
@@ -15,6 +16,7 @@
 .alert-sk-alert{
     background-color: var(--couleur-tierce);
     margin-bottom: 10%;
+    text-align: center;
 }
      
 // Caroussel
@@ -111,4 +113,12 @@
 
 .text-bg-sk-badges{
     background-color:var(--couleur-tierce);
+}
+
+.sk-truncate{
+    max-height: 100px;
+}
+
+.sk-star{
+    color: var(--couleur-tierce);
 }

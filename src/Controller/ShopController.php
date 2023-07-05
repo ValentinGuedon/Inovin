@@ -45,6 +45,7 @@ class ShopController extends AbstractController
         return $this->render('shop/index.html.twig', ['articles' => $articles, 'notes' => $notes, 'form' => $form]);
     }
 
+
     #[Route('/add/{id}/{quantity}', name: 'add', methods: ['GET', 'POST'])]
     public function add(int $id, int $quantity, Request $request, CartShopService $cartShopService): Response
     {
@@ -58,16 +59,21 @@ class ShopController extends AbstractController
     {
         /** @var \App\Entity\User */
         $user = $this->getUser();
-        if ($user->isInWatchlist($vin)) {
-            $user->removeWatchlist($vin);
-        } else {
-            $user->addWatchlist($vin);
-        }
-        $userRepository->save($user, true);
+        if ($user) {
+            if ($user->isInWatchlist($vin)) {
+                $user->removeWatchlist($vin);
+            } else {
+                $user->addWatchlist($vin);
+            }
+            $userRepository->save($user, true);
 
-        return new JsonResponse([
-            'isInWatchlist' => $this->getUser()->isInWatchlist($vin)
-        ]);
+            return new JsonResponse([
+               'isInWatchlist' => $this->getUser()->isInWatchlist($vin)
+            ]);
+        } else {
+            $this->addFlash('sk-alert', 'Vous devez être connecté ajouter un vin à votre wishlist');
+            return $this->redirectToRoute('shop_index', [], Response::HTTP_SEE_OTHER);
+        }
     }
 
     #[Route('/{slug}/note', name: 'note', methods: ['GET', 'POST'])]
