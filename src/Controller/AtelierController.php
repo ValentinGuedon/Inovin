@@ -63,7 +63,6 @@ class AtelierController extends AbstractController
 
             if ($nextVin !== null) {
                 return $this->redirectToRoute('fiche', [
-                    'atelierSlug' => $atelier->getSlug(),
                     'userSlug' => $user->getSlug(),
                     'vinSlug' => $vinRepository->find($nextVin)->getSlug()
                 ]);

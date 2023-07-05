@@ -22,8 +22,8 @@
                         <select id="date" name="date" required>
                           <option disabled selected value="">Sélectionner</option>
                           {% for atelier in animation.ateliers %}
-                              <option value="{{ atelier.id }}">{{ atelier.address }} - {{ atelier.horaire }}</option>
-                          {% endfor %}
+                          <option value="{{ atelier.id }}">{{ atelier.date|date('d/m/Y') }} - {{ atelier.address }} - {{ atelier.horaire }}</option>
+                      {% endfor %}
                       </select><br>
                     </div>
                     <div class="nombrepersonne">

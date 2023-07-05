@@ -17,6 +17,9 @@ const txt = document.querySelector('.txt-accueil');
 const btn = document.querySelector('.cta-accueil');
 const imgwine = document.querySelector('.img-wine');
 const allItems = document.querySelector('.liennav');
+const quiSommesNous = document.querySelector('.quisommesnous');
+const textePresentation = document.querySelector('.textedepresentation');
+const photoCedric = document.querySelector('.photocedric');
 
 const TL1 = gsap.timeline({ paused: true });
 
@@ -26,7 +29,51 @@ TL1
     .from(btn, { duration: 1, opacity: 0 }, '-=0.5')
     .from(imgwine, { duration: 1, x: 100, opacity: 0 }, '-=0.5');
 
-TL1.play();
+const TL2 = gsap.timeline({ paused: true });
+
+TL2
+    .from(quiSommesNous, { duration: 1, y: -100, opacity: 0 })
+    .from(textePresentation, { duration: 1,y: -100, opacity: 0 }, '-=0.4')
+    .from(photoCedric, { duration: 1, x: -100, opacity: 0 }, '-=0.5');
+
+// Fonction pour vérifier si la section est visible à l'écran
+function isElementInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+// Fonction de gestion de l'événement de défilement
+function handleScrollAnimation() {
+    if (isElementInViewport(quiSommesNous)) {
+        TL2.play();
+        // Une fois l'animation jouée, vous pouvez supprimer l'écouteur d'événement pour éviter de répéter l'animation
+        window.removeEventListener('scroll', handleScrollAnimation);
+    }
+}
+
+// Fonction d'animation initiale (première partie)
+function playInitialAnimation() {
+    TL1.play();
+}
+
+// Ajouter un écouteur d'événement de défilement
+window.addEventListener('scroll', handleScrollAnimation);
+
+// Lancer l'animation initiale (première partie)
+playInitialAnimation();
+
+
+
+
+
+
+
+
 
 
 // Display and close modal contact mail in home/index.html.twig
@@ -113,3 +160,4 @@ watchlists.forEach((watchlist) => {
         }
     }
 });
+
