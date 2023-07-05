@@ -20,10 +20,22 @@ class FaqCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->reorder(Crud::PAGE_INDEX, [Action::EDIT, Action::DELETE])
-        ->remove(Crud::PAGE_INDEX, Action::NEW);
+        ->remove(Crud::PAGE_INDEX, Action::NEW)
+
+        ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
+            return $action->setIcon('fa fa-edit')->setLabel(false);
+        })
+        ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+            return $action->setIcon('fa fa-trash')->setLabel(false);
+        });
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->showEntityActionsInlined()
+        ;
+    }
 
     public function configureFields(string $pageName): iterable
     {

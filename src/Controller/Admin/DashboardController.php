@@ -69,7 +69,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::subMenu('Vins', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
+            MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class),
         ]);
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([

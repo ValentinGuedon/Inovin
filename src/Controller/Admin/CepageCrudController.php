@@ -19,10 +19,24 @@ class CepageCrudController extends AbstractCrudController
         return Cepage::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->showEntityActionsInlined()
+        ;
+    }
+
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->remove(Crud::PAGE_INDEX, Action::NEW);
+        ->remove(Crud::PAGE_INDEX, Action::NEW)
+
+        ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
+            return $action->setIcon('fa fa-edit')->setLabel(false);
+        })
+        ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+            return $action->setIcon('fa fa-trash')->setLabel(false);
+        });
     }
 
 
