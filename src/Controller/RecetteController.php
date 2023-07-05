@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/recette')]
 class RecetteController extends AbstractController
@@ -22,12 +23,13 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/visiteur', name: 'app_recette_visiteur', methods: ['GET', 'POST'])]
-    public function visiteur(Request $request, RecetteRepository $recetteRepository): Response
+    public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
     {
         $recette = new Recette();
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
+        $currentAtelier = $security->getUser()->getAtelier();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sum = $recette->getQuantite() + $recette->getQuantite2()

@@ -56,8 +56,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: FicheDegustation::class)]
     private Collection $ficheDegustations;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Favoris::class)]
-    private Collection $favoris;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Jeux::class)]
     private Collection $jeux;
@@ -105,7 +103,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
-        $this->favoris = new ArrayCollection();
         $this->jeux = new ArrayCollection();
         $this->recettes = new ArrayCollection();
         $this->atelier = new ArrayCollection();
@@ -325,35 +322,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Favoris>
-     */
-    public function getFavoris(): Collection
-    {
-        return $this->favoris;
-    }
-
-    public function addFavori(Favoris $favori): self
-    {
-        if (!$this->favoris->contains($favori)) {
-            $this->favoris->add($favori);
-            $favori->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavori(Favoris $favori): self
-    {
-        if ($this->favoris->removeElement($favori)) {
-            // set the owning side to null (unless already changed)
-            if ($favori->getUser() === $this) {
-                $favori->setUser(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Jeux>
