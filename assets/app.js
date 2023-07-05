@@ -69,13 +69,6 @@ playInitialAnimation();
 
 
 
-
-
-
-
-
-
-
 // Display and close modal contact mail in home/index.html.twig
 const contactButtons = document.querySelectorAll(".contactModal");
 
@@ -106,34 +99,6 @@ function closeAlert() {
 // Choose a time limit (5000 milliseconds)
 setTimeout(closeAlert, 5000);
 
-
-
-
-import Deck from './Deck';
-import GamePlay from './GamePlay';
-import GameUI from './GameUI';
-
-// Instantiate the classes that implement the games functionality.
-const deck = new Deck();
-const gamePlay = new GamePlay();
-const gameUI = new GameUI();
-
-gamePlay.setDeck(deck);
-gamePlay.setGameUI(gameUI);
-gamePlay.startNewGame();
-
-// Define event handlers for each UI element to start the game
-const deckElement = document.querySelector('.deck');
-document.querySelector('.deck').addEventListener('click', (event) => {
-    gamePlay.turn(event.target.getAttribute('id'));
-});
-
-const restartButton = document.querySelector('.restart');
-restartButton.addEventListener('click', (event) => {
-    gamePlay.startNewGame();
-});
-
-
 // Add to watchlist user
 const watchlists = document.querySelectorAll(".watchlist");
 
@@ -161,3 +126,54 @@ watchlists.forEach((watchlist) => {
     }
 });
 
+
+import Deck from './Deck';
+import GamePlay from './GamePlay';
+import GameUI from './GameUI';
+
+// Instantiate the classes that implement the games functionality.
+const deck = new Deck();
+const gamePlay = new GamePlay();
+const gameUI = new GameUI();
+
+gamePlay.setDeck(deck);
+gamePlay.setGameUI(gameUI);
+gamePlay.startNewGame();
+
+// Define event handlers for each UI element to start the game
+const deckElement = document.querySelector('.deck');
+document.querySelector('.deck').addEventListener('click', (event) => {
+    gamePlay.turn(event.target.getAttribute('id'));
+});
+
+const restartButton = document.querySelector('.restart');
+restartButton.addEventListener('click', (event) => {
+    gamePlay.startNewGame();
+});
+
+// Add to watchlist user
+const watchlists = document.querySelectorAll(".watchlist");
+
+watchlists.forEach((watchlist) => {
+    watchlist.addEventListener("click", addToWatchlist);
+
+    function addToWatchlist(e) {
+        e.preventDefault();
+
+        const watchlistLink = e.currentTarget;
+        const link = watchlistLink.href;
+
+        try {
+            fetch(link)
+                .then(res => res.json())
+                .then(data => {
+                    const watchlistIcon = watchlistLink.querySelector(".bi");
+                    watchlistIcon.classList.toggle("bi-heart-fill", data.isInWatchlist);
+                    watchlistIcon.classList.toggle("bi-heart", !data.isInWatchlist);
+                });
+
+        } catch(err) {
+            //console.error(err);
+        }
+    }
+});

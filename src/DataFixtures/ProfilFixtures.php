@@ -32,9 +32,6 @@ class ProfilFixtures extends Fixture
             $profil->setDescription($profilData[1]);
             $slug = $this->slugger->slug($profil->getName());
             $profil->setSlug($slug);
-
-            $imageFilename = $profilData[2];
-
             $manager->persist($profil);
             $this->addReference($profilData[0], $profil);
         }

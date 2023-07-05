@@ -286,6 +286,7 @@ select {
 select:hover {
     background-color: #e0115f;
     scale: 1.12;
+    cursor: pointer;
 }
 
 .arome {
@@ -356,10 +357,10 @@ select:hover {
     background-color: #e0115f;
 }
 
-li{
-  list-style: none;
-  color:var(--couleur-claire);
-  padding: 3%;
+li {
+    list-style: none;
+    color: var(--couleur-claire);
+    padding: 3%;
 }
 
 /* Emotion */
@@ -482,7 +483,11 @@ li{
 }
 
 @media only screen and (max-width: 600px) {
-  
+
+    .titre-accueil {
+        font-size: 200%;
+    }
+
     .cardcontainer,
     .aroma-container,
     .emotions-container {
@@ -506,9 +511,9 @@ li{
         width: 50vw;
     }
 
-    header {
-        height: 30vh;
-    }
+    // header {
+    //     height: 30vh;
+    // }
 
     .h1-crud {
         margin-top: 18%;

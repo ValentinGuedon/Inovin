@@ -63,4 +63,26 @@ class RecetteRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+
+
+// public function findByAtelierId($idAtelier): array
+// {
+//     $queryBuilder = $this->createQueryBuilder('v')
+//         ->select('v.ateliers', 'atelier')
+//         ->where('atelier = :id')
+//         ->setParameter('id', $idAtelier)
+//         ->orderBy('v.nom', 'ASC')
+//         ->getQuery();
+//         return $queryBuilder->getResult();
+// }
+
+//    'query_builder' => function (EntityRepository $er) use ($options) {
+//     return $er->createQueryBuilder('v')
+//     ->join('v.ateliers', 'atelier')
+//     ->where("atelier=:id")
+//     ->setParameter('id', $options['idAtelier'])
+//     ->orderBy('v.nom', 'DESC');
+// },
 }
