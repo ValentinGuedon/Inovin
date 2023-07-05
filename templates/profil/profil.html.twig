@@ -75,12 +75,12 @@
         <table class="sk-custom-table mb-5">
   <thead>
     <tr>
-      <th scope="col">Nom</th>
-      <th scope="col">Description</th>
-      <th scope="col">Région</th>
-      <th scope="col">Année</th>
-      <th scope="col">Prix</th>
-      <th scope="col" class="text-center">Action</th>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Région</th>
+      <th>Année</th>
+      <th>Prix</th>
+      <th class="text-center">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -90,8 +90,9 @@
       <td>{{ vin.description }}</td>
       <td>{{ vin.region }}</td>
       <td>{{ vin.millesime }}</td>
-      <td>{{ vin.prix }} €</td>
-      <td class="text-center sk-trash"><a href="{{ path('app_profil_delete_watchlist', {slug: vin.slug })}}" title="Supprimer" data-toggle="tooltip"><i class="bi bi-trash"></i></a></td>
+      <td class="text-nowrap">{{ vin.prix }} €</td>
+      <td class="text-center sk-trash"><a href="{{ path('app_profil_delete_watchlist', {slug: vin.slug })}}" title="Supprimer" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+      <span class="text-center sk-trash"><a href="{{ path('shop_add', {id: vin.id, quantity : 1 } )}}" title="Ajouter au panier" data-toggle="tooltip">&ensp;<i class="bi bi-cart"></i></a></span></td>
     </tr>
     {% endfor %}
   </tbody>

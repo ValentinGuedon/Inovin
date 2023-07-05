@@ -114,6 +114,9 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin2', targetEntity: Recette::class)]
     private Collection $recettes2;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $star = null;
+
     public function __construct()
     {
         $this->recettes1 = new ArrayCollection();
@@ -676,6 +679,18 @@ class Vin
                 $recettes2->setVin2(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isStar(): ?bool
+    {
+        return $this->star;
+    }
+
+    public function setStar(?bool $star): static
+    {
+        $this->star = $star;
 
         return $this;
     }
