@@ -74,9 +74,43 @@ header {
 
 .marginpanier {
     margin-top: 1.7vh;
+    margin-right: 1.2vw;
 }
 
 @media screen and (max-width: 1000px) {
+
+    #nav1 {
+        order: 1;
+        margin-top: 20px !important;
+    }
+
+    #nav2 {
+        order: 2;
+    }
+
+    #nav3 {
+        order: 3;
+    }
+
+    #nav4 {
+        order: 4;
+    }
+
+    #nav5 {
+        order: 5;
+    }
+
+    #nav6 {
+        order: 6;
+    }
+
+    #nav7 {
+        order: 7;
+    }
+
+    #nav8 {
+        order: 8;
+    }
 
     .ulnavburger {
         background-color: var(--couleur-claire);
