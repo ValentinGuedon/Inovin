@@ -54,8 +54,6 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: FicheDegustation::class)]
     private Collection $ficheDegustations;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Favoris::class)]
-    private Collection $favoris;
 
     #[ORM\OneToMany(mappedBy: 'vin1', targetEntity: Recette::class)]
     private Collection $recettes1;
@@ -118,7 +116,6 @@ class Vin
 
     public function __construct()
     {
-        $this->favoris = new ArrayCollection();
         $this->recettes1 = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
@@ -241,35 +238,6 @@ class Vin
         return $this;
     }
 
-    /**
-     * @return Collection<int, Favoris>
-     */
-    public function getFavoris(): Collection
-    {
-        return $this->favoris;
-    }
-
-    public function addFavori(Favoris $favori): self
-    {
-        if (!$this->favoris->contains($favori)) {
-            $this->favoris->add($favori);
-            $favori->setVin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavori(Favoris $favori): self
-    {
-        if ($this->favoris->removeElement($favori)) {
-            // set the owning side to null (unless already changed)
-            if ($favori->getVin() === $this) {
-                $favori->setVin(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Recette>
