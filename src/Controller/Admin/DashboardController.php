@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Entity\Cepage;
 use App\Entity\Atelier;
 use App\Entity\Recette;
+use App\Entity\Animations;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -74,6 +75,11 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
+        ]);
+
+        yield MenuItem::subMenu('Animations', 'fas fa-bullhorn')->setSubItems([
+            MenuItem::linkToCrud('Créer une Animation', 'fas fa-plus', Animations::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir Animations', 'fas fa-eye', Animations::class)
         ]);
 
         yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([

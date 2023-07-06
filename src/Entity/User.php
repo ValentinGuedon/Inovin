@@ -57,9 +57,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $ficheDegustations;
 
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Jeux::class)]
-    private Collection $jeux;
-
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Recette::class)]
     private Collection $recettes;
 
@@ -105,7 +102,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
-        $this->jeux = new ArrayCollection();
         $this->recettes = new ArrayCollection();
         $this->caracteristiques = new ArrayCollection();
         $this->atelier = new ArrayCollection();
@@ -311,37 +307,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($ficheDegustation->getUser() === $this) {
                 $ficheDegustation->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-
-    /**
-     * @return Collection<int, Jeux>
-     */
-    public function getJeux(): Collection
-    {
-        return $this->jeux;
-    }
-
-    public function addJeux(Jeux $jeux): self
-    {
-        if (!$this->jeux->contains($jeux)) {
-            $this->jeux->add($jeux);
-            $jeux->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeJeux(Jeux $jeux): self
-    {
-        if ($this->jeux->removeElement($jeux)) {
-            // set the owning side to null (unless already changed)
-            if ($jeux->getUser() === $this) {
-                $jeux->setUser(null);
             }
         }
 
