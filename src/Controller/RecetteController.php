@@ -26,9 +26,9 @@ class RecetteController extends AbstractController
     public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
     {
         $recette = new Recette();
-        $form = $this->createForm(RecetteType::class, $recette, ['idAtelier' => 8]);
-        $form->handleRequest($request);
+        $form = $this->createForm(RecetteType::class, $recette);
 
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sum = $recette->getQuantite() + $recette->getQuantite2()

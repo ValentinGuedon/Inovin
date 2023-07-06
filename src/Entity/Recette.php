@@ -21,26 +21,26 @@ class Recette
     private ?string $nom = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes')]
-    private ?Vin $vin1 = null;
+    private ?Cepage $vin1 = null;
 
     #[ORM\Column]
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes2')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Vin $vin2 = null;
+    private ?Cepage $vin2 = null;
 
     #[ORM\Column]
     private ?int $quantite2 = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes3')]
-    private ?Vin $vin3 = null;
+    private ?Cepage $vin3 = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $quantite3 = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes4')]
-    private ?Vin $vin4 = null;
+    private ?Cepage $vin4 = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
@@ -75,12 +75,12 @@ class Recette
         return $this;
     }
 
-    public function getVin1(): ?Vin
+    public function getVin1(): ?Cepage
     {
         return $this->vin1;
     }
 
-    public function setVin1(?Vin $vin1): self
+    public function setVin1(?Cepage $vin1): self
     {
         $this->vin1 = $vin1;
 
@@ -111,12 +111,12 @@ class Recette
         return $this;
     }
 
-    public function getVin3(): ?Vin
+    public function getVin3(): ?Cepage
     {
         return $this->vin3;
     }
 
-    public function setVin3(?Vin $vin3): static
+    public function setVin3(?Cepage $vin3): static
     {
         $this->vin3 = $vin3;
 
@@ -135,12 +135,12 @@ class Recette
         return $this;
     }
 
-    public function getVin4(): ?Vin
+    public function getVin4(): ?Cepage
     {
         return $this->vin4;
     }
 
-    public function setVin4(?Vin $vin4): static
+    public function setVin4(?Cepage $vin4): static
     {
         $this->vin4 = $vin4;
 
@@ -159,12 +159,12 @@ class Recette
         return $this;
     }
 
-    public function getVin2(): ?Vin
+    public function getVin2(): ?Cepage
     {
         return $this->vin2;
     }
 
-    public function setVin2(?Vin $vin2): static
+    public function setVin2(?Cepage $vin2): static
     {
         $this->vin2 = $vin2;
 
