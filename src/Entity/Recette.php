@@ -20,7 +20,7 @@ class Recette
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    #[ORM\ManyToOne(inversedBy: 'recettes1')]
     private ?Vin $vin1 = null;
 
     #[ORM\Column]

@@ -52,7 +52,9 @@ class AtelierCrudController extends AbstractCrudController
             ->setSortable(false),
             TextareaField::new('commentaire')
             ->setSortable(false),
-        TextField::new('address'),
+            TextField::new('address')
+            ->setLabel('Adresse')
+            ->setSortable(false),
         TextField::new('horaire'),
         ];
     }

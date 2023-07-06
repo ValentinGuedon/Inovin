@@ -1,19 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Faq index{% endblock %}
+{% block title %} {{ parent() }} - FAQ {% endblock %}
 
 {% block body %}
-    <h1 class="h1questions">Questions fréquentes:</h1>
-    <div class="divQuestionReponse">
-        {% for faq in faqs %}
-                <div class="divtext">
-                        <b><p class="topQuestion ptext">{{ faq.question }}</p></b>
+
+<h1 class="h1questions">Questions fréquentes :</h1>
+
+{% if faqs|length == 0 %}
+    <p>Pas de question trouvée</p>
+{% else %}
+    {% for faq in faqs %}
+    <div class="containerfaq"> 
+        <div class="faq-drawer">
+            <input class="faq-drawer__trigger" id="faq-drawer-{{ loop.index }}" type="checkbox" />
+            <label class="faq-drawer__title" for="faq-drawer-{{ loop.index }}">{{ faq.question }}</label>
+            <div class="faq-drawer__content-wrapper">
+                <div class="faq-drawer__content">
+                    <p>{{ faq.answer }}</p>
                 </div>
-                <div class="divtext" >
-                        <p class="bottomAnswer ptext">{{ faq.answer }}</p>
-                </div>
-        {% else %}
-                <p>no records found</p>
-        {% endfor %}
+            </div>
         </div>
+    </div>
+    {% endfor %}
+{% endif %}
 {% endblock %}
