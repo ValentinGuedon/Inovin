@@ -69,13 +69,6 @@ playInitialAnimation();
 
 
 
-
-
-
-
-
-
-
 // Display and close modal contact mail in home/index.html.twig
 const contactButtons = document.querySelectorAll(".contactModal");
 

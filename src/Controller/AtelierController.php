@@ -18,6 +18,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use  Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mailer\MailerInterface;
+use App\Service\MailerService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/atelier')]
@@ -31,6 +35,24 @@ class AtelierController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/edit', name: 'app_atelier_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Atelier $atelier, AtelierRepository $atelierRepository): Response
+    {
+        $form = $this->createForm(AtelierType::class, $atelier);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $atelierRepository->save($atelier, true);
+
+            return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('atelier/edit.html.twig', [
+            'atelier' => $atelier,
+            'form' => $form,
+        ]);
+    }
+
     #[Route('/{userSlug}/{vinSlug}', name: 'fiche', methods: ['GET','POST'])]
     #[ParamConverter('user', class: User::class, options: ['mapping' => ['userSlug' => 'slug']])]
     #[ParamConverter('vin', class: Vin::class, options: ['mapping' => ['vinSlug' => 'slug']])]
@@ -41,35 +63,61 @@ class AtelierController extends AbstractController
         VinRepository $vinRepository,
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
+        MailerService $mailerService,
     ): Response {
+        // Récupère les informations de l'atelier
         $currentDate = new \DateTime();
         $ficheDegustation = new FicheDegustation();
         $atelier = $atelierRepository->findOneByDate($currentDate);
         $ficheDegustation->setVin($vin);
         $ficheDegustation->setUser($user);
+        $ficheDegustation->setDate($currentDate);
+        // Récupère les vins de l'atelier
         $vinCollection = $atelier->getvin();
         $vinCollectionId = [];
         foreach ($vinCollection as $vinId) {
             $vinCollectionId[] = $vinId->getId();
         }
+        //Vérifie l'existence d'une fiche pour ce vin
+        $existingFiche = $ficheDegustationRepository->findOneBy([
+            'user' => $user,
+            'vin' => $vin,
+        ]);
+        if ($existingFiche) {
+            // Si oui, la met à jour
+            $ficheDegustation = $existingFiche;
+            $ficheDegustation->setDate($currentDate);
+            $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
+            $form->handleRequest($request);
+        } else {
         $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
         $form->handleRequest($request);
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheDegustationRepository->save($ficheDegustation, true);
+            // Itère au vin suivant
             $nextVin = $user->getLastFicheDegustation()->getVin()->getId();
             $nextVin = array_search($nextVin, $vinCollectionId);
             $nextVin = $vinCollectionId[$nextVin + 1] ?? null;
-
+            // Si nouveau vin, régénère fiche
             if ($nextVin !== null) {
                 return $this->redirectToRoute('fiche', [
                     'userSlug' => $user->getSlug(),
                     'vinSlug' => $vinRepository->find($nextVin)->getSlug()
                 ]);
+
+            // Si tous les vins soumis, redirection vers le profil de consommateur
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
                 $profil = $favoriteFiche->getvin()->getProfil();
                 $user->setProfil($profil);
+                $fiches = $user->getFicheDegustationsFromDate($currentDate);
+
+                // envoi du mail récapitulatif des dégustations
+                $userEmail = $user->getEmail();
+                $mailerService->sendAtelierEmail($userEmail, $fiches);
+                // Redirection vers la page de profil de consommateur
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user,
@@ -77,6 +125,7 @@ class AtelierController extends AbstractController
                 ]);
             }
         }
+        // Affiche le formulaire de dégustation
         return $this->render('fiche_degustation/FicheDegustation.html.twig', [
             'atelier' => $atelier,
             'user' => $user,
@@ -113,24 +162,6 @@ class AtelierController extends AbstractController
     {
         return $this->render('atelier/show.html.twig', [
             'atelier' => $atelier,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'app_atelier_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Atelier $atelier, AtelierRepository $atelierRepository): Response
-    {
-        $form = $this->createForm(AtelierType::class, $atelier);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $atelierRepository->save($atelier, true);
-
-            return $this->redirectToRoute('app_atelier_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('atelier/edit.html.twig', [
-            'atelier' => $atelier,
-            'form' => $form,
         ]);
     }
 
