@@ -52,13 +52,13 @@ class RecetteType extends AbstractType
 
             ->add('vin1', EntityType::class, [
                 'class' => Vin::class,
-                // 'query_builder' => function (EntityRepository $er) use ($options) {
-                //     return $er->createQueryBuilder('v')
-                //     ->join('v.ateliers', 'atelier')
-                //     ->where("atelier=:id")
-                //     ->setParameter('id', $options['idAtelier'])
-                //     ->orderBy('v.nom', 'DESC');
-                // },
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('v')
+                    ->join('v.ateliers', 'atelier')
+                    ->where("atelier=:id")
+                    ->setParameter('id', $options['idAtelier'])
+                    ->orderBy('v.nom', 'DESC');
+                },
                 'choice_label' => 'nom',
             ])
             ->add('vin2', EntityType::class, [

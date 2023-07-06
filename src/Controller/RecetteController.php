@@ -22,16 +22,13 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    // Atelier $atelier
     #[Route('/visiteur', name: 'app_recette_visiteur', methods: ['GET', 'POST'])]
     public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
     {
         $recette = new Recette();
-        // $collectionVin = $atelier->getCepage();
-        $form = $this->createForm(RecetteType::class, $recette);
+        $form = $this->createForm(RecetteType::class, $recette, ['idAtelier' => 8]);
         $form->handleRequest($request);
 
-        $currentAtelier = $security->getUser()->getAtelier();
 
         if ($form->isSubmitted() && $form->isValid()) {
             $sum = $recette->getQuantite() + $recette->getQuantite2()
