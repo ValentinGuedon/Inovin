@@ -58,8 +58,6 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin1', targetEntity: Recette::class)]
     private Collection $recettes1;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Caracteristique::class)]
-    private Collection $caracteristiques;
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
@@ -117,7 +115,6 @@ class Vin
     public function __construct()
     {
         $this->recettes1 = new ArrayCollection();
-        $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
         $this->users = new ArrayCollection();
@@ -269,35 +266,6 @@ class Vin
         return $this;
     }
 
-    /**
-     * @return Collection<int, Caracteristique>
-     */
-    public function getCaracteristiques(): Collection
-    {
-        return $this->caracteristiques;
-    }
-
-    public function addCaracteristique(Caracteristique $caracteristique): self
-    {
-        if (!$this->caracteristiques->contains($caracteristique)) {
-            $this->caracteristiques->add($caracteristique);
-            $caracteristique->setVin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCaracteristique(Caracteristique $caracteristique): self
-    {
-        if ($this->caracteristiques->removeElement($caracteristique)) {
-            // set the owning side to null (unless already changed)
-            if ($caracteristique->getVin() === $this) {
-                $caracteristique->setVin(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Cepage>
