@@ -18,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -39,10 +40,17 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($url);
     }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('css/admin.css');
+    }
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Inovin')
+            ->setTitle('<img src="build\images\Logo.d6ac705a.png">')
+            ->disableDarkMode()
+            ->setFaviconPath('build\images\Favicon.179675a2.png')
             ;
     }
 
