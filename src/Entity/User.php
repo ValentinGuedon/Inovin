@@ -63,8 +63,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Recette::class)]
     private Collection $recettes;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Caracteristique::class)]
-    private Collection $caracteristiques;
 
     #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class, cascade: ['persist'])]
     private ?Panier $panier = null;
@@ -107,7 +105,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->ficheDegustations = new ArrayCollection();
         $this->jeux = new ArrayCollection();
         $this->recettes = new ArrayCollection();
-        $this->caracteristiques = new ArrayCollection();
         $this->atelier = new ArrayCollection();
         $this->panier = new Panier();
         $this->watchlist = new ArrayCollection();
@@ -285,6 +282,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->ficheDegustations->matching($criteria)->first() ?: null;
     }
 
+    public function getFicheDegustationsFromDate(\DateTimeInterface $date): Collection
+    {
+        $criteria = Criteria::create()
+        ->where(Criteria::expr()->eq('date', $date))
+        ->orderBy(['id' => Criteria::DESC]);
+
+        return $this->ficheDegustations->matching($criteria);
+    }
     /**
      * @return Collection<int, FicheDegustation>
      */
@@ -372,36 +377,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($recette->getUser() === $this) {
                 $recette->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Caracteristique>
-     */
-    public function getCaracteristiques(): Collection
-    {
-        return $this->caracteristiques;
-    }
-
-    public function addCaracteristique(Caracteristique $caracteristique): self
-    {
-        if (!$this->caracteristiques->contains($caracteristique)) {
-            $this->caracteristiques->add($caracteristique);
-            $caracteristique->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCaracteristique(Caracteristique $caracteristique): self
-    {
-        if ($this->caracteristiques->removeElement($caracteristique)) {
-            // set the owning side to null (unless already changed)
-            if ($caracteristique->getUser() === $this) {
-                $caracteristique->setUser(null);
             }
         }
 

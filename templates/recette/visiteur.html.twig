@@ -13,33 +13,33 @@
                     {{ form_start(form) }}
                         <div class="vgVisiteurDivForm" id="vgFormSection">
                             <p class="form-label vgblanc">Nom de votre recette</p>
-                            <div> {{ form_widget(form.nom) }} </div>
+                            <div class="vgFormField"> {{ form_widget(form.nom) }} </div>
 
 
                             <p class="form-label vgblanc"> Vin de base</p>
                                 <div class="vgSelect">{{ form_widget(form.vin1) }}</div>
                             <p class="form-label vgblanc">Ajouter une quantité</p>
-                                <div>{{ form_widget(form.quantite) }}ml </div>
+                                <div class="vgFormField">{{ form_widget(form.quantite) }} </div>
 
 
                             <p class="form-label vgblanc">Vin d'ajustement</p>
                                 <div class="vgSelect">{{ form_widget(form.vin2) }} </div>
                             <p class="form-label vgblanc">Ajouter une quantité</p>
-                               <div> {{ form_widget(form.quantite2) }}ml </div>
+                               <div class="vgFormField"> {{ form_widget(form.quantite2) }} </div>
 
 <i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
 
                             <p class="form-label vgIdVin3 vgblanc">Vin supplémentaire</p>
                             <div class="vgSelect vgIdVin3">{{ form_widget(form.vin3) }}</div>
                             <p class="form-label vgIdVin3 vgblanc">Ajouter une quantité</p>
-                            <div class="vgIdVin3">{{ form_widget(form.quantite3) }}</div>
+                            <div class="vgIdVin3 vgFormField">{{ form_widget(form.quantite3) }}</div>
 
 <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
                             {# here 2 #}
                             <p class="form-label vgIdVin4 vgblanc">Vin supplémentaire</p>
                                 <div class="vgSelect vgIdVin4"> {{ form_widget(form.vin4) }} </div>
                             <p class="form-label vgIdVin4 vgblanc">Ajouter une quantité</p>
-                                <div class="vgIdVin4">{{ form_widget(form.quantite4) }}</div>
+                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div>
 
                             <div class="vgDivButtonSearch">
                             {{ form_widget(form) }}

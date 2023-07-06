@@ -14,6 +14,9 @@ class Recette
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    private ?User $user = null;
+
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
@@ -22,6 +25,10 @@ class Recette
 
     #[ORM\Column]
     private ?int $quantite = null;
+
+    #[ORM\ManyToOne(inversedBy: 'recettes2')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Vin $vin2 = null;
 
     #[ORM\Column]
     private ?int $quantite2 = null;
@@ -38,12 +45,6 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
-    #[ORM\ManyToOne(inversedBy: 'recettes')]
-    private ?User $user = null;
-
-    #[ORM\ManyToOne(inversedBy: 'recettes2')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Vin $vin2 = null;
 
     public function getId(): ?int
     {

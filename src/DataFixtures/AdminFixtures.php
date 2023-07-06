@@ -32,6 +32,9 @@ class AdminFixtures extends Fixture
         $admin->setCity('Strasbourg');
         $admin->setPhone('0612345678');
         $admin->setParticipant(null);
+        $admin->setArome([]);
+        $admin->setWineType('sec');
+        $admin->setWineColor('blanc');
 
         $birthdate = new DateTime('2023-01-01');
         $admin->setBirthdate($birthdate);

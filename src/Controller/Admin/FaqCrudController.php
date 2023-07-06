@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 
 class FaqCrudController extends AbstractCrudController
 {
@@ -33,7 +34,7 @@ class FaqCrudController extends AbstractCrudController
             ->hideOnIndex(),
             TextField::new('question')
                 ->setSortable(false),
-            TextField::new('answer')
+            TextareaField::new('answer')
                 ->setLabel('Réponse')
                 ->setSortable(false),
         ];
