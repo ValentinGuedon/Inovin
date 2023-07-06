@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use Doctrine\Common\Collections\Collection;
 use Dompdf\Dompdf;
 use Twig\Environment;
 use Symfony\Component\Mime\Email;
@@ -20,17 +21,14 @@ class MailerService
         $this->twig = $twig;
     }
 
-    public function sendFicheEmail(string $userEmail, array $pdfPaths): void
+    public function sendAtelierEmail(string $userEmail, Collection $fiches): void
     {
-        $email = (new Email())
-            ->from('your_email@example.com')
-            ->to($userEmail)
-            ->subject('Form Submission PDF')
-            ->html('<p>Attached are the PDF renders of your form submissions.</p>');
 
-        foreach ($pdfPaths as $pdfPath) {
-            $email->attachFromPath($pdfPath);
-        }
+        $email = (new Email())
+            ->from('inovinstrasbourg@gmail.com')
+            ->to("$userEmail")
+            ->subject('Retrouvez vos fiches de dégustation')
+            ->html($this->twig->render('ficheEmail.html.twig', ['fiches' => $fiches]));
 
         $this->mailer->send($email);
     }

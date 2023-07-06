@@ -1,0 +1,26 @@
+{% apply inline_css (source('@styles/ficheEmail.scss'))%}
+<html>
+  {% for fiche in fiches %}
+  <div class ='fiche-email'>
+      <h2>{{ fiche.vin.nom|capitalize }}</h2>
+      <p> Limpidité : {{ fiche.limpidite|capitalize }}</p>
+      <p> Couleur : {{ fiche.couleur|capitalize }}</p>
+      <ul>
+        <h3>Arômes :</h3>
+      {% for eachArome in fiche.arome %}
+        <li>{{ eachArome|capitalize }}</li>
+      {% endfor %}
+      <p>Fluidité : {{ fiche.fluidite|capitalize }}</p>
+      <p> Persistance : {{ fiche.persistance|capitalize }}</p>
+      <p>Matière : {{ fiche.matiere|capitalize }}</p>
+      <p>Structure : {{ fiche.structure|capitalize }}</p>
+      <p>Emotion : {{ fiche.emotion|capitalize }}</p>
+      <p>Brillance : {{ fiche.brillance|capitalize }}</p>
+      <p>Douceur : {{ fiche.douceur|capitalize }}</p>
+      <p>Acidité : {{ fiche.acidite|capitalize }}</p>
+      <p>Intensité : {{ fiche.intensite|capitalize }}</p>
+      <p>Ressenti d'alcool : {{ fiche.ressentiAlcool|capitalize }}</p>
+</div>
+  {% endfor %}
+</html>
+{% endapply %}
