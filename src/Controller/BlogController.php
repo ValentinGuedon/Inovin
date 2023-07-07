@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Blog;
 use App\Form\BlogType;
 use App\Repository\BlogRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/blog')]
 class BlogController extends AbstractController
@@ -43,8 +44,8 @@ class BlogController extends AbstractController
         }
 
         return $this->renderForm('blog/new.html.twig', [
-            'blog' => $blog,
-            'form' => $form,
+        'blog' => $blog,
+        'form' => $form,
         ]);
     }
 
