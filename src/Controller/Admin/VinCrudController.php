@@ -75,10 +75,6 @@ class VinCrudController extends AbstractCrudController
             ]),
             TextField::new('region')
             ->setLabel('Région'),
-
-
-
-
             TextField::new('limpidite')
             ->setLabel('Limpidité')
             ->hideOnIndex(),
@@ -96,7 +92,6 @@ class VinCrudController extends AbstractCrudController
             ArrayField::new('arome')
             ->hideOnIndex(),
 
-
             IntegerField::new('brillance')
             ->hideOnIndex(),
             IntegerField::new('intensite')
@@ -107,8 +102,6 @@ class VinCrudController extends AbstractCrudController
             IntegerField::new('alcool')
             ->setLabel('Alcool Ressenti')
             ->hideOnIndex(),
-
-
 
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),

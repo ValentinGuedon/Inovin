@@ -68,17 +68,45 @@ class RecetteType extends AbstractType
             ])
             ->add('vin2', EntityType::class, [
                 'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
                 'choice_label' => 'type',
             ])
             ->add('vin3', null, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
                 'choice_label' => 'type',
             ])
             ->add('vin4', null, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
                 'choice_label' => 'type',
             ])
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([

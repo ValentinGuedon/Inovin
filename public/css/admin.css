@@ -3,13 +3,11 @@
     --couleur-claire: #e2dad4;
     --couleur-tierce: #9b2449;
     --font: 'Montserrat', sans-serif;
+    --table-hover-cell-bg: var(--couleur-tierce);
+    --indigo-50: var(--couleur-tierce);
 }
 
 /* ----------------------------------- navbar de gauche ------------------------------- */
-/* deplacement logo */
-.logo-custom {
-    margin-left: -50px;
-}
 
 /* couleur navbar */
 .sidebar {
@@ -149,4 +147,8 @@ td time {
 
 .input-group-text {
     padding-left: 0 !important;
+}
+
+.datagrid tbody {
+    box-shadow: 0 1px 0 var(--table-cell-border-color);
 }
