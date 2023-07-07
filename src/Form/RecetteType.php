@@ -11,6 +11,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class RecetteType extends AbstractType
 {
@@ -18,53 +20,56 @@ class RecetteType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('quantite')
-            ->add('quantite2')
-            ->add('quantite3')
-            ->add('quantite4')
+            ->add('quantite', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 750,
+                ],
+                'required' => true,
+            ])
+            ->add('quantite2', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 750,
+                ],
+                'required' => true,
+            ])
+            ->add('quantite3', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 750,
+                ],
+                'required' => false,
+            ])
+            ->add('quantite4', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                    'max' => 750,
+                ],
+                'required' => false,
+            ])
+
+
             ->add('vin1', EntityType::class, [
                 'class' => Vin::class,
-                'query_builder' => function (EntityRepository $er) use ($options) {
-                    return $er->createQueryBuilder('v')
-                    ->join('v.ateliers', 'atelier')
-                    ->where("atelier=:id")
-                    ->setParameter('id', $options['idAtelier'])
-                    ->orderBy('v.nom', 'DESC');
-                },
+                // 'query_builder' => function (EntityRepository $er) use ($options) {
+                //     return $er->createQueryBuilder('v')
+                //     ->join('v.ateliers', 'atelier')
+                //     ->where("atelier=:id")
+                //     ->setParameter('id', $options['idAtelier'])
+                //     ->orderBy('v.nom', 'DESC');
+                // },
                 'choice_label' => 'nom',
             ])
-            ->add('vin2', null, [
-                'choice_label' => 'nom',
+            ->add('vin2', EntityType::class, [
                 'class' => Vin::class,
-                'query_builder' => function (EntityRepository $er) use ($options) {
-                    return $er->createQueryBuilder('v')
-                    ->join('v.ateliers', 'atelier')
-                    ->where("atelier=:id")
-                    ->setParameter('id', $options['idAtelier'])
-                    ->orderBy('v.nom', 'DESC');
-                },
+                'choice_label' => 'nom',
             ])
             ->add('vin3', null, [
                 'choice_label' => 'nom',
-                'class' => Vin::class,
-                'query_builder' => function (EntityRepository $er) use ($options) {
-                    return $er->createQueryBuilder('v')
-                    ->join('v.ateliers', 'atelier')
-                    ->where("atelier=:id")
-                    ->setParameter('id', $options['idAtelier'])
-                    ->orderBy('v.nom', 'DESC');
-                },
             ])
             ->add('vin4', null, [
                 'choice_label' => 'nom',
-                'class' => Vin::class,
-                'query_builder' => function (EntityRepository $er) use ($options) {
-                    return $er->createQueryBuilder('v')
-                    ->join('v.ateliers', 'atelier')
-                    ->where("atelier=:id")
-                    ->setParameter('id', $options['idAtelier'])
-                    ->orderBy('v.nom', 'DESC');
-                },
             ])
         ;
     }
