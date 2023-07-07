@@ -57,7 +57,7 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Favoris::class)]
     private Collection $favoris;
 
-    #[ORM\OneToMany(mappedBy: 'vin1', targetEntity: Recette::class)]
+    #[ORM\OneToMany(mappedBy: 'cepage1', targetEntity: Recette::class)]
     private Collection $recettes1;
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Caracteristique::class)]
@@ -107,13 +107,13 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class)]
     private Collection $notes;
 
-    #[ORM\OneToMany(mappedBy: 'vin3', targetEntity: Recette::class)]
+    #[ORM\OneToMany(mappedBy: 'cepage3', targetEntity: Recette::class)]
     private Collection $recettes3;
 
-    #[ORM\OneToMany(mappedBy: 'vin4', targetEntity: Recette::class)]
+    #[ORM\OneToMany(mappedBy: 'cepage4', targetEntity: Recette::class)]
     private Collection $recettes4;
 
-    #[ORM\OneToMany(mappedBy: 'vin2', targetEntity: Recette::class)]
+    #[ORM\OneToMany(mappedBy: 'cepage2', targetEntity: Recette::class)]
     private Collection $recettes2;
 
     public function __construct()
@@ -283,7 +283,7 @@ class Vin
     {
         if (!$this->recettes1->contains($recette1)) {
             $this->recettes1->add($recette1);
-            $recette1->setVin1($this);
+            $recette1->setCepage1($this);
         }
 
         return $this;
@@ -293,8 +293,8 @@ class Vin
     {
         if ($this->recettes1->removeElement($recette1)) {
             // set the owning side to null (unless already changed)
-            if ($recette1->getVin1() === $this) {
-                $recette1->setVin1(null);
+            if ($recette1->getCepage1() === $this) {
+                $recette1->setCepage1(null);
             }
         }
 
@@ -323,8 +323,8 @@ class Vin
     {
         if ($this->caracteristiques->removeElement($caracteristique)) {
             // set the owning side to null (unless already changed)
-            if ($caracteristique->getVin() === $this) {
-                $caracteristique->setVin(null);
+            if ($caracteristique->getCepage() === $this) {
+                $caracteristique->setCepage(null);
             }
         }
 
@@ -634,7 +634,7 @@ class Vin
     {
         if (!$this->recettes3->contains($recettes3)) {
             $this->recettes3->add($recettes3);
-            $recettes3->setVin3($this);
+            $recettes3->setCepage3($this);
         }
 
         return $this;
@@ -644,8 +644,8 @@ class Vin
     {
         if ($this->recettes3->removeElement($recettes3)) {
             // set the owning side to null (unless already changed)
-            if ($recettes3->getVin3() === $this) {
-                $recettes3->setVin3(null);
+            if ($recettes3->getCepage3() === $this) {
+                $recettes3->setCepage3(null);
             }
         }
 
@@ -664,7 +664,7 @@ class Vin
     {
         if (!$this->recettes4->contains($recettes4)) {
             $this->recettes4->add($recettes4);
-            $recettes4->setVin4($this);
+            $recettes4->setCepage4($this);
         }
 
         return $this;
@@ -674,8 +674,8 @@ class Vin
     {
         if ($this->recettes4->removeElement($recettes4)) {
             // set the owning side to null (unless already changed)
-            if ($recettes4->getVin4() === $this) {
-                $recettes4->setVin4(null);
+            if ($recettes4->getCepage4() === $this) {
+                $recettes4->setCepage4(null);
             }
         }
 
@@ -694,7 +694,7 @@ class Vin
     {
         if (!$this->recettes2->contains($recettes2)) {
             $this->recettes2->add($recettes2);
-            $recettes2->setVin2($this);
+            $recettes2->setCepage2($this);
         }
 
         return $this;
@@ -704,8 +704,8 @@ class Vin
     {
         if ($this->recettes2->removeElement($recettes2)) {
             // set the owning side to null (unless already changed)
-            if ($recettes2->getVin2() === $this) {
-                $recettes2->setVin2(null);
+            if ($recettes2->getCepage2() === $this) {
+                $recettes2->setCepage2(null);
             }
         }
 

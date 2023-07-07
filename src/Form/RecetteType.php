@@ -53,7 +53,7 @@ class RecetteType extends AbstractType
                 'required' => false,
             ])
 
-            ->add('vin1', EntityType::class, [
+            ->add('cepage1', EntityType::class, [
                 'class' => Cepage::class,
                 'query_builder' => function (EntityRepository $er) {
                     $date = new DateTime();
@@ -66,7 +66,7 @@ class RecetteType extends AbstractType
                 },
                 'choice_label' => 'type',
             ])
-            ->add('vin2', EntityType::class, [
+            ->add('cepage2', EntityType::class, [
                 'class' => Cepage::class,
                 'query_builder' => function (EntityRepository $er) {
                     $date = new DateTime();
@@ -79,7 +79,7 @@ class RecetteType extends AbstractType
                 },
                 'choice_label' => 'type',
             ])
-            ->add('vin3', null, [
+            ->add('cepage3', null, [
                 'class' => Cepage::class,
                 'query_builder' => function (EntityRepository $er) {
                     $date = new DateTime();
@@ -92,7 +92,7 @@ class RecetteType extends AbstractType
                 },
                 'choice_label' => 'type',
             ])
-            ->add('vin4', null, [
+            ->add('cepage4', null, [
                 'class' => Cepage::class,
                 'query_builder' => function (EntityRepository $er) {
                     $date = new DateTime();

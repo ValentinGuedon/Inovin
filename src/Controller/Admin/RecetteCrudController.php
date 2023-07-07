@@ -32,13 +32,13 @@ class RecetteCrudController extends AbstractCrudController
             ->hideOnIndex(),
         TextField::new('nom'),
         AssociationField::new('user'),
-        AssociationField::new('vin1'),
+        AssociationField::new('cepage1'),
         IntegerField::new('quantite')->setSortable(false),
-        AssociationField::new('vin2')->autocomplete(),
+        AssociationField::new('cepage2')->autocomplete(),
         IntegerField::new('quantite2')->setSortable(false),
-        AssociationField::new('vin3')->autocomplete(),
+        AssociationField::new('cepage3')->autocomplete(),
         IntegerField::new('quantite3')->setSortable(false),
-        AssociationField::new('vin4')->autocomplete(),
+        AssociationField::new('cepage4')->autocomplete(),
         IntegerField::new('quantite4')->setSortable(false),
         ];
     }
