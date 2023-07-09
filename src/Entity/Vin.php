@@ -54,14 +54,10 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: FicheDegustation::class)]
     private Collection $ficheDegustations;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Favoris::class)]
-    private Collection $favoris;
 
     #[ORM\OneToMany(mappedBy: 'cepage1', targetEntity: Recette::class)]
     private Collection $recettes1;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Caracteristique::class)]
-    private Collection $caracteristiques;
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
@@ -116,11 +112,12 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'cepage2', targetEntity: Recette::class)]
     private Collection $recettes2;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $star = null;
+
     public function __construct()
     {
-        $this->favoris = new ArrayCollection();
         $this->recettes1 = new ArrayCollection();
-        $this->caracteristiques = new ArrayCollection();
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
         $this->users = new ArrayCollection();
@@ -241,35 +238,6 @@ class Vin
         return $this;
     }
 
-    /**
-     * @return Collection<int, Favoris>
-     */
-    public function getFavoris(): Collection
-    {
-        return $this->favoris;
-    }
-
-    public function addFavori(Favoris $favori): self
-    {
-        if (!$this->favoris->contains($favori)) {
-            $this->favoris->add($favori);
-            $favori->setVin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFavori(Favoris $favori): self
-    {
-        if ($this->favoris->removeElement($favori)) {
-            // set the owning side to null (unless already changed)
-            if ($favori->getVin() === $this) {
-                $favori->setVin(null);
-            }
-        }
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Recette>
@@ -295,36 +263,6 @@ class Vin
             // set the owning side to null (unless already changed)
             if ($recette1->getCepage1() === $this) {
                 $recette1->setCepage1(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Caracteristique>
-     */
-    public function getCaracteristiques(): Collection
-    {
-        return $this->caracteristiques;
-    }
-
-    public function addCaracteristique(Caracteristique $caracteristique): self
-    {
-        if (!$this->caracteristiques->contains($caracteristique)) {
-            $this->caracteristiques->add($caracteristique);
-            $caracteristique->setVin($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCaracteristique(Caracteristique $caracteristique): self
-    {
-        if ($this->caracteristiques->removeElement($caracteristique)) {
-            // set the owning side to null (unless already changed)
-            if ($caracteristique->getCepage() === $this) {
-                $caracteristique->setCepage(null);
             }
         }
 
@@ -708,6 +646,18 @@ class Vin
                 $recettes2->setCepage2(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isStar(): ?bool
+    {
+        return $this->star;
+    }
+
+    public function setStar(?bool $star): static
+    {
+        $this->star = $star;
 
         return $this;
     }

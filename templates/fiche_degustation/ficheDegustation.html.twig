@@ -26,7 +26,6 @@
                       <span class="checkbox-custom-indicator"></span>
                       {{ choice.vars.label }}
                   </label>
-
               {% endfor %}
           </div>
       </div>
@@ -226,7 +225,6 @@
   </div>
 {{ form_widget(form.submit, {'label': 'Valider', 'attr': {'class': 'buttonFiche'}}) }}
 {{ form_end(form) }}
-  <a href="{{ path('app_fiche_degustation_index') }}">Retour</a>
 </div>
 <script>
 

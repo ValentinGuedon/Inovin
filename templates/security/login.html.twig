@@ -2,12 +2,13 @@
 
 {% block title %} {{ parent() }} - Connexion {% endblock title %}
 
+
 {% block body %}
 <div class="carre">
 <h1 class="connexion">CONNEXION</h1>
 <form method="post">
     {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        <div class="login-alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
     {# {% if app.user %}

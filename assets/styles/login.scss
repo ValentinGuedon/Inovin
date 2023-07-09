@@ -63,7 +63,7 @@
 
 .type {
     border-radius: 40px;
-    width: 300px;
+    //width: 300px;
     border: none;
     padding: 4% 30%;
     margin-bottom: 8%;
@@ -107,4 +107,11 @@
     color: var(--couleur-claire);
     font-size: small;
     text-align: center;
+}
+
+.login-alert{
+    text-align: center;
+    color: var(--couleur-claire);
+    margin-bottom: 2%;
+    font-weight: bold;
 }

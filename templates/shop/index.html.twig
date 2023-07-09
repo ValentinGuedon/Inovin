@@ -29,13 +29,14 @@
   <h2 class="sk-container text-center"><span class="sk-rubrique">Les stars du mois</span></h2>
   <!--Carousel-->
   <div id="carouselExampleCaptions" class="carousel slide  sk-container sk-carousel">
-    <div class="carousel-indicators">
-      {% for article in articles %}
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
+    <div class="carousel-indicators mb-0">
+      {% set filteredArticles = articles|filter(article => article.star) %}
+      {% for article in filteredArticles %}
+        <button clas="mt-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
       {% endfor %}
     </div>
     <div class="carousel-inner">
-      {% for article in articles %}
+      {% for article in filteredArticles %}
         <div class="carousel-item {% if loop.first %}active{% endif %}">
           <div class="d-flex">
             <div class="sk-caroussel-body">
@@ -44,11 +45,11 @@
           <div class="d-flex mt-3 flex-column">
             <div class="d-flex sk-note">
               <div class="d-flex ms-2">
-                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star sk-star"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star sk-star"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star sk-star"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star sk-star"></i></a></p>
+                <p class="mb-0"><a href="{{ path('shop_note', {'slug': article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star sk-star"></i></a></p>
               </div>
               {% for note in notes %}
               {% if note.vin_id == article.id and note.averageNote > 0 %}
@@ -60,8 +61,12 @@
             <div class="col-7">
               <h5 class="mt-3 text-break text-uppercase fw-bold">{{article.nom}}</h5>
             </div>
-            <div class="col-7">
-              <h5 class="mt-3 text-break text-uppercase fw-bold">{{article.description}}</h5>
+            <div class="col-7 sk-truncate">
+              <h5 class="mt-3 text-break fw-bold">
+                <span data-bs-toggle="tooltip" data-bs-placement="top" title="{{ article.description }}" style="word-wrap: break-word; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; text-overflow: ellipsis;">
+                      {{ article.description }}
+                </span>
+             </h5>
             </div>
             <p class="sk-card-title text-break">{{article.region}} - {{article.millesime}}</p>
             <p class="sk-card-title text-break fw-medium">{{article.couleur}}</p>
@@ -83,7 +88,7 @@
         </div>
       </div>
     </div>
-      {% endfor %}
+    {% endfor %}
   </div>
     <button class="carousel-control-prev sk-button-slide" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,19 +127,19 @@
     <div class="card h-100 sk-cardbody" style="width: 22rem;">
       <div class="card-header d-flex justify-content-between w-100 mt-auto">
          <div class="d-flex">
-          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star" style="color: black;"></i></a></p>
-          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star" style="color: black;"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 1}) }}" title= "1/5"><i class="bi bi-star sk-star"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 2}) }}" title= "2/5"><i class="bi bi-star sk-star"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 3}) }}" title= "3/5"><i class="bi bi-star sk-star"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 4}) }}" title= "4/5"><i class="bi bi-star sk-star"></i></a></p>
+          <p class="mb-0"><a class="note" href="{{ path('shop_note', {slug: article.slug, 'note': 5}) }}" title= "5/5"><i class="bi bi-star sk-star"></i></a></p>
          </div>
          {% for note in notes %}
           {% if note.vin_id == article.id and note.averageNote > 0 %}
         <p class=" small"><em>Note {{note.averageNote|round(1)}}/5</em></p>
           {% endif %}
         {% endfor %}
-         <p class="mb-0"><a class="watchlist" href="{{  path('shop_watchlist', {slug: article.slug})}} ">
-         <i class="bi fs-4 {{ app.user and app.user.isInWatchlist(article) ? 'bi-heart-fill' : 'bi-heart' }}" style="color: black;"></i></a></p> 
+         <p class="mb-0"><a class="watchlist" href="{{  path('shop_watchlist', {slug: article.slug})}}">
+         <i class="bi fs-4 sk-star {{ app.user and app.user.isInWatchlist(article) ? 'bi-heart-fill' : 'bi-heart' }}"></i></a></p> 
       </div>
       <div class="d-flex h-100">
         <img class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(article) }}" alt="{{ article.nom }}">
