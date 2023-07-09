@@ -25,6 +25,9 @@ class Cepage
     #[ORM\ManyToOne(inversedBy: 'cepages')]
     private ?Vin $vin = null;
 
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'cepage')]
+    private Collection $ateliers;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -64,5 +67,10 @@ class Cepage
         $this->vin = $vin;
 
         return $this;
+    }
+
+    public function getAteliers(): Collection
+    {
+        return $this->ateliers;
     }
 }
