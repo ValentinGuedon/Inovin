@@ -52,12 +52,12 @@ h1,
     color: var(--couleur-claire) !important;
 }
 
+
+
 /* couleur des boutons hauts bas */
 table .fa-sort {
     color: var(--couleur-tierce) !important;
 }
-
-text- field-text
 
 /* gère couleur bouton précédent, suivant, numéro de page en bas */
 /* gère la couleur des label des questions */
@@ -151,4 +151,33 @@ td time {
 
 .datagrid tbody {
     box-shadow: 0 1px 0 var(--table-cell-border-color);
+}
+
+/* couleur boutton supprimer quand tu selectionne plusieurs elements */
+
+.action-batchDelete {
+    background-color: var(--couleur-tierce) !important;
+    color: var(--couleur-claire) !important;
+}
+
+.action-saveAndContinue {
+    background-color: var(--couleur-fonce) !important;
+    color: var(--couleur-claire) !important;
+}
+
+.action-label {
+    color: var(--couleur-claire) !important;
+}
+
+.form-check-input {
+    background-color: var(--couleur-tierce) !important;
+    border-color: var(--couleur-claire) !important;
+}
+
+.action-saveAndAddAnother {
+    background-color: var(--couleur-fonce) !important;
+}
+
+.form-control {
+    border-color: var(--couleur-claire) !important;
 }
