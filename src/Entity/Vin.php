@@ -247,28 +247,6 @@ class Vin
         return $this->recettes1;
     }
 
-    public function addRecette1(Recette $recette1): self
-    {
-        if (!$this->recettes1->contains($recette1)) {
-            $this->recettes1->add($recette1);
-            $recette1->setCepage1($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRecette1(Recette $recette1): self
-    {
-        if ($this->recettes1->removeElement($recette1)) {
-            // set the owning side to null (unless already changed)
-            if ($recette1->getCepage1() === $this) {
-                $recette1->setCepage1(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Cepage>
      */
@@ -568,28 +546,6 @@ class Vin
         return $this->recettes3;
     }
 
-    public function addRecettes3(Recette $recettes3): static
-    {
-        if (!$this->recettes3->contains($recettes3)) {
-            $this->recettes3->add($recettes3);
-            $recettes3->setCepage3($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRecettes3(Recette $recettes3): static
-    {
-        if ($this->recettes3->removeElement($recettes3)) {
-            // set the owning side to null (unless already changed)
-            if ($recettes3->getCepage3() === $this) {
-                $recettes3->setCepage3(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Recette>
      */
@@ -598,56 +554,12 @@ class Vin
         return $this->recettes4;
     }
 
-    public function addRecettes4(Recette $recettes4): static
-    {
-        if (!$this->recettes4->contains($recettes4)) {
-            $this->recettes4->add($recettes4);
-            $recettes4->setCepage4($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRecettes4(Recette $recettes4): static
-    {
-        if ($this->recettes4->removeElement($recettes4)) {
-            // set the owning side to null (unless already changed)
-            if ($recettes4->getCepage4() === $this) {
-                $recettes4->setCepage4(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Recette>
      */
     public function getRecettes2(): Collection
     {
         return $this->recettes2;
-    }
-
-    public function addRecettes2(Recette $recettes2): static
-    {
-        if (!$this->recettes2->contains($recettes2)) {
-            $this->recettes2->add($recettes2);
-            $recettes2->setCepage2($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRecettes2(Recette $recettes2): static
-    {
-        if ($this->recettes2->removeElement($recettes2)) {
-            // set the owning side to null (unless already changed)
-            if ($recettes2->getCepage2() === $this) {
-                $recettes2->setCepage2(null);
-            }
-        }
-
-        return $this;
     }
 
     public function isStar(): ?bool
