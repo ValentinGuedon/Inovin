@@ -30,23 +30,24 @@ class UserCrudController extends AbstractCrudController
     {
         yield HiddenField::new('id')->hideOnForm()->hideOnIndex();
 
-        yield TextField::new('email')
-        ->setLabel('E-mail');
+
         yield TextField::new('name')
         ->setLabel('Nom');
         yield TextField::new('firstname')
         ->setLabel('Prénom');
+        yield TextField::new('phone')
+        ->setLabel('Numéro de téléphone')
+        ->setSortable(false);
+        yield TextField::new('email')
+        ->setLabel('E-mail');
+        yield DateField::new('birthdate')
+        ->setLabel('Date de Naissance')
+        ->setFormat('dd/MM yyyy');
         yield TextField::new('street')
         ->setLabel('Rue')
         ->setSortable(false);
         yield IntegerField::new('postalcode')
         ->setLabel('Code Postal');
         yield TextField::new('city');
-        yield DateField::new('birthdate')
-        ->setLabel('Date de Naissance')
-        ->setFormat('dd/MM yyyy');
-        yield TextField::new('phone')
-        ->setLabel('Numéro de téléphone')
-        ->setSortable(false);
     }
 }

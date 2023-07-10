@@ -1,0 +1,43 @@
+{% block content %}
+{% include "_popUpMessage.html.twig" %}
+<div class="stickyTest">
+<nav class="navBackoffice">
+    <ul class="ulBackoffice">
+    {# <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 10%;"> #}
+        <li><a href="{{ path('app_home') }}" class="liennav">ACCUEIL</a></li>
+        <li><a href="{{ path('app_animations_index') }}" class="liennav">ATELIERS</a></li>
+        <li style="position: relative;"><a href="#" class="liennav">VINOTHÈQUE</a>
+            <ul class="listederoulante">
+                <li><a href="#" class="liennav">Le quizz</a></li>
+                <li><a href="#" class="liennav">Lexique</a></li>
+                <li><a href="#" class="liennav">La carte des vins</a></li>
+                <li><a href="{{ path('app_blog_visiteur') }}" class="liennav">Blog</a></li>
+                <li><a href="{{ path('app_faq_visiteur') }}" class="liennav">FAQ</a></li>
+            </ul>
+        </li>
+        <li><a href="{{ path ('shop_index')}}" class="liennav">BOUTIQUE</a></li>
+        <li><a id='contactModal' class="liennav">CONTACT</a></li>
+        {% if app.user == false %}
+        <li>
+            <a href="/login" class="liennav">CONNEXION</a>
+        </li>
+        {% endif %}
+
+        {# <li>
+            <div class="navbar">
+                <div class="dropdown">
+                    {% if app.user == true %}
+                        <button class="dropbtn">
+                            {{ app.user.firstname }}
+                        </button>
+                    <div class="dropdown-content">
+                        <a href="/user/profil">Profil</a>
+                        <a href="/logout">Déconnexion</a>
+                    </div>
+                {% endif %}
+            </div>
+        </li> #}
+    </ul>
+</nav>
+</div>
+{% endblock %}

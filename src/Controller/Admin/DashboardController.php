@@ -19,6 +19,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -40,10 +41,17 @@ class DashboardController extends AbstractDashboardController
          return $this->redirect($url);
     }
 
+    public function configureAssets(): Assets
+    {
+        return Assets::new()->addCssFile('css/admin.css');
+    }
+
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Tableau de bord')
+            ->setTitle('<img src="build\images\Logo.d6ac705a.png">')
+            ->disableDarkMode()
+            ->setFaviconPath('build\images\Favicon.179675a2.png')
             ;
     }
 
@@ -59,7 +67,7 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::subMenu('Vins', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class)
+            MenuItem::linkToCrud('Voir Vins', 'fas fa-eye', Vin::class),
         ]);
 
         yield MenuItem::subMenu('Cepages', 'fas fa-wine-glass')->setSubItems([
