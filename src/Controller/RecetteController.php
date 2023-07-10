@@ -22,39 +22,45 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    // Atelier $atelier
     #[Route('/visiteur', name: 'app_recette_visiteur', methods: ['GET', 'POST'])]
     public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
     {
         $recette = new Recette();
-        // $collectionVin = $atelier->getCepage();
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
-        $currentAtelier = $security->getUser()->getAtelier();
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $sum = $recette->getQuantite() + $recette->getQuantite2()
-            + $recette->getQuantite3() + $recette->getQuantite4();
+            $quantite1 = $recette->getQuantite();
+            $quantite2 = $recette->getQuantite2();
+            $quantite3 = $recette->getQuantite3();
+            $quantite4 = $recette->getQuantite4();
 
-            if ($sum == 750) {
-                if ($recette->getQuantite() > 1 && $recette->getQuantite2() > 1) {
-                    $user = $this->getUser();
-                    $recette->setUser($user);
-                    $recetteRepository->save($recette, true);
-                    return $this->redirectToRoute('app_recette_index', [], Response::HTTP_SEE_OTHER);
-                } else {
-                    $this->addFlash('error', 'Veuillez renseigner au moins deux champs');
-                }
+            $sum = $quantite1 + $quantite2 + $quantite3 + $quantite4;
+
+            if (
+                $quantite3 !== null && $recette->getCepage3() === null ||
+                $quantite4 !== null && $recette->getCepage4() === null
+            ) {
+                $this->addFlash('error', 'Vous avez ajouté une quantité sans cépage dans le "cépage supplémentaire".');
             } else {
-                $this->addFlash('error', 'La somme de vos vins
-                doit être égal à 750ml. Elle est actuellement de: ' . $sum . 'ml');
+                if ($sum == 750) {
+                    if ($quantite1 > 1 && $quantite2 > 1) {
+                        $user = $this->getUser();
+                        $recette->setUser($user);
+                        $recetteRepository->save($recette, true);
+                        return $this->redirectToRoute('app_recette_index', [], Response::HTTP_SEE_OTHER);
+                    } else {
+                        $this->addFlash('error', 'Veuillez renseigner au moins deux champs');
+                    }
+                } else {
+                    $this->addFlash('error', 'La somme de vos cépages doit être égal à 750ml.
+                     Elle est actuellement de: ' . $sum . 'ml');
+                }
             }
         }
-
         return $this->renderForm('recette/visiteur.html.twig', [
-            'recette' => $recette,
-            'form' => $form,
+        'recette' => $recette,
+        'form' => $form,
         ]);
     }
 

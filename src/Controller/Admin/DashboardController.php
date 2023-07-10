@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Entity\Cepage;
 use App\Entity\Atelier;
 use App\Entity\Recette;
+use App\Entity\Animations;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -48,7 +49,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="build\images\Logo.d6ac705a.png">')
+            ->setTitle('Tableau de bord')
             ->disableDarkMode()
             ->setFaviconPath('build\images\Favicon.179675a2.png')
             ;
@@ -77,6 +78,17 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Cepages', 'fas fa-wine-glass')->setSubItems([
             MenuItem::linkToCrud('Créer un Cépage', 'fas fa-plus', Cepage::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Cépages', 'fas fa-eye', Cepage::class)
+        ]);
+
+        yield MenuItem::subMenu('Animations', 'fas fa-bullhorn')->setSubItems([
+            MenuItem::linkToCrud('Créer une Animation', 'fas fa-plus', Animations::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir Animations', 'fas fa-eye', Animations::class)
+        ]);
+
+        yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([
+            MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
+
         ]);
 
         yield MenuItem::subMenu('Blog', 'fas fa-newspaper')->setSubItems([

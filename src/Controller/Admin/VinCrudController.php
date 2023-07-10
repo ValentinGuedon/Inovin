@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -76,10 +77,6 @@ class VinCrudController extends AbstractCrudController
             ]),
             TextField::new('region')
             ->setLabel('Région'),
-
-
-
-
             TextField::new('limpidite')
             ->setLabel('Limpidité')
             ->hideOnIndex(),
@@ -93,11 +90,17 @@ class VinCrudController extends AbstractCrudController
             TextField::new('matiere')
             ->setLabel('Matière')
             ->hideOnIndex(),
-
-            ArrayField::new('arome')
-            ->hideOnIndex(),
-
-
+            ChoiceField::new('arome')
+            ->setLabel('Arômes')
+            ->setChoices([
+                'Fruite' => 'Fruité',
+                'Animal' => 'Animal',
+                'Epice' => 'Epicé',
+                'Floral' => 'Floral',
+                'Végétal' => 'Végétal',
+                'Marin' => 'Marin',
+            ])
+            ->allowMultipleChoices(true),
             IntegerField::new('brillance')
             ->hideOnIndex(),
             IntegerField::new('intensite')
@@ -109,12 +112,14 @@ class VinCrudController extends AbstractCrudController
             ->setLabel('Alcool Ressenti')
             ->hideOnIndex(),
 
-
-
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),
             NumberField::new('prix'),
             BooleanField::new('star', 'Mettre en avant'),
+
+            SlugField::new('slug')
+            ->setTargetFieldName('nom')
+            ->hideOnIndex(),
 
             ImageField::new('image')
             ->setUploadDir('public/uploads/images/posters')
