@@ -3,9 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" type="image/png" href="{{ asset('build/images/Favicon.png') }}"/>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <title>
 
             {% block title %}Inovin{% endblock %}
@@ -18,15 +22,19 @@
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+
         {% endblock %}
     </head>
+
     <header>
         <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 15%; min-width:200px;">
         <div class="titre-fiche">FICHE DE DÉGUSTATION</div>
-        <div class="h1-crud">Dégustation d'un {{vin.nom}}</div>
+        <div class="h1-crud">Création de votre recette</div>
     </header>
+
     <body style="margin-bottom: 150px;">
         {% block body %}
         {% endblock %}
     </body>
+
 </html>

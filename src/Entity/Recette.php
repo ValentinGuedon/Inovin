@@ -45,6 +45,10 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+    // public function __toString()
+    // {
+    //     return $this->type;
+    // }
 
     public function getId(): ?int
     {
