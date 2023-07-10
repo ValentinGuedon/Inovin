@@ -22,7 +22,7 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\ManyToMany(inversedBy: 'atelier', targetEntity: User::class)]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'atelier')]
     private Collection $users;
 
 
@@ -45,10 +45,14 @@ class Atelier
     #[ORM\ManyToOne(inversedBy: 'ateliers')]
     private ?Animations $animations = null;
 
+    #[ORM\ManyToMany(targetEntity: Cepage::class, inversedBy: 'ateliers')]
+    private Collection $cepage;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->vin = new ArrayCollection();
+        $this->cepage = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,6 +195,30 @@ class Atelier
     public function setSlug(?string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cepage>
+     */
+    public function getCepage(): Collection
+    {
+        return $this->cepage;
+    }
+
+    public function addCepage(Cepage $cepage): static
+    {
+        if (!$this->cepage->contains($cepage)) {
+            $this->cepage->add($cepage);
+        }
+
+        return $this;
+    }
+
+    public function removeCepage(Cepage $cepage): static
+    {
+        $this->cepage->removeElement($cepage);
 
         return $this;
     }

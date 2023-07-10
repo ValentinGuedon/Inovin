@@ -53,11 +53,6 @@ class DashboardController extends AbstractDashboardController
 
         // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
 
-        yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([
-            MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
-        ]);
-
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);

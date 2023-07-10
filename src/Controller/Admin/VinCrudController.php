@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Vin;
+use App\Entity\Cepage;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -16,6 +18,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class VinCrudController extends AbstractCrudController
@@ -47,6 +50,12 @@ class VinCrudController extends AbstractCrudController
             ->setLabel('Millésime'),
             TextField::new('region')
             ->setLabel('Région'),
+            AssociationField::new('cepages')
+            ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                $queryBuilder->select('c')
+                    ->from(Cepage::class, 'c')
+                    ->orderBy('c.type', 'ASC');
+            }),
             TextareaField::new('description')
             ->setSortable(false),
 
@@ -87,7 +96,6 @@ class VinCrudController extends AbstractCrudController
             SlugField::new('slug')
             ->setTargetFieldName('nom')
             ->hideOnIndex(),
-
         ];
     }
 }

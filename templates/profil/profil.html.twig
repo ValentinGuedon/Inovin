@@ -26,7 +26,7 @@
 
     <h2 class="titlesection">Mes informations : </h2>
 
-    <table class="sk-custom-table mb-5">
+    <table class="sk-custom-table mb-5 mx-auto w-50">
         <tbody>
         <tr>
             <th>Nom</th>
@@ -110,10 +110,38 @@
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mes ateliers : </h2>
+    {% if user.atelier is empty() %}
+    <div class="carre mb-5">
+        <p class="text-center fw-bold">Vous n'avez pas particpé à un atelier</p>
+    </div>
+    {% else %}
+        <table class="sk-custom-table mb-5 mx-auto">
+           <tbody>
+            <tr>
+                <th>Date</th>
+                <th>Horaire</th>
+                <th>Adresse</th>
+                <th>Nom de l'atelier</th>
+            </tr>
+            <tr>
+                <td>{{ atelier.date|date('d-m-Y') }}</td>
+                <td>{{ atelier.horaire }}</td>
+                <td>{{ atelier.address }}</td>
+                <td>{{ atelier.commentaire }}</td>
+            </tr>
+        </tbody>
+        </table>
+
+    {% endif %}
+
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mes fiches de dégustation : </h2>
-
+    {% if user.ficheDegustations is empty() %}
+        <div class="carre mb-5">
+            <p class="text-center fw-bold">Pas de fiches de dégustation disponnibles</p>
+        </div>
+    {% endif %}
 
 
 </div>

@@ -60,10 +60,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Recette::class)]
     private Collection $recettes;
 
-
-    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class, cascade: ['persist'])]
-    private ?Panier $panier = null;
-
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'users')]
     private Collection $atelier;
 
@@ -102,9 +98,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->ficheDegustations = new ArrayCollection();
         $this->recettes = new ArrayCollection();
         $this->atelier = new ArrayCollection();
-        $this->panier = new Panier();
         $this->watchlist = new ArrayCollection();
         $this->notes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -345,27 +345,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             }
         }
 
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($panier === null && $this->panier !== null) {
-            $this->panier->setUser(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($panier !== null && $panier->getUser() !== $this) {
-            $panier->setUser($this);
-        }
-
-        $this->panier = $panier;
         return $this;
     }
 

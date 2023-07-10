@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CepageRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -22,6 +24,19 @@ class Cepage
 
     #[ORM\ManyToOne(inversedBy: 'cepages')]
     private ?Vin $vin = null;
+
+    #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'cepage')]
+    private Collection $ateliers;
+
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->type;
+    }
 
     public function getId(): ?int
     {
@@ -60,6 +75,33 @@ class Cepage
     public function setVin(?Vin $vin): self
     {
         $this->vin = $vin;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Atelier>
+     */
+    public function getAteliers(): Collection
+    {
+        return $this->ateliers;
+    }
+
+    public function addAtelier(Atelier $atelier): static
+    {
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->addCepage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            $atelier->removeCepage($this);
+        }
 
         return $this;
     }
