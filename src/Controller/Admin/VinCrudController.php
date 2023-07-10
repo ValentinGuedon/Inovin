@@ -10,10 +10,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class VinCrudController extends AbstractCrudController
 {
@@ -25,9 +28,27 @@ class VinCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->remove(Crud::PAGE_INDEX, Action::NEW);
+        ->remove(Crud::PAGE_INDEX, Action::NEW)
+
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
+
+        ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
+            return $action->setIcon('fa fa-edit')->setLabel(false);
+        })
+        ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+            return $action->setIcon('fa fa-trash')->setLabel(false);
+        });
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->showEntityActionsInlined()
+        ;
+    }
 
     public function configureFields(string $pageName): iterable
     {
@@ -36,42 +57,72 @@ class VinCrudController extends AbstractCrudController
             ->hideOnForm()
             ->hideOnIndex(),
             TextField::new('nom'),
-            ImageField::new('image')
-            ->setUploadDir('public/uploads/images/posters')
-            ->setBasePath('uploads/images/posters')
-            ->setSortable(false),
+
+            ChoiceField::new('couleur')->setChoices([
+                'Rouge' => 'rouge',
+                'Blanc' => 'blanc',
+                'Rosé' => 'rose',
+                'Jaune' => 'jaune',
+                'Autre' => 'autre',
+            ])
+            ->hideOnIndex(),
+
             IntegerField::new('millesime')
-            ->setLabel('Millésime'),
+            ->setLabel('Millésime')
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 1,
+                ],
+            ]),
             TextField::new('region')
             ->setLabel('Région'),
-            TextareaField::new('description')
-            ->setSortable(false),
 
 
-            TextField::new('couleur'),
+
+
             TextField::new('limpidite')
-            ->setLabel('Limpidité'),
+            ->setLabel('Limpidité')
+            ->hideOnIndex(),
             TextField::new('fluidite')
-            ->setLabel('Fluidité'),
-            TextField::new('persistance'),
-            TextField::new('structure'),
+            ->setLabel('Fluidité')
+            ->hideOnIndex(),
+            TextField::new('persistance')
+            ->hideOnIndex(),
+            TextField::new('structure')
+            ->hideOnIndex(),
             TextField::new('matiere')
-            ->setLabel('Matière'),
+            ->setLabel('Matière')
+            ->hideOnIndex(),
 
-            ArrayField::new('arome'),
+            ArrayField::new('arome')
+            ->hideOnIndex(),
 
-            IntegerField::new('brillance'),
+
+            IntegerField::new('brillance')
+            ->hideOnIndex(),
             IntegerField::new('intensite')
-            ->setLabel('Intensité'),
-            IntegerField::new('douceur'),
+            ->setLabel('Intensité')
+            ->hideOnIndex(),
+            IntegerField::new('douceur')
+            ->hideOnIndex(),
             IntegerField::new('alcool')
-            ->setLabel('Alcool Ressenti'),
+            ->setLabel('Alcool Ressenti')
+            ->hideOnIndex(),
+
+
 
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),
             NumberField::new('prix'),
+            BooleanField::new('star', 'Mettre en avant'),
 
+            ImageField::new('image')
+            ->setUploadDir('public/uploads/images/posters')
+            ->setBasePath('uploads/images/posters')
+            ->setSortable(false),
 
+            TextareaField::new('description')
+            ->setSortable(false),
         ];
     }
 }
