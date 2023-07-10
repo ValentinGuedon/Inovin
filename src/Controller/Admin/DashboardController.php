@@ -49,7 +49,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<img src="build\images\Logo.d6ac705a.png">')
+            ->setTitle('Tableau de bord')
             ->disableDarkMode()
             ->setFaviconPath('build\images\Favicon.179675a2.png')
             ;

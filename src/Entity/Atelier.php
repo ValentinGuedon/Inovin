@@ -25,10 +25,8 @@ class Atelier
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'atelier')]
     private Collection $users;
 
-
     #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'ateliers')]
     private Collection $vin;
-
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $commentaire = null;

@@ -17,6 +17,7 @@ class Faq
     #[ORM\Column(length: 255)]
     private ?string $question = null;
 
+
     #[ORM\Column(type: Types::TEXT)]
     private ?string $answer = null;
 

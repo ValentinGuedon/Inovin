@@ -103,10 +103,6 @@ class VinCrudController extends AbstractCrudController
             ->setLabel('Matière')
             ->hideOnIndex(),
 
-            ArrayField::new('arome')
-            ->hideOnIndex(),
-
-
             ChoiceField::new('arome')
             ->setLabel('Arômes')
             ->setChoices([
@@ -129,8 +125,6 @@ class VinCrudController extends AbstractCrudController
             IntegerField::new('alcool')
             ->setLabel('Alcool Ressenti')
             ->hideOnIndex(),
-
-
 
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),

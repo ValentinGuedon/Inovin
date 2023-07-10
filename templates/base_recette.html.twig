@@ -27,12 +27,14 @@
     </head>
 
     <header>
-    {% include "_navbar.html.twig" %}
+        <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 15%; min-width:200px;">
+        <div class="titre-fiche">FICHE DE DÉGUSTATION</div>
+        <div class="h1-crud">Création de votre recette</div>
     </header>
 
-    <body>
-        {% block body %}{% endblock %}
-        {# {% include '_footer.html.twig'%} #}
+    <body style="margin-bottom: 150px;">
+        {% block body %}
+        {% endblock %}
     </body>
 
 </html>

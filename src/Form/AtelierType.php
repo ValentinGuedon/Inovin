@@ -2,12 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\Atelier;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use App\Entity\User;
 use App\Entity\Vin;
+use App\Entity\User;
+use App\Entity\Cepage;
+use App\Entity\Atelier;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AtelierType extends AbstractType
@@ -32,6 +33,17 @@ class AtelierType extends AbstractType
             ->add('users', null, [
                 'choice_label' => function (User $user) {
                     return $user->getName() . ' 🧑';
+                },
+                'multiple' => true,
+                'autocomplete' => true,
+                'attr' => [
+                    'class' => 'autocomplete-select'
+                ],
+            ])
+
+            ->add('cepage', null, [
+                'choice_label' => function (Cepage $cepage) {
+                    return $cepage->getType();
                 },
                 'multiple' => true,
                 'autocomplete' => true,

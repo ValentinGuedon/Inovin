@@ -28,6 +28,7 @@ class Cepage
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'cepage')]
     private Collection $ateliers;
 
+
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
@@ -79,13 +80,16 @@ class Cepage
         return $this;
     }
 
+
     /**
      * @return Collection<int, Atelier>
      */
+
     public function getAteliers(): Collection
     {
         return $this->ateliers;
     }
+
 
     public function addAtelier(Atelier $atelier): static
     {
@@ -105,4 +109,5 @@ class Cepage
 
         return $this;
     }
+
 }

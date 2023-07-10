@@ -1,9 +1,5 @@
 .start-screen,
 .score-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,3 +98,4 @@ button {
 .number-of-question{
   color: var(--couleur-fonce);
 }
+

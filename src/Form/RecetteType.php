@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use DateTime;
 use App\Entity\Vin;
 use App\Entity\User;
+use App\Entity\Cepage;
 use App\Entity\Recette;
 use App\Repository\VinRepository;
 use Doctrine\ORM\EntityRepository;
@@ -18,6 +20,8 @@ class RecetteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+
         $builder
             ->add('nom')
             ->add('quantite', IntegerType::class, [
@@ -49,31 +53,60 @@ class RecetteType extends AbstractType
                 'required' => false,
             ])
 
-
-            ->add('vin1', EntityType::class, [
-                'class' => Vin::class,
-                // 'query_builder' => function (EntityRepository $er) use ($options) {
-                //     return $er->createQueryBuilder('v')
-                //     ->join('v.ateliers', 'atelier')
-                //     ->where("atelier=:id")
-                //     ->setParameter('id', $options['idAtelier'])
-                //     ->orderBy('v.nom', 'DESC');
-                // },
-                'choice_label' => 'nom',
+            ->add('cepage1', EntityType::class, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
+                'choice_label' => 'type',
             ])
-            ->add('vin2', EntityType::class, [
-                'class' => Vin::class,
-                'choice_label' => 'nom',
+            ->add('cepage2', EntityType::class, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
+                'choice_label' => 'type',
             ])
-            ->add('vin3', null, [
-                'choice_label' => 'nom',
+            ->add('cepage3', null, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
+                'choice_label' => 'type',
             ])
-            ->add('vin4', null, [
-                'choice_label' => 'nom',
+            ->add('cepage4', null, [
+                'class' => Cepage::class,
+                'query_builder' => function (EntityRepository $er) {
+                    $date = new DateTime();
+                    $formatDate = $date->format('Y-m-d');
+                    return $er->createQueryBuilder('c')
+                        ->join('c.ateliers', 'atelier')
+                        ->where('atelier.date = :date')
+                        ->setParameter('date', $formatDate)
+                        ->orderBy('c.type', 'ASC');
+                },
+                'choice_label' => 'type',
             ])
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -82,3 +115,19 @@ class RecetteType extends AbstractType
         ]);
     }
 }
+
+
+
+
+
+// ->add('vin1', EntityType::class, [
+//     'class' => Cepage::class,
+//     'query_builder' => function (EntityRepository $er) use ($options) {
+//         return $er->createQueryBuilder('c')
+//             ->join('c.ateliers', 'atelier')
+//             ->where('atelier = :id')
+//             ->setParameter('id', $options['idAtelier'])
+//             ->orderBy('c.type', 'ASC');
+//     },
+//     'choice_label' => 'type',
+// ])
