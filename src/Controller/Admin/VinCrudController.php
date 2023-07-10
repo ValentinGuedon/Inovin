@@ -20,7 +20,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 
 class VinCrudController extends AbstractCrudController
 {
@@ -80,7 +79,7 @@ class VinCrudController extends AbstractCrudController
             ]),
             TextField::new('region')
             ->setLabel('Région'),
-          
+
             AssociationField::new('cepages')
             ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
                 $queryBuilder->select('c')
