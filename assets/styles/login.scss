@@ -1,9 +1,29 @@
 .carre {
     background-color: var(--couleur-tierce);
     padding: 5%;
-    max-width: 30%;
+    width: 30%;
+    min-width: 200px;
+    max-width: 500px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    margin: auto;
+    margin: -8% auto 75px;
+    height: auto;
+}
+
+@media screen and (max-width: 1000px) {
+    .carre {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .carre {
+        width: 100%;
+        padding: 40px 0;
+    }
+
+    .carreContent {
+        padding: 10px;
+    }
 }
 
 .carreregister {
@@ -63,9 +83,11 @@
 
 .type {
     border-radius: 40px;
-    //width: 300px;
     border: none;
-    padding: 4% 30%;
+    text-align: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    width: 100%;
     margin-bottom: 8%;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     background-color: var(--couleur-claire);
