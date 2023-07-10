@@ -20,31 +20,35 @@ class Recette
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'recettes1')]
-    private ?Vin $vin1 = null;
+    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    private ?Cepage $cepage1 = null;
 
     #[ORM\Column]
     private ?int $quantite = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes2')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Vin $vin2 = null;
+    private ?Cepage $cepage2 = null;
 
     #[ORM\Column]
     private ?int $quantite2 = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes3')]
-    private ?Vin $vin3 = null;
+    private ?Cepage $cepage3 = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $quantite3 = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes4')]
-    private ?Vin $vin4 = null;
+    private ?Cepage $cepage4 = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+    // public function __toString()
+    // {
+    //     return $this->type;
+    // }
 
     public function getId(): ?int
     {
@@ -75,14 +79,14 @@ class Recette
         return $this;
     }
 
-    public function getVin1(): ?Vin
+    public function getCepage1(): ?Cepage
     {
-        return $this->vin1;
+        return $this->cepage1;
     }
 
-    public function setVin1(?Vin $vin1): self
+    public function setCepage1(?Cepage $cepage1): self
     {
-        $this->vin1 = $vin1;
+        $this->cepage1 = $cepage1;
 
         return $this;
     }
@@ -111,14 +115,14 @@ class Recette
         return $this;
     }
 
-    public function getVin3(): ?Vin
+    public function getCepage3(): ?Cepage
     {
-        return $this->vin3;
+        return $this->cepage3;
     }
 
-    public function setVin3(?Vin $vin3): static
+    public function setCepage3(?Cepage $cepage3): static
     {
-        $this->vin3 = $vin3;
+        $this->cepage3 = $cepage3;
 
         return $this;
     }
@@ -135,14 +139,14 @@ class Recette
         return $this;
     }
 
-    public function getVin4(): ?Vin
+    public function getCepage4(): ?Cepage
     {
-        return $this->vin4;
+        return $this->cepage4;
     }
 
-    public function setVin4(?Vin $vin4): static
+    public function setCepage4(?Cepage $cepage4): static
     {
-        $this->vin4 = $vin4;
+        $this->cepage4 = $cepage4;
 
         return $this;
     }
@@ -159,14 +163,14 @@ class Recette
         return $this;
     }
 
-    public function getVin2(): ?Vin
+    public function getCepage2(): ?Cepage
     {
-        return $this->vin2;
+        return $this->cepage2;
     }
 
-    public function setVin2(?Vin $vin2): static
+    public function setCepage2(?Cepage $cepage2): static
     {
-        $this->vin2 = $vin2;
+        $this->cepage2 = $cepage2;
 
         return $this;
     }
