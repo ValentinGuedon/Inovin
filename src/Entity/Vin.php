@@ -100,7 +100,7 @@ class Vin
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'watchlist')]
     private Collection $users;
 
-    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class)]
+    #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class, cascade: ['remove'])]
     private Collection $notes;
 
     #[ORM\OneToMany(mappedBy: 'cepage3', targetEntity: Recette::class)]
