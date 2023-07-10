@@ -16,6 +16,8 @@ class Deck {
        * remains unmatched
        */
         this.templateCardDeck = [
+
+          
             {symbol: 'ETIQUETTE_1.png', faceup: false, matched: false},
             {symbol: 'ETIQUETTE_1.png', faceup: false, matched: false},
             {symbol: 'ETIQUETTE_2.png', faceup: false, matched: false},
@@ -33,7 +35,6 @@ class Deck {
             {symbol: 'ETIQUETTE_8.png', faceup: false, matched: false},
             {symbol: 'ETIQUETTE_8.png', faceup: false, matched: false},
         ];
-      
     }
   
     /**

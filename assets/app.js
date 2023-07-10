@@ -18,7 +18,7 @@ const btn = document.querySelector('.cta-accueil');
 const imgwine = document.querySelector('.img-wine');
 const allItems = document.querySelector('.liennav');
 const quiSommesNous = document.querySelector('.quisommesnous');
-const textePresentation = document.querySelector('.textedepresentation');
+const Presentation = document.querySelector('.presentation');
 const photoCedric = document.querySelector('.photocedric');
 
 const TL1 = gsap.timeline({ paused: true });
@@ -33,7 +33,7 @@ const TL2 = gsap.timeline({ paused: true });
 
 TL2
     .from(quiSommesNous, { duration: 1, y: -100, opacity: 0 })
-    .from(textePresentation, { duration: 1,y: -100, opacity: 0 }, '-=0.4')
+    .from(Presentation, { duration: 1,y: -100, opacity: 0 }, '-=0.4')
     .from(photoCedric, { duration: 1, x: -100, opacity: 0 }, '-=0.5');
 
 // Fonction pour vérifier si la section est visible à l'écran
