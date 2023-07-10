@@ -109,5 +109,4 @@ class Cepage
 
         return $this;
     }
-
 }
