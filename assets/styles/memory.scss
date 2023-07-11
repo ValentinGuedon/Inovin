@@ -1,19 +1,27 @@
-.containermemory{
-margin-left:30%;
+.containermemory {}
+
+.testMdr {
+    display: flex;
+    justify-content: center;
+}
+
+.infoBarMemory {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .h1memory {
     color: #e2dad4;
-    margin-left:7%;
 }
 
-  /*
+/*
    * Styles for the deck of cards
    */
-  
-  .deck {
-    width: 660px;
-    min-height: 680px;
+
+.deck {
+    width: 770px;
     background: #9b2449;
     padding: 32px;
     border-radius: 10px;
@@ -22,122 +30,121 @@ margin-left:30%;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 3em;
-  }
-  
-  .deck .card {
+    margin-bottom: 3em;
+}
+
+.deck .card {
     height: 125px;
     width: 125px;
+    margin: 10px;
     background: #e2dad4;
     font-size: 0;
-    color:  #e2dad4;
+    color: #e2dad4;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-  }
-  
-  .deck .card.open {
+}
+
+//1
+.deck .card.open {
     transform: rotateY(0);
-    background:#22323f;
+    background: #22323f;
     cursor: default;
-  }
-  
-  .deck .card.faceup {
-    font-size: 33px;
-  }
-  .deck .card .imgvisible {
+}
+
+.deck .card .imgvisible {
     width: 120px;
-  }
-  
-  .deck .card .imghidden{
+}
+
+.deck .card .imghidden {
     width: 0px;
-  }
-  
-  .deck .card.match {
+}
+
+//5
+.deck .card.match {
     cursor: default;
     background: #22323f;
-    font-size: 33px;
-  }
-  
-  @keyframes card-match {
+}
+
+@keyframes card-match {
+
+    //2
     from {
-      height: 125px;
-      width: 125px;
-      background:  #9b2449;
+        background: #22323f;
     }
+
+    //3
     50% {
-      height: 150px;
-      width: 150px;
+        background: rgb(7, 163, 7);
     }
+
+    //4
     to {
-      height: 125px;
-      width: 125px;
-      background: #22323f;
+        background: #22323f;
     }
-  }
-  /*
+}
+
+/*
    * Styles for the Score Panel
    */
-  
-  .score-panel {
+
+.score-panel {
     text-align: left;
     width: 345px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-between;
     color: #e2dad4;
-    margin-left: 15%;
-  }
-  
-  .score-panel .stars li {
+}
+
+.score-panel .stars li {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
-  }
-  
-  .score-panel .stars {
+}
+
+.score-panel .stars {
     list-style: none;
     display: inline-block;
-  }
-  
-  .score-panel .restart {
+}
+
+.score-panel .restart {
     float: right;
     cursor: pointer;
-  }
-  
-  /*
+}
+
+/*
    * Styles for the Win Dialog
    */
-  
-  .win-dialog {
+
+.win-dialog {
     display: none;
     text-align: center;
     width: 100%;
     margin-bottom: 10px;
     justify-content: center;
-  }
-  
-  .win-dialog .win-icon {
+}
+
+.win-dialog .win-icon {
     font-size: 144px;
     color: #22323f;
-  }
-  
-  .win-dialog .win-banner {
+}
+
+.win-dialog .win-banner {
     font-size: 48px;
-    color:var(couleur-claire);
-  }
-  
-  .win-dialog .win-summary {
+    color: var(couleur-claire);
+}
+
+.win-dialog .win-summary {
     font-size: 32px;
-  }
-  
-  .win-dialog .win-button {
+}
+
+.win-dialog .win-button {
     background-color: #e2dad4;
     border-radius: 10px;
     padding: 10px;
-  }
-  
+}
