@@ -3,7 +3,7 @@
 {% block title %} {{ parent() }} - Blog {% endblock title %}
 
 {% block body %}
-    {# <h1 class="blogH1">Blog</h1> #}
+    {% if blogs is not empty %}
         <div class="blogDivContent">
             {% for blog in blogs %}
             <div class="blogDivCard">
@@ -12,11 +12,13 @@
                     <p> <img class="blogImage" src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}"></p>
                     <p class="blogDescription">{{ blog.description }}</p>
                     <p class="blogShow"><a href="{{ path('app_blog_show_visiteur', {'id': blog.id}) }}">Lire plus</a></p>
-            </div>
-            {% else %}
-                <h2 class="connexion">Pas d'articles pour le moment</h2>    
+            </div> 
             {% endfor %}
         </div>
-        
+    {% else %}
+            <div class="carre">
+                <h2 class="connexion" style="text-align: center;">Pas d'articles pour le moment</h2>  
+            </div> 
+    {% endif %}   
 
 {% endblock %}

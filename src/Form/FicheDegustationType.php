@@ -26,6 +26,14 @@ class FicheDegustationType extends AbstractType
                 'Violet' => 'violet',
                 'Grenat' => 'grenat',
                 'Tuilé' => 'tuilé',
+
+                'Or vert' => 'or vert',
+                'Or pâle' => 'or pâle',
+                'Jaune paille' => 'jaune paille',
+                'Doré' => 'doré',
+                'Vieil or' => 'vieil or',
+                'Ambré' => 'ambré',
+                'Roux' => 'roux',
             ],
             'choice_attr' => function ($choice) {
                 $colors = [
@@ -56,6 +64,40 @@ class FicheDegustationType extends AbstractType
                     'tuilé' => [
                         'value' => 'tuilé',
                         'class' => 'checkbox-tuilé',
+                    ],
+
+                    'or vert' => [
+                        'value' => 'or vert',
+                        'class' => 'checkbox-vert',
+                    ],
+
+                    'or pâle' => [
+                        'value' => 'or pâle',
+                        'class' => 'checkbox-pâle',
+                    ],
+
+                    'jaune paille' => [
+                        'value' => 'jaune paille',
+                        'class' => 'checkbox-jaune',
+                    ],
+
+                    'doré' => [
+                        'value' => 'doré',
+                        'class' => 'checkbox-doré',
+                    ],
+
+                    'vieil or' => [
+                        'value' => 'vieil or',
+                        'class' => 'checkbox-or',
+                    ],
+
+                    'ambré' => [
+                        'value' => 'ambré',
+                        'class' => 'checkbox-ambré',
+                    ],
+                    'roux' => [
+                        'value' => 'roux',
+                        'class' => 'checkbox-roux',
                     ],
                 ];
                 return ['class' => $colors[$choice]['class']];

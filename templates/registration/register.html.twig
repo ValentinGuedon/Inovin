@@ -89,8 +89,8 @@
        <div class="d-flex flex-column mt-5">
             {{ form_label(registrationForm.arome, 'Arôme', { 'label_attr': {'class': 'labelregister'} }) }}
             <div class="d-flex mb-5 mt-3">
-            {% for choice in registrationForm.arome %}
-                <div class="form-check ms-3">
+                {% for choice in registrationForm.arome %}
+                <div class="form-check arome-checkbox  ms-3">
                     {{ form_widget(choice, { 'attr': {'class': 'form-check-input'} }) }}
                     {{ form_label(choice, null, {'label_attr': {'class': 'labelregister'}}) }}
                 </div>
@@ -98,6 +98,8 @@
             </div>
         </div>
     </div>
+
+   
        <div class="d-flex flex-column">
             {{ form_label(registrationForm.content, 'Parlez-moi de vous !!', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.content, { 'attr': {'class': 'contentregister'} }) }}

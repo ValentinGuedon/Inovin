@@ -291,11 +291,6 @@ a {
     background-color: var(--couleur-claire);
     color: var(--couleur-fonce);
     padding: 10px 50px;
-    /* Important for vertical align on mobile phones */
-    margin: 0;
-    /* Important for vertical align on mobile phones */
-    margin-left: 2.5vw;
-    margin-top: -3vh;
 }
 
 /* ajoute le fond rouge quand tu hover */
@@ -308,7 +303,6 @@ a {
 /* Dropdown content (hidden by default) */
 .dropdown-content {
     display: none;
-    position: absolute;
     background-color: var(--couleur-claire);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -322,7 +316,6 @@ a {
     padding: 10% 20%;
     text-decoration: none;
     display: block;
-    text-align: left;
 }
 
 /* Add a grey background color to dropdown links on hover */
@@ -421,8 +414,8 @@ a {
 }
 
 .textedepresentation {
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .photocedric {
