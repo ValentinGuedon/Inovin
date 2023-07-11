@@ -28,6 +28,17 @@ class Cepage
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'cepage')]
     private Collection $ateliers;
 
+
+    public function __construct()
+    {
+        $this->ateliers = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->type;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,8 +80,33 @@ class Cepage
         return $this;
     }
 
+
+    /**
+     * @return Collection<int, Atelier>
+     */
+
     public function getAteliers(): Collection
     {
         return $this->ateliers;
+    }
+
+
+    public function addAtelier(Atelier $atelier): static
+    {
+        if (!$this->ateliers->contains($atelier)) {
+            $this->ateliers->add($atelier);
+            $atelier->addCepage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAtelier(Atelier $atelier): static
+    {
+        if ($this->ateliers->removeElement($atelier)) {
+            $atelier->removeCepage($this);
+        }
+
+        return $this;
     }
 }

@@ -61,35 +61,43 @@ class Vin
 
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $couleur;
+
     #[ORM\Column(length: 255)]
     private ?string $limpidite;
+
     #[ORM\Column(length: 255)]
     private ?string $fluidite;
+
     #[ORM\Column]
     private int $brillance = 0;
 
     #[ORM\Column(type: Types::ARRAY, nullable: true)]
     private array $arome = [];
+
     #[ORM\Column]
     private ?int $intensite = 0;
+
     #[ORM\Column]
     private ?int $douceur = 0;
+
     #[ORM\Column]
     private ?int $alcool = 0;
+
     #[ORM\Column(length: 255)]
     private ?string $persistance;
+
     #[ORM\Column(length: 255)]
     private ?string $structure;
+
     #[ORM\Column(length: 255)]
     private ?string $matiere;
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'vin')]
     private Collection $ateliers;
 
-    #[ORM\ManyToOne(inversedBy: 'vin')]
-    private ?Panier $panier = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $slug = null;
@@ -115,6 +123,7 @@ class Vin
     #[ORM\Column(nullable: true)]
     private ?bool $star = null;
 
+
     public function __construct()
     {
         $this->recettes1 = new ArrayCollection();
@@ -125,6 +134,11 @@ class Vin
         $this->recettes2 = new ArrayCollection();
         $this->recettes3 = new ArrayCollection();
         $this->recettes4 = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->nom;
     }
 
     public function getId(): ?int
@@ -289,17 +303,6 @@ class Vin
     public function getPosterFile(): ?File
     {
         return $this->posterFile;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        $this->panier = $panier;
-        return $this;
     }
 
     public function getCouleur(): ?string
