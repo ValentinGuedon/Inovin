@@ -46,7 +46,8 @@ class CepageCrudController extends AbstractCrudController
             IdField::new('id')
                 ->hideOnForm()
                 ->hideOnIndex(),
-            TextField::new('type'),
+            TextField::new('type')
+            ->setLabel('Nom'),
             TextareaField::new('description')
                 ->setSortable(false),
         ];

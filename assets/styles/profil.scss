@@ -68,3 +68,15 @@
 .sk-trash:hover{
     background-color: var( --couleur-fonce);
 }
+
+.carre-profil{
+    background-color: var(--couleur-tierce);
+    padding: 5%;
+    width: 30%;
+    min-width: 200px;
+    max-width: 500px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    margin: auto;
+    height: auto;
+    border-radius: 20px;
+}
