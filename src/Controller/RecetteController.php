@@ -5,11 +5,12 @@ namespace App\Controller;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/recette')]
 class RecetteController extends AbstractController
@@ -23,13 +24,22 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/visiteur', name: 'app_recette_visiteur', methods: ['GET', 'POST'])]
-    public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
-    {
+    public function visiteur(
+        Request $request,
+        RecetteRepository $recetteRepository,
+        Security $security,
+        SluggerInterface $slugger
+    ): Response {
         $recette = new Recette();
+
+
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugger->slug($recette->getNom());
+            $recette->setSlug($slug);
+
             $quantite1 = $recette->getQuantite();
             $quantite2 = $recette->getQuantite2();
             $quantite3 = $recette->getQuantite3();

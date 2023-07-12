@@ -45,6 +45,9 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     // public function __toString()
     // {
     //     return $this->type;
@@ -171,6 +174,18 @@ class Recette
     public function setCepage2(?Cepage $cepage2): static
     {
         $this->cepage2 = $cepage2;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
 
         return $this;
     }
