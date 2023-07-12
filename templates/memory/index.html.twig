@@ -4,42 +4,42 @@
 
 
 {% block body %}
+<div class="testMdr">
+    <div class="containermemory game-board">
+        <div class= "infoBarMemory">
+            <h1 class="h1memory">Memory des étiquettes de vins</h1>
+            <section class="score-panel">
+                <ul class="stars">
+                    <li>
+                        <i class="rating fa fa-star-o"></i>
+                    </li>
+                    <li>
+                        <i class="rating fa fa-star-o"></i>
+                    </li>
+                    <li>
+                        <i class="rating fa fa-star-o"></i>
+                    </li>
+                </ul>
 
-  <div class="containermemory game-board">
-      <h1 class="h1memory">Memory des étiquettes de vins</h1>
+                <span class="timer">
+                    <span class="timer-minutes">00</span>
+                    <span>:</span>
+                    <span class="timer-seconds">00</span>
+                </span>
 
-    <section class="score-panel">
-      <ul class="stars">
-        <li>
-          <i class="rating fa fa-star-o"></i>
-        </li>
-        <li>
-          <i class="rating fa fa-star-o"></i>
-        </li>
-        <li>
-          <i class="rating fa fa-star-o"></i>
-        </li>
-      </ul>
+                <div>
+                    <span class="moves">0</span> Mouvements
+                </div>
 
-      <span class="timer">
-        <span class="timer-minutes">00</span>
-        <span>:</span>
-        <span class="timer-seconds">00</span>
-      </span>
-
-      <div>
-        <span class="moves">0</span> Mouvements
-      </div>
-
-      <div class="restart">
-        <i class="fa fa-repeat"></i>
-      </div>
-    </section>
-
-    <ul class="deck">
-    </ul>
-  </div>
-
+                <div class="restart">
+                    <i class="fa fa-repeat"></i>
+                </div>
+            </section>
+        </div>
+        <ul class="deck">
+        </ul>
+    </div>
+</div>
   <div class="container win-dialog">
         <i class="win-icon fa fa-check-circle-o"></i>
         <h1 class="win-banner">Tu as gagné !</h1>
