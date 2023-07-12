@@ -51,16 +51,17 @@ class RecetteController extends AbstractController
                 $quantite3 !== null && $recette->getCepage3() === null ||
                 $quantite4 !== null && $recette->getCepage4() === null
             ) {
-                $this->addFlash('error', 'Vous avez ajouté une quantité sans cépage dans le "cépage supplémentaire".');
+                $this->addFlash('error', 'Vous avez ajouté une quantité sans cépage.');
             } else {
-                if ($sum == 750) {
-                    if ($quantite1 > 1 && $quantite2 > 1) {
+                if ($sum === 750) {
+                    if ($quantite1 >= 1 && $quantite2 >= 1) {
                         $user = $this->getUser();
                         $recette->setUser($user);
                         $recetteRepository->save($recette, true);
-                        return $this->redirectToRoute('app_recette_index', [], Response::HTTP_SEE_OTHER);
+                        $this->addFlash('success', 'Merci de votre participation à notre atelier!');
+                        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
                     } else {
-                        $this->addFlash('error', 'Veuillez renseigner au moins deux champs');
+                        $this->addFlash('error', 'Veuillez renseigner au moins deux champs.');
                     }
                 } else {
                     $this->addFlash('error', 'La somme de vos cépages doit être égal à 750ml.

@@ -23,6 +23,13 @@ class CepageCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Cépage')
+            ->setEntityLabelInPlural('Cépages')
+
+            ->setPageTitle('index', 'Cépages')
+            ->setPageTitle('new', 'Ajouter un cépage')
+            ->setPageTitle('detail', 'Détail du cépage')
+            ->setPageTitle('edit', 'Modifier un cépage')
         ;
     }
 
@@ -30,6 +37,11 @@ class CepageCrudController extends AbstractCrudController
     {
         return $actions
         ->remove(Crud::PAGE_INDEX, Action::NEW)
+
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
 
         ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
             return $action->setIcon('fa fa-edit')->setLabel(false);
@@ -45,8 +57,10 @@ class CepageCrudController extends AbstractCrudController
         return [
             IdField::new('id')
                 ->hideOnForm()
+                ->hideOnDetail()
                 ->hideOnIndex(),
-            TextField::new('type'),
+            TextField::new('type')
+            ->setLabel('Nom du cépage'),
             TextareaField::new('description')
                 ->setSortable(false),
         ];

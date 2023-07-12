@@ -1,14 +1,19 @@
-/* .formFiche {
-    width: 70vw;
-    margin-bottom: 20px;
-} */
+// form {
+//     margin-top: -250px !important;
+// }
+
+.vgNavbarDegustation {
+    background-image: url(/assets/images/wave.svg);
+    background-size: cover;
+    height: 22vh;
+}
 
 label {
     color: var(--couleur-claire);
 }
 
 .page {
-    margin: 0 10% 0 10%;
+    margin: 0 10% 70px 10%;
 }
 
 .titre-fiche {
@@ -153,68 +158,72 @@ label {
 /* Personnalisation des couleurs pour chaque checkbox */
 input#fiche_degustation_couleur_0 {
     background-color: #9e0e40;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_1 {
     background-color: #E70F30;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_2 {
     background-color: #e0115f;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_3 {
     background-color: #9e0e40;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_4 {
     background-color: #6c344f;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_5 {
     background-color: #6e0b14;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_6 {
     background-color: #a24d3f;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_7 {
     background-color: #E2DB8B;
-    border:none;
+    border: none;
 }
+
 input#fiche_degustation_couleur_8 {
     background-color: #E8DA51;
-    border:none;
+    border: none;
 }
+
 input#fiche_degustation_couleur_9 {
     background-color: #EDC851;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_10 {
     background-color: #FED851;
-    border:none;
+    border: none;
 }
+
 input#fiche_degustation_couleur_11 {
     background-color: #D7AB2B;
-    border:none;
+    border: none;
 }
 
 input#fiche_degustation_couleur_12 {
     background-color: #D68F2A;
-    border:none;
+    border: none;
 }
+
 input#fiche_degustation_couleur_13 {
     background-color: #CD7921;
-    border:none;
+    border: none;
 }
 
 /* Oeil - Curseur Limpidité */
@@ -493,7 +502,6 @@ li {
     position: absolute;
     right: 0;
     margin-right: 15%;
-    margin-top: 3%;
 }
 
 .form-submit {

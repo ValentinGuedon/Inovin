@@ -48,11 +48,6 @@ class Recette
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
-    // public function __toString()
-    // {
-    //     return $this->type;
-    // }
-
     public function getId(): ?int
     {
         return $this->id;

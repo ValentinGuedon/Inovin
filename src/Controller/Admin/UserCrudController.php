@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
@@ -22,8 +23,14 @@ class UserCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-        ->disable(Action::NEW, Action::DELETE, Action::EDIT)
-        ;
+        ->disable(Action::NEW, Action::DELETE, Action::EDIT);
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+        ->setEntityLabelInSingular('Utilisateur')
+        ->setEntityLabelInPlural('Utilisateurs');
     }
 
     public function configureFields(string $pageName): iterable
@@ -43,11 +50,11 @@ class UserCrudController extends AbstractCrudController
         yield DateField::new('birthdate')
         ->setLabel('Date de Naissance')
         ->setFormat('dd/MM yyyy');
+        yield TextField::new('city');
+        yield IntegerField::new('postalcode')
+        ->setLabel('Code Postal');
         yield TextField::new('street')
         ->setLabel('Rue')
         ->setSortable(false);
-        yield IntegerField::new('postalcode')
-        ->setLabel('Code Postal');
-        yield TextField::new('city');
     }
 }
