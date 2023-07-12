@@ -14,7 +14,7 @@
     <h1 class="title">Mon compte</h1>
 
     <div class="sk-atelier">
-        {% if atelier is not empty %}
+        {% if user in atelier.getUsers() and date('now'| date('d-m-Y')) == atelier.date %}
             <h2>Accéder à l'atelier de dégustation</h2>
             <a class="sk-cta-atelier" href="{{ path('fiche',{'userSlug':user.slug,'vinSlug':vin.slug})}}">Let's Go</a>
         {% endif %}
@@ -95,10 +95,7 @@
     {% endfor %}
   </tbody>
 </table>
-
     {% endif %}
-
-
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mon profil gustatif : </h2>
@@ -106,6 +103,19 @@
         <div class="carre-profil mb-5">
             <p class="text-center fw-bold">Votre profil n'est pas disponible</p>
         </div>
+    {% else %}
+        <table class="sk-custom-table mb-5 mx-auto">
+           <tbody>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td>{{ user.getProfil().name }}</td>
+                <td>{{ user.getProfil().description }}</td>
+            </tr>
+        </tbody>
+        </table>
     {% endif %}
 
     <div class="sk-divider-profil"></div>
@@ -114,6 +124,35 @@
         <div class="carre-profil mb-5">
             <p class="text-center fw-bold">Pas de recettes disponibles</p>
         </div>
+    {% else %}
+        {% for recette in user.getRecettes() %}
+         <table class="sk-custom-table mb-5 mx-auto">
+           <tbody>
+            <tr>
+                <th>Nom de la recette</th>
+                <th>Cépage 1</th>
+                <th>Quantité</th>
+                <th>Cépage 2</th>
+                <th>Quantité</th>
+                <th>Cépage 3</th>
+                <th>Quantité</th>
+                <th>Cépage 4</th>
+                <th>Quantité</th>
+            </tr>
+            <tr>
+                <td>{{ recette.nom }}</td>
+                <td>{{ recette.cepage1 }}</td>
+                <td>{{ recette.quantite }} {{ (recette.quantite  > 0) ? 'ml':'' }}</td>
+                <td>{{ recette.cepage2 }}</td>
+                <td>{{ recette.quantite2 }} {{ (recette.quantite2  > 0) ? 'ml':'' }}</td>
+                <td>{{ recette.cepage3 }}</td>
+                <td>{{ recette.quantite3 }} {{ (recette.quantite3  > 0) ? 'ml':'' }}</td>
+                <td>{{ recette.cepage4 }}</td>
+                <td>{{ recette.quantite4 }} {{ (recette.quantite4  > 0) ? 'ml':'' }}</td>
+            </tr>
+        </tbody>
+        </table>
+        {% endfor %}
     {% endif %}
 
     <div class="sk-divider-profil"></div>
@@ -139,7 +178,6 @@
             </tr>
         </tbody>
         </table>
-
     {% endif %}
 
 
@@ -149,6 +187,30 @@
         <div class="carre-profil mb-5">
             <p class="text-center fw-bold">Pas de fiches de dégustation disponibles</p>
         </div>
+    {% else %}
+         <table class="sk-custom-table mb-5 mx-auto">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Nom du vin</th>
+                <th>Couleur</th>
+                <th>Note</th>
+                <th>Émotion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ficheDegustation in user.getFicheDegustations() %}
+            <tr>
+                <td>{{ ficheDegustation.date|date('d-m-Y') }}</td>
+                <td>{{ ficheDegustation.vin }}</td>
+                <td>{{ ficheDegustation.couleur }}</td>
+                <td>{{ ficheDegustation.note }}</td>
+                <td><img src="{{ asset('build/images/' ~ ficheDegustation.emotion ~ '.png') }}" alt="{{ ficheDegustation.emotion }}" style="width: 30px;"/>&emsp;{{ ficheDegustation.emotion }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        </table>
+        
     {% endif %}
 
 

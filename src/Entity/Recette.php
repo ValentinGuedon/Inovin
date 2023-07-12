@@ -45,6 +45,9 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $winner = null;
+
     // public function __toString()
     // {
     //     return $this->type;
@@ -171,6 +174,18 @@ class Recette
     public function setCepage2(?Cepage $cepage2): static
     {
         $this->cepage2 = $cepage2;
+
+        return $this;
+    }
+
+    public function isWinner(): ?bool
+    {
+        return $this->winner;
+    }
+
+    public function setWinner(?bool $winner): static
+    {
+        $this->winner = $winner;
 
         return $this;
     }

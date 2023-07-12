@@ -122,3 +122,12 @@
 .sk-star{
     color: var(--couleur-tierce);
 }
+
+.sk-return-button{
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    border-radius: 70px;
+    padding: 1% 3%;
+    height: 100px;
+    width: 200px;
+}

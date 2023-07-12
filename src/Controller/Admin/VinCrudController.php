@@ -59,7 +59,16 @@ class VinCrudController extends AbstractCrudController
             IdField::new('id')
             ->hideOnForm()
             ->hideOnIndex(),
+
             TextField::new('nom'),
+
+            TextareaField::new('description')
+            ->setSortable(false),
+
+            ImageField::new('image')
+            ->setUploadDir('public/uploads/images/posters')
+            ->setBasePath('uploads/images/posters')
+            ->setSortable(false),
 
             ChoiceField::new('couleur')->setChoices([
                 'Rouge' => 'rouge',
@@ -135,13 +144,6 @@ class VinCrudController extends AbstractCrudController
             ->setTargetFieldName('nom')
             ->hideOnIndex(),
 
-            ImageField::new('image')
-            ->setUploadDir('public/uploads/images/posters')
-            ->setBasePath('uploads/images/posters')
-            ->setSortable(false),
-
-            TextareaField::new('description')
-            ->setSortable(false),
 
         ];
     }
