@@ -20,7 +20,7 @@ class Recette
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
-    #[ORM\ManyToOne(inversedBy: 'recettes')]
+    #[ORM\ManyToOne(inversedBy: 'recettes1')]
     private ?Cepage $cepage1 = null;
 
     #[ORM\Column]
@@ -45,8 +45,12 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $winner = null;
 
     public function getId(): ?int
     {
@@ -181,6 +185,19 @@ class Recette
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function isWinner(): ?bool
+    {
+        return $this->winner;
+    }
+
+    public function setWinner(?bool $winner): static
+    {
+        $this->winner = $winner;
+
 
         return $this;
     }

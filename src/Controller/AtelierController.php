@@ -118,6 +118,7 @@ class AtelierController extends AbstractController
                 $userEmail = $user->getEmail();
                 $mailerService->sendAtelierEmail($userEmail, $fiches);
                 // Redirection vers la page de profil de consommateur
+
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user,

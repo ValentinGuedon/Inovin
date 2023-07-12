@@ -43,18 +43,19 @@ class UserCrudController extends AbstractCrudController
         yield TextField::new('firstname')
         ->setLabel('Prénom');
         yield TextField::new('phone')
-        ->setLabel('Numéro de téléphone')
+        ->setLabel('Téléphone')
         ->setSortable(false);
         yield TextField::new('email')
         ->setLabel('E-mail');
         yield DateField::new('birthdate')
         ->setLabel('Date de Naissance')
         ->setFormat('dd/MM yyyy');
-        yield TextField::new('city');
+        yield TextField::new('city')
+        ->setLabel('Ville');
         yield IntegerField::new('postalcode')
         ->setLabel('Code Postal');
         yield TextField::new('street')
-        ->setLabel('Rue')
+        ->setLabel('Adresse')
         ->setSortable(false);
     }
 }

@@ -119,6 +119,11 @@
   </div>
 </div>
 
+{% if app.request.method == 'POST' %}
+<div class="sk-return mt-5 text-center">
+  <a class="sk-return-button" href="{{ path ('shop_index')}}">Retour boutique</a>
+</div>
+{% endif %}
  
 <!--Card-->
 <div class="container">
