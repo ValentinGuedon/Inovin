@@ -66,7 +66,7 @@
     <h2 class="titlesection">Mes favoris : </h2>
 
     {% if user.getWatchlist().isEmpty() %}
-    <div class="carre mb-5">
+    <div class="carre-profil mb-5">
         <p class="text-center fw-bold">Votre watchlist est vide.</p>
     </div>
     {% else %}
@@ -102,14 +102,24 @@
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mon profil gustatif : </h2>
+    {% if user.profil is empty() %}
+        <div class="carre-profil mb-5">
+            <p class="text-center fw-bold">Votre profil n'est pas disponible</p>
+        </div>
+    {% endif %}
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mes recettes : </h2>
+    {% if user.recettes is empty() %}
+        <div class="carre-profil mb-5">
+            <p class="text-center fw-bold">Pas de recettes disponibles</p>
+        </div>
+    {% endif %}
 
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mes ateliers : </h2>
     {% if user.atelier is empty() %}
-    <div class="carre mb-5">
+    <div class="carre-profil mb-5">
         <p class="text-center fw-bold">Vous n'avez pas particpé à un atelier</p>
     </div>
     {% else %}
@@ -136,8 +146,8 @@
     <div class="sk-divider-profil"></div>
     <h2 class="titlesection">Mes fiches de dégustation : </h2>
     {% if user.ficheDegustations is empty() %}
-        <div class="carre mb-5">
-            <p class="text-center fw-bold">Pas de fiches de dégustation disponnibles</p>
+        <div class="carre-profil mb-5">
+            <p class="text-center fw-bold">Pas de fiches de dégustation disponibles</p>
         </div>
     {% endif %}
 

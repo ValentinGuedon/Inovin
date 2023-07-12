@@ -6,7 +6,7 @@
 <!--Message-->
   {% for category, messages in app.flashes %}
       {% for message in messages %}
-      <div class="sk-{{ category }}">
+      <div class="alert-{{ category }} sk-create-account">
               {{ message }}
       </div>
       {% endfor %}
