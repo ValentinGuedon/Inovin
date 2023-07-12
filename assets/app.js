@@ -88,7 +88,7 @@ contactClose.addEventListener('click', () => {
 
 
 // close automatically alert message contact mail in home/index.html.twig
-const alertElements = document.querySelectorAll('.sk-success, .sk-error');
+const alertElements = document.querySelectorAll('.sk-success, .sk-error, .sk-create-account');
 
 function closeAlert() {
     alertElements.forEach(element => {

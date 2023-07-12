@@ -22,7 +22,7 @@ class Atelier
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\ManyToMany(inversedBy: 'atelier', targetEntity: User::class)]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'atelier')]
     private Collection $users;
 
     #[ORM\ManyToMany(targetEntity: Vin::class, inversedBy: 'ateliers')]
