@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .vgDivContainer {
     display: flex;
     justify-content: center;
@@ -178,3 +179,158 @@
     margin-left: 45%;
     max-width: 10%;
 }
+=======
+.containermemory game-board{
+  display: flex;
+  flex-direction: column;
+}
+.containermemory{
+  margin-left:30%;
+  }
+  
+  .h1memory {
+      color: var(--couleur-claire);
+      margin-left:7%;
+  }
+  
+    /*
+     * Styles for the deck of cards
+     */
+    
+    .deck {
+      width: 660px;
+      min-height: 680px;
+      background: #9b2449;
+      padding: 32px;
+      border-radius: 10px;
+      box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 0 3em;
+    }
+    
+    .deck .card {
+      height: 125px;
+      width: 125px;
+      background: #e2dad4;
+      font-size: 0;
+      color:  #e2dad4;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    }
+    
+    .deck .card.open {
+      transform: rotateY(0);
+      background:#22323f;
+      cursor: default;
+    }
+    
+    .deck .card.faceup {
+      font-size: 33px;
+    }
+    .deck .card .imgvisible {
+      width: 120px;
+    }
+    
+    .deck .card .imghidden{
+      width: 0px;
+    }
+    
+    .deck .card.match {
+      cursor: default;
+      background: #22323f;
+      font-size: 33px;
+    }
+    
+    @keyframes card-match {
+      from {
+        height: 125px;
+        width: 125px;
+        background:  #9b2449;
+      }
+      50% {
+        height: 150px;
+        width: 150px;
+      }
+      to {
+        height: 125px;
+        width: 125px;
+        background: #22323f;
+      }
+    }
+    /*
+     * Styles for the Score Panel
+     */
+    
+    .score-panel {
+      text-align: left;
+      width: 345px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      color: #e2dad4;
+      margin-left: 15%;
+    }
+    
+    .score-panel .stars li {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      margin: 0 5px 0 0;
+    }
+    
+    .score-panel .stars {
+      list-style: none;
+      display: inline-block;
+    }
+    
+    .score-panel .restart {
+      float: right;
+      cursor: pointer;
+    }
+    
+    /*
+     * Styles for the Win Dialog
+     */
+    
+    .win-dialog {
+      display: none;
+      text-align: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+    
+    .win-dialog .win-icon {
+      font-size: 144px;
+      color: var(--couleur-claire);
+    }
+    
+    .win-dialog .win-banner {
+      font-size: 32px;
+      color: var(--couleur-claire);
+    }
+    
+    .win-dialog .win-summary {
+      font-size: 32px;
+      color: var(--couleur-claire);
+    }
+    
+    .win-dialog .win-button {
+      background-color: var(--couleur-claire);
+      border-radius: 20px;
+      padding: 10px;
+    }
+  
+    .win-button{
+      margin-top : 5%;
+      margin-left: 45%;
+      max-width: 10%;
+    }
+>>>>>>> fa8ecb926d18b619df687a787815515f7d6d17ce

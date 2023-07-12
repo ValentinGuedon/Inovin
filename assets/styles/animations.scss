@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    overflow-x: hidden; 
 }
 
 .grid-item1 {
@@ -12,7 +13,6 @@
 .atelier {
     background-color: var(--couleur-claire);
     border-radius: 5px;
-    padding-bottom: 7%;
 }
 
 .titre {
@@ -25,6 +25,8 @@
     width: 100%;
     max-height: 400px;
     object-fit: contain;
+    margin-top: 4%;
+    border-radius: 5px;
 }
 
 .soustitre {
@@ -62,4 +64,14 @@
     display: flex;
     align-items: center;
     position: relative;
+}
+
+.soustitre-index{
+    color: var(--couleur-tierce);
+    margin-bottom: 5%;
+    margin-top: 5%;
+    font-size: medium;
+    text-transform : uppercase;
+    margin-left: 10%;
+    margin-right: 10%;
 }

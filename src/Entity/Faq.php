@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\FaqRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\FaqRepository;
 
 #[ORM\Entity(repositoryClass: FaqRepository::class)]
 class Faq
@@ -16,7 +17,8 @@ class Faq
     #[ORM\Column(length: 255)]
     private ?string $question = null;
 
-    #[ORM\Column(length: 255)]
+
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $answer = null;
 
     public function getId(): ?int

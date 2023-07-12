@@ -57,15 +57,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $ficheDegustations;
 
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Jeux::class)]
-    private Collection $jeux;
-
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Recette::class)]
     private Collection $recettes;
-
-
-    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Panier::class, cascade: ['persist'])]
-    private ?Panier $panier = null;
 
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'users')]
     private Collection $atelier;
@@ -103,12 +96,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
-        $this->jeux = new ArrayCollection();
         $this->recettes = new ArrayCollection();
         $this->atelier = new ArrayCollection();
-        $this->panier = new Panier();
         $this->watchlist = new ArrayCollection();
         $this->notes = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -322,37 +318,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-
-    /**
-     * @return Collection<int, Jeux>
-     */
-    public function getJeux(): Collection
-    {
-        return $this->jeux;
-    }
-
-    public function addJeux(Jeux $jeux): self
-    {
-        if (!$this->jeux->contains($jeux)) {
-            $this->jeux->add($jeux);
-            $jeux->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeJeux(Jeux $jeux): self
-    {
-        if ($this->jeux->removeElement($jeux)) {
-            // set the owning side to null (unless already changed)
-            if ($jeux->getUser() === $this) {
-                $jeux->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Recette>
      */
@@ -380,27 +345,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             }
         }
 
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        // unset the owning side of the relation if necessary
-        if ($panier === null && $this->panier !== null) {
-            $this->panier->setUser(null);
-        }
-
-        // set the owning side of the relation if necessary
-        if ($panier !== null && $panier->getUser() !== $this) {
-            $panier->setUser($this);
-        }
-
-        $this->panier = $panier;
         return $this;
     }
 

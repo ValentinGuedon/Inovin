@@ -13,25 +13,52 @@
 <div class="page">
 {{ form_start(form, {'class':'formFiche'}) }}
 <div class="ss-titre">L'OEIL</div>
+
+
 <div class="cardcontainer">
-  <div class="form-column">
-    <div class="form-row">
-      <div class="form-group">
-        <div class="checkbox-container">
+
+
+  <div class="cardcontainer2">
+   
+    <div class="form-column">
+      <div class="form-row">
+        <div class="form-group">
           <p class="form-label">{{ form_label(form.couleur, null, {'label_attr': {'class': 'couleur-checkbox'}}) }}</p>
-          <div class="checkbox-custom">
-              {% for choice in form.couleur %}
-                  <label class="checkbox-label">
-                      {{ form_widget(choice, {'attr': {'class': 'checkbox-input' ~ choice.vars['attr']['class']} }) }}
-                      <span class="checkbox-custom-indicator"></span>
-                      {{ choice.vars.label }}
-                  </label>
-              {% endfor %}
+          <div class="checkbox-container couleurs-container couleurs-rouges">
+            {% set couleursRouges = ['framboise', 'cerise', 'rubis', 'pourpre', 'violet', 'grenat', 'tuilé'] %}
+            {% for choice in form.couleur %}
+              {% if choice.vars.value in couleursRouges %}
+                <label class="checkbox-label-couleur">
+                  {{ form_widget(choice) }}
+                  <span class="checkbox-custom-indicator"></span>
+                  {{ choice.vars.label }}
+                </label>
+              {% endif %}
+            {% endfor %}
           </div>
+        </div>
       </div>
+    </div>
+    <div class="form-column">
+      <div class="form-row">
+        <div class="form-group">
+          <div class="checkbox-container couleurs-container couleurs-jaunes">
+            {% set couleursJaunes = ['or vert', 'or pâle', 'jaune paille', 'doré', 'vieil or', 'ambré', 'roux'] %}
+            {% for choice in form.couleur %}
+              {% if choice.vars.value in couleursJaunes %}
+                <label class="checkbox-label-couleur">
+                  {{ form_widget(choice) }}
+                  <span class="checkbox-custom-indicator"></span>
+                  {{ choice.vars.label }}
+                </label>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="form-column">
     <div class="form-row">
       <div class="form-group">
@@ -68,6 +95,7 @@
     </div>
   </div>
 </div>
+
 <div class="horizontal-range">
     <div class="range-row">
         <div class="flex-start">
