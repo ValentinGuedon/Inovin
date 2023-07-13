@@ -7,15 +7,15 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class StrongPasswordValidator extends ConstraintValidator
 {
-    public function validate($value, Constraint $constraint)
+    public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$this->isStrongPassword($value)) {
             $this->context->buildViolation($constraint->message)
-                ->addViolation();
+                ->addViolation(); /* @phpstan-ignore-line */
         }
     }
 
-    private function isStrongPassword($password)
+    private function isStrongPassword(mixed $password): bool
     {
         // Vérification de la présence d'au moins une lettre majuscule, une lettre minuscule et un chiffre
         if (
