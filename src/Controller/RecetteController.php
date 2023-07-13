@@ -40,7 +40,7 @@ class RecetteController extends AbstractController
             $slug = $slugger->slug($recette->getNom());
             $recette->setSlug($slug);
 
-            $quantite1 = $recette->getQuantite();
+            $quantite1 = $recette->getQuantite1();
             $quantite2 = $recette->getQuantite2();
             $quantite3 = $recette->getQuantite3();
             $quantite4 = $recette->getQuantite4();

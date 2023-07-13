@@ -24,7 +24,7 @@ class RecetteType extends AbstractType
 
         $builder
             ->add('nom')
-            ->add('quantite', IntegerType::class, [
+            ->add('quantite1', IntegerType::class, [
                 'attr' => [
                     'min' => 0,
                     'max' => 750,
