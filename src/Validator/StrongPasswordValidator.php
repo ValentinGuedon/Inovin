@@ -10,8 +10,8 @@ class StrongPasswordValidator extends ConstraintValidator
     public function validate(mixed $value, Constraint $constraint): void
     {
         if (!$this->isStrongPassword($value)) {
-            $this->context->buildViolation($constraint->message)
-                ->addViolation(); /* @phpstan-ignore-line */
+            $this->context->buildViolation($constraint->message) /* @phpstan-ignore-line */
+                ->addViolation();
         }
     }
 
