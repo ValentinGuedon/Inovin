@@ -103,7 +103,7 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 
-    public function validateAge($value, ExecutionContextInterface $context): void
+    public function validateAge(\DateTime $value, ExecutionContextInterface $context): void
     {
         $now = new \DateTime();
         $age = $now->diff($value)->y;
