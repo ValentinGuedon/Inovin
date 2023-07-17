@@ -45,13 +45,12 @@ class Recette
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\Column(nullable: true)]
     private ?bool $winner = null;
-
-    // public function __toString()
-    // {
-    //     return $this->type;
-    // }
 
     public function getId(): ?int
     {
@@ -178,6 +177,18 @@ class Recette
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     public function isWinner(): ?bool
     {
         return $this->winner;
@@ -186,6 +197,7 @@ class Recette
     public function setWinner(?bool $winner): static
     {
         $this->winner = $winner;
+
 
         return $this;
     }

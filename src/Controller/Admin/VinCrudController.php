@@ -50,6 +50,14 @@ class VinCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Vin')
+            ->setEntityLabelInPlural('Vins')
+
+            ->setPageTitle('index', 'Vins')
+            ->setPageTitle('new', 'Ajouter un vin')
+            ->setPageTitle('detail', 'Détail du vin')
+            ->setPageTitle('edit', 'Modifier un vin')
+
         ;
     }
 
@@ -58,6 +66,7 @@ class VinCrudController extends AbstractCrudController
         return [
             IdField::new('id')
             ->hideOnForm()
+            ->hideOnDetail()
             ->hideOnIndex(),
 
             TextField::new('nom'),
@@ -90,14 +99,14 @@ class VinCrudController extends AbstractCrudController
             ->setLabel('Région'),
 
             AssociationField::new('cepages')
+            ->hideOnForm()
+            ->hideOnIndex()
+            ->hideOnDetail()
             ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
                 $queryBuilder->select('c')
                     ->from(Cepage::class, 'c')
                     ->orderBy('c.type', 'ASC');
             }),
-            TextareaField::new('description')
-            ->setSortable(false),
-
             TextField::new('limpidite')
             ->setLabel('Limpidité')
             ->hideOnIndex(),
@@ -122,7 +131,8 @@ class VinCrudController extends AbstractCrudController
                 'Végétal' => 'Végétal',
                 'Marin' => 'Marin',
             ])
-            ->allowMultipleChoices(true),
+            ->allowMultipleChoices(true)
+            ->hideOnIndex(),
 
             IntegerField::new('brillance')
             ->hideOnIndex(),
@@ -142,6 +152,7 @@ class VinCrudController extends AbstractCrudController
 
             SlugField::new('slug')
             ->setTargetFieldName('nom')
+            ->hideOnDetail()
             ->hideOnIndex(),
 
 

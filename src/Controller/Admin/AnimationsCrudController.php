@@ -21,10 +21,29 @@ class AnimationsCrudController extends AbstractCrudController
         return Animations::class;
     }
 
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Animation')
+            ->setEntityLabelInPlural('Animations')
+
+            ->setPageTitle('index', 'Animations')
+            ->setPageTitle('new', 'Ajouter une animation')
+            ->setPageTitle('detail', 'Détail de l\'animation')
+            ->setPageTitle('edit', 'Modifier une animation')
+        ;
+    }
+
     public function configureActions(Actions $actions): Actions
     {
         return $actions
         ->remove(Crud::PAGE_INDEX, Action::NEW)
+
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
 
         ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
             return $action->setIcon('fa fa-edit')->setLabel(false);
@@ -34,19 +53,12 @@ class AnimationsCrudController extends AbstractCrudController
         });
     }
 
-    public function configureCrud(Crud $crud): Crud
-    {
-        return $crud
-            ->showEntityActionsInlined()
-        ;
-    }
-
-
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')
             ->hideOnForm()
+            ->hideOnDetail()
             ->hideOnIndex(),
             TextField::new('nom'),
             ImageField::new('image')
@@ -59,6 +71,7 @@ class AnimationsCrudController extends AbstractCrudController
             TextareaField::new('description'),
             SlugField::new('slug')
             ->setTargetFieldName('nom')
+            ->hideOnDetail()
             ->hideOnIndex(),
         ];
     }
