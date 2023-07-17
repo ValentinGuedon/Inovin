@@ -17,9 +17,9 @@
                 <ul class="listederoulante">
                     <li><a href="{{ path('app_lexique') }}" class="liennav">Lexique</a></li>
                     <li><a href="{{ path('app_quizz') }}" class="liennav">Le quizz</a></li>
-                     <li><a href="{{ path('app_memory') }}" class="liennav">Memory</a></li>
+                    <li><a href="{{ path('app_memory') }}" class="liennav">Memory</a></li>
                     <li><a href="{{ path('app_blog_visiteur') }}" class="liennav">Blog</a></li>
-                    <li><a href="{{ path('app_faq_visiteur') }}" class="liennav">FAQ</a></li>
+                    <li><a href="{{ path('app_faq_visiteur') }}" class="liennav faq">FAQ</a></li>
                 </ul>
             </li>
             <li id="nav5"><a href="{{ path ('shop_index')}}" class="liennav marginLinks">BOUTIQUE</a></li>
@@ -32,7 +32,7 @@
             <li class="linav marginpanier" id="nav8"><a href="{{ path ('panier_index')}}"><img src="{{ asset('build/images/panier.png') }}" style="width: 30px; height: 30px;"></a></li>
 
 {% if app.user %}
-            <li class="linav marginLinks" id="nav1">
+            <li class="linav marginUser" id="nav1">
                 <div class="navbar">
                     <div class="dropdown">
                             <button class="dropbtn">
