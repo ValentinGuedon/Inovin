@@ -95,33 +95,4 @@ class VinRepository extends ServiceEntityRepository
 
         return $this->findAll();
     }
-
-    public function findRandomVins($limit)
-    {
-        $entityManager = $this->getEntityManager();
-
-        // Get the total number of wines in your boutique
-        $totalVins = $this->count([]);
-        var_dump($totalVins);
-
-        // Generate a random array of unique wine IDs
-        $randomIds = [];
-        while (count($randomIds) < min($limit, $totalVins)) {
-            $randomId = mt_rand(1, $totalVins);
-            if (!in_array($randomId, $randomIds)) {
-                $randomIds[] = $randomId;
-            }
-        }
-
-        // Retrieve the wines based on the random IDs
-        $queryBuilder = $this->createQueryBuilder('v')
-            ->leftJoin('v.notes', 'n')
-            ->getQuery();
-
-        return $queryBuilder->getResult();
-
-        var_dump($randomIds);
-
-        return $query->getResult();
-    }
 }
