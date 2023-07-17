@@ -35,7 +35,7 @@ class AnimationsFixtures extends Fixture
 
         ],
 
-        [' ATELIER DÉGUSTATION',
+        ['ATELIER DÉGUSTATION',
 
         '70',
 

@@ -11,6 +11,7 @@
   <div class="header">
     <div class="number-of-count">
       <span class="number-of-question">1 sur 3 questions</span>
+      <div class="error-message hide">Veuillez sélectionner une réponse.</div>
     </div>
   </div>
   <div id="container">
@@ -24,205 +25,278 @@
 </div>
 
 {# Script pour le quizz#}
-  <script>
-    //References
-let timeLeft = document.querySelector(".time-left");
-let quizContainer = document.getElementById("container");
-let nextBtn = document.getElementById("next-button");
-let countOfQuestion = document.querySelector(".number-of-question");
-let displayContainer = document.getElementById("display-container");
-let scoreContainer = document.querySelector(".score-container");
-let restart = document.getElementById("restart");
-let userScore = document.getElementById("user-score");
-let startScreen = document.querySelector(".start-screen");
-let startButton = document.getElementById("start-button");
-let questionCount;
-let scoreCount = 0;
-let count = 11;
-let countdown;
+<script>
+  // References
+  let timeLeft = document.querySelector(".time-left");
+  let quizContainer = document.getElementById("container");
+  let nextBtn = document.getElementById("next-button");
+  let countOfQuestion = document.querySelector(".number-of-question");
+  let displayContainer = document.getElementById("display-container");
+  let scoreContainer = document.querySelector(".score-container");
+  let restart = document.getElementById("restart");
+  let userScore = document.getElementById("user-score");
+  let startScreen = document.querySelector(".start-screen");
+  let startButton = document.getElementById("start-button");
+  let questionCount;
+  let scoreCount = 0;
+  let count = 11;
+  let countdown;
 
-//Questions and Options array
+  // Questions and Options array
 
-const quizArray = [
+  const quizArray = [
     {
-        id: "0",
-        question:"Avec 1 tonne de raisin on fait :",
-        options:["350 bouteilles", "720 bouteilles", "560 bouteilles ", "945 bouteilles"],
-        correct:"720 bouteilles",
-      },
-    {
-        id: "1",
-        question:"La plus grande cave à vin du monde se trouve :",
-        options:["En France", "Aux Etats-Unies", "En Moldavie", "En Italie"],
-        correct:"En Moldavie",
+      id: "0",
+      question: "Avec 1 tonne de raisin on fait :",
+      options: ["350 bouteilles", "720 bouteilles", "560 bouteilles ", "945 bouteilles"],
+      correct: "720 bouteilles",
     },
     {
-        id: "2",
-        question:"La France est le premier producteur de vin au monde, avec une production chaque année de plus de :",
-        options:["8 milliards de bouteilles de vin", "5 millions de bouteilles de vin", "10 milliards de bouteilles de vin", "3 milliards de bouteilles de vin"],
-        correct:"8 milliards de bouteilles de vin",
+      id: "1",
+      question: "La plus grande cave à vin du monde se trouve :",
+      options: ["En France", "Aux Etats-Unies", "En Moldavie", "En Italie"],
+      correct: "En Moldavie",
     },
     {
-        id: "3",
-        question:"Quel est le vin le plus consommé au monde ?",
-        options:["Vin rouge", "Vin blanc", "Vin rosé", "Vin mousseux"],
-        correct:"Vin rouge",
+      id: "2",
+      question: "La France est le premier producteur de vin au monde, avec une production chaque année de plus de :",
+      options: ["8 milliards de bouteilles de vin", "5 millions de bouteilles de vin", "10 milliards de bouteilles de vin", "3 milliards de bouteilles de vin"],
+      correct: "8 milliards de bouteilles de vin",
     },
     {
-        id: "4",
-        question:"Que dit-on d'un vin qui “se boit facilement” ?",
-        options:["Il est pointu", "Il est vert", "Il est gouleyant", "Il est goûteux"],
-        correct:"Il est gouleyant",
+      id: "3",
+      question: "Quel est le vin le plus consommé au monde ?",
+      options: ["Vin rouge", "Vin blanc", "Vin rosé", "Vin mousseux"],
+      correct: "Vin rouge",
     },
     {
-        id: "5",
-        question:"Quel est le pays où la consommation de vin par habitant est la plus importante au monde ? ",
-        options:["La France", "L'Argentine", "Le Vatican", "Le Portugal"],
-        correct:"Le Vatican",
+      id: "4",
+      question: "Que dit-on d'un vin qui “se boit facilement” ?",
+      options: ["Il est pointu", "Il est vert", "Il est gouleyant", "Il est goûteux"],
+      correct: "Il est gouleyant",
+    },
+    {
+      id: "5",
+      question: "Quel est le pays où la consommation de vin par habitant est la plus importante au monde ? ",
+      options: ["La France", "L'Argentine", "Le Vatican", "Le Portugal"],
+      correct: "Le Vatican",
     }, {
-        id: "6",
-        question:"Le foulage du raisin au pied s'est effectué jusqu'en :",
-        options:["1980", "1950", "1890", "1930"],
-        correct:"1950",
+      id: "6",
+      question: "Le foulage du raisin au pied s'est effectué jusqu'en :",
+      options: ["1980", "1950", "1890", "1930"],
+      correct: "1950",
     },
     {
-        id: "7",
-        question: "Combien de composés chimiques différents peuvent être trouvés dans le vin ?",
-        options: ["Plus de 100", "Plus de 500", "Plus de 1 000", "Plus de 5 000"],
-        correct: "Plus de 1 000",
+      id: "7",
+      question: "Combien de composés chimiques différents peuvent être trouvés dans le vin ?",
+      options: ["Plus de 100", "Plus de 500", "Plus de 1 000", "Plus de 5 000"],
+      correct: "Plus de 1 000",
     },
 
     {
-        id: "8",
-        question: "Quel est l'âge du plus vieux vin encore buvable au monde ?",
-        options: [" 100 ans", "500 ans", " 1 000 ans", "8 000 ans"],
-        correct: "STP",
-    }, 
-    {
-        id: "9",
-        question: "Quels bienfaits pour la santé peut-on associer à la consommation modérée de vin rouge ?",
-        options: ["Amélioration de la mémoire", "Réduction du stress", "Renforcement des os", "Effets positifs sur le système cardiovasculaire"],
-        correct: "Effets positifs sur le système cardiovasculaire",
+      id: "8",
+      question: "Quel est l'âge du plus vieux vin encore buvable au monde ?",
+      options: [" 100 ans", "500 ans", " 1 000 ans", "8 000 ans"],
+      correct: "8 000 ans",
     },
-];
+    {
+      id: "9",
+      question: "Quels bienfaits pour la santé peut-on associer à la consommation modérée de vin rouge ?",
+      options: ["Amélioration de la mémoire", "Réduction du stress", "Renforcement des os", "Effets positifs sur le système cardiovasculaire"],
+      correct: "Effets positifs sur le système cardiovasculaire",
+    },
+  ];
 
-//Restart Quiz
-restart.addEventListener("click", () => {
+  // Restart Quiz
+  restart.addEventListener("click", () => {
     initial();
     displayContainer.classList.remove("hide");
     scoreContainer.classList.add("hide");
-});
+  });
 
-//Next Button
-nextBtn.addEventListener(
-    "click",
-    (displayNext = () => {
-        //increment questionCount
-        questionCount += 1;
-        //if last question
-        if (questionCount == quizArray.length) {
-            //hide question container and display score
-            displayContainer.classList.add("hide");
-            scoreContainer.classList.remove("hide");
-            //user score
-            userScore.innerHTML =
-                "Votre score est de " + scoreCount + " sur " + questionCount + " questions";
-        } else {
-            //display questionCount
-            countOfQuestion.innerHTML =
-                questionCount + 1 + " sur " + quizArray.length + " questions";
-            //display quiz
-            quizDisplay(questionCount);
-            count = 11;
-            clearInterval(countdown);
-            timerDisplay();
-        }
-    })
-);
+  // Next Button
+  nextBtn.addEventListener("click", () => {
+    const currentQuestion = document.getElementsByClassName("container-mid")[questionCount];
+    const options = currentQuestion.querySelectorAll(".option-div");
+    let isOptionSelected = false;
 
-//Timer
-const timerDisplay = () => {
-    countdown = setInterval(() => {
-        count--;
-        timeLeft.innerHTML = `${count}s`;
-        if (count == 0) {
-            clearInterval(countdown);
-            displayNext();
-        }
-    }, 1000);
-};
-
-//Display quiz
-const quizDisplay = (questionCount) => {
-    let quizCards = document.querySelectorAll(".container-mid");
-    //Hide other cards
-    quizCards.forEach((card) => {
-        card.classList.add("hide");
+    options.forEach((option) => {
+      if (option.classList.contains("selected")) {
+        isOptionSelected = true;
+        return;
+      }
     });
-    //display current question card
-    quizCards[questionCount].classList.remove("hide");
-};
 
-//Quiz Creation
-function quizCreator() {
-    //randomly sort questions
+    if (isOptionSelected) {
+      displayNext();
+    } else {
+      const errorMessage = document.querySelector(".error-message");
+      errorMessage.classList.remove("hide");
+      return;
+    }
+  });
+
+  // Display next question
+  function displayNext() {
+    const currentQuestion = document.getElementsByClassName("container-mid")[questionCount];
+    const options = currentQuestion.querySelectorAll(".option-div");
+  
+    // Check if an option is selected
+    let isOptionSelected = false;
+    options.forEach((option) => {
+      if (option.classList.contains("selected")) {
+        isOptionSelected = true;
+        return;
+      }
+    });
+
+    if (isOptionSelected) {
+      // Check if the selected option is correct
+      const selectedOption = currentQuestion.querySelector(".option-div.selected");
+      if (selectedOption.innerText === quizArray[questionCount].correct) {
+        selectedOption.classList.add("correct");
+        scoreCount++;
+      } else {
+        selectedOption.classList.add("incorrect");
+        // For marking the correct option
+        options.forEach((element) => {
+          if (element.innerText == quizArray[questionCount].correct) {
+            element.classList.add("correct");
+          }
+        });
+      }
+
+      questionCount++;
+
+      // If last question
+      if (questionCount == quizArray.length) {
+        // hide question container and display score
+        displayContainer.classList.add("hide");
+        scoreContainer.classList.remove("hide");
+        // user score
+        userScore.innerHTML =
+          "Votre score est de " + scoreCount + " sur " + questionCount + " questions";
+      } else {
+        // display questionCount
+        countOfQuestion.innerHTML =
+          questionCount + 1 + " sur " + quizArray.length + " questions";
+        // display quiz
+        quizDisplay(questionCount);
+        count = 11;
+        clearInterval(countdown);
+        timerDisplay();
+        // Disable options and Next button
+        options.forEach((option) => {
+          option.disabled = true;
+        });
+      }
+    } else {
+      // Display an error message when no option is selected
+      const errorMessage = document.querySelector(".error-message");
+      errorMessage.classList.remove("hide");
+    return;
+
+    }
+  }
+
+  // Timer
+  const timerDisplay = () => {
+    countdown = setInterval(() => {
+      count--;
+      timeLeft.innerHTML = `${count}s`;
+      if (count == 0) {
+        clearInterval(countdown);
+        displayNext();
+      }
+    }, 1000);
+  };
+
+  // Display quiz
+  const quizDisplay = (questionCount) => {
+    let quizCards = document.querySelectorAll(".container-mid");
+    // Hide other cards
+    quizCards.forEach((card) => {
+      card.classList.add("hide");
+    });
+    // Display current question card
+    quizCards[questionCount].classList.remove("hide");
+  };
+
+  // Quiz Creation
+  function quizCreator() {
+    // Randomly sort questions
     quizArray.sort(() => Math.random() - 0.5);
-    //generate quiz
+    // Generate quiz
     for (let i of quizArray) {
-        //randomly sort options
-        i.options.sort(() => Math.random() - 0.5);
-        //quiz card creation
-        let div = document.createElement("div");
-        div.classList.add("container-mid", "hide");
-        //question number
-        countOfQuestion.innerHTML = 1 + " sur " + quizArray.length + " questions";
-        //question
-        let question_DIV = document.createElement("p");
-        question_DIV.classList.add("question");
-        question_DIV.innerHTML = i.question;
-        div.appendChild(question_DIV);
-        //options
-        div.innerHTML += `
+      // Randomly sort options
+      i.options.sort(() => Math.random() - 0.5);
+      // Quiz card creation
+      let div = document.createElement("div");
+      div.classList.add("container-mid", "hide");
+      // Question number
+      countOfQuestion.innerHTML = 1 + " sur " + quizArray.length + " questions";
+      // Question
+      let question_DIV = document.createElement("p");
+      question_DIV.classList.add("question");
+      question_DIV.innerHTML = i.question;
+      div.appendChild(question_DIV);
+      // Options
+      div.innerHTML += `
     <button class="option-div" onclick="checker(this)">${i.options[0]}</button>
      <button class="option-div" onclick="checker(this)">${i.options[1]}</button>
       <button class="option-div" onclick="checker(this)">${i.options[2]}</button>
        <button class="option-div" onclick="checker(this)">${i.options[3]}</button>
     `;
-        quizContainer.appendChild(div);
+      quizContainer.appendChild(div);
     }
-}
+  }
 
-//Checker Function to check if option is correct or not
-function checker(userOption) {
+  // Checker Function to check if option is correct or not
+  function checker(userOption) {
     let userSolution = userOption.innerText;
-    let question =
-        document.getElementsByClassName("container-mid")[questionCount];
+    let question = document.getElementsByClassName("container-mid")[questionCount];
     let options = question.querySelectorAll(".option-div");
 
-    //if user clicked answer == correct option stored in object
+    // Remove 'selected' class from all options
+    options.forEach((element) => {
+      element.classList.remove("selected");
+    });
+
+    // Add 'selected' class to the clicked option
+    userOption.classList.add("selected");
+
+    // Hide the error message
+    const errorMessage = document.querySelector(".error-message");
+    errorMessage.classList.add("hide");
+
+    // Disable all options
+    options.forEach((element) => {
+      element.disabled = true;
+    });
+
+    // If user clicked answer == correct option stored in object
     if (userSolution === quizArray[questionCount].correct) {
-        userOption.classList.add("correct");
-        scoreCount++;
+      userOption.classList.add("correct");
+      scoreCount++;
     } else {
-        userOption.classList.add("incorrect");
-        //For marking the correct option
-        options.forEach((element) => {
-            if (element.innerText == quizArray[questionCount].correct) {
-                element.classList.add("correct");
-            }
-        });
+      userOption.classList.add("incorrect");
+      // For marking the correct option
+      options.forEach((element) => {
+        if (element.innerText == quizArray[questionCount].correct) {
+          element.classList.add("correct");
+        }
+      });
     }
 
-    //clear interval(stop timer)
+    // Clear interval (stop timer)
     clearInterval(countdown);
-    //disable all options
-    options.forEach((element) => {
-        element.disabled = true;
-    });
-}
 
-//initial setup
-function initial() {
+    // Enable Next button
+    nextBtn.disabled = false;
+  }
+
+  // Initial setup
+  function initial() {
     quizContainer.innerHTML = "";
     questionCount = 0;
     scoreCount = 0;
@@ -231,19 +305,23 @@ function initial() {
     timerDisplay();
     quizCreator();
     quizDisplay(questionCount);
-}
 
-//when user click on start button
-startButton.addEventListener("click", () => {
+    // Hide the error message
+    const errorMessage = document.querySelector(".error-message");
+    errorMessage.classList.add("hide");
+  }
+
+  // When user clicks on the start button
+  startButton.addEventListener("click", () => {
     startScreen.classList.add("hide");
     displayContainer.classList.remove("hide");
     initial();
-});
+  });
 
-//hide quiz and display start screen
-window.onload = () => {
+  // Hide quiz and display start screen
+  window.onload = () => {
     startScreen.classList.remove("hide");
     displayContainer.classList.add("hide");
-};
-  </script>
-  {% endblock %}
+  };
+</script>
+{% endblock %}
