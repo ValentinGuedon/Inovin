@@ -28,9 +28,7 @@ class VinFixtures extends Fixture
         $persistance = ['courte','moyenne','persistante'];
         $structure = ['légère','fluide','charpentée'];
         $matiere = ['massive','étoffée','légère','fluette'];
-        
         $vin1 = new Vin();
-        
         $vin1->setNom('VILLA DES ANGES RESERVE - JEFF CARREL');
         $vin1->setDescription('Encore une fois, Jeff Carrel nous offre un rapport qualité-prix implacable. 
         Ce vin du Languedoc expressif et fruité est enrobé par une belle matière et soyeux. Légèrement boisé sans 
