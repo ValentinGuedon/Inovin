@@ -115,8 +115,8 @@ class AtelierController extends AbstractController
                 $fiches = $user->getFicheDegustationsFromDate($currentDate);
 
                 // envoi du mail récapitulatif des dégustations
-                $userEmail = $user->getEmail();
-                $mailerService->sendAtelierEmail($userEmail, $fiches);
+                // $userEmail = $user->getEmail();
+                // $mailerService->sendAtelierEmail($userEmail, $fiches);
                 // Redirection vers la page de profil de consommateur
 
                 return $this->render('atelier/ficheProfil.html.twig', [

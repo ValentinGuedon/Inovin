@@ -47,7 +47,11 @@ class RegistrationFormType extends AbstractType
             ->add('name', TextType::class, [])
             ->add('firstname', TextType::class, [])
             ->add('street', TextType::class, [])
-            ->add('postalcode', IntegerType::class, [])
+            ->add('postalcode', IntegerType::class, [
+                'attr' => [
+                    'min' => 0,
+                ],
+            ])
             ->add('city', TextType::class, [])
             ->add('birthdate', DateType::class, [
                 'data' => new DateTime(),

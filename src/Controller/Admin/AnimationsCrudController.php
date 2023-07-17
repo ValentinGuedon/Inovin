@@ -65,7 +65,12 @@ class AnimationsCrudController extends AbstractCrudController
             ->setUploadDir('public/uploads/images/posters')
             ->setBasePath('uploads/images/posters')
             ->setSortable(false),
-            IntegerField::new('prix'),
+            IntegerField::new('prix')
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                ],
+            ]),
             TextareaField::new('resume')
             ->setLabel('Résumé'),
             TextareaField::new('description'),

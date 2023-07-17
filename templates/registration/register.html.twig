@@ -91,7 +91,7 @@
             <div class="d-flex mb-5 mt-3">
                 {% for choice in registrationForm.arome %}
                 <div class="form-check arome-checkbox  ms-3">
-                    {{ form_widget(choice, { 'attr': {'class': 'form-check-input'} }) }}
+                    {{ form_widget(choice, { 'attr': {'class': 'form-check-input login-check'} }) }}
                     {{ form_label(choice, null, {'label_attr': {'class': 'labelregister'}}) }}
                 </div>
             {% endfor %}

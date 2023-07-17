@@ -52,7 +52,6 @@ class VinCrudController extends AbstractCrudController
             ->showEntityActionsInlined()
             ->setEntityLabelInSingular('Vin')
             ->setEntityLabelInPlural('Vins')
-
             ->setPageTitle('index', 'Vins')
             ->setPageTitle('new', 'Ajouter un vin')
             ->setPageTitle('detail', 'Détail du vin')
@@ -135,16 +134,39 @@ class VinCrudController extends AbstractCrudController
             ->hideOnIndex(),
 
             IntegerField::new('brillance')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('intensite')
             ->setLabel('Intensité')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('douceur')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('alcool')
             ->setLabel('Alcool Ressenti')
-            ->hideOnIndex(),
-
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),
             NumberField::new('prix'),

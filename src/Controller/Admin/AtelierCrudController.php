@@ -95,7 +95,12 @@ class AtelierCrudController extends AbstractCrudController
             ->setSortable(false),
             IntegerField::new('place')
             ->setLabel('Nombre de Places')
-            ->setSortable(false),
+            ->setSortable(false)
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 1,
+                ],
+            ]),
             TextareaField::new('commentaire')
             ->setSortable(false)
         ];
