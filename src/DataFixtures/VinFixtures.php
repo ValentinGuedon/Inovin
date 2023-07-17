@@ -34,7 +34,7 @@ class VinFixtures extends Fixture
                 $vin = new Vin();
                 if ($i === 1) {
                     $vin->setCouleur('rouge');
-                    $vin->setProfil($this->getReference('Le terrien'));
+                    $vin->setProfil($this->getReference('intense et audacieux'));
                 }
                 $vin->setNom($faker->name());
                 $vin->setSlug($this->slugger->slug($vin->getNom()));
@@ -56,9 +56,9 @@ class VinFixtures extends Fixture
                 if ($i === 2) {
                     $vin->setCouleur('blanc');
                     if ($vin->getDouceur() <= 5) {
-                        $vin->setProfil($this->getReference('Le chardo-né'));
+                        $vin->setProfil($this->getReference('frais et léger'));
                     } else {
-                        $vin->setProfil($this->getReference('Le bonbon'));
+                        $vin->setProfil($this->getReference('délicat et raffiné'));
                     }
                 }
                 $manager->persist($vin);
