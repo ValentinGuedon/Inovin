@@ -4,6 +4,7 @@ namespace App\Form;
 
 use DateTime;
 use App\Entity\User;
+use App\Validator\StrongPassword;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Regex;
@@ -42,6 +43,7 @@ class RegistrationFormType extends AbstractType
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
+                    new StrongPassword(),
                 ],
             ])
             ->add('name', TextType::class, [])

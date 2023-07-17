@@ -14,7 +14,7 @@
     <h1 class="title">Mon compte</h1>
 
     <div class="sk-atelier">
-        {% if user in atelier.getUsers() and date('now'| date('d-m-Y')) == atelier.date %}
+        {% if atelier.getUsers() is defined and user in atelier.getUsers() and date('now'| date('d-m-Y')) == atelier.date %}
             <h2>Accéder à l'atelier de dégustation</h2>
             <a class="sk-cta-atelier" href="{{ path('fiche',{'userSlug':user.slug,'vinSlug':vin.slug})}}">Let's Go</a>
         {% endif %}
