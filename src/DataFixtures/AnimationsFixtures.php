@@ -9,7 +9,6 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AnimationsFixtures extends Fixture
 {
-
     private SluggerInterface $slugger;
 
     public function __construct(SluggerInterface $slugger)
