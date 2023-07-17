@@ -12,7 +12,7 @@
  <!--Message-->
   {% for category, messages in app.flashes %}
       {% for message in messages %}
-          <div class=" w-50 container-sm text-white alert alert-{{ category }}">
+          <div class="w-50 container-sm text-white alert alert-{{ category }}">
           <button type="button" class="btn-close float-end" data-bs-dismiss="alert"></button>
               {{ message }}
           </div>
@@ -22,7 +22,7 @@
 <h1 class="titre">La Boutique</h1>
 
 {% if articles is empty %}
-<div class="carre">
+<div class="carre-profil">
   <h1 class="connexion">Temporairement indisponible</h1>
 </div>
 {% else %}
@@ -119,6 +119,11 @@
   </div>
 </div>
 
+{% if app.request.method == 'POST' %}
+<div class="sk-return mt-5 text-center">
+  <a class="sk-return-button" href="{{ path ('shop_index')}}">Retour boutique</a>
+</div>
+{% endif %}
  
 <!--Card-->
 <div class="container">

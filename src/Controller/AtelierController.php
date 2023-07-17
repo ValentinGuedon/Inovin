@@ -143,6 +143,7 @@ class AtelierController extends AbstractController
                 shuffle($vins);
 
                 // Redirection vers la page de profil de consommateur
+
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user,
