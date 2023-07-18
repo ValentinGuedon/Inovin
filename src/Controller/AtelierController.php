@@ -114,6 +114,10 @@ class AtelierController extends AbstractController
                 $profil = $favoriteFiche->getvin()->getProfil();
                 $user->setProfil($profil);
                 $fiches = $user->getFicheDegustationsFromDate($currentDate);
+
+                // envoi du mail récapitulatif des dégustations
+                // $userEmail = $user->getEmail();
+                // $mailerService->sendAtelierEmail($userEmail, $fiches);
     
                 // Trouver la fiche avec la meilleure note
                 $bestFiche = null;

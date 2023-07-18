@@ -58,7 +58,7 @@ class RecetteCrudController extends AbstractCrudController
         ->setLabel('Utilisateur'),
         AssociationField::new('cepage1')
         ->setLabel('Cépage 1'),
-        IntegerField::new('quantite')->setSortable(false)
+        IntegerField::new('quantite1')->setSortable(false)
         ->setLabel('Quantité'),
         AssociationField::new('cepage2')->autocomplete()
         ->setLabel('Cépage 2'),

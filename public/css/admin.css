@@ -6,9 +6,16 @@
     --table-hover-cell-bg: var(--couleur-tierce);
     --indigo-50: var(--couleur-tierce);
     --button-secondary-bg: var(--couleur-fonce);
+    --datalist-border-color: var(--couleur-fonce);
+    --gray-200: var(--couleur-fonce);
 }
 
 /* ----------------------------------- navbar de gauche ------------------------------- */
+
+.ts-dropdown-content .active {
+    background-color: var(--couleur-tierce) !important;
+    color: white !important;
+}
 
 /* couleur navbar */
 .sidebar {
@@ -89,19 +96,18 @@ table .fa-sort {
     background-color: var(--couleur-fonce);
 }
 
-
-
 /* ici pour virer le slug,
 Ludivine c'est ici si ton form déconne  */
-#new-Animations-form .row div:nth-child(12) {
+#new-Animations-form .row div:nth-child(12),
+#edit-Animations-form .row div:nth-child(12) {
     display: none !important;
 }
 
 /* ici c'est pour le slug du vin */
-#new-Vin-form .row div:nth-child(36) {
+#new-Vin-form .row div:nth-child(40),
+#edit-Vin-form .row div:nth-child(40) {
     display: none !important;
 }
-
 
 .list-pagination-counter strong {
     color: var(--couleur-tierce);

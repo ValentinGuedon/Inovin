@@ -24,7 +24,7 @@ class RecetteType extends AbstractType
 
         $builder
             ->add('nom')
-            ->add('quantite', IntegerType::class, [
+            ->add('quantite1', IntegerType::class, [
                 'attr' => [
                     'min' => 0,
                     'max' => 750,
@@ -115,19 +115,3 @@ class RecetteType extends AbstractType
         ]);
     }
 }
-
-
-
-
-
-// ->add('vin1', EntityType::class, [
-//     'class' => Cepage::class,
-//     'query_builder' => function (EntityRepository $er) use ($options) {
-//         return $er->createQueryBuilder('c')
-//             ->join('c.ateliers', 'atelier')
-//             ->where('atelier = :id')
-//             ->setParameter('id', $options['idAtelier'])
-//             ->orderBy('c.type', 'ASC');
-//     },
-//     'choice_label' => 'type',
-// ])
