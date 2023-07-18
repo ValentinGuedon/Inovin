@@ -127,8 +127,7 @@ label {
 .matiere-button input[type="radio"]:checked::before,
 .aroma input[type="checkbox"]:checked::before {
     content: "";
-    content: "\2713";
-    /* Code Unicode pour le symbole de coche */
+    content: "\2713"; /* Code Unicode pour le symbole de coche */
     display: inline-block;
     width: 20px;
     height: 20px;
