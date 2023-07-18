@@ -145,7 +145,7 @@ class AtelierController extends AbstractController
                 // Génère suggestions aléatoires de vins (performance pas fou si beaucoup de vins dans la boutique)
                 $vins = $vinRepository->findAll();
                 shuffle($vins);
-
+              
                 // Redirection vers la page de profil de consommateur
 
                 return $this->render('atelier/ficheProfil.html.twig', [
