@@ -39,7 +39,6 @@
         margin: 5% 35% !important;
     }
 
-
     /* scroll Top/Up Button */
 .scroll-top {
 	z-index: 100;
@@ -55,6 +54,7 @@
 	/* hover effect default */
 	transform: scale(0.9);
 	transition: 0.3s ease-in-out transform;
+    transition: 0.3s ease-in-out bottom;
 	/* for centering the icon */
 	/* display: flex; */
 	display: none;
@@ -69,5 +69,6 @@
 
 .scroll-top:hover {
 	transform: scale(1);
+    bottom: 20px;
 }
-
+  

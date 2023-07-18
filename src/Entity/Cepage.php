@@ -28,10 +28,25 @@ class Cepage
     #[ORM\ManyToMany(targetEntity: Atelier::class, mappedBy: 'cepage')]
     private Collection $ateliers;
 
+    #[ORM\OneToMany(mappedBy: 'cepage1', targetEntity: Recette::class)]
+    private Collection $recettes1;
+
+    #[ORM\OneToMany(mappedBy: 'cepage2', targetEntity: Recette::class)]
+    private Collection $recettes2;
+
+    #[ORM\OneToMany(mappedBy: 'cepage3', targetEntity: Recette::class)]
+    private Collection $recettes3;
+
+    #[ORM\OneToMany(mappedBy: 'cepage4', targetEntity: Recette::class)]
+    private Collection $recettes4;
 
     public function __construct()
     {
         $this->ateliers = new ArrayCollection();
+        $this->recettes1 = new ArrayCollection();
+        $this->recettes2 = new ArrayCollection();
+        $this->recettes3 = new ArrayCollection();
+        $this->recettes4 = new ArrayCollection();
     }
 
     public function __toString()
@@ -90,6 +105,37 @@ class Cepage
         return $this->ateliers;
     }
 
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes1(): Collection
+    {
+        return $this->recettes1;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes2(): Collection
+    {
+        return $this->recettes2;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes3(): Collection
+    {
+        return $this->recettes3;
+    }
+
+    /**
+     * @return Collection<int, Recette>
+     */
+    public function getRecettes4(): Collection
+    {
+        return $this->recettes4;
+    }
 
     public function addAtelier(Atelier $atelier): static
     {

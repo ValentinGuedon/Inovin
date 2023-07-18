@@ -1,29 +1,214 @@
 {% extends 'base_degustation.html.twig' %}
 
-{% block title %} {{ parent() }} - Profil {% endblock %}
+{% block title %} 
+    {{ parent() }} - Profil 
+{% endblock %}
+
+{% block stylesheets %} 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    {{ parent() }} 
+{% endblock %}
+
+{% block header %}
+    <div class="titre-fiche">Vos vins de prédilection</div>
+{% endblock %}
 
 {% block body %}
+
+    <!--Profil MBTI-->
     <div class="fiche-grid">
-        <h1 class='titreFiche animate pop2'>{{ user.firstname }}</h1>
+      <div class="glass">
+      <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()"> 
+        <h1 class='titreFiche animate pop2'>{{ user.firstname }}, vous aimez les vins {{ profil.name }} !</h1>
+      </div>
         <img src="{{ vich_uploader_asset(profil, 'profilFile') }}" class="img-profil animate pop">
-        <h1 class='titreFiche animate blur'>Vous êtes {{ profil.name }}</h1>
-        <p class="animate blur description">{{ profil.description }}</p>
-        <div class=></div>
-        <div class='grid-end'>
-        Je<br> crée<br> mon <br>vin
-        <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()">
+       
+        <div class="container-lm">
+        <p class="description">{{ profil.description }}</p>
+      </div>
+        <div class="titre-arome">Vos arômes de prédilection</div>
+        <div class="aroma-container">
+            {% for arome in aromes %}
+                <div class="cta">{{ arome }}</div>
+            {% endfor %}
         </div>
 
+        <div class='grid-end'>
+
+          <canvas id="pie-chart"></canvas>
+        </div>
+
+        <!--Suggestions boutique-->
+        <div class="titre-arome">Nos suggestions personnalisées</div>
+   <div class="row row-cols-2 mt-5 mx-autor justify-content-around">
+                {% for suggestion in suggestions %}
+                    <div class="col-sm-4 mb-3">
+                        <div class="card h-100 sk-cardbody" style="width: 22rem;">
+                            <div class="card-header d-flex">
+                                <div class="d-flex h-100">
+                                    {% if suggestion.image is not null %}
+                                        <img  class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(suggestion, 'imageFile') }}" alt="{{ article.nom }}">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title sk-card-title mt-3 text-break text-uppercase"><small><strong>{{suggestion.nom}}</strong></small></h5>
+                                        <p class="card-text sk-card-title text-break">{{suggestion.region}} - {{suggestion.millesime}}</p>
+                                        <p class="card-text sk-card-title text-break fw-medium">{{suggestion.couleur}}</p>
+                                        <ul class="list-group list-group-flush">
+                                            <div class="row">
+                                                {% for arome in suggestion.arome %}
+                                                    <div class="col-sm-5">
+                                                        <div>
+                                                            <span class="badge text-bg-sk-badges opacity-50">{{ arome }}</span>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %} 
+                                            </div>
+                                            <p class="card-text sk-card-title text-break fw-medium mt-3">{{suggestion.prix}} €</p> 
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card-footer w-100 mt-auto">
+                                <div class="d-flex justify-content-between">
+                                    <button class="sk-button" onclick="addToCart('{{ suggestion.id }}')">Ajouter au panier</button>
+                                    <input class="quantity_{{ suggestion.id }} w-25 form-control" type="number" name="quantity" min="1" value="1" onchange="updateQuantity('{{ suggestion.id }}', this.value)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+          
+        </div>
+    </div>
+    <button class="cta" type="submit">Créer votre vin</button>
+ 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
 
 <script>
-function expandGlass() {
-  var glass = document.querySelector('.wineglass-shape');
-  glass.classList.add('expanded');
+/* Le code ici génère le graphique avec propriétés dans un objet javascript défini par les {}. */
 
-  setTimeout(function() {
-    window.location.href = "{{ path('app_recette_visiteur') }}";
-  }, 500);
-}
+ var profilName = "{{ profil.name }}"; // Récupérez le nom du profil gustatif    
 
+ var ctx = document.getElementById("pie-chart").getContext('2d');
+
+ // Condition pour afficher le diagramme en fonction du profil gustatif
+ if (profilName === "frais et léger") {
+    // Code pour le diagramme correspondant au profil "frais"
+   var myChart = new Chart(ctx, {
+     type: 'pie',
+     data: {
+       labels: ["Sauvignon Blanc", "Riesling", "Chardonnay"],
+       datasets: [{
+        backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
+        hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
+        data: [50, 50, 50],
+        borderWidth: 0
+      }]
+     },
+     options: {
+       title: {
+         display: true,
+         text: 'Les cépages conseillés',
+         fontSize: 20,
+         fontColor: "rgba(226, 218, 212)",
+         fontFamily: "Montserrat" 
+       },
+       legend: {
+        labels: {
+          fontColor: "rgba(226, 218, 212)",
+          fontSize: 20,
+          fontFamily: "Montserrat" 
+        }
+      }
+     }
+   });
+ } else if (profilName === "intense et audacieux") {
+   // Code pour le diagramme correspondant au profil "intense"
+   var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["Cabernet Sauvignon", "Malbec", "Viognier"],
+      datasets: [{
+        backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
+        hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
+        data: [50, 50, 50],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Les cépages conseillés',
+        fontSize: 20,
+        fontColor: "rgba(226, 218, 212)",
+        fontFamily: "Montserrat" 
+      },
+      legend: {
+       labels: {
+         fontColor: "rgba(226, 218, 212)",
+         fontSize: 20,
+         fontFamily: "Montserrat" 
+       }
+     }
+    }
+  });
+
+ } else if (profilName === "délicat et raffiné") {
+   // Code pour le diagramme correspondant au profil "délicat"
+   var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ["Pinot Gris", "Gamay", "Grenache"],
+      datasets: [{
+        backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
+        hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
+        data: [50, 50, 50],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Les cépages conseillés',
+        fontSize: 20,
+        fontColor: "rgba(226, 218, 212)",
+        fontFamily: "Montserrat" 
+      },
+      legend: {
+       labels: {
+         fontColor: "rgba(226, 218, 212)",
+         fontSize: 20,
+         fontFamily: "Montserrat" 
+       }
+     }
+    }
+  });
+ }
+</script>
+    
+
+    <script>
+        function addToCart(id) {
+            var quantityInput = document.querySelector('.quantity_' + id);
+            var quantity = parseInt(quantityInput.value);
+            var url = "{{ path('shop_add', { 'id': 'VIN_ID', 'quantity': 'QUANTITY' }) }}";
+            url = url.replace('VIN_ID', id);
+            url = url.replace('QUANTITY', quantity);
+            window.location.href = url;
+        }
+        
+        function updateQuantity(id, value) {
+            var quantityInput = document.querySelector('.quantity_' + id);
+            quantityInput.value = value;
+        }
     </script>
+    
+    {% block javascripts %}
+        {{ parent() }}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    {% endblock %}
 {% endblock %}

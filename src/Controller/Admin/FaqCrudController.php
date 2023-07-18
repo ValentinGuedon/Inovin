@@ -23,6 +23,11 @@ class FaqCrudController extends AbstractCrudController
         return $actions
         ->remove(Crud::PAGE_INDEX, Action::NEW)
 
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
+
         ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
             return $action->setIcon('fa fa-edit')->setLabel(false);
         })
@@ -35,6 +40,13 @@ class FaqCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Question')
+            ->setEntityLabelInPlural('Foire aux questions')
+
+            ->setPageTitle('index', 'Foire aux questions')
+            ->setPageTitle('new', 'Ajouter une question')
+            ->setPageTitle('detail', 'Détail de la question')
+            ->setPageTitle('edit', 'Modifier une question')
         ;
     }
 
@@ -43,6 +55,7 @@ class FaqCrudController extends AbstractCrudController
         return [
             IdField::new('id')
             ->hideOnForm()
+            ->hideOnDetail()
             ->hideOnIndex(),
             TextField::new('question')
                 ->setSortable(false),

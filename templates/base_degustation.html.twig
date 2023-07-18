@@ -20,10 +20,10 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <header>
+    <header class="vgNavbarDegustation">
         <img class="img-logo" src="{{ asset('build/images/Logo.png') }}" style="width: 15%; min-width:200px;">
-        <div class="titre-fiche">FICHE DE DÉGUSTATION</div>
-        <div class="h1-crud">Dégustation d'un {{vin.nom}}</div>
+        {% block header %}
+        {% endblock %}
     </header>
     <body style="margin-bottom: 150px;">
         {% block body %}

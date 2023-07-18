@@ -27,6 +27,11 @@ class BlogCrudController extends AbstractCrudController
         return $actions
         ->remove(Crud::PAGE_INDEX, Action::NEW)
 
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
+
         ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
             return $action->setIcon('fa fa-edit')->setLabel(false);
         })
@@ -39,6 +44,13 @@ class BlogCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Article')
+            ->setEntityLabelInPlural('Blog')
+
+            ->setPageTitle('index', 'Blog')
+            ->setPageTitle('new', 'Ajouter un article')
+            ->setPageTitle('detail', 'Détail de l\'article')
+            ->setPageTitle('edit', 'Modifier un article')
         ;
     }
 
@@ -48,17 +60,24 @@ class BlogCrudController extends AbstractCrudController
         return [
             IdField::new('id')
             ->hideOnForm()
+            ->hideOnDetail()
             ->hideOnIndex(),
+
+            TextField::new('title')
+            ->setLabel('Titre'),
+
+            ImageField::new('image')
+                ->setUploadDir('public/uploads/images/posters')
+                ->setBasePath('uploads/images/posters')
+                ->setSortable(false),
+
             DateField::new('date')
             ->setFormTypeOptions([
                 'data' => new \DateTime(),
             ]),
-            TextField::new('title')
-            ->setLabel('Titre'),
-            TextField::new('description')
+                TextField::new('description')
                 ->setSortable(false),
-
-            TextEditorField::new('text')
+                TextareaField::new('text')
                 ->setLabel('Article')
                 ->setNumOfRows(15)
                 ->setTrixEditorConfig([
@@ -74,15 +93,6 @@ class BlogCrudController extends AbstractCrudController
                     ]
                 ])
                 ->setSortable(false),
-
-
-            ImageField::new('image')
-                ->setUploadDir('public/uploads/images/posters')
-                // setBasePath permet d'afficher les images dans l'index
-                ->setBasePath('uploads/images/posters')
-                ->setSortable(false),
-
-            // ImageField::new('posterFile')->setUploadDir('public/uploads/images/posters'),
         ];
     }
 }

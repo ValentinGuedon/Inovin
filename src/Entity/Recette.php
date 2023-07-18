@@ -23,35 +23,34 @@ class Recette
     #[ORM\ManyToOne(inversedBy: 'recettes1')]
     private ?Cepage $cepage1 = null;
 
-    #[ORM\Column]
-    private ?int $quantite = null;
-
     #[ORM\ManyToOne(inversedBy: 'recettes2')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Cepage $cepage2 = null;
 
-    #[ORM\Column]
-    private ?int $quantite2 = null;
-
     #[ORM\ManyToOne(inversedBy: 'recettes3')]
     private ?Cepage $cepage3 = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $quantite3 = null;
 
     #[ORM\ManyToOne(inversedBy: 'recettes4')]
     private ?Cepage $cepage4 = null;
 
+    #[ORM\Column]
+    private ?int $quantite1 = null;
+
+    #[ORM\Column]
+    private ?int $quantite2 = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $quantite3 = null;
+
     #[ORM\Column(nullable: true)]
     private ?int $quantite4 = null;
 
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
+
     #[ORM\Column(nullable: true)]
     private ?bool $winner = null;
-
-    // public function __toString()
-    // {
-    //     return $this->type;
-    // }
 
     public function getId(): ?int
     {
@@ -70,14 +69,14 @@ class Recette
         return $this;
     }
 
-    public function getQuantite(): ?int
+    public function getQuantite1(): ?int
     {
-        return $this->quantite;
+        return $this->quantite1;
     }
 
-    public function setQuantite(int $quantite): self
+    public function setQuantite1(int $quantite1): self
     {
-        $this->quantite = $quantite;
+        $this->quantite1 = $quantite1;
 
         return $this;
     }
@@ -178,6 +177,18 @@ class Recette
         return $this;
     }
 
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
     public function isWinner(): ?bool
     {
         return $this->winner;
@@ -186,6 +197,7 @@ class Recette
     public function setWinner(?bool $winner): static
     {
         $this->winner = $winner;
+
 
         return $this;
     }

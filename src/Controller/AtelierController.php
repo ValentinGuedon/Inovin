@@ -91,10 +91,10 @@ class AtelierController extends AbstractController
             $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
             $form->handleRequest($request);
         } else {
-        $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
-        $form->handleRequest($request);
+            $form = $this->createForm(FicheDegustationType::class, $ficheDegustation);
+            $form->handleRequest($request);
         }
-
+    
         if ($form->isSubmitted() && $form->isValid()) {
             $ficheDegustationRepository->save($ficheDegustation, true);
             // Itère au vin suivant
@@ -107,7 +107,7 @@ class AtelierController extends AbstractController
                     'userSlug' => $user->getSlug(),
                     'vinSlug' => $vinRepository->find($nextVin)->getSlug()
                 ]);
-
+    
             // Si tous les vins soumis, redirection vers le profil de consommateur
             } else {
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
@@ -117,14 +117,44 @@ class AtelierController extends AbstractController
                 $fiches = $user->getFicheDegustationsFromDate($currentDate);
 
                 // envoi du mail récapitulatif des dégustations
+                // $userEmail = $user->getEmail();
+                // $mailerService->sendAtelierEmail($userEmail, $fiches);
+    
+                // Trouver la fiche avec la meilleure note
+                $bestFiche = null;
+                $maxNote = 0;
+    
+                foreach ($fiches as $fiche) {
+                    $note = $fiche->getNote();
+                    if ($note > $maxNote) {
+                        $maxNote = $note;
+                        $bestFiche = $fiche;
+                    }
+                }
+    
+                // Récupérer les arômes de la meilleure fiche
+                $aromes = [];
+    
+                if ($bestFiche !== null) {
+                    $aromes = $bestFiche->getArome();
+                }
+    
+                /* // envoi du mail récapitulatif des dégustations
                 $userEmail = $user->getEmail();
-                //$mailerService->sendAtelierEmail($userEmail, $fiches);
+                $mailerService->sendAtelierEmail($userEmail, $fiches); */
+    
+                // Génère suggestions aléatoires de vins (performance pas fou si beaucoup de vins dans la boutique)
+                $vins = $vinRepository->findAll();
+                shuffle($vins);
+              
 
                 // Redirection vers la page de profil de consommateur
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user,
                     'vin' => $favoriteFiche->getVin(),
+                    'aromes' => $aromes,
+                    'suggestions' => [$vins[0],$vins[1]],
                 ]);
             }
         }
@@ -136,7 +166,6 @@ class AtelierController extends AbstractController
             'form' => $form
         ]);
     }
-
 
     #[Route('/new', name: 'app_atelier_new', methods: ['GET', 'POST'])]
     public function new(
