@@ -20,49 +20,52 @@ class AnimationsFixtures extends Fixture
     {
         $animation1 = new Animations();
 
-        $animation1->setNom('Atelier je crée mon vin 2h');
+        $animation1->setNom('Aterlier création de vin personnalisé');
         $animation1->setPrix('70');
-        $animation1->setResume('Atelier INOVIN pour créer votre propre vin personnalisé. Notre atelier INOVIN est 
-        unique en son genre : vous apprendrez à créer votre propre vin en sélectionnant les arômes et les saveurs 
-        que vous préférez. Vous pourrez ensuite enregistrer la composition de votre vin dans notre base de données 
-        pour le reproduire à tout moment. Vous pourrez également présenter votre vin à notre concours. Nos ateliers
-        INOVIN sont conçus pour vous offrir une expérience inoubliable, alliant découverte, apprentissage et 
-        convivialité. Vous serez guidé par des experts passionnés et compétents, qui vous feront découvrir les 
-        secrets de la création de vin. Nous proposons notre atelier INOVIN pour:Des événements d\'entreprise, 
-        séminaires, événements privés,  passionnés et amateurs ... Souhaitant en apprendre davantagesur l\'art de 
-        la vinification. Nos ateliers INOVIN sont adaptés à tous. Alors, prêts à créer votre propre vin ? N\'hésitez 
-        pas à nous contacter pour en savoir davantage sur notre offre INOVIN ! L\'atelier se réalise par groupe de 
-        5 à 10 personnes. Après réservation nous prenons contact avec vous pour définir d\'une date. A très vite !!!');
-        $animation1->setDescription('Atelier INOVIN pour créer votre propre vin personnalisé.Notre atelier INOVIN est 
-        unique en son genre : vous apprendrez à créer votre propre vin en sélectionnant les arômes et les saveurs 
-        que vous préférez. Vous pourrez ensuite enregistrer la composition de votre vin dans notre base de données 
-        pour le reproduire à tout moment. A très vite !!!');
+        $animation1->setResume('Les participants pourront ainsi jouer le rôle d\'œnologue 
+        et expérimenter l\'art de l\'assemblage pour créer un vin qui reflète leurs goûts personnels. 
+        Le sommelier est là pour les conseiller sur les proportions, 
+        les arômes et le caractère qu\'ils souhaitent intégrer à leur vin. 
+        L\'atelier convient aux amateurs de vin qui cherchent à s\'immerger dans 
+        l\'univers du vin tout en recherchant une expérience interactive et divertissante. 
+        Les participants peuvent ainsi découvrir les différentes étapes de la production du vin, 
+        tout en créant une bouteille de vin unique et personnalisée.');
+        $animation1->setDescription('Durant l\'atelier, les participants sont guidés par un sommelier professionnel 
+        qui leur explique comment déguster et évaluer les différents vins. 
+        Ensuite, les participants sont invités à choisir différents vins 
+        qu\'ils ont préférés lors de la dégustation et à les mélanger pour 
+        créer leur propre vin unique.');
         $animation1->setSlug($this->slugger->slug($animation1->getNom()));
         $animation1->setImage('atelier-1.jpg');
 
         $animation2 = new Animations();
 
-        $animation2->setNom('Atelier dégustation accompagnements mets');
-        $animation2->setPrix('30');
-        $animation2->setResume('Atelier dégustation de 4 vins a l\'aveugle suivi d\'accompagnement de Mets.
-        Nos ateliers INOVIN sont conçus pour vous offrir une expérience inoubliable, alliant découverte, 
-        apprentissage et convivialité. Vous serez guidé par des experts passionnés et compétents, qui vous 
-        feront découvrir les secrets du vin. Nous proposons notre atelier INOVIN pour:
-        Des événements d\'entreprise,
-        Des séminaires,
-        Pour des amateurs souhaitant en apprendre davantage sur l\'art de déguster .
-        Nos ateliers INOVIN sont adaptés à tous.
-        Alors, prêts ? N\'hésitez pas à nous contacter pour en savoir davantage sur notre offre INOVIN !');
-        $animation2->setDescription('Atelier dégustation de 4 vins a l\'aveugle suivi d\'accompagnement de Mets .
-        Nos ateliers INOVIN sont conçus pour vous offrir une expérience inoubliable, alliant découverte, 
-        apprentissage et convivialité. Vous serez guidé par des experts passionnés et compétents, qui vous 
-        feront découvrir les secrets du vin. N\'hésitez pas à nous contacter pour en savoir davantage !');
+        $animation2->setNom('Atelier dégustation & mets');
+        $animation2->setPrix('50');
+        $animation2->setResume('La dégustation commence par une sélection de vins soigneusement 
+        choisie par notre sommelier expert. Chaque vin est présenté avec sa fiche technique, 
+        ses caractéristiques et ses particularités pour permettre aux participants 
+        de mieux comprendre les différences entre chaque bouteille. 
+        Ensuite, notre chef prépare une série de plats spécialement conçus pour correspondre 
+        à chaque vin de la dégustation. Les participants ont l\'occasion de goûter chacun 
+        des vins en combinaison avec le plat correspondant et 
+        d\'apprécier la façon dont les arômes et les saveurs se transforment 
+        lorsqu\'ils sont associés avec le mets. Notre sommelier explique également 
+        les raisons pour lesquelles chaque vin a été choisi pour accompagner un plat spécifique, 
+        en nous donnant des suggestions d\'appariement éventuelles. 
+        En fin de compte, l\'atelier de dégustation et d\'accords d\'Inovin est une expérience culinaire 
+        immersive qui permet aux participants de découvrir de nouvelles saveurs et de mieux comprendre comment
+        les paires de vin et de mets sont choisies.');
+        $animation2->setDescription('L\'atelier de dégustation et d\'accords d\'Inovin 
+        est une expérience gustative unique qui met en valeur une sélection de vins exceptionnels 
+        accompagnés de plats spécialement préparés par notre chef. Les participants à cet atelier auront 
+        l\'occasion de découvrir les aspects délicieux de la combinaison de vins et de mets, 
+        avec des combinaisons parfaitement harmonisées.');
         $animation2->setSlug($this->slugger->slug($animation2->getNom()));
         $animation2->setImage('atelier-2.jpg');
 
         $manager->persist($animation1);
         $manager->persist($animation2);
-
         $manager->flush();
     }
 }
