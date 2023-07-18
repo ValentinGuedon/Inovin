@@ -27,6 +27,7 @@
     padding-bottom: 3%;
     padding-top: 5%;
     font-weight: bolder;
+    font-size: xx-large;
 }
 
 #pie-chart{
@@ -146,12 +147,6 @@
 
 @media only screen and (max-width: 600px) {
 
- /*    .fiche-grid {
-        grid-template-columns: repeat(1, 1fr);
-        place-items: center;
-        gap: 20px;
-    } */
-
     .img-profil {
         width: 50vw;
     }
@@ -161,11 +156,20 @@
     }
 }
 
-@media only screen and (min-width: 900px) {
- /*    .fiche-grid {
-        padding: 50px;
-    } */
+.cta-lm{
+    color: var(--couleur-claire);
+    background: var(--couleur-tierce);
+    text-align: center;
+    border-radius: 70px;
+    padding: 3% 7%;
+    text-decoration: none;
+    margin-left: 35% !important;
+    margin-top: 10%;
+    border: none;
+    font-weight: bolder;
 }
 
-
-
+.cta-lm:hover {
+    background: #e0115f;
+    text-decoration: none;
+}

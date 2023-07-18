@@ -12,7 +12,7 @@ class ProfilFixtures extends Fixture
 {
     private const PROFILS = [
 
-        ['frais et léger','Vous préférez les vins qui offrent une sensation de fraîcheur et de légèreté. 
+        ['frais et légers','Vous préférez les vins qui offrent une sensation de fraîcheur et de légèreté. 
         Vous appréciez les vins avec une acidité vive et des arômes frais et vivifiants. 
         Votre palais est attiré par des vins qui rappellent les agrumes, 
         les herbes fraîches et les fruits croquants. 
@@ -20,7 +20,7 @@ class ProfilFixtures extends Fixture
          d\'agrumes pétillantes et une minéralité vive, ou des vins rouges légers avec des arômes de baies 
          fraîches et une note finale rafraîchissante.'],
 
-        ['intense et audacieux', 'Vous recherchez des sensations gustatives fortes et puissantes dans vos vins. 
+        ['intenses et audacieux', 'Vous recherchez des sensations gustatives fortes et puissantes dans vos vins. 
         Vous appréciez les vins avec des saveurs intenses, épicées et expressives. 
         Votre palais est prêt à découvrir des vins complexes. 
         Votre profil gustatif est souvent associé à des vins rouges corsés et concentrés,
@@ -29,7 +29,7 @@ class ProfilFixtures extends Fixture
          acidité vive et des saveurs tropicales exotiques.'],
 
 
-        ['délicat et raffiné','Vous appréciez les saveurs délicates et subtiles du vin. 
+        ['délicats et raffinés','Vous appréciez les saveurs délicates et subtiles du vin. 
         Votre palais est sensible aux nuances et aux arômes fins. 
         Vous préférez les vins légers et équilibrés, mettant en valeur des notes fraîches et aérien. 
         Votre profil gustatif est souvent associé à des vins offrant des saveurs délicieusement douces 
