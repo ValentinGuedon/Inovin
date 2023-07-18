@@ -64,7 +64,7 @@ class VinFixtures extends Fixture
         $vin1->setDouceur($faker->numberBetween(0, 10));
         $vin1->setStar(0);
         $vin1->setSlug($this->slugger->slug($vin1->getNom()));
-        $vin1->setProfil($this->getReference('Le terrien'));
+        $vin1->setProfil($this->getReference('intense et audacieux'));
 
 
         $vin2 = new Vin();
@@ -104,7 +104,7 @@ class VinFixtures extends Fixture
         $vin2->setDouceur($faker->numberBetween(0, 10));
         $vin2->setStar(0);
         $vin2->setSlug($this->slugger->slug($vin2->getNom()));
-        $vin2->setProfil($this->getReference('Le chardo-né'));
+        $vin2->setProfil($this->getReference('frais et léger'));
 
         $vin3 = new Vin();
 
@@ -141,7 +141,7 @@ class VinFixtures extends Fixture
         $vin3->setDouceur($faker->numberBetween(0, 10));
         $vin3->setStar(1);
         $vin3->setSlug($this->slugger->slug($vin3->getNom()));
-        $vin3->setProfil($this->getReference('Le bonbon'));
+        $vin3->setProfil($this->getReference('délicat et raffiné'));
 
         $vin4 = new Vin();
 
@@ -179,7 +179,7 @@ class VinFixtures extends Fixture
         $vin4->setDouceur($faker->numberBetween(0, 10));
         $vin4->setStar(0);
         $vin4->setSlug($this->slugger->slug($vin4->getNom()));
-        $vin4->setProfil($this->getReference('Le chardo-né'));
+        $vin4->setProfil($this->getReference('frais et léger'));
 
         $vin5 = new Vin();
 
@@ -216,7 +216,7 @@ class VinFixtures extends Fixture
         $vin5->setDouceur($faker->numberBetween(0, 10));
         $vin5->setStar(1);
         $vin5->setSlug($this->slugger->slug($vin5->getNom()));
-        $vin5->setProfil($this->getReference('Le bonbon'));
+        $vin5->setProfil($this->getReference('délicat et raffiné'));
 
         $vin6 = new Vin();
 
@@ -256,7 +256,7 @@ class VinFixtures extends Fixture
         $vin6->setDouceur($faker->numberBetween(0, 10));
         $vin6->setStar(1);
         $vin6->setSlug($this->slugger->slug($vin6->getNom()));
-        $vin6->setProfil($this->getReference('Le terrien'));
+        $vin6->setProfil($this->getReference('intense et audacieux'));
 
         $vin7 = new Vin();
 
@@ -293,7 +293,7 @@ class VinFixtures extends Fixture
         $vin7->setDouceur($faker->numberBetween(0, 10));
         $vin7->setStar(0);
         $vin7->setSlug($this->slugger->slug($vin7->getNom()));
-        $vin7->setProfil($this->getReference('Le bonbon'));
+        $vin7->setProfil($this->getReference('délicat et raffiné'));
 
         $manager->persist($vin1);
         $manager->persist($vin2);
