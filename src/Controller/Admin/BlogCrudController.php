@@ -77,7 +77,7 @@ class BlogCrudController extends AbstractCrudController
             ]),
                 TextField::new('description')
                 ->setSortable(false),
-                TextareaField::new('text')
+                TextEditorField::new('text')
                 ->setLabel('Article')
                 ->setNumOfRows(15)
                 ->setTrixEditorConfig([
