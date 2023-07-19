@@ -20,6 +20,15 @@ body {
     height: 50vh;
 }
 
+@media screen and (max-width: 1068px) {
+
+    .headerNavbar {
+        height: 30vh;
+    }
+
+}
+
+
 .img-logo {
     width: 100%;
     height: auto;
@@ -58,6 +67,7 @@ body {
     display: inline-flex !important;
     flex-direction: row;
     margin-top: 1.5vh;
+    z-index: 50;
 }
 
 .vgFormField input {
@@ -78,7 +88,7 @@ body {
 
 #nav4 ul {
     padding: 0 0 0 5px !important;
-    border: solid var(--couleur-tierce) 3px;
+    // border: solid var(--couleur-tierce) 3px;
 }
 
 .faq {
@@ -234,6 +244,61 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 500px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .burgerBars {
+        margin-right: 0;
+    }
+
+    .burgerBars {
+        display: inline-flex !important;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -2vh;
+    }
+
+    .burgerzz {
+        margin-top: 3.8vh;
+    }
+
+    #navMenu {
+        display: flex;
+        align-items: center;
+    }
+
+    #nav4 {
+        order: 4;
+        padding-left: 0;
+    }
+
+    nav ul li:hover .listederoulante {
+        display: block;
+        margin-right: 0;
+        margin-top: 20px;
+        width: 140px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--couleur-claire);
+        padding: 0 !important;
+        border: 3px solid var(--couleur-tierce);
+    }
+
+    nav ul li:hover .listederoulante li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+    }
+
 }
 
 .listederoulante {
@@ -469,4 +534,51 @@ ul .listederoulante li {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 544px) {
+
+    .titre-accueil {
+        font-size: 240%;
+    }
+
+}
+
+@media only screen and (max-width: 741px) {
+
+    .photocedric {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1068px) {
+
+    .titre-accueil {
+        padding-bottom: 15px;
+        margin: 0;
+    }
+
+    .vgIndexContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .txt-accueil {
+        margin: 0;
+        padding-bottom: 20px;
+    }
+
+    .img-wine {
+        display: none;
+    }
+
+
+    .img-wine {
+        display: none;
+    }
+
 }

@@ -13,59 +13,58 @@
 <div class="carreregister">
     <h1 class="connexion text-uppercase">Nouveau compte</h1>
     {{ form_start(registrationForm) }}
-    {{ form_errors(registrationForm.plainPassword) }}
-    <div class="d-flex justify-content-between">
-    <div class="d-flex flex-column">
+    <div class="d-flex vgFlexRegister justify-content-between">
+    <div class="d-flex vgFlexRegister flex-column vgNomRegister">
             {{ form_label(registrationForm.name, 'Nom', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.name, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.name) }}
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex vgFlexRegister flex-column vgEmailRegister">
             {{ form_label(registrationForm.email, 'E-mail', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.email, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.email) }}
         </div>
     </div>
-    <div class="d-flex justify-content-between">
-        <div class="d-flex flex-column">
+    <div class="d-flex vgFlexRegister justify-content-between">
+        <div class="d-flex vgFlexRegister flex-column vgPrenomRegister">
             {{ form_label(registrationForm.firstname, 'Prénom', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.firstname, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.firstname) }}
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex vgFlexRegister flex-column vgMdpRegister">
             {{ form_label(registrationForm.plainPassword, 'Mot de passe', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.plainPassword) }}
         </div>
     </div>
-       <div class="d-flex flex-column">
+       <div class="d-flex vgFlexRegister flex-column vgAdresseRegister">
             {{ form_label(registrationForm.street, 'Adresse', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.street, { 'attr': {'class': 'adresseregister'} }) }}
             {{ form_errors(registrationForm.street) }}
         </div>
-    <div class="d-flex justify-content-between">
-       <div class="d-flex flex-column">
+    <div class="d-flex vgFlexRegister justify-content-between">
+       <div class="d-flex vgFlexRegister flex-column vgCodePostalRegister">
             {{ form_label(registrationForm.postalcode, 'Code postal', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.postalcode, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.postalcode) }}
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex vgFlexRegister flex-column vgCityRegister">
             {{ form_label(registrationForm.city, 'Ville', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.city, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.city) }}
         </div>
     </div>
-    <div class="d-flex justify-content-between">
-       <div class="d-flex flex-column">
+    <div class="d-flex vgFlexRegister justify-content-between">
+       <div class="d-flex vgFlexRegister flex-column vgBirthRegister">
             {{ form_label(registrationForm.birthdate, 'Date de naissance', { 'label_attr': {'class': 'labelregister'} }) }}
-            <div class="d-flex">
+            <div class="d-flex vgFlexHardRegister">
             {{ form_widget(registrationForm.birthdate.day, { 'attr': {'class': 'selectregister'} })}}
             {{ form_widget(registrationForm.birthdate.month, { 'attr': {'class': 'selectregister'} })}}
             {{ form_widget(registrationForm.birthdate.year, { 'attr': {'class': 'selectregister'} })}}
             </div>
             {{ form_errors(registrationForm.birthdate) }}
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex vgFlexRegister flex-column vgPhoneRegister">
             {{ form_label(registrationForm.phone, 'Téléphone', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.phone, { 'attr': {'class': 'typeregister'} }) }}
             {{ form_errors(registrationForm.phone) }}
@@ -74,22 +73,22 @@
 </div>
 <div class="carreregister mt-5">
     <h2 class="connexion text-uppercase">Mes préférences</h2>
-    <div class="d-flex justify-content-around">
-       <div class="d-flex flex-column">
+    <div class="d-flex vgFlexHardRegister justify-content-around">
+       <div class="d-flex vgFlexRegister flex-column vgCouleurRegister">
             {{ form_label(registrationForm.wineColor, 'Couleur de vin', { 'label_attr': {'class': 'labelregister mb-2'} }) }}
             {{ form_widget(registrationForm.wineColor, { 'attr': {'class': 'selectregister'} }) }}
             {{ form_errors(registrationForm.wineColor) }}
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex vgFlexRegister flex-column vgTypeRegister">
             {{ form_label(registrationForm.wineType, 'Type de vin', { 'label_attr': {'class': 'labelregister mb-2'} }) }}
             {{ form_widget(registrationForm.wineType, { 'attr': {'class': 'selectregister'} }) }}
             {{ form_errors(registrationForm.wineType) }}
         </div>
     </div>
-    <div class="d-flex ">
-       <div class="d-flex flex-column mt-5">
+    <div class="d-flex vgFlexRegister ">
+       <div class="d-flex vgFlexRegister flex-column mt-5">
             {{ form_label(registrationForm.arome, 'Arôme', { 'label_attr': {'class': 'labelregister'} }) }}
-            <div class="d-flex mb-5 mt-3">
+            <div class="d-flex vgFlexRegister mb-5 mt-3">
                 {% for choice in registrationForm.arome %}
                 <div class="form-check arome-checkbox  ms-3">
                     {{ form_widget(choice, { 'attr': {'class': 'form-check-input login-check'} }) }}
@@ -101,12 +100,12 @@
     </div>
 
 
-       <div class="d-flex flex-column">
+       <div class="d-flex vgFlexRegister flex-column">
             {{ form_label(registrationForm.content, 'Parlez-moi de vous !!', { 'label_attr': {'class': 'labelregister'} }) }}
-            {{ form_widget(registrationForm.content, { 'attr': {'class': 'contentregister'} }) }}
+            {{ form_widget(registrationForm.content, { 'attr': {'class': 'contentregister mb-3'} }) }}
             {{ form_errors(registrationForm.content) }}
         </div>
-        <button type="submit" class="boutonregister">Enregistrement</button>
+        <div class="boutonRegisterRight"><button type="submit" class="boutonregister">Enregistrement</button></div>
     {{ form_end(registrationForm) }}
 </div>
 
