@@ -99,3 +99,12 @@ button {
   color: var(--couleur-fonce);
 }
 
+.error-message {
+  color: var(--couleur-tierce);
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.hide {
+  display: none;
+}

@@ -1,25 +1,23 @@
 {% extends 'base_degustation.html.twig' %}
 
+{% block header %}
+    <div class="titre-fiche">FICHE DE DÉGUSTATION</div>
+    <div class="h1-crud">{{ vin.nom }}</div>
+{% endblock %}
+
 {% block title %} {{ parent() }} - Fiche de dégustation {% endblock title %}
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('app') }}
     {{ encore_entry_script_tags('app') }}
-
 {% endblock %}
 
 {% block body %}
-
 <div class="page">
 {{ form_start(form, {'class':'formFiche'}) }}
 <div class="ss-titre">L'OEIL</div>
-
-
 <div class="cardcontainer">
-
-
   <div class="cardcontainer2">
-   
     <div class="form-column">
       <div class="form-row">
         <div class="form-group">
