@@ -109,6 +109,12 @@ Ludivine c'est ici si ton form déconne  */
     display: none !important;
 }
 
+/* ici c'est pour le slug du blog */
+#new-Blog-form .row div:nth-child(12),
+#edit-Blog-form .row div:nth-child(12) {
+    display: none !important;
+}
+
 .list-pagination-counter strong {
     color: var(--couleur-tierce);
 }

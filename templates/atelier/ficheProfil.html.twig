@@ -47,9 +47,6 @@
                         <div class="card h-100 sk-cardbody" style="width: 22rem;">
                             <div class="card-header d-flex">
                                 <div class="d-flex h-100">
-                                    {% if suggestion.image is not null %}
-                                        <img  class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(suggestion, 'imageFile') }}" alt="{{ article.nom }}">
-                                    {% endif %}
                                     <div class="card-body">
                                         <h5 class="card-title sk-card-title mt-3 text-break text-uppercase"><small><strong>{{suggestion.nom}}</strong></small></h5>
                                         <p class="card-text sk-card-title text-break">{{suggestion.region}} - {{suggestion.millesime}}</p>
