@@ -64,7 +64,7 @@ class AtelierController extends AbstractController
         FicheDegustationRepository $ficheDegustationRepository,
         Request $request,
         MailerService $mailerService,
-
+        UserRepository $userRepository
     ): Response {
         // Récupère les informations de l'atelier
         $currentDate = new \DateTime();
@@ -113,6 +113,7 @@ class AtelierController extends AbstractController
                 $favoriteFiche =  $user->getFavoriteFicheDegustation();
                 $profil = $favoriteFiche->getvin()->getProfil();
                 $user->setProfil($profil);
+                $userRepository->save($user, true);
                 $fiches = $user->getFicheDegustationsFromDate($currentDate);
 
                 // envoi du mail récapitulatif des dégustations
@@ -146,8 +147,8 @@ class AtelierController extends AbstractController
                 $vins = $vinRepository->findAll();
                 shuffle($vins);
               
-                // Redirection vers la page de profil de consommateur
 
+                // Redirection vers la page de profil de consommateur
                 return $this->render('atelier/ficheProfil.html.twig', [
                     'profil' => $profil,
                     'user' => $user,

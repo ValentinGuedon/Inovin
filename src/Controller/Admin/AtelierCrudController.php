@@ -6,6 +6,7 @@ use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\Cepage;
 use App\Entity\Atelier;
+use App\Entity\Animations;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -87,12 +88,20 @@ class AtelierCrudController extends AbstractCrudController
                         ->orderBy('c.type', 'ASC');
                 }),
 
+                AssociationField::new('animations')
+                ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                    $queryBuilder->select('a')
+                    ->from(Animations::class, 'a')
+                    ->orderBy('a.nom', 'ASC');
+                }),
+
 
             DateField::new('date'),
             TextField::new('horaire'),
             TextField::new('address')
             ->setLabel('Adresse')
             ->setSortable(false),
+
             IntegerField::new('place')
             ->setLabel('Nombre de Places')
             ->setSortable(false)

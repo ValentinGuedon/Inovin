@@ -62,21 +62,36 @@ class BlogCrudController extends AbstractCrudController
             ->hideOnForm()
             ->hideOnDetail()
             ->hideOnIndex(),
+
             TextField::new('title')
             ->setLabel('Titre'),
+
             ImageField::new('image')
                 ->setUploadDir('public/uploads/images/posters')
                 ->setBasePath('uploads/images/posters')
-                ->setSortable(false)
-                ,
-                DateField::new('date')
+                ->setSortable(false),
+
+            DateField::new('date')
             ->setFormTypeOptions([
                 'data' => new \DateTime(),
             ]),
                 TextField::new('description')
                 ->setSortable(false),
-                TextareaField::new('text')
+                TextEditorField::new('text')
                 ->setLabel('Article')
+                ->setNumOfRows(15)
+                ->setTrixEditorConfig([
+                'blockAttributes' => [
+                    // Define the HTML attributes for style
+                    'default' => ['tagName' => 'blogParagraph'],
+                    'heading1' => ['tagName' => 'blogHeader'],
+                    'quote' => ['tagName' => 'blogQuote'],
+                    'href' => ['tagName' => 'blogLink'],
+                    'code' => ['tagName' => 'blogCode'],
+                    'bullet' => ['tagName' => 'blogList'],
+                    'numberList' => ['tagName' => 'bloglistNumber'],
+                    ]
+                ])
                 ->setSortable(false),
         ];
     }

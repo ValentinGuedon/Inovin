@@ -70,31 +70,33 @@
         <p class="text-center fw-bold">Votre watchlist est vide.</p>
     </div>
     {% else %}
-        <table class="sk-custom-table mb-5">
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Description</th>
-      <th>Région</th>
-      <th>Année</th>
-      <th>Prix</th>
-      <th class="text-center">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for vin in user.getWatchlist() %}
-    <tr>
-      <td>{{ vin.nom }}</td>
-      <td>{{ vin.description }}</td>
-      <td>{{ vin.region }}</td>
-      <td>{{ vin.millesime }}</td>
-      <td class="text-nowrap">{{ vin.prix }} €</td>
-      <td class="text-center sk-trash"><a href="{{ path('app_profil_delete_watchlist', {slug: vin.slug })}}" title="Supprimer" data-toggle="tooltip"><i class="bi bi-trash"></i></a>
-      <span class="text-center sk-trash"><a href="{{ path('shop_add', {id: vin.id, quantity : 1 } )}}" title="Ajouter au panier" data-toggle="tooltip">&ensp;<i class="bi bi-cart"></i></a></span></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+    <table class="sk-custom-table mb-5">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Région</th>
+                <th>Année</th>
+                <th>Prix</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for vin in user.getWatchlist() %}
+        <tr>
+            <td>{{ vin.nom }}</td>
+            <td>{{ vin.description }}</td>
+            <td>{{ vin.region }}</td>
+            <td>{{ vin.millesime }}</td>
+            <td class="text-nowrap">{{ vin.prix }} €</td>
+            <td class="text-center sk-trash"><a href="{{ path('app_profil_delete_watchlist', {slug: vin.slug })}}" title="Supprimer" 
+            data-toggle="tooltip"><i class="bi bi-trash"></i></a>
+            <span class="text-center sk-trash"><a href="{{ path('shop_add', {id: vin.id, quantity : 1 } )}}" title="Ajouter au panier" 
+            data-toggle="tooltip">&ensp;<i class="bi bi-cart"></i></a></span></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% endif %}
 
     <div class="sk-divider-profil"></div>
@@ -170,12 +172,14 @@
                 <th>Adresse</th>
                 <th>Nom de l'atelier</th>
             </tr>
+            {% for atelier in user.atelier %}
             <tr>
                 <td>{{ atelier.date|date('d-m-Y') }}</td>
                 <td>{{ atelier.horaire }}</td>
                 <td>{{ atelier.address }}</td>
                 <td>{{ atelier.commentaire }}</td>
             </tr>
+            {% endfor %}
         </tbody>
         </table>
     {% endif %}
