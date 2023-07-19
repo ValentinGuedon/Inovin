@@ -7,7 +7,7 @@
         <h2 class="blogTitle2">{{ blog.title }}</h2>
         <p class="blogDate2">{{ blog.date ? blog.date|date('d-m-Y') : '' }}</p>
         <div><img class="blogImage2" src="{{ vich_uploader_asset(blog) }}" alt="{{ blog.title }}"></div>
-        <p class="blogText"> {{ blog.text }}</p>
+        <p class="blogText"> {{ blog.text|raw }}</p>
         <p class="blogBackBtnP"><a class="blogBackBtn" href="{{ path('app_blog_visiteur') }}">Revenir</a></p>
     </div>
 </div>

@@ -50,6 +50,13 @@ class VinCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Vin')
+            ->setEntityLabelInPlural('Vins')
+            ->setPageTitle('index', 'Vins')
+            ->setPageTitle('new', 'Ajouter un vin')
+            ->setPageTitle('detail', 'Détail du vin')
+            ->setPageTitle('edit', 'Modifier un vin')
+
         ;
     }
 
@@ -58,8 +65,18 @@ class VinCrudController extends AbstractCrudController
         return [
             IdField::new('id')
             ->hideOnForm()
+            ->hideOnDetail()
             ->hideOnIndex(),
+
             TextField::new('nom'),
+
+            TextareaField::new('description')
+            ->setSortable(false),
+
+            ImageField::new('image')
+            ->setUploadDir('public/uploads/images/posters')
+            ->setBasePath('uploads/images/posters')
+            ->setSortable(false),
 
             ChoiceField::new('couleur')->setChoices([
                 'Rouge' => 'rouge',
@@ -81,14 +98,14 @@ class VinCrudController extends AbstractCrudController
             ->setLabel('Région'),
 
             AssociationField::new('cepages')
+            ->hideOnForm()
+            ->hideOnIndex()
+            ->hideOnDetail()
             ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
                 $queryBuilder->select('c')
                     ->from(Cepage::class, 'c')
                     ->orderBy('c.type', 'ASC');
             }),
-            TextareaField::new('description')
-            ->setSortable(false),
-
             TextField::new('limpidite')
             ->setLabel('Limpidité')
             ->hideOnIndex(),
@@ -113,19 +130,43 @@ class VinCrudController extends AbstractCrudController
                 'Végétal' => 'Végétal',
                 'Marin' => 'Marin',
             ])
-            ->allowMultipleChoices(true),
+            ->allowMultipleChoices(true)
+            ->hideOnIndex(),
 
             IntegerField::new('brillance')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('intensite')
             ->setLabel('Intensité')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('douceur')
-            ->hideOnIndex(),
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             IntegerField::new('alcool')
             ->setLabel('Alcool Ressenti')
-            ->hideOnIndex(),
-
+            ->hideOnIndex()
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 0,
+                    'max' => 10,
+                ],
+            ]),
             NumberField::new('degreAlcool')
             ->setLabel('Degré'),
             NumberField::new('prix'),
@@ -133,15 +174,9 @@ class VinCrudController extends AbstractCrudController
 
             SlugField::new('slug')
             ->setTargetFieldName('nom')
+            ->hideOnDetail()
             ->hideOnIndex(),
 
-            ImageField::new('image')
-            ->setUploadDir('public/uploads/images/posters')
-            ->setBasePath('uploads/images/posters')
-            ->setSortable(false),
-
-            TextareaField::new('description')
-            ->setSortable(false),
 
         ];
     }

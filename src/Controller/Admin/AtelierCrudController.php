@@ -6,6 +6,7 @@ use App\Entity\Vin;
 use App\Entity\User;
 use App\Entity\Cepage;
 use App\Entity\Atelier;
+use App\Entity\Animations;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -30,6 +31,11 @@ class AtelierCrudController extends AbstractCrudController
         return $actions
         ->remove(Crud::PAGE_INDEX, Action::NEW)
 
+        ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+        })
+
         ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
             return $action->setIcon('fa fa-edit')->setLabel(false);
         })
@@ -42,6 +48,13 @@ class AtelierCrudController extends AbstractCrudController
     {
         return $crud
             ->showEntityActionsInlined()
+            ->setEntityLabelInSingular('Atelier')
+            ->setEntityLabelInPlural('Ateliers')
+
+            ->setPageTitle('index', 'Ateliers')
+            ->setPageTitle('new', 'Ajouter un atelier')
+            ->setPageTitle('detail', 'Détail de l\'atelier')
+            ->setPageTitle('edit', 'Modifier un atelier')
         ;
     }
 
@@ -51,35 +64,54 @@ class AtelierCrudController extends AbstractCrudController
         return [
             IdField::new('id')
                 ->hideOnForm()
+                ->hideOnDetail()
                 ->hideOnIndex(),
+                AssociationField::new('users')
+                ->hideOnIndex()
+                ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                    $queryBuilder->select('u')
+                        ->from(User::class, 'u')
+                        ->orderBy('u.name', 'ASC');
+                }),
+                AssociationField::new('vin')
+                ->hideOnIndex()
+                ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                    $queryBuilder->select('v')
+                        ->from(Vin::class, 'v')
+                        ->orderBy('v.nom', 'ASC');
+                }),
+                AssociationField::new('cepage')
+                ->hideOnIndex()
+                ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                    $queryBuilder->select('c')
+                        ->from(Cepage::class, 'c')
+                        ->orderBy('c.type', 'ASC');
+                }),
+
+                AssociationField::new('animations')
+                ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
+                    $queryBuilder->select('a')
+                    ->from(Animations::class, 'a')
+                    ->orderBy('a.nom', 'ASC');
+                }),
+
+
             DateField::new('date'),
-            IntegerField::new('place')
-            ->setLabel('Nombre de Places')
-            ->setSortable(false),
-            TextareaField::new('commentaire')
-            ->setSortable(false),
+            TextField::new('horaire'),
             TextField::new('address')
             ->setLabel('Adresse')
             ->setSortable(false),
-            TextField::new('horaire'),
-            AssociationField::new('vin')
-            ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
-                $queryBuilder->select('v')
-                    ->from(Vin::class, 'v')
-                    ->orderBy('v.nom', 'ASC');
-            }),
-            AssociationField::new('users')
-            ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
-                $queryBuilder->select('u')
-                    ->from(User::class, 'u')
-                    ->orderBy('u.name', 'ASC');
-            }),
-            AssociationField::new('cepage')
-            ->setQueryBuilder(function (QueryBuilder $queryBuilder) {
-                $queryBuilder->select('c')
-                    ->from(Cepage::class, 'c')
-                    ->orderBy('c.type', 'ASC');
-            })
+
+            IntegerField::new('place')
+            ->setLabel('Nombre de Places')
+            ->setSortable(false)
+            ->setFormTypeOptions([
+                'attr' => [
+                    'min' => 1,
+                ],
+            ]),
+            TextareaField::new('commentaire')
+            ->setSortable(false)
         ];
     }
 }

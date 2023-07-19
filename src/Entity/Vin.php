@@ -54,11 +54,6 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: FicheDegustation::class)]
     private Collection $ficheDegustations;
 
-
-    #[ORM\OneToMany(mappedBy: 'cepage1', targetEntity: Recette::class)]
-    private Collection $recettes1;
-
-
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Cepage::class)]
     private Collection $cepages;
 
@@ -111,14 +106,7 @@ class Vin
     #[ORM\OneToMany(mappedBy: 'vin', targetEntity: Note::class, cascade: ['remove'])]
     private Collection $notes;
 
-    #[ORM\OneToMany(mappedBy: 'cepage3', targetEntity: Recette::class)]
-    private Collection $recettes3;
 
-    #[ORM\OneToMany(mappedBy: 'cepage4', targetEntity: Recette::class)]
-    private Collection $recettes4;
-
-    #[ORM\OneToMany(mappedBy: 'cepage2', targetEntity: Recette::class)]
-    private Collection $recettes2;
 
     #[ORM\Column(nullable: true)]
     private ?bool $star = null;
@@ -126,14 +114,10 @@ class Vin
 
     public function __construct()
     {
-        $this->recettes1 = new ArrayCollection();
         $this->cepages = new ArrayCollection();
         $this->ateliers = new ArrayCollection();
         $this->users = new ArrayCollection();
         $this->notes = new ArrayCollection();
-        $this->recettes2 = new ArrayCollection();
-        $this->recettes3 = new ArrayCollection();
-        $this->recettes4 = new ArrayCollection();
     }
 
     public function __toString()
@@ -250,15 +234,6 @@ class Vin
         }
 
         return $this;
-    }
-
-
-    /**
-     * @return Collection<int, Recette>
-     */
-    public function getRecettes1(): Collection
-    {
-        return $this->recettes1;
     }
 
     /**
@@ -539,30 +514,6 @@ class Vin
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, Recette>
-     */
-    public function getRecettes3(): Collection
-    {
-        return $this->recettes3;
-    }
-
-    /**
-     * @return Collection<int, Recette>
-     */
-    public function getRecettes4(): Collection
-    {
-        return $this->recettes4;
-    }
-
-    /**
-     * @return Collection<int, Recette>
-     */
-    public function getRecettes2(): Collection
-    {
-        return $this->recettes2;
     }
 
     public function isStar(): ?bool

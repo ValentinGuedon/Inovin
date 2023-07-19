@@ -14,11 +14,20 @@ body {
     background-color: var(--couleur-fonce);
 }
 
-header {
+.headerNavbar {
     background-image: url(/assets/images/wave.svg);
     background-size: cover;
     height: 50vh;
 }
+
+@media screen and (max-width: 1068px) {
+
+    .headerNavbar {
+        height: 30vh;
+    }
+
+}
+
 
 .img-logo {
     width: 100%;
@@ -58,6 +67,7 @@ header {
     display: inline-flex !important;
     flex-direction: row;
     margin-top: 1.5vh;
+    z-index: 50;
 }
 
 .vgFormField input {
@@ -76,11 +86,19 @@ header {
     margin-right: 1.2vw;
 }
 
-@media screen and (max-width: 1000px) {
+#nav4 ul {
+    padding: 0 0 0 5px !important;
+    // border: solid var(--couleur-tierce) 3px;
+}
+
+.faq {
+    margin-bottom: 4px;
+}
+
+@media screen and (max-width: 1068px) {
 
     #nav1 {
         order: 1;
-        margin-top: 20px !important;
     }
 
     #nav2 {
@@ -93,6 +111,7 @@ header {
 
     #nav4 {
         order: 4;
+        padding-left: 40px;
     }
 
     #nav5 {
@@ -111,6 +130,10 @@ header {
         order: 8;
     }
 
+    .marginUser {
+        margin: 0 !important;
+    }
+
     .ulnavburger {
         background-color: var(--couleur-claire);
         padding: 0 10px;
@@ -119,14 +142,15 @@ header {
 
     nav ul li:hover .listederoulante {
         display: block;
-        margin-right: 280px;
+        margin-right: 325px;
+        margin-top: -14px;
         width: 140px;
         height: 160px;
         display: flex;
         flex-direction: column;
         align-items: end;
         background-color: var(--couleur-claire);
-        padding: 0;
+        padding: 0 !important;
         border: 3px solid var(--couleur-tierce);
     }
 
@@ -222,8 +246,68 @@ nav {
     justify-content: space-between;
 }
 
+@media screen and (max-width: 500px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .burgerBars {
+        margin-right: 0;
+    }
+
+    .burgerBars {
+        display: inline-flex !important;
+        flex-direction: column;
+        align-items: center;
+        margin-top: -2vh;
+    }
+
+    .burgerzz {
+        margin-top: 3.8vh;
+    }
+
+    #navMenu {
+        display: flex;
+        align-items: center;
+    }
+
+    #nav4 {
+        order: 4;
+        padding-left: 0;
+    }
+
+    nav ul li:hover .listederoulante {
+        display: block;
+        margin-right: 0;
+        margin-top: 20px;
+        width: 140px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--couleur-claire);
+        padding: 0 !important;
+        border: 3px solid var(--couleur-tierce);
+    }
+
+    nav ul li:hover .listederoulante li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+}
+
 .listederoulante {
     display: none;
+    position: absolute;
+    background-color: var(--couleur-claire);
+    text-decoration: none;
+    min-width: 10%;
+    z-index: 1;
 }
 
 nav ul li:hover .listederoulante {
@@ -240,15 +324,13 @@ a {
     margin-right: 2.5vw;
 }
 
-.listederoulante {
-    position: absolute;
-    background-color: var(--couleur-claire);
-    text-decoration: none;
-    min-width: 10%;
-    z-index: 1;
+.marginUser {
+    margin-top: 0.6vh;
+    margin-right: 1.2vw;
+    margin-left: 1vw;
 }
 
-.listederoulante li {
+ul .listederoulante li {
     margin-top: 1.2vh;
 }
 
@@ -290,7 +372,8 @@ a {
     border-color: var(--couleur-fonce);
     background-color: var(--couleur-claire);
     color: var(--couleur-fonce);
-    padding: 10px 50px;
+    padding: 10px 70px;
+    margin-top: 10px;
 }
 
 /* ajoute le fond rouge quand tu hover */
@@ -451,4 +534,51 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 544px) {
+
+    .titre-accueil {
+        font-size: 240%;
+    }
+
+}
+
+@media only screen and (max-width: 741px) {
+
+    .photocedric {
+        display: none;
+    }
+
+}
+
+@media only screen and (max-width: 1068px) {
+
+    .titre-accueil {
+        padding-bottom: 15px;
+        margin: 0;
+    }
+
+    .vgIndexContent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .txt-accueil {
+        margin: 0;
+        padding-bottom: 20px;
+    }
+
+    .img-wine {
+        display: none;
+    }
+
+
+    .img-wine {
+        display: none;
+    }
+
 }

@@ -92,7 +92,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
-
     public function __construct()
     {
         $this->ficheDegustations = new ArrayCollection();
