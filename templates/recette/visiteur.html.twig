@@ -44,8 +44,7 @@
                             <p class="vgFormField" placeholder="ml"> {{ form_widget(form.quantite) }}</p>
                         </div>
                     </div>
-
-
+                    
                     <div class="container1">
                         <div class="container-recette">
                             <p class="cepage"> Cépage d'ajustement</p>
@@ -58,6 +57,9 @@
                     </div>
 
                     <i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
+
+                            {# + button 1 #}
+                            <i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
 
                     <div class="container1">
                         <div class="container-recette">
@@ -87,6 +89,24 @@
                             <button type="submit" class="submit vgButtonSearch vgblanc">Enregistrer votre recette</button>
                           
                     {{ form_end(form, {'render_rest': false}) }}
+                    
+                            {# + button 2 #}
+                            <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
+
+                            <p class="form-label vgIdVin4 vgblanc">Cépage supplémentaire</p>
+                                <div class="vgSelect vgIdVin4"> {{ form_widget(form.cepage4) }} </div>
+                            <p class="form-label vgIdVin4 vgblanc">Ajouter une quantité</p>
+                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div>
+
+                            <div class="vgDivButtonSearch">
+                            {{ form_widget(form) }}
+                            <button type="submit" id="vgSubmitBtn" class="submit vgButtonSearch vgblanc" onclick= "hideButtonSubmit();" >Ajouter votre recette</button>
+                </div>
+            </div>
+
+
+{{ form_end(form, {'render_rest': false}) }}
+
 {# gestion des boutons  #}
 <script>
     function displayVin3() {
@@ -110,11 +130,15 @@
     }
 
     function displayButtonPlus4(){
-            document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-minus");
-            document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-plus");
+        document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-minus");
+        document.querySelector("#vgFormSection .vgIPlus2").classList.toggle("fa-plus");
         }
 
-
+    function hideButtonSubmit()
+    {
+        document.querySelector('#vgSubmitBtn').addEventListener('click', function() {
+        this.disabled = true; });
+    }
 
 </script>
 {% endblock %}

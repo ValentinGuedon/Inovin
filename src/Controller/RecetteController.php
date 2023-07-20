@@ -5,11 +5,12 @@ namespace App\Controller;
 use App\Entity\Recette;
 use App\Form\RecetteType;
 use App\Repository\RecetteRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\Security;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/recette')]
 class RecetteController extends AbstractController
@@ -23,14 +24,23 @@ class RecetteController extends AbstractController
     }
 
     #[Route('/visiteur', name: 'app_recette_visiteur', methods: ['GET', 'POST'])]
-    public function visiteur(Request $request, RecetteRepository $recetteRepository, Security $security): Response
-    {
+    public function visiteur(
+        Request $request,
+        RecetteRepository $recetteRepository,
+        Security $security,
+        SluggerInterface $slugger
+    ): Response {
         $recette = new Recette();
+
+
         $form = $this->createForm(RecetteType::class, $recette);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $quantite1 = $recette->getQuantite();
+            $slug = $slugger->slug($recette->getNom());
+            $recette->setSlug($slug);
+
+            $quantite1 = $recette->getQuantite1();
             $quantite2 = $recette->getQuantite2();
             $quantite3 = $recette->getQuantite3();
             $quantite4 = $recette->getQuantite4();
@@ -41,16 +51,17 @@ class RecetteController extends AbstractController
                 $quantite3 !== null && $recette->getCepage3() === null ||
                 $quantite4 !== null && $recette->getCepage4() === null
             ) {
-                $this->addFlash('error', 'Vous avez ajouté une quantité sans cépage dans le "cépage supplémentaire".');
+                $this->addFlash('error', 'Vous avez ajouté une quantité sans cépage.');
             } else {
-                if ($sum == 750) {
-                    if ($quantite1 > 1 && $quantite2 > 1) {
+                if ($sum === 750) {
+                    if ($quantite1 >= 1 && $quantite2 >= 1) {
                         $user = $this->getUser();
                         $recette->setUser($user);
                         $recetteRepository->save($recette, true);
-                        return $this->redirectToRoute('app_recette_index', [], Response::HTTP_SEE_OTHER);
+                        $this->addFlash('success', 'Merci de votre participation à notre atelier!');
+                        return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
                     } else {
-                        $this->addFlash('error', 'Veuillez renseigner au moins deux champs');
+                        $this->addFlash('error', 'Veuillez renseigner au moins deux champs.');
                     }
                 } else {
                     $this->addFlash('error', 'La somme de vos cépages doit être égal à 750ml.

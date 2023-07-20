@@ -1,47 +1,46 @@
 /* Global position */
-.sk-container{
+.sk-container {
     width: 70%;
-    margin-top:2%;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
 }
 
-
-.sk-rubrique{
+.sk-rubrique {
     color: var(--couleur-claire);
     border-bottom: 1px solid var(--couleur-tierce);
 }
 
 /* alert */
-.alert-sk-alert{
+.alert-sk-alert {
     background-color: var(--couleur-tierce);
     margin-bottom: 10%;
     text-align: center;
 }
-     
+
 // Caroussel
-.sk-carousel{
+.sk-carousel {
     background-color: var(--couleur-claire);
-    border-radius:10px;
+    border-radius: 10px;
 }
 
-.sk-caroussel-body{
+.sk-caroussel-body {
     height: 450px;
 }
 
-.sk-caroussel-picture{
-    height: 100%; 
-    width: 300px; 
-    object-fit: cover; 
+.sk-caroussel-picture {
+    height: 100%;
+    width: 300px;
+    object-fit: cover;
     margin-left: 100px;
 }
 
-.sk-note{
+.sk-note {
     margin-left: 100px;
 }
 
 
-.sk-button-caroussel{
+.sk-button-caroussel {
     background-color: var(--couleur-tierce);
     color: var(--couleur-claire);
     width: 250px;
@@ -51,12 +50,12 @@
     border: none;
 }
 
-.sk-button-caroussel:hover{
+.sk-button-caroussel:hover {
     background: #e0115f;
     text-decoration: none;
 }
 
-.sk-button-slide:hover{
+.sk-button-slide:hover {
     background-color: initial;
     color: var(--couleur-tierce);
 }
@@ -71,33 +70,33 @@
     background-color: var(--couleur-tierce);
 }
 
-.sk-button-search{
+.sk-button-search {
     background-color: var(--couleur-tierce);
     color: var(--couleur-claire);
     border-radius: 70px;
     padding: 1% 3%;
     border: none;
 
-    &:hover{
+    &:hover {
         background: #e0115f;
         text-decoration: none;
     }
 }
 
 /* Card */
-.sk-cardbody{
+.sk-cardbody {
     background-color: var(--couleur-claire);
 }
 
 .sk-picture-shop {
     transition: transform 0.5s ease;
-  
+
     &:hover {
-      transform: scale(1.2);
+        transform: scale(1.2);
     }
 }
 
-.sk-button{
+.sk-button {
     background-color: var(--couleur-tierce);
     color: var(--couleur-claire);
     border-radius: 70px;
@@ -105,20 +104,29 @@
     padding: 3% 10%;
     border: none;
 
-    &:hover{
+    &:hover {
         background: #e0115f;
         text-decoration: none;
     }
 }
 
-.text-bg-sk-badges{
-    background-color:var(--couleur-tierce);
+.text-bg-sk-badges {
+    background-color: var(--couleur-tierce);
 }
 
-.sk-truncate{
+.sk-truncate {
     max-height: 100px;
 }
 
-.sk-star{
+.sk-star {
     color: var(--couleur-tierce);
+}
+
+.sk-return-button {
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    border-radius: 70px;
+    padding: 1% 3%;
+    height: 100px;
+    width: 200px;
 }

@@ -90,9 +90,12 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
 
+        yield MenuItem::section('Utilisateurs');
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
         ]);
+
+        yield MenuItem::section('Vins');
 
         yield MenuItem::subMenu('Vins', 'fas fa-wine-bottle')->setSubItems([
             MenuItem::linkToCrud('Créer un Vin', 'fas fa-plus', Vin::class)->setAction(Crud::PAGE_NEW),
@@ -104,6 +107,8 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Voir Cépages', 'fas fa-eye', Cepage::class)
         ]);
 
+        yield MenuItem::section('Animations');
+
         yield MenuItem::subMenu('Animations', 'fas fa-bullhorn')->setSubItems([
             MenuItem::linkToCrud('Créer une Animation', 'fas fa-plus', Animations::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Animations', 'fas fa-eye', Animations::class)
@@ -112,8 +117,13 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Ateliers', 'fas fa-map')->setSubItems([
             MenuItem::linkToCrud('Créer un Atelier', 'fas fa-plus', Atelier::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Ateliers', 'fas fa-eye', Atelier::class)
-
         ]);
+
+        yield MenuItem::subMenu('Recettes', 'fas fa-eye-dropper')->setSubItems([
+            MenuItem::linkToCrud('Voir Recette', 'fas fa-eye', Recette::class)
+        ]);
+
+        yield MenuItem::section('Communauté');
 
         yield MenuItem::subMenu('Blog', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('Créer Article', 'fas fa-plus', Blog::class)->setAction(Crud::PAGE_NEW),
@@ -123,10 +133,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('FAQ', 'fas fa-question')->setSubItems([
             MenuItem::linkToCrud('Créer Question', 'fas fa-plus', Faq::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Question', 'fas fa-eye', Faq::class)
-        ]);
-
-        yield MenuItem::subMenu('Recettes', 'fas fa-eye-dropper')->setSubItems([
-            MenuItem::linkToCrud('Voir Recette', 'fas fa-eye', Recette::class)
         ]);
 
         yield MenuItem::linkToUrl('Site Inovin', 'fa fa-home', '/');

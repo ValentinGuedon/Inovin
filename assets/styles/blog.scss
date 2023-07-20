@@ -1,9 +1,5 @@
 // ------------------------ Blog Visiteur ----------------------------------------
 
-// body {
-//     background-color: aqua !important;
-// }
-
 .blogH1 {
     text-align: center;
 }
@@ -102,9 +98,7 @@
 }
 
 .blogText {
-    text-align: center;
     margin: 3em 3em 2em;
-    text-align: justify;
 }
 
 .blogBackBtn {
@@ -147,3 +141,19 @@
 //     }
 
 // }
+
+// ------------------------ Blog Editor Dashboard admin ----------------------------------------
+
+blogParagraph{
+    text-align: left;
+}
+
+blogHeader{
+    font-size: 2em;
+    color: var(--couleur-tierce);
+}
+
+blogLink{
+    font-style: bold;
+    color: var(--couleur-tierce);
+}

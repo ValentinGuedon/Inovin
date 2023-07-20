@@ -1,4 +1,4 @@
-.testMdr {
+.vgDivContainer {
     display: flex;
     justify-content: center;
 }
@@ -100,7 +100,8 @@
 
     //3
     50% {
-        background: rgb(7, 163, 7);
+        background: #22323f;
+        opacity: 60%;
     }
 
     //4
@@ -139,41 +140,41 @@
     cursor: pointer;
 }
 
-    /*
+/*
      * Styles for the Win Dialog
      */
-    
-    .win-dialog {
-      display: none;
-      text-align: center;
-      justify-content: center;
-      flex-direction: column;
-      margin-bottom: 10px;
-    }
-    
-    .win-dialog .win-icon {
-      font-size: 144px;
-      color: var(--couleur-claire);
-    }
-    
-    .win-dialog .win-banner {
-      font-size: 32px;
-      color: var(--couleur-claire);
-    }
-    
-    .win-dialog .win-summary {
-      font-size: 32px;
-      color: var(--couleur-claire);
-    }
-    
-    .win-dialog .win-button {
-      background-color: var(--couleur-claire);
-      border-radius: 20px;
-      padding: 10px;
-    }
-  
-    .win-button{
-      margin-top : 5%;
-      margin-left: 45%;
-      max-width: 10%;
-    }
+
+.win-dialog {
+    display: none;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.win-dialog .win-icon {
+    font-size: 144px;
+    color: var(--couleur-claire);
+}
+
+.win-dialog .win-banner {
+    font-size: 32px;
+    color: var(--couleur-claire);
+}
+
+.win-dialog .win-summary {
+    font-size: 32px;
+    color: var(--couleur-claire);
+}
+
+.win-dialog .win-button {
+    background-color: var(--couleur-claire);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.win-button {
+    margin-top: 5%;
+    margin-left: 45%;
+    max-width: 10%;
+}

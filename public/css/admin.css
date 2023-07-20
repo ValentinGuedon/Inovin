@@ -5,9 +5,17 @@
     --font: 'Montserrat', sans-serif;
     --table-hover-cell-bg: var(--couleur-tierce);
     --indigo-50: var(--couleur-tierce);
+    --button-secondary-bg: var(--couleur-fonce);
+    --datalist-border-color: var(--couleur-fonce);
+    --gray-200: var(--couleur-fonce);
 }
 
 /* ----------------------------------- navbar de gauche ------------------------------- */
+
+.ts-dropdown-content .active {
+    background-color: var(--couleur-tierce) !important;
+    color: white !important;
+}
 
 /* couleur navbar */
 .sidebar {
@@ -34,6 +42,9 @@
     color: var(--couleur-fonce) !important;
 }
 
+.menu-header-contents {
+    color: var(--couleur-tierce);
+}
 
 /* -------------------------------- Le body ------------------------------ */
 /* autour barre de recherche */
@@ -44,15 +55,17 @@
 /* couleur de toutes les données de la table */
 table span,
 table a,
-.field-number,
-.field-integer,
+tr,
 h1,
 .content-search-icon #main-menu .menu .menu-item.active:not(.expanded) .menu-icon,
 #main-menu .menu .menu-item.active:not(.expanded) a {
     color: var(--couleur-claire) !important;
 }
 
-
+#new-Blog-form .field-date,
+#edit-Blog-form .field-date {
+    display: none;
+}
 
 /* couleur des boutons hauts bas */
 table .fa-sort {
@@ -73,6 +86,27 @@ table .fa-sort {
 .page-item.active .page-link:hover {
     background: var(--couleur-tierce);
     border-color: var(--couleur-tierce);
+}
+
+.input-group-text #text {
+    background-color: var(--couleur-claire);
+}
+
+.page-actions a {
+    background-color: var(--couleur-fonce);
+}
+
+/* ici pour virer le slug,
+Ludivine c'est ici si ton form déconne  */
+#new-Animations-form .row div:nth-child(12),
+#edit-Animations-form .row div:nth-child(12) {
+    display: none !important;
+}
+
+/* ici c'est pour le slug du vin */
+#new-Vin-form .row div:nth-child(40),
+#edit-Vin-form .row div:nth-child(40) {
+    display: none !important;
 }
 
 .list-pagination-counter strong {
@@ -106,6 +140,16 @@ td time {
 
 .form-control {
     background-color: var(--couleur-claire) !important;
+}
+
+/* pop up */
+.modal-footer .btn-secondary .btn-label {
+    color: var(--couleur-claire);
+}
+
+.datalist dt,
+.datalist dd {
+    color: var(--couleur-claire) !important;
 }
 
 .list-pagination-counter,
