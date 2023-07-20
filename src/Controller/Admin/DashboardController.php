@@ -29,7 +29,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
-    private EntityManagerInterface $entityManager;
+    // private EntityManagerInterface $entityManager;
     private UserRepository $userRepository;
     private VinRepository $vinRepository;
     private BlogRepository $blogRepository;
@@ -38,14 +38,14 @@ class DashboardController extends AbstractDashboardController
 
 
     public function __construct(
-        EntityManagerInterface $entityManager,
+       // EntityManagerInterface $entityManager,
         UserRepository $userRepository,
         VinRepository $vinRepository,
         BlogRepository $blogRepository,
         NoteRepository $noteRepository,
         AtelierRepository $atelierRepository
     ) {
-        $this->entityManager = $entityManager;
+        // $this->entityManager = $entityManager;
         $this->userRepository = $userRepository;
         $this->vinRepository = $vinRepository;
         $this->blogRepository = $blogRepository;
