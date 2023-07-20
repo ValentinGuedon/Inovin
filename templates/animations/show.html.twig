@@ -11,33 +11,35 @@
       </div>
       <div class="description-container">
         <p class="desc">{{ animation.resume }}</p>
-        <p class="prix">Prix : {{ animation.prix }} €</p>
+        <p class="prix">Prix : {{ animation.prix }} €</p><br>
+        <p class="prix">Durée : 2h</p>
         <div class="showcta">
                   <div class="nombrepersonne">
                     <form action="{{path ('add', {'id': animation.id})}}" method="post">
-                        <label for="date">Réserver un atelier : </label>
-                        <select id="date" name="date" required>
-                          <option disabled selected value="">Sélectionner</option>
+                        <label for="date"> </label>
+                        
+                        <select  class="select-lm" id="date" name="date" required>
+                          <option disabled selected value="">Sélectionner un atelier</option>
                           {% for atelier in animation.ateliers %}
                           <option value="{{ atelier.id }}">{{ atelier.date|date('d/m/Y') }} - {{ atelier.address }} - {{ atelier.horaire }}</option>
                       {% endfor %}
                       </select><br>
                     </div>
                     <div class="nombrepersonne">
-                        <label for="adults">Nombre de personnes :</label>
-                            <select id="nbPersonnes" name="nbPersonnes" required>
-                                <option disabled selected value="">Sélectionner</option>
+                        <label for="adults"></label>
+                            <select id="nbPersonnes" name="nbPersonnes"  class="select-lm" required>
+                                <option disabled selected value="">Nombre de personnes</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
                                 <option value="4">4</option>
+                                <option value="5">5</option>
                             </select>
                    </div>
-                        <button class="cta" type="submit">Je réserve mon atelier</button>
+                        <button class="cta-show" type="submit">Je réserve mon atelier</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div>
 {% endblock %}
