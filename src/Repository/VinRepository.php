@@ -21,6 +21,14 @@ class VinRepository extends ServiceEntityRepository
         parent::__construct($registry, Vin::class);
     }
 
+    public function getTotalVinsCount(): int
+    {
+        return $this->createQueryBuilder('v')
+            ->select('COUNT(v.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function save(Vin $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);

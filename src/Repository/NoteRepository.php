@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Note;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @extends ServiceEntityRepository<Note>
@@ -37,6 +38,19 @@ class NoteRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findTopRatedVins(int $limit = 3): array
+    {
+        return $this->createQueryBuilder('a')
+            ->select('v')
+            ->from('App\Entity\Vin', 'v')
+            ->join('v.notes', 'n', Join::WITH, 'v.id = n.vin')
+            ->groupBy('v')
+            ->orderBy('COUNT(n)', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

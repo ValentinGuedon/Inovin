@@ -3,7 +3,27 @@
 {% block title %} {{ parent() }} - Nouvelle recette {% endblock %}
 
 {% block body %}
-        <h1 class="vgh1Recette">Créez votre vin!</h1>
+
+<div class="bottle-wine">
+<svg width="18" height="71" viewBox="0 0 18 71" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0)">
+    <path class="bottle" opacity="0.4" d="M8.98542 70.2081C14.0781 70.2081 15.1906 69.5633 16.3615 69.1539C17.5323 68.7446 18 68.0425 18 67.0466C18 66.0518 18 30.8716 18 29.5248C18 28.1779 17.9417 26.481 17.3563 24.7248C16.7708 22.9685 14.4292 19.8653 13.5521 18.4029C12.674 16.9393 12.3219 15.5924 12.3219 14.5393C12.3219 13.4862 12.3219 9.27165 12.3219 6.92997C12.3219 5.77318 12.3219 3.90783 12.3219 3.90783C12.3219 3.90783 12.688 3.13987 12.688 2.63438C12.688 2.12889 12.6005 1.18596 12.162 0.789559C11.7235 0.394239 11.151 0 10.2956 0C9.43906 0 9.00054 0 9.00054 0C9.00054 0 8.56201 0 7.70549 0C6.85004 0 6.27867 0.395319 5.83907 0.789559C5.40054 1.18488 5.31305 2.12889 5.31305 2.63438C5.31305 3.13879 5.67813 3.90783 5.67813 3.90783C5.67813 3.90783 5.67813 5.77318 5.67813 6.92997C5.67813 9.27057 5.67813 13.4862 5.67813 14.5393C5.67813 15.5935 5.32709 16.9393 4.44896 18.4029C3.57084 19.8653 1.22916 22.9685 0.643745 24.7248C0.0583266 26.481 0 28.1779 0 29.5248C0 30.8716 0 66.0518 0 67.0466C0 68.0425 0.468769 68.7446 1.63961 69.1539C2.81044 69.5633 3.92187 70.2081 9.01566 70.2081H8.98542Z" fill="black"/>
+    <path class="waves" d="M52.7093 33C47.4167 33 47.4167 35.5923 42.2322 35.5923C37.0477 35.5923 36.9397 33 31.6472 33C26.3546 33 26.3546 35.5923 21.1701 35.5923C15.9856 35.5923 15.9856 33 10.6931 33C5.5 33 5.50855 35.5923 0.216022 35.5923H0V37.4239H62.6463V35.5923C58.0018 35.3762 57.7858 33 52.7093 33Z" fill="#e0115f"/>
+    <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="18" height="71">
+    <path class="wine-silhouette" d="M8.98542 70.2081C14.0781 70.2081 15.1906 69.5633 16.3615 69.1539C17.5323 68.7446 18 68.0425 18 67.0466C18 66.0518 18 30.8716 18 29.5248C18 28.1779 17.9417 26.481 17.3563 24.7248C16.7708 22.9685 14.4292 19.8653 13.5521 18.4029C12.674 16.9393 12.3219 15.5924 12.3219 14.5393C12.3219 13.4862 12.3219 9.27165 12.3219 6.92997C12.3219 5.77318 12.3219 3.90783 12.3219 3.90783C12.3219 3.90783 12.688 3.13987 12.688 2.63438C12.688 2.12889 12.6005 1.18596 12.162 0.789559C11.7235 0.394239 11.151 0 10.2956 0C9.43906 0 9.00054 0 9.00054 0C9.00054 0 8.56201 0 7.70549 0C6.85004 0 6.27867 0.395319 5.83907 0.789559C5.40054 1.18488 5.31305 2.12889 5.31305 2.63438C5.31305 3.13879 5.67813 3.90783 5.67813 3.90783C5.67813 3.90783 5.67813 5.77318 5.67813 6.92997C5.67813 9.27057 5.67813 13.4862 5.67813 14.5393C5.67813 15.5935 5.32709 16.9393 4.44896 18.4029C3.57084 19.8653 1.22916 22.9685 0.643745 24.7248C0.0583266 26.481 0 28.1779 0 29.5248C0 30.8716 0 66.0518 0 67.0466C0 68.0425 0.468769 68.7446 1.63961 69.1539C2.81044 69.5633 3.92187 70.2081 9.01566 70.2081H8.98542Z" fill="black"/>
+    </mask>
+    <g mask="url(#mask0)">
+    <rect x="-3" y="37" width="24" height="37" fill="#e0115f"/>
+    </g>
+    </g>
+    <defs>
+    <clipPath id="clip0">
+    <rect class="flat-wine" width="18" height="71" fill="white"/>
+    </clipPath>
+    </defs>
+    </svg>
+</div>
+    <h1 class="vgh1Recette"> Créez votre vin !</h1>
          {% for flashError in app.flashes('error') %}
                     <div class="vgFlash">
                         <p>{{ flashError }}</p>
@@ -12,45 +32,61 @@
 
                     {{ form_start(form) }}
                         <div class="vgVisiteurDivForm" id="vgFormSection">
-                            <p class="form-label vgblanc">Nom de votre recette</p>
-                            <div class="vgFormField"> {{ form_widget(form.nom) }} </div>
+                            <p class="titre-recette">Nom de votre recette</p>
+                            <div class="vgFormField-titre"> {{ form_widget(form.nom) }} </div>
+                    <div class="container1">
+                        <div class="container-recette">
+                            <p class="cepage"> Cépage principal</p>
+                            <p class="cepage"> {{ form_widget(form.cepage1) }} </p>
+                        </div>
+                        <div class="container-recette">
+                            <p class="quantite">Quantité (en ml)</p>
+                            <p class="vgFormField" placeholder="ml"> {{ form_widget(form.quantite) }}</p>
+                        </div>
+                    </div>
 
 
-                            <p class="form-label vgblanc"> Cépage de base</p>
-                                <div class="vgSelect">{{ form_widget(form.cepage1) }}</div>
-                            <p class="form-label vgblanc">Ajouter une quantité</p>
-                                <div class="vgFormField">{{ form_widget(form.quantite) }} </div>
+                    <div class="container1">
+                        <div class="container-recette">
+                            <p class="cepage"> Cépage d'ajustement</p>
+                            <p class="cepage"> {{ form_widget(form.cepage2) }} </p>
+                        </div>
+                        <div class="container-recette">
+                            <p class="quantite">Quantité (en ml)</p>
+                            <p class="vgFormField"> {{ form_widget(form.quantite2) }}</p>
+                        </div>
+                    </div>
 
+                    <i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
 
-                            <p class="form-label vgblanc">Cépage d'ajustement</p>
-                                <div class="vgSelect">{{ form_widget(form.cepage2) }} </div>
-                            <p class="form-label vgblanc">Ajouter une quantité</p>
-                               <div class="vgFormField"> {{ form_widget(form.quantite2) }} </div>
-
-<i class="fa-solid fa-plus vgIPlus1 vgButtonVinPlus" onclick="displayVin3(); displayButtonPlus3()"></i>
-
-                            <p class="form-label vgIdVin3 vgblanc">Cépage supplémentaire</p>
-                            <div class="vgSelect vgIdVin3">{{ form_widget(form.cepage3) }}</div>
-                            <p class="form-label vgIdVin3 vgblanc">Ajouter une quantité</p>
-                            <div class="vgIdVin3 vgFormField">{{ form_widget(form.quantite3) }}</div>
+                    <div class="container1">
+                        <div class="container-recette">
+                            <p class="cepage vgIdVin3">Cépage supplémentaire</p>
+                            <p class=" cepage vgSelect vgIdVin3">{{ form_widget(form.cepage3) }}</p>
+                        </div>
+                        <div class="container-recette">
+                            <p class="quantite vgIdVin3">Quantité (en ml)</p>
+                            <p class="vgIdVin3 vgFormField">{{ form_widget(form.quantite3) }}</p>
+                        </div>
+                        </div>    
 
 <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
                             {# here 2 #}
-                            <p class="form-label vgIdVin4 vgblanc">Cépage supplémentaire</p>
-                                <div class="vgSelect vgIdVin4"> {{ form_widget(form.cepage4) }} </div>
-                            <p class="form-label vgIdVin4 vgblanc">Ajouter une quantité</p>
-                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div>
-
+                            <div class="container1">
+                                <div class="container-recette">
+                                    <p class="cepage vgIdVin4">Cépage supplémentaire</p>
+                                    <p class=" cepage vgSelect vgIdVin4">{{ form_widget(form.cepage4) }}</p>
+                                </div>
+                                <div class="container-recette">
+                                    <p class="quantite vgIdVin4">Quantité (en ml)</p>
+                                    <p class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</p>
+                                </div>
+                                </div>  
                             <div class="vgDivButtonSearch">
                             {{ form_widget(form) }}
-                            <button type="submit" class="submit vgButtonSearch vgblanc">Ajouter votre recette</button>
-                </div>
-            </div>
-
-
-{{ form_end(form, {'render_rest': false}) }}
-
-
+                            <button type="submit" class="submit vgButtonSearch vgblanc">Enregistrer votre recette</button>
+                          
+                    {{ form_end(form, {'render_rest': false}) }}
 {# gestion des boutons  #}
 <script>
     function displayVin3() {
@@ -81,5 +117,4 @@
 
 
 </script>
-
 {% endblock %}

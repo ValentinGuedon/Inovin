@@ -10,6 +10,12 @@ use App\Entity\Cepage;
 use App\Entity\Atelier;
 use App\Entity\Recette;
 use App\Entity\Animations;
+use App\Repository\UserRepository;
+use App\Repository\VinRepository;
+use App\Repository\BlogRepository;
+use App\Repository\NoteRepository;
+use App\Repository\AtelierRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -23,22 +29,47 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 
 class DashboardController extends AbstractDashboardController
 {
-    private AdminUrlGenerator $adminUrlGenerator;
+    private EntityManagerInterface $entityManager;
+    private UserRepository $userRepository;
+    private VinRepository $vinRepository;
+    private BlogRepository $blogRepository;
+    private NoteRepository $noteRepository;
+    private AtelierRepository $atelierRepository;
 
-    public function __construct(AdminUrlGenerator $adminUrlGenerator)
-    {
-        $this->adminUrlGenerator = $adminUrlGenerator;
+
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        UserRepository $userRepository,
+        VinRepository $vinRepository,
+        BlogRepository $blogRepository,
+        NoteRepository $noteRepository,
+        AtelierRepository $atelierRepository
+    ) {
+        $this->entityManager = $entityManager;
+        $this->userRepository = $userRepository;
+        $this->vinRepository = $vinRepository;
+        $this->blogRepository = $blogRepository;
+        $this->noteRepository =  $noteRepository;
+        $this->atelierRepository = $atelierRepository;
     }
 
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
+        $totalUsers = $this->userRepository->getTotalUsersCount();
+        $totalVins = $this->vinRepository->getTotalVinsCount();
+        $totalArticles = $this->blogRepository->getTotalArticlesCount();
+        $topRatedVins = $this -> noteRepository->findTopRatedVins(3);
+        $prochainAtelier = $this->atelierRepository->findProchainAtelier();
 
-        $url = $this->adminUrlGenerator
-        ->setController(AtelierCrudController::class)
-        ->generateUrl();
 
-         return $this->redirect($url);
+        return $this->render('admin/dashboard.html.twig', [
+            'totalUsers' => $totalUsers,
+            'totalVins' => $totalVins,
+            'totalArticles' => $totalArticles,
+            'topRatedVins' => $topRatedVins,
+            'prochainAtelier' => $prochainAtelier,
+        ]);
     }
 
     public function configureAssets(): Assets
@@ -57,9 +88,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToUrl('Site Inovin', 'fa fa-home', '/');
-
-        // yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
 
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
             MenuItem::linkToCrud('Voir Utilisateurs', 'fas fa-eye', User::class)
@@ -99,5 +128,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Recettes', 'fas fa-eye-dropper')->setSubItems([
             MenuItem::linkToCrud('Voir Recette', 'fas fa-eye', Recette::class)
         ]);
+
+        yield MenuItem::linkToUrl('Site Inovin', 'fa fa-home', '/');
     }
 }
