@@ -21,6 +21,14 @@ class BlogRepository extends ServiceEntityRepository
         parent::__construct($registry, Blog::class);
     }
 
+    public function getTotalArticlesCount(): int
+    {
+        return $this->createQueryBuilder('b')
+            ->select('COUNT(b.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function save(Blog $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
