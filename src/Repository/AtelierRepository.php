@@ -39,6 +39,19 @@ class AtelierRepository extends ServiceEntityRepository
         }
     }
 
+    public function findProchainAtelier(): ?Atelier
+    {
+        $now = new \DateTime();
+
+        return $this->createQueryBuilder('b')
+            ->where('b.date >= :now')
+            ->setParameter('now', $now->format('Y-m-d'))
+            ->orderBy('b.date', 'ASC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 //    /**
 //     * @return Atelier[] Returns an array of Atelier objects
 //     */

@@ -1,0 +1,44 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+
+<h2> 🎉 Bienvenue  {{ app.user.firstname }} !</h2><br>
+
+<div class="container">
+<div class="site">
+<h3> 📉 Statistiques du site</h3><br>
+
+<p>Nombre total d'utilisateurs : {{ totalUsers }}</p>
+<p>Nombre total de vins dans la boutique : {{ totalVins }}</p>
+<p>Nombre total d'articles sur le blog : {{ totalArticles }}</p>
+
+</div>
+<div class="vin">
+<h3>🍷 Les vins les mieux notés</h3>
+{% if topRatedVins is not empty %}
+    <ul>
+        {% for vin in topRatedVins %}
+            <li>{{ vin.nom }}</li>
+        {% endfor %}
+    </ul> <br>
+{% else %}
+    <p>Aucune donnée disponible pour les vins les mieux notés.</p>
+{% endif %}
+</div>
+
+<div class="atelier">
+<h3> 📅 Prochain atelier</h3> <br>
+{% if prochainAtelier is not null %}
+    <p> Date : {{ prochainAtelier.date|date('d/m/Y') }} <br>  Horaire : {{ prochainAtelier.horaire }} <br> Adresse : {{ prochainAtelier.address }} 
+        <div class="sk-divider"></div>
+         <br> {{ prochainAtelier.commentaire }}</p><br>
+{% else %}
+    <p>Aucun atelier à venir.</p><br>
+{% endif %}
+</div>
+</div>
+
+
+
+
+{% endblock %}

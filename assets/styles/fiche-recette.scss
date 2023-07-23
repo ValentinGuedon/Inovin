@@ -1,45 +1,90 @@
 .vgVisiteurDivForm {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    // grid-template-rows: 200px 200px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
 .vgh1Recette {
     color: var(--couleur-claire);
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 1%;
 }
 
-.vgFlash {
-    margin: 0 auto 30px !important;
-    text-align: center;
+.titre-recette{
     color: var(--couleur-claire);
+    font-weight: bold;
+    margin-top: 3%;
+    margin-bottom: 1%;
+    }
 
+
+.vgFormField-titre input{
+    background-color: var(--couleur-claire);
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    width: 400px;
+    text-align: center;
 }
 
-.vgFlash p {
-    border: solid var(--couleur-tierce) 3px;
-    display: inline;
-    padding: 5px;
-    line-height: 32px;
+.container-recette{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.vgIdVin4 {
-    display: none;
+.container1{
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5%;
 }
 
-.vgIdVin3 {
-    display: none;
+.quantite{
+    color: var(--couleur-claire);
+    font-weight: bold;
+    margin-bottom: 5%;
 }
 
-.vgShowVin3 {
-    display: block;
+.cepage{
+    color: var(--couleur-claire);
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-right: 20%;
 }
 
-.vgShowVin4 {
-    display: block;
+#recette_cepage1,#recette_cepage2 , #recette_cepage3, #recette_cepage4{
+    width: 200px;
+    height: 40px;
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    border-radius: 40px;
+    border: none;
+    box-shadow: 2px 2px 4px #000000;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    text-align: center;
+}
+
+#recette_quantite input{
+    background-color: var(--couleur-claire);
+    border: none;
+    border-radius: 10px;
+    height: 41px;
+    width: 30px;
+    text-align: center;
+}   
+
+.vgFormField input{
+
+background-color: var(--couleur-claire);
+    border: none;
+    border-radius: 87px;
+    height: 38px;
+    min-width: 180px;
+    max-width: 500px;
+    width: 40%;
+    text-align: center;
+    margin-bottom: 5%;
 }
 
 .vgButtonVinPlus {
@@ -77,8 +122,33 @@
     }
 }
 
-.vgblanc {
-    color: var(--couleur-claire);
+.vgIdVin4 {
+    display: none;
 }
 
-.vgIPlus1 {}
+.vgIdVin3 {
+    display: none;
+}
+
+.vgShowVin3 {
+    display: block;
+}
+
+.vgShowVin4 {
+    display: block;
+}
+
+
+.waves{
+    animation: flow 1s infinite;
+    animation-timing-function: linear;
+  }
+  
+  @keyframes flow{
+    from {transform: translate(0,0);}
+    to {transform: translate(-20px,0);}
+  }
+
+.bottle-wine{
+    margin-left: 50%;
+}

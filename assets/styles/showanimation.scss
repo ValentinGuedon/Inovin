@@ -40,14 +40,94 @@
     width: 100%;
     position: relative;
     z-index: 1;
+    margin-top: 4%;
   }
   
   .prix {
     color: var(--couleur-claire);
     margin-top: 3%;
+    font-weight: bold;
   }
 
 .nombrepersonne{
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.select-lm{
+
+  width: 80% !important;
+  height: 35px;
+  color: var(--couleur-claire);
+  background-color: var(--couleur-tierce);
+  border-radius: 40px;
+  border: none;
+  box-shadow: 2px 2px 4px #000000;
+  margin-left: 10%;
+  margin-right: 10%;
+  text-align: center;
+}
+
+.nomanimation{
+  font-size:xx-large;
+}
+
+.cta-show{
+  color: var(--couleur-claire);
+  background: var(--couleur-tierce);
+  text-align: center;
+  border-radius: 70px;
+  padding: 3% 10%;
+  text-decoration: none;
+  margin-left: 10%;
+  border: none;
+  padding: 10px 55px;
+  box-shadow: 2px 2px 4px #000000;
+}
+
+.cta-show:hover{
+  background-color: #e0115f;
+    scale: 1.12;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .phototxtcta {
+      display: flex;
+      align-items: center !important;
+      flex-direction: column;
+      width: 100%;
+      padding: 0 3%;
+  }
+
+  .select-lm{
+    color: var(--couleur-claire);
+    background-color: var(--couleur-tierce);
+    border-radius: 40px;
+    border: none;
+    box-shadow: 2px 2px 4px #000000;
+    margin-left: 3% !important;
+    margin-right: 3% !important;
+    text-align: center;
+  }
+
+  .image-container{
+    display:none;
+  }
+
+  .description-container{
+    width: 100%;
+  }
+.cta-show{
+  margin-left: 0%;
+}
+
+.nomanimation{
+  margin-left: 3%;
+}
+
+.showatelier{
+  padding: 0;
+}
 }

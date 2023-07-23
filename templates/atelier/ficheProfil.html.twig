@@ -41,10 +41,10 @@
 
         <!--Suggestions boutique-->
         <div class="titre-arome">Nos suggestions personnalisées</div>
-   <div class="row row-cols-2 mt-5 mx-autor justify-content-around">
+   <div class="row row-cols-2 mt-2 mx-autor justify-content-around">
                 {% for suggestion in suggestions %}
                     <div class="col-sm-4 mb-3">
-                        <div class="card h-100 sk-cardbody" style="width: 22rem;">
+                        <div class="card h-100 sk-cardbody" style="width: 19rem;">
                             <div class="card-header d-flex">
                                 <div class="d-flex h-100">
                                     <div class="card-body">
@@ -79,7 +79,7 @@
           
         </div>
     </div>
-    <button class="cta" type="submit">Créer votre vin</button>
+    <button class="cta-lm" type="submit">Votre vin personnalisé</button>
  
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
@@ -93,7 +93,7 @@
  var ctx = document.getElementById("pie-chart").getContext('2d');
 
  // Condition pour afficher le diagramme en fonction du profil gustatif
- if (profilName === "frais et léger") {
+ if (profilName === "frais et légers") {
     // Code pour le diagramme correspondant au profil "frais"
    var myChart = new Chart(ctx, {
      type: 'pie',
@@ -102,7 +102,7 @@
        datasets: [{
         backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
         hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
-        data: [50, 50, 50],
+        data: [30, 40, 30],
         borderWidth: 0
       }]
      },
@@ -110,9 +110,11 @@
        title: {
          display: true,
          text: 'Les cépages conseillés',
-         fontSize: 20,
+         fontSize: 40,
          fontColor: "rgba(226, 218, 212)",
-         fontFamily: "Montserrat" 
+         fontFamily: "Montserrat",
+         padding: 20 
+
        },
        legend: {
         labels: {
@@ -123,7 +125,7 @@
       }
      }
    });
- } else if (profilName === "intense et audacieux") {
+ } else if (profilName === "intenses et audacieux") {
    // Code pour le diagramme correspondant au profil "intense"
    var myChart = new Chart(ctx, {
     type: 'pie',
@@ -132,7 +134,7 @@
       datasets: [{
         backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
         hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
-        data: [50, 50, 50],
+        data: [50, 30, 20],
         borderWidth: 0
       }]
     },
@@ -140,21 +142,23 @@
       title: {
         display: true,
         text: 'Les cépages conseillés',
-        fontSize: 20,
+        fontSize: 40,
         fontColor: "rgba(226, 218, 212)",
-        fontFamily: "Montserrat" 
+        fontFamily: "Montserrat",
+        padding: 20 
       },
       legend: {
        labels: {
          fontColor: "rgba(226, 218, 212)",
          fontSize: 20,
-         fontFamily: "Montserrat" 
+         fontFamily: "Montserrat",
+         padding: 20 
        }
      }
     }
   });
 
- } else if (profilName === "délicat et raffiné") {
+ } else if (profilName === "délicats et raffinés") {
    // Code pour le diagramme correspondant au profil "délicat"
    var myChart = new Chart(ctx, {
     type: 'pie',
@@ -163,7 +167,7 @@
       datasets: [{
         backgroundColor: ["rgba(226, 218, 212)", "rgba(155, 36, 73)", "rgba(224, 17, 95)"],
         hoverBackgroundColor: ["rgba(206, 198, 192)", "rgba(135, 16, 53)", "rgba(204, 0, 75)"],
-        data: [50, 50, 50],
+        data: [20, 40, 40],
         borderWidth: 0
       }]
     },
@@ -171,9 +175,10 @@
       title: {
         display: true,
         text: 'Les cépages conseillés',
-        fontSize: 20,
+        fontSize: 40,
         fontColor: "rgba(226, 218, 212)",
-        fontFamily: "Montserrat" 
+        fontFamily: "Montserrat",
+        padding: 20 
       },
       legend: {
        labels: {
