@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Doctrine\Common\Collections\Collection;
+use App\Entity\User;
 use Dompdf\Dompdf;
 use Twig\Environment;
 use Symfony\Component\Mime\Email;
@@ -29,6 +30,39 @@ class MailerService
             ->to("$userEmail")
             ->subject('Retrouvez vos fiches de dégustation')
             ->html($this->twig->render('ficheEmail.html.twig', ['fiches' => $fiches]));
+
+        $this->mailer->send($email);
+    }
+
+    public function sendProfilEmail($user): void
+    {
+        $profil = $user->getprofil();
+        $userEmail = $user->getEmail();
+        $aromes = $user->getFavoriteFicheDegustation()->getArome();
+
+
+        $email = (new Email())
+            ->from('inovinstrasbourg@gmail.com')
+            ->to("$userEmail")
+            ->subject('Retrouvez votre profil d\'amateur de vin')
+            ->html($this->twig->render('profilEmail.html.twig', [
+                'profil' => $profil,
+                'user' => $user,
+                'aromes' => $aromes,
+            ]));
+
+        $this->mailer->send($email);
+    }
+
+    public function sendRetexEmail(User $user): void
+    {
+        $userEmail = $user->getEmail();
+        $userSlug = $user->getSlug();
+        $email = (new Email())
+            ->from('inovinstrasbourg@gmail.com')
+            ->to("$userEmail")
+            ->subject('Comment s\'est passée votre dégustation ?')
+            ->html($this->twig->render('retexEmail.html.twig', ['user' => $user, 'userSlug' => $userSlug]));
 
         $this->mailer->send($email);
     }

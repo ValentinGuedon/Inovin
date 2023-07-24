@@ -1,13 +1,13 @@
 {% extends 'base_degustation.html.twig' %}
 
-{% block title %} 
-    {{ parent() }} - Profil 
+{% block title %}
+    {{ parent() }} - Profil
 {% endblock %}
 
-{% block stylesheets %} 
+{% block stylesheets %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-    {{ parent() }} 
+    {{ parent() }}
 {% endblock %}
 
 {% block header %}
@@ -19,11 +19,11 @@
     <!--Profil MBTI-->
     <div class="fiche-grid">
       <div class="glass">
-      <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()"> 
+      <img src={{ asset('build/images/bigFavicon.png') }} class='wineglass-shape' onclick="expandGlass()">
         <h1 class='titreFiche animate pop2'>{{ user.firstname }}, vous aimez les vins {{ profil.name }} !</h1>
       </div>
         <img src="{{ vich_uploader_asset(profil, 'profilFile') }}" class="img-profil animate pop">
-       
+
         <div class="container-lm">
         <p class="description">{{ profil.description }}</p>
       </div>
@@ -48,7 +48,7 @@
                             <div class="card-header d-flex">
                                 <div class="d-flex h-100">
                                     {% if suggestion.image is not null %}
-                                        <img  class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(suggestion, 'imageFile') }}" alt="{{ article.nom }}">
+                                        {# <img  class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(suggestion, 'imageFile') }}" alt="{{ article.nom }}"> #}
                                     {% endif %}
                                     <div class="card-body">
                                         <h5 class="card-title sk-card-title mt-3 text-break text-uppercase"><small><strong>{{suggestion.nom}}</strong></small></h5>
@@ -62,14 +62,14 @@
                                                             <span class="badge text-bg-sk-badges opacity-50">{{ arome }}</span>
                                                         </div>
                                                     </div>
-                                                {% endfor %} 
+                                                {% endfor %}
                                             </div>
-                                            <p class="card-text sk-card-title text-break fw-medium mt-3">{{suggestion.prix}} €</p> 
+                                            <p class="card-text sk-card-title text-break fw-medium mt-3">{{suggestion.prix}} €</p>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="card-footer w-100 mt-auto">
                                 <div class="d-flex justify-content-between">
                                     <button class="sk-button" onclick="addToCart('{{ suggestion.id }}')">Ajouter au panier</button>
@@ -79,11 +79,11 @@
                         </div>
                     </div>
                 {% endfor %}
-          
+
         </div>
     </div>
-    <button class="cta-lm" type="submit">Votre vin personnalisé</button>
- 
+    <button class="cta-lm" onclick="location.href = '/recette/visiteur'">Votre vin personnalisé</button>
+
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
@@ -91,12 +91,12 @@
 <script>
 /* Le code ici génère le graphique avec propriétés dans un objet javascript défini par les {}. */
 
- var profilName = "{{ profil.name }}"; // Récupérez le nom du profil gustatif    
+ var profilName = "{{ profil.name }}"; // Récupérez le nom du profil gustatif
 
  var ctx = document.getElementById("pie-chart").getContext('2d');
 
  // Condition pour afficher le diagramme en fonction du profil gustatif
- if (profilName === "frais et légers") {
+ if (profilName === "frais et léger") {
     // Code pour le diagramme correspondant au profil "frais"
    var myChart = new Chart(ctx, {
      type: 'pie',
@@ -116,19 +116,19 @@
          fontSize: 40,
          fontColor: "rgba(226, 218, 212)",
          fontFamily: "Montserrat",
-         padding: 20 
+         padding: 20
 
        },
        legend: {
         labels: {
           fontColor: "rgba(226, 218, 212)",
           fontSize: 20,
-          fontFamily: "Montserrat" 
+          fontFamily: "Montserrat"
         }
       }
      }
    });
- } else if (profilName === "intenses et audacieux") {
+ } else if (profilName === "intense et audacieux") {
    // Code pour le diagramme correspondant au profil "intense"
    var myChart = new Chart(ctx, {
     type: 'pie',
@@ -144,24 +144,24 @@
     options: {
       title: {
         display: true,
-        text: 'Les cépages conseillés',
+        text: 'Les cépage conseillé',
         fontSize: 40,
         fontColor: "rgba(226, 218, 212)",
         fontFamily: "Montserrat",
-        padding: 20 
+        padding: 20
       },
       legend: {
        labels: {
          fontColor: "rgba(226, 218, 212)",
          fontSize: 20,
          fontFamily: "Montserrat",
-         padding: 20 
+         padding: 20
        }
      }
     }
   });
 
- } else if (profilName === "délicats et raffinés") {
+ } else if (profilName === "délicat et raffiné") {
    // Code pour le diagramme correspondant au profil "délicat"
    var myChart = new Chart(ctx, {
     type: 'pie',
@@ -181,20 +181,20 @@
         fontSize: 40,
         fontColor: "rgba(226, 218, 212)",
         fontFamily: "Montserrat",
-        padding: 20 
+        padding: 20
       },
       legend: {
        labels: {
          fontColor: "rgba(226, 218, 212)",
          fontSize: 20,
-         fontFamily: "Montserrat" 
+         fontFamily: "Montserrat"
        }
      }
     }
   });
  }
 </script>
-    
+
 
     <script>
         function addToCart(id) {
@@ -205,13 +205,13 @@
             url = url.replace('QUANTITY', quantity);
             window.location.href = url;
         }
-        
+
         function updateQuantity(id, value) {
             var quantityInput = document.querySelector('.quantity_' + id);
             quantityInput.value = value;
         }
     </script>
-    
+
     {% block javascripts %}
         {{ parent() }}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

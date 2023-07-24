@@ -41,10 +41,10 @@
                         </div>
                         <div class="container-recette">
                             <p class="quantite">Quantité (en ml)</p>
-                            <p class="vgFormField" placeholder="ml"> {{ form_widget(form.quantite) }}</p>
+                            <p class="vgFormField" placeholder="ml"> {{ form_widget(form.quantite1) }}</p>
                         </div>
                     </div>
-                    
+
                     <div class="container1">
                         <div class="container-recette">
                             <p class="cepage"> Cépage d'ajustement</p>
@@ -70,7 +70,7 @@
                             <p class="quantite vgIdVin3">Quantité (en ml)</p>
                             <p class="vgIdVin3 vgFormField">{{ form_widget(form.quantite3) }}</p>
                         </div>
-                        </div>    
+                        </div>
 
 <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
                             {# here 2 #}
@@ -83,23 +83,23 @@
                                     <p class="quantite vgIdVin4">Quantité (en ml)</p>
                                     <p class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</p>
                                 </div>
-                                </div>  
+                                </div>
                             <div class="vgDivButtonSearch">
                             {{ form_widget(form) }}
                             <button type="submit" class="submit vgButtonSearch vgblanc">Enregistrer votre recette</button>
-                          
+
                     {{ form_end(form, {'render_rest': false}) }}
-                    
+
                             {# + button 2 #}
-                            <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
+                            {# <i class="fa-solid fa-plus vgIPlus2 vgButtonVinPlus vgIdVin3" onclick="displayVin4(); displayButtonPlus4()"></i>
 
                             <p class="form-label vgIdVin4 vgblanc">Cépage supplémentaire</p>
                                 <div class="vgSelect vgIdVin4"> {{ form_widget(form.cepage4) }} </div>
                             <p class="form-label vgIdVin4 vgblanc">Ajouter une quantité</p>
-                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div>
+                                <div class="vgIdVin4 vgFormField">{{ form_widget(form.quantite4) }}</div> #}
 
                             <div class="vgDivButtonSearch">
-                            {{ form_widget(form) }}
+                            {# {{ form_widget(form) }} #}
                             <button type="submit" id="vgSubmitBtn" class="submit vgButtonSearch vgblanc" onclick= "hideButtonSubmit();" >Ajouter votre recette</button>
                 </div>
             </div>
