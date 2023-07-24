@@ -39,7 +39,7 @@ class SearchVinType extends AbstractType
             ->add('couleur', ChoiceType::class, [
                 'label' => false,
                 'choices' => $this->vinRepository->getCouleurChoices(), // récupère les couleurs
-                'placeholder' => '-- Sélectionnez une couleur --',
+                'placeholder' => '-- Couleur --',
                 'required' => false,
             ])
         ;

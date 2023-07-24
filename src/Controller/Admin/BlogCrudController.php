@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
@@ -82,17 +83,23 @@ class BlogCrudController extends AbstractCrudController
                 ->setNumOfRows(15)
                 ->setTrixEditorConfig([
                 'blockAttributes' => [
-                    // Define the HTML attributes for style
+                    // Define the HTML attributes for css
                     'default' => ['tagName' => 'blogParagraph'],
                     'heading1' => ['tagName' => 'blogHeader'],
                     'quote' => ['tagName' => 'blogQuote'],
                     'href' => ['tagName' => 'blogLink'],
                     'code' => ['tagName' => 'blogCode'],
                     'bullet' => ['tagName' => 'blogList'],
+                    'number' => ['tagName' => 'blogList'],
                     'numberList' => ['tagName' => 'bloglistNumber'],
                     ]
                 ])
                 ->setSortable(false),
+
+            SlugField::new('slug')
+            ->setTargetFieldName('title')
+            ->hideOnDetail()
+            ->hideOnIndex(),
         ];
     }
 }
