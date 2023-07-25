@@ -1,11 +1,18 @@
 {% apply inline_css (source('@styles/ficheEmail.scss'))%}
+{% apply inline_css (source('@styles/retexEmail.scss'))%}
+
+
+
 <html>
 <div class ='fiche-email'>
     <img src="{{ asset('build/images/Logo.png') }}">
     <p class='remerciements'>Merci {{user.firstname }} pour votre confiance et votre participation à  l'atelier Innovin.
     Votre avis compte pour nous, faites-nous part de vos sentiments en répondant
     au questionnaire de satisfaction </p>
-     <a href='http://localhost:8000/{{user.slug}}/retours'>  clique <img src="{{ asset('build/images/email.png') }}" class ="mail"> </a>
+    <div class ='center'>
+        <a href='http://localhost:8000/{{user.slug}}/retours'>  <img src="{{ asset('build/images/email.png') }}" class ="mail"> </a>
+    </div>
 </div>
 </html>
+{% endapply %}
 {% endapply %}

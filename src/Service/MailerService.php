@@ -34,7 +34,7 @@ class MailerService
         $this->mailer->send($email);
     }
 
-    public function sendProfilEmail($user): void
+    public function sendProfilEmail(User $user): void
     {
         $profil = $user->getprofil();
         $userEmail = $user->getEmail();
