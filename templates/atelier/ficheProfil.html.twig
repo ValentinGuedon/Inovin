@@ -47,6 +47,9 @@
                         <div class="card h-100 sk-cardbody" style="width: 19rem;">
                             <div class="card-header d-flex">
                                 <div class="d-flex h-100">
+                                {% if suggestion.image is not null %}
+                                        <img  class="w-50 align-self-center sk-picture-shop" src="{{ vich_uploader_asset(suggestion) }}" alt="{{ suggestion.nom }}">
+                                {% endif %}
                                     <div class="card-body">
                                         <h5 class="card-title sk-card-title mt-3 text-break text-uppercase"><small><strong>{{suggestion.nom}}</strong></small></h5>
                                         <p class="card-text sk-card-title text-break">{{suggestion.region}} - {{suggestion.millesime}}</p>
@@ -54,7 +57,7 @@
                                         <ul class="list-group list-group-flush">
                                             <div class="row">
                                                 {% for arome in suggestion.arome %}
-                                                    <div class="col-sm-5">
+                                                    <div class="col-sm-6">
                                                         <div>
                                                             <span class="badge text-bg-sk-badges opacity-50">{{ arome }}</span>
                                                         </div>
@@ -79,7 +82,7 @@
           
         </div>
     </div>
-    <button class="cta-lm" type="submit">Votre vin personnalisé</button>
+    <button class="cta-lm" onclick="location.href = '/recette/visiteur'">Votre vin personnalisé</button>
  
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
