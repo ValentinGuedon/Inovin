@@ -1,0 +1,19 @@
+{% apply inline_css (source('@styles/ficheEmail.scss'))%}
+
+{% block body %}
+<div class="fiche-email">
+      <img src="{{ asset('build/images/Logo.png') }}">
+        <h2>{{ user.firstname }}, vous aimez les vins {{ profil.name }} !</h2>
+        <img src="{{ vich_uploader_asset(profil, 'profilFile') }}">
+        <p class="remerciements">{{ profil.description }}</p>
+        <div><strong>Vos arômes de prédilection</strong></div>
+        <ul>
+            {% for arome in aromes %}
+                <li>{{ arome }}</li>
+            {% endfor %}
+        </ul>
+</div>
+
+{% endblock %}
+
+{% endapply %}

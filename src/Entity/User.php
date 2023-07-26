@@ -91,6 +91,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $retex = null;
 
     public function __construct()
     {
@@ -510,6 +512,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->content = $content;
 
+        return $this;
+    }
+
+    public function getRetex(): ?string
+    {
+        return $this->retex;
+    }
+
+    public function setRetex(?string $retex): static
+    {
+        $this->retex = $retex;
         return $this;
     }
 }

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }} - Home {% endblock title %}
+{% block body %}
+<div class ="retex-page">
+    {{ form_start(form) }}
+    <div class="retex-container">
+        {{ form_errors(form) }}
+
+            <h1 class ='retex-label'> Avez-vous apprécié l'expérience Inovin ?</h1>
+
+                {{ form_widget(form.retex, {'attr': {'class': 'retex-textarea ' }}) }}
+
+        {{ form_row(form.submit, { 'label': 'Dites-nous tout' }) }}
+    </div>
+</div>
+{{ form_end(form) }}
+{% endblock %}

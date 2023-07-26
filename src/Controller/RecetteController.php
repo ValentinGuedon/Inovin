@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Mime\Email;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mailer\MailerInterface;
+use App\Service\MailerService;
 
 #[Route('/recette')]
 class RecetteController extends AbstractController
@@ -28,7 +32,8 @@ class RecetteController extends AbstractController
         Request $request,
         RecetteRepository $recetteRepository,
         Security $security,
-        SluggerInterface $slugger
+        SluggerInterface $slugger,
+        MailerService $mailerService,
     ): Response {
         $recette = new Recette();
 
@@ -58,7 +63,13 @@ class RecetteController extends AbstractController
                         $user = $this->getUser();
                         $recette->setUser($user);
                         $recetteRepository->save($recette, true);
-                        $this->addFlash('success', 'Merci de votre participation à notre atelier!');
+                        $this->addFlash('sk-alert', 'Merci de votre participation à notre atelier!');
+
+                        //envoi du mail de retex
+                        $mailerService->sendRetexEmail($user);
+                        // envoi du mail de synhèse du profil
+                        $mailerService->sendProfilEmail($user);
+
                         return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
                     } else {
                         $this->addFlash('error', 'Veuillez renseigner au moins deux champs.');
