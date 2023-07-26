@@ -99,7 +99,7 @@ function closeAlert() {
 // Choose a time limit (5000 milliseconds)
 setTimeout(closeAlert, 5000);
 
-// Add to watchlist user
+// Add to wishlist user
 const watchlists = document.querySelectorAll(".watchlist");
 
 watchlists.forEach((watchlist) => {

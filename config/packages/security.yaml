@@ -48,7 +48,6 @@ security:
         - { path: '^/faq(?!/visiteur)', roles: 'ROLE_ADMIN' }
         - { path: '^/blog(?!/visiteur)', roles: ROLE_ADMIN }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/shop, roles: ROLE_USER }
 
 when@test:
     security:
