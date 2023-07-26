@@ -1,5 +1,34 @@
 
 .fiche-email{
-    background-color: cornflowerblue;
+    background-color: #22323f;
+    color: #e2dad4;
+    padding: 2em;
+    font-family: serif;
 }
 
+.fiche-email h3 {
+    background-color: #9b2449;
+    width: 80px;
+    padding: 2vw;
+    border-radius: 20%;
+    box-shadow: 2px 2px 2px black;
+}
+
+.fiche-email h2 {
+    background-color: #9b2449;
+    padding: 2vw;
+    width: 200px;
+    border-radius: 20%;
+    box-shadow: 2px 2px 2px black;
+}
+
+.remerciements
+ {
+    font-style: italic;
+ }
+
+ .logo-mail {
+    background-color: #22323f;
+    height: 5vh;
+    align-self: right;
+ }

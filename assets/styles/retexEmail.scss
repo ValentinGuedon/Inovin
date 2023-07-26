@@ -1,0 +1,36 @@
+.retex-textarea {
+    height: 50vh;
+    resize: vertical;
+
+}
+
+.retex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50em;
+}
+
+
+.retex-label {
+    align-items: left;
+    color: var(--couleur-claire);
+    margin-bottom: 20px;
+
+}
+
+.retex-page {
+    display: flex;
+    justify-content: center;
+}
+.mail
+{
+    width :10vw;
+}
+
+.center
+{
+    display: flex;
+    justify-content: center;
+}
