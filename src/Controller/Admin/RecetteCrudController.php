@@ -23,12 +23,14 @@ class RecetteCrudController extends AbstractCrudController
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            ->disable(Action::NEW, Action::DELETE, Action::EDIT)
-
-        ->add(Crud::PAGE_INDEX, Action::DETAIL)
-        ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
-            return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
-        });
+            ->disable(Action::NEW, Action::DELETE)
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+            ->update(Crud::PAGE_INDEX, Action::DETAIL, function (Action $action) {
+                return $action->setIcon('fa-solid fa-magnifying-glass')->setLabel(false);
+            })
+            ->update(Crud::PAGE_INDEX, Action::EDIT, function (Action $action) {
+                return $action->setIcon('fa fa-edit')->setLabel(false);
+            });
     }
 
     public function configureCrud(Crud $crud): Crud
@@ -37,7 +39,6 @@ class RecetteCrudController extends AbstractCrudController
             ->showEntityActionsInlined()
             ->setEntityLabelInSingular('Recette')
             ->setEntityLabelInPlural('Recettes')
-
             ->setPageTitle('index', 'Recettes')
             ->setPageTitle('new', 'Ajouter une recette')
             ->setPageTitle('detail', 'Détail de la recette')
@@ -72,6 +73,7 @@ class RecetteCrudController extends AbstractCrudController
         ->setLabel('Cépage 4'),
         IntegerField::new('quantite4')->setSortable(false)
         ->setLabel('Quantité'),
+        BooleanField::new('winner', 'Gagnant'),
         ];
     }
 }

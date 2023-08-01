@@ -20,7 +20,7 @@ class AnimationsFixtures extends Fixture
     {
         $animation1 = new Animations();
 
-        $animation1->setNom('Aterlier création de vin personnalisé');
+        $animation1->setNom('Atelier création de vin personnalisé');
         $animation1->setPrix('70');
         $animation1->setResume('Les participants pourront ainsi jouer le rôle d\'œnologue 
         et expérimenter l\'art de l\'assemblage pour créer un vin qui reflète leurs goûts personnels. 

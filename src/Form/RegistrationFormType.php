@@ -57,7 +57,7 @@ class RegistrationFormType extends AbstractType
             ->add('city', TextType::class, [])
             ->add('birthdate', DateType::class, [
                 'data' => new DateTime(),
-                'years' => range(date('Y') - 50, date('Y')),
+                'years' => range(date('Y') - 100, date('Y')),
                 'constraints' => [
                     new Callback([$this, 'validateAge']),
                 ],

@@ -12,6 +12,7 @@
 {% block body %}
 <div class="carreregister">
     <h1 class="connexion text-uppercase">Nouveau compte</h1>
+    {{ form_errors(registrationForm.plainPassword) }}
     {{ form_start(registrationForm) }}
     <div class="d-flex vgFlexRegister justify-content-between">
     <div class="d-flex vgFlexRegister flex-column vgNomRegister">
@@ -34,7 +35,6 @@
         <div class="d-flex vgFlexRegister flex-column vgMdpRegister">
             {{ form_label(registrationForm.plainPassword, 'Mot de passe', { 'label_attr': {'class': 'labelregister'} }) }}
             {{ form_widget(registrationForm.plainPassword, { 'attr': {'class': 'typeregister'} }) }}
-            {{ form_errors(registrationForm.plainPassword) }}
         </div>
     </div>
        <div class="d-flex vgFlexRegister flex-column vgAdresseRegister">

@@ -24,7 +24,7 @@ class RetexController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $userRepository->save($user, true);
-            $this->addFlash('success', 'Merci pour votre retour !');
+            $this->addFlash('sk-alert', 'Merci pour votre retour !');
             return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
         }
         return $this->render('retex.html.twig', [

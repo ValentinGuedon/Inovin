@@ -86,6 +86,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
+        yield MenuItem::linkToUrl('Site Inovin', 'fa fa-reply-all', '/');
 
         yield MenuItem::section('Utilisateurs');
         yield MenuItem::subMenu('Utilisateurs', 'fas fa-user')->setSubItems([
@@ -128,7 +129,5 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Créer Question', 'fas fa-plus', Faq::class)->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Voir Question', 'fas fa-eye', Faq::class),
         ]);
-
-        yield MenuItem::linkToUrl('Site Inovin', 'fa fa-home', '/');
     }
 }
