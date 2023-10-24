@@ -5,7 +5,7 @@ Les participants découvrent une approche de la vinification et de la création 
 
 # Contexte de développement
 
-Ce site a été crée sur une période de 8 semaines. Le travail a été fait avec d'autres camarades.
+Ce site a été crée sur une période de 8 semaines avec 3 autres camarades.
 
 # Les objectifs du site
 
@@ -15,12 +15,14 @@ Cet outil intègre plusieurs fonctionnalités : mise en place d’un parcours de
 
 J'ai travaillé principalement sur:
 
-* La gestion du projet sur Notion
-* La page boutique, panier et profil utilisateur
-* La gestion du système de notation et liste de favoris
-* Le dashboard administrateur
-* le système d'envoi de mail
-* La création du Mld
+* La création des rôles
+* La sécurisation du site
+* Le backoffice 
+* Le formulaire de création des vins
+* Création du blog et de la FAQ avec leurs fixtures.
+* Création de la base.html.twig, du header et du footer 
+* L'adaptabilité tablette/mobile
+* J'ai participé à la création et à la modification de la base de données
 
 # Technologies utilisées 
 
